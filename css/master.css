@@ -1,0 +1,17 @@
+html {
+  color: #38b6ff;
+  background-color: #333;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+a:link, a:visited {
+  background-color: #38b6ff;
+  color: #333;
+  padding: 5px 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: hotpink;
+}
