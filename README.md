@@ -7,10 +7,11 @@
 <a href="https://www.twitch.tv/xosnos_live"><img width="50px" src="https://symbols.getvecta.com/stencil_98/76_twitch-tile.d5da07d92d.svg"/></a>
 <a href="https://open.spotify.com/playlist/1TUkaHs0gFaaNWwDypasNW?si=faf8b3c228d84019"><img width="50px" src="https://symbols.getvecta.com/stencil_96/66_spotify-tile.e5f862c98a.svg"/></a>
 <a href="https://www.codecademy.com/profiles/xosnos"><img width="50px" src="https://symbols.getvecta.com/stencil_77/24_codecademy-icon.b15445617f.svg"/></a>
+<br>
+<br>
+<p>I am a Computer Science student at the University of Michigan [Ann Arbor, MI] graduating in 2022.</p>
 
-I am a Computer Science student at the University of Michigan [Ann Arbor, MI] graduating in 2022. 
-
-This summer, I will be building my portfolio, side projects, learning the full stack, contributing to open source, and improving my interview skills.
+<p>This summer, I will be building my portfolio, side projects, learning the full stack, contributing to open source, and improving my interview skills.</p>
 
 <p><strong>🌴 Currently Studying:</strong> <img alt="JavaScript" width="30px" src="https://symbols.getvecta.com/stencil_25/40_javascript.4ce34e7594.svg"/>
 <img alt="React.js" width="30px" src="https://symbols.getvecta.com/stencil_94/22_react-icon.5883897a74.svg"/>
