@@ -4,7 +4,8 @@
 <a href="https://www.linkedin.com/in/steyen/"><img width="50px" src="https://symbols.getvecta.com/stencil_87/40_linkedin-tile.82c85ff576.svg"/></a>
 <a href="https://twitter.com/xosnos"><img width="50px" src="https://symbols.getvecta.com/stencil_98/80_twitter-tile.f83a5d1085.svg"/></a>
 <a href="https://www.instagram.com/xosnos/"><img width="50px" src="https://symbols.getvecta.com/stencil_84/47_instagram-tile.25a39d657b.svg"/></a>
-<a href="https://www.twitch.tv/xosnos_live"><img width="50px" src="https://symbols.getvecta.com/stencil_98/76_twitch-tile.d5da07d92d.svg"/></a>
+<a href="https://www.twitch.tv/xosnos_"><img width="50px" src="https://symbols.getvecta.com/stencil_98/76_twitch-tile.d5da07d92d.svg"/></a>
+<a href="https://www.reddit.com/user/xosnos_"><img width="50px" src="https://symbols.getvecta.com/stencil_94/47_reddit-tile.1536bb80a9.svg"/></a>
 <a href="https://open.spotify.com/playlist/1TUkaHs0gFaaNWwDypasNW?si=faf8b3c228d84019"><img width="50px" src="https://symbols.getvecta.com/stencil_96/66_spotify-tile.e5f862c98a.svg"/></a>
 <a href="https://www.codecademy.com/profiles/xosnos"><img width="50px" src="https://symbols.getvecta.com/stencil_77/24_codecademy-icon.b15445617f.svg"/></a>
 <br>
