@@ -7,6 +7,7 @@
 <a href="https://www.twitch.tv/xosnos_"><img width="50px" src="https://symbols.getvecta.com/stencil_98/76_twitch-tile.d5da07d92d.svg"/></a>
 <a href="https://www.reddit.com/user/xosnos_"><img width="50px" src="https://symbols.getvecta.com/stencil_94/47_reddit-tile.1536bb80a9.svg"/></a>
 <a href="https://open.spotify.com/playlist/1TUkaHs0gFaaNWwDypasNW?si=faf8b3c228d84019"><img width="50px" src="https://symbols.getvecta.com/stencil_96/66_spotify-tile.e5f862c98a.svg"/></a>
+<a href="https://www.pinterest.com/xosnos_/"><img width="50px" src="https://symbols.getvecta.com/stencil_91/81_pinterest-tile.99797a7b9c.svg"/></a>
 <a href="https://www.codecademy.com/profiles/xosnos"><img width="50px" src="https://symbols.getvecta.com/stencil_77/24_codecademy-icon.b15445617f.svg"/></a>
 <br>
 <br>
