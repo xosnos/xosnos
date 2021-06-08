@@ -9,6 +9,8 @@
 <a href="https://open.spotify.com/playlist/1TUkaHs0gFaaNWwDypasNW?si=faf8b3c228d84019"><img width="50px" src="https://symbols.getvecta.com/stencil_96/66_spotify-tile.e5f862c98a.svg"/></a>
 <a href="https://www.pinterest.com/xosnos_/"><img width="50px" src="https://symbols.getvecta.com/stencil_91/81_pinterest-tile.99797a7b9c.svg"/></a>
 <a href="https://www.codecademy.com/profiles/xosnos"><img width="50px" src="https://symbols.getvecta.com/stencil_77/24_codecademy-icon.b15445617f.svg"/></a>
+<a href="https://www.hackerrank.com/xosnos"><img width="50px" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/38712/preview.svg"/></a>
+<a href="https://leetcode.com/xosnos/"><img width="50px" src="https://pbs.twimg.com/profile_images/910592237695676416/7xInX10u_400x400.jpg"/></a>
 <br>
 <br>
 <p>I am a Computer Science student at the University of Michigan [Ann Arbor, MI] graduating in 2022.</p>
