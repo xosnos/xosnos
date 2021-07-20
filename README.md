@@ -20,7 +20,7 @@
 <p><strong>🌴 Currently Studying:</strong> <img alt="JavaScript" width="30px" src="https://symbols.getvecta.com/stencil_25/39_javascript.4ce34e7594.svg"/>
 <img alt="React.js" width="30px" src="https://symbols.getvecta.com/stencil_94/22_react-icon.5883897a74.svg"/>
 <img alt="Node.js" width="30px" src="https://symbols.getvecta.com/stencil_89/65_nodejs-icon.a0eb962783.svg"/>
-<img alt="Swift" width="30px" src="https://symbols.getvecta.com/stencil_96/150_swift-icon.24c7a886b5.svg"/></p>
+<img alt="Swift" width="30px" src="https://symbols.getvecta.com/stencil_96/153_swift-icon.24c7a886b5.svg"/></p>
 <p><strong>🖱 Skills:</strong> <img alt="Python" width="30px" src="https://symbols.getvecta.com/stencil_92/73_python-icon.1aed35c3f5.svg"/>
 <img alt="C" width="30px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/1200px-C_Programming_Language.svg.png"/>
 <img alt="C++" width="30px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png"/>
