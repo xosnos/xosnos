@@ -14,9 +14,6 @@
 <br>
 <br>
 <p>I am a Computer Science student at the University of Michigan [Ann Arbor, MI] graduating in 2022.</p>
-
-<p>This summer, I will be building my portfolio, side projects, learning the full stack, contributing to open source, and improving my interview skills.</p>
-
 <p><strong>🌴 Currently Studying:</strong> <img alt="JavaScript" width="30px" src="https://symbols.getvecta.com/stencil_25/39_javascript.4ce34e7594.svg"/>
 <img alt="React.js" width="30px" src="https://symbols.getvecta.com/stencil_94/22_react-icon.5883897a74.svg"/>
 <img alt="Node.js" width="30px" src="https://symbols.getvecta.com/stencil_89/65_nodejs-icon.a0eb962783.svg"/>
