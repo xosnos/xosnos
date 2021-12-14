@@ -1,7 +1,7 @@
 <div align="center">
 	<h1>👋Hey Everyone, it's Steven👨🏻‍💻</h1>
 </div>
-<a href="https://www.linkedin.com/in/steyen/"><img alt="LinkedIn" width="50px" src="https://symbols.getvecta.com/stencil_87/39_linkedin-icon.e1f33bcbe6.svg"/></a>
+<a href="https://www.linkedin.com/in/steyen/"><img alt="LinkedIn" width="50px" src="icons/linkedin.svg"/></a>
 <a href="https://twitter.com/xosnos"><img alt="Twitter" width="50px" src="https://symbols.getvecta.com/stencil_98/80_twitter-tile.a9089018b7.svg"/></a>
 <a href="https://www.instagram.com/xosnos_/"><img alt="Instagram" width="50px" src="https://symbols.getvecta.com/stencil_84/47_instagram-tile.fa4205b286.svg"/></a>
 <a href="https://www.twitch.tv/xosnos_"><img alt="Twitch" width="50px" src="https://symbols.getvecta.com/stencil_98/76_twitch-tile.8169defa8b.svg"/></a>
