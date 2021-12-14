@@ -2,15 +2,15 @@
 	<h1>👋Hey Everyone, it's Steven👨🏻‍💻</h1>
 </div>
 <a href="https://www.linkedin.com/in/steyen/"><img alt="LinkedIn" width="50px" src="icons/linkedin.svg"/></a>
-<a href="https://twitter.com/xosnos"><img alt="Twitter" width="50px" src="https://symbols.getvecta.com/stencil_98/80_twitter-tile.a9089018b7.svg"/></a>
-<a href="https://www.instagram.com/xosnos_/"><img alt="Instagram" width="50px" src="https://symbols.getvecta.com/stencil_84/47_instagram-tile.fa4205b286.svg"/></a>
-<a href="https://www.twitch.tv/xosnos_"><img alt="Twitch" width="50px" src="https://symbols.getvecta.com/stencil_98/76_twitch-tile.8169defa8b.svg"/></a>
-<a href="https://www.reddit.com/user/xosnos_"><img alt="Reddit" width="50px" src="https://symbols.getvecta.com/stencil_94/47_reddit-tile.b4186b2191.svg"/></a>
-<a href="https://open.spotify.com/user/12528730?si=0701f323a71a4641"><img alt="Spotify" width="50px" src="https://symbols.getvecta.com/stencil_96/67_spotify-tile.1abadbd4d5.svg"/></a>
-<a href="https://www.pinterest.com/xosnos_/"><img alt="Pinterest" width="50px" src="https://symbols.getvecta.com/stencil_91/81_pinterest-tile.96643fd7c9.svg"/></a>
-<a href="https://www.codecademy.com/profiles/xosnos"><img alt="Codecademy" width="50px" src="https://symbols.getvecta.com/stencil_77/24_codecademy-icon.2434695e91.svg"/></a>
+<a href="https://twitter.com/xosnos"><img alt="Twitter" width="50px" src="icons/twitter.svg"/></a>
+<a href="https://www.instagram.com/xosnos_/"><img alt="Instagram" width="50px" src="icons/instagram.svg"/></a>
+<a href="https://open.spotify.com/user/12528730?si=0701f323a71a4641"><img alt="Spotify" width="50px" src="icons/spotify.svg"/></a>
+<a href="https://www.pinterest.com/xosnos_/"><img alt="Pinterest" width="50px" src="icons/pinterest.svg"/></a>
+<a href="https://www.codecademy.com/profiles/xosnos"><img alt="Codecademy" width="50px" src="icons/codecademy.svg"/></a>
 <a href="https://www.hackerrank.com/xosnos"><img alt="HackerRank" width="50px" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/38712/preview.svg"/></a>
 <a href="https://leetcode.com/xosnos/"><img alt="LeetCode" width="50px" src="https://pbs.twimg.com/profile_images/910592237695676416/7xInX10u_400x400.jpg"/></a>
+<!-- <a href="https://www.twitch.tv/xosnos_"><img alt="Twitch" width="50px" src="https://symbols.getvecta.com/stencil_98/76_twitch-tile.8169defa8b.svg"/></a> -->
+<!-- <a href="https://www.reddit.com/user/xosnos_"><img alt="Reddit" width="50px" src="https://symbols.getvecta.com/stencil_94/47_reddit-tile.b4186b2191.svg"/></a> -->
 <br>
 <br>
 <p>I am a Computer Science student at the University of Michigan [Ann Arbor, MI] graduating in 2022.</p>
