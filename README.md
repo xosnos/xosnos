@@ -15,16 +15,18 @@
 <br>
 <p>I am a Computer Science student at the University of Michigan [Ann Arbor, MI] graduating in 2022.</p>
 
-<p><strong>🌴 Currently Studying:</strong> <img alt="JavaScript" width="30px" src="icons/javascript.svg"/>
-<img alt="React.js" width="30px" src="https://symbols.getvecta.com/stencil_94/22_react-icon.c47bd717ec.svg"/>
-<img alt="Node.js" width="30px" src="https://symbols.getvecta.com/stencil_89/65_nodejs-icon.aaa89107d1.svg"/>
+<p><strong>🌴 Currently Studying:</strong> 
+<img alt="React.js" width="30px" src="icons/reactjs.svg"/>
+<img alt="Node.js" width="30px" src="icons/nodejs.svg"/>
 <img alt="Swift" width="30px" src="icons/swift.svg"/></p>
 
 <p><strong>🖱 Skills:</strong> <img alt="Python" width="30px" src="icons/python.svg"/>
 <img alt="C" width="30px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/1200px-C_Programming_Language.svg.png"/>
 <img alt="C++" width="30px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png"/>
+<img alt="JavaScript" width="30px" src="icons/javascript.svg"/>
 <img alt="HTML" width="30px" src="icons/html5.svg"/>
 <img alt="CSS" width="30px" src="icons/css3.svg"/>
+<img alt="Vuejs" width="30px" src="icons/vuejs.svg"/>
 <img alt="Java" width="30px" src="icons/java.svg"/></p>
 
 <p><strong>🛠 Tools:</strong> <img alt="Git" width="30px" src="icons/git.svg"/>
