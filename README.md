@@ -1,25 +1,20 @@
 <h1 align="center">👋Hello World, <a href="https://www.xosnos.com">Steven</a> here!</h1>
-<p>I'm a Computer Science Engineering student at the Univeristy of Michigan [Ann Arbor, MI] graduating in 2022.</p>
-<h2>Coursework</h2>
-<h3>Relevant</h3>
-<ul>
-	<li>EECS 201: Computer Science Pragmatics</li>
-	<li>EECS 281: Data Structures and Algorithms</li>
-	<li>EECS 370: Computer Organization</li>
-	<li>EECS 376: Foundations of Computer Science</li>
-	<li>EECS 481: Software Engineering</li>
-	<li>EECS 482: Operating Systems</li>
-	<li>EECS 485: Web Systems</li>
-	<li>EECS 496: Major Design Experience-Professionalism</li>
-	<li>EECS 493: User Interface Development</li>
-</ul>
-<h3>Upcoming</h3>
-<ul>
-	<li>EECS 388: Computer Security</li>
-	<li>EECS 441: Mobile App Development for Entrepreneurs</li>
-	<li>EECS 486: Information Retrieval and Web Search</li>
-	<li>EECS 497: Human-Centered Software Design and Development</li>
-</ul>
+
+I'm a Computer Science Engineering student at the Univeristy of Michigan [Ann Arbor, MI] graduating in 2022.
+
+## Coursework
+
+| Relevant | Upcoming |
+|--|--|
+| EECS 201: Computer Science Pragmatics | EECS 388: Computer Security |
+| EECS 281: Data Structures and Algorithms | EECS 441: Mobile App Development for Entrepreneurs |
+| EECS 370: Computer Organization | EECS 486: Information Retrieval and Web Search |
+| EECS 376: Foundations of Computer Science | EECS 497: Human-Centered Software Design and Development |
+| EECS 481: Software Engineering |  |
+| EECS 482: Operating Systems |  |
+| EECS 485: Web Systems |  |
+| EECS 496: Major Design Experience-Professionalism |  |
+| EECS 493: User Interface Development |  |
 
 <p>
 	<strong>🌴 Currently Studying:</strong>
