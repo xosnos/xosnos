@@ -1,5 +1,29 @@
-<h1 align="center">👋Hello World, <a href="https://www.xosnos.com">Steven</a> here!</h1>
-I'm a Computer Science Engineering student at the Univeristy of Michigan [Ann Arbor, MI] graduating in 2022.
+# 👋Hello ~~World~~ Universe, <a href="https://www.xosnos.com">Steven</a> here!
+
+## About Me
+```javaScript
+const me = {
+	👨🏻: "Steven Nguyen",
+	📍: "Ann Arbor, MI",
+	🏫: "University of Michigan",
+	📜: "Computer Science in Engineering",
+	🎓: false,
+	graduationDate: "December 2022",
+	interests: [
+		"👨🏻‍💻Software Engineering"
+		"📱Mobile Application Development",
+		"🕸️Full-stack Web Development",
+		"🤝Civic Technology",
+		"♿Software Accessibility"
+	],
+	goals: [
+		"Improve my coding interview skills",
+		"Contribute more to open-source",
+		"Create awesome websites",
+		"Land at least 1 internship before I graduate",
+	],
+};
+```
 
 ## Coursework
 | Taken | Upcoming |
