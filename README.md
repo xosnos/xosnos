@@ -3,18 +3,18 @@
 ## About Me
 ```javaScript
 const me = {
-	👨🏻: "Steven Nguyen",
-	📍: "Ann Arbor, MI",
-	🏫: "University of Michigan",
-	📜: "Computer Science in Engineering",
-	🎓: false,
+	👨🏻 : "Steven Nguyen (he/him/his)",
+	📍 : "Ann Arbor, MI",
+	🏫 : "University of Michigan",
+	📜 : "Computer Science in Engineering",
+	🎓 : false,
 	graduationDate: "December 2022",
 	interests: [
-		"👨🏻‍💻Software Engineering"
-		"📱Mobile Application Development",
-		"🕸️Full-stack Web Development",
-		"🤝Civic Technology",
-		"♿Software Accessibility"
+		"👨🏻‍💻 Software Engineering"
+		"📱 Mobile Application Development",
+		"🕸️ Full-stack Web Development",
+		"🤝 Civic Technology",
+		"🦻 Software Accessibility"
 	],
 	goals: [
 		"Improve my coding interview skills",
