@@ -1,6 +1,6 @@
-# 👋Hello ~~World~~ Universe, <a href="https://www.xosnos.com">Steven</a> here!
+# 👋 Hello ~~World~~ Universe, [Steven](https://www.xosnos.com) here!
 
-## About Me
+## 👦🏻 About Me
 ```javaScript
 const me = {
 	👨🏻 : "Steven Nguyen (he/him/his)",
@@ -25,7 +25,7 @@ const me = {
 };
 ```
 
-## Coursework
+## 📚 Coursework
 | Taken | Upcoming |
 |--|--|
 | EECS 201: Computer Science Pragmatics | EECS 388: Computer Security |
@@ -38,7 +38,7 @@ const me = {
 | EECS 496: Major Design Experience-Professionalism |  |
 | EECS 493: User Interface Development |  |
 
-## Skills
+## 🐥 Skills
 <p>
 	<strong>⌨️ Languages:</strong>
 	<img src="icons/python.svg" alt="Python" height="20"/>
@@ -66,13 +66,14 @@ const me = {
 	<img src="icons/swift.svg" alt="Swift" height="20"/>
 	<img src="icons/reactjs.svg" alt="React.js" height="20"/>
 	<img src="icons/nodejs.svg" alt="Node.js" height="20"/>
+	<img src="icons/postgresql.svg" alt="PostgreSQL" height="20"/>
 </p>
 
-## Stats
+## 📊 Stats
 [![Steven's github stats](https://github-readme-stats.vercel.app/api?username=xosnos&count_private=true&show_icons=true&theme=react)](https://github.com/anuraghazra/github-readme-stats)
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=xosnos&theme=react)](https://github.com/anuraghazra/github-readme-stats)
 
-## Links
+## 🔗 Links
 <div align="center">
 	<a href="https://www.codecademy.com/profiles/xosnos" target="_blank">
 		<img src="icons/codecademy.svg" alt="Codecademy" width="30"/>
