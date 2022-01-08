@@ -70,8 +70,14 @@ const me = {
 </p>
 
 ## 📊 Stats
-[![Steven's github stats](https://github-readme-stats.vercel.app/api?username=xosnos&count_private=true&show_icons=true&theme=react)](https://github.com/anuraghazra/github-readme-stats)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=xosnos&theme=react)](https://github.com/anuraghazra/github-readme-stats)
+<div align="center">
+	<a href="https://github.com/anuraghazra/github-readme-stats">
+		<img height="200" src="https://github-readme-stats.vercel.app/api?username=xosnos&count_private=true&show_icons=true&theme=react&hide_rank=true" alt="Steven's github stats">
+	</a>
+	<a href="https://github.com/anuraghazra/github-readme-stats">
+		<img height="200" src="https://github-readme-stats.vercel.app/api/top-langs/?username=xosnos&theme=react&layout=compact" alt="Steven's Top Langs">
+	</a>
+</div>
 
 ## 🔗 Links
 <div align="center">
