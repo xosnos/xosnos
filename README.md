@@ -48,6 +48,7 @@ const me = {
 	<img src="icons/javascript.svg" alt="JavaScript" height="20"/>
 	<img src="icons/html5.svg" alt="HTML" height="20"/>
 	<img src="icons/css3.svg" alt="CSS" height="20"/>
+	<img src="icons/swift.svg" alt="Swift" height="20"/>
 </p>
 <p>
 	<strong>🏗️ Frameworks:</strong>
@@ -63,7 +64,6 @@ const me = {
 <p>
 	<strong>🌴 Learning:</strong>
 	<img src="icons/golang.svg" alt="Swift" height="20"/>
-	<img src="icons/swift.svg" alt="Swift" height="20"/>
 	<img src="icons/reactjs.svg" alt="React.js" height="20"/>
 	<img src="icons/nodejs.svg" alt="Node.js" height="20"/>
 	<img src="icons/postgresql.svg" alt="PostgreSQL" height="20"/>
