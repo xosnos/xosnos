@@ -26,17 +26,18 @@ const me = {
 ```
 
 ## 📚 Coursework
-| Taken | Upcoming |
-|--|--|
-| EECS 201: Computer Science Pragmatics | EECS 388: Computer Security |
-| EECS 281: Data Structures and Algorithms | EECS 441: Mobile App Development for Entrepreneurs |
-| EECS 370: Computer Organization | EECS 497: Human-Centered Software Design and Development |
-| EECS 376: Foundations of Computer Science |  |
-| EECS 481: Software Engineering |  |
-| EECS 482: Operating Systems |  |
-| EECS 485: Web Systems |  |
-| EECS 496: Major Design Experience-Professionalism |  |
-| EECS 493: User Interface Development |  |
+- [x] EECS 201: Computer Science Pragmatics
+- [x] EECS 281: Data Structures and Algorithms
+- [x] EECS 370: Computer Organization
+- [x] EECS 376: Foundations of Computer Science
+- [x] EECS 481: Software Engineering
+- [x] EECS 482: Operating Systems
+- [x] EECS 485: Web Systems
+- [x] EECS 496: Major Design Experience-Professionalism
+- [x] EECS 493: User Interface Development
+- [ ] EECS 388: Computer Security
+- [ ] EECS 441: Mobile App Development for Entrepreneurs
+- [ ] EECS 497: Human-Centered Software Design and Development
 
 ## 🐥 Skills
 <p>
