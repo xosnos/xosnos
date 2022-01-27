@@ -30,8 +30,8 @@ const me = {
 |--|--|
 | EECS 201: Computer Science Pragmatics | EECS 388: Computer Security |
 | EECS 281: Data Structures and Algorithms | EECS 441: Mobile App Development for Entrepreneurs |
-| EECS 370: Computer Organization | EECS 486: Information Retrieval and Web Search |
-| EECS 376: Foundations of Computer Science | EECS 497: Human-Centered Software Design and Development |
+| EECS 370: Computer Organization | EECS 497: Human-Centered Software Design and Development |
+| EECS 376: Foundations of Computer Science |  |
 | EECS 481: Software Engineering |  |
 | EECS 482: Operating Systems |  |
 | EECS 485: Web Systems |  |
