@@ -54,6 +54,7 @@ const me = {
 <p>
 	<strong>🏗️ Frameworks:</strong>
 	<img src="icons/vuejs.svg" alt="Vue.js" height="20"/>
+	<img src="icons/bootstrap.png" alt="Bootstrap" height="20"/>
 	<img src="icons/flask.svg" alt="Flask" height="20"/>
 </p>
 <p>
