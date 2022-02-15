@@ -8,7 +8,6 @@ const me = {
 	🏫 : "University of Michigan",
 	📜 : "Computer Science in Engineering",
 	🎓 : false,
-	graduationDate: "December 2022",
 	interests: [
 		"👨🏻‍💻 Software Engineering"
 		"📱 Mobile Application Development",
