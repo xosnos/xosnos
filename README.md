@@ -52,8 +52,9 @@ const me = {
 </p>
 <p>
 	<strong>🏗️ Frameworks:</strong>
+	<img src="icons/bootstrap.png" alt="Bootstrap" height="20"/>	
+	<img src="icons/reactjs.svg" alt="React.js" height="20"/>
 	<img src="icons/vuejs.svg" alt="Vue.js" height="20"/>
-	<img src="icons/bootstrap.png" alt="Bootstrap" height="20"/>
 	<img src="icons/flask.svg" alt="Flask" height="20"/>
 </p>
 <p>
@@ -65,7 +66,6 @@ const me = {
 <p>
 	<strong>🌴 Learning:</strong>
 	<img src="icons/golang.svg" alt="Swift" height="20"/>
-	<img src="icons/reactjs.svg" alt="React.js" height="20"/>
 	<img src="icons/nodejs.svg" alt="Node.js" height="20"/>
 	<img src="icons/postgresql.svg" alt="PostgreSQL" height="20"/>
 </p>
