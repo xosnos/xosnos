@@ -3,7 +3,8 @@
 ## 👦🏻 About Me
 ```javaScript
 const me = {
-	👨🏻 : "Steven Nguyen (he/him/his)",
+	👨🏻 : "Steven Nguyen",
+	💬 : ["he", "him", "his"],
 	📍 : "Ann Arbor, MI",
 	🏫 : "University of Michigan",
 	📜 : "Computer Science in Engineering",
@@ -19,7 +20,7 @@ const me = {
 		"Improve my coding interview skills",
 		"Contribute more to open-source",
 		"Create awesome websites",
-		"Land at least 1 internship before I graduate",
+		"Land at least 2 internship before I graduate",
 	],
 };
 ```
@@ -103,7 +104,7 @@ const me = {
 	<a href="https://www.twitch.tv/xosnos" target="_blank">
 		<img src="icons/twitch.svg" alt="Twitch" width="30"/>
 	</a>
-	<a href="https://open.spotify.com/user/12528730?si=0701f323a71a4641" target="_blank">
+	<a href="https://open.spotify.com/user/12528730" target="_blank">
 		<img src="icons/spotify.svg" alt="Spotify" width="30"/>
 	</a>
 	<a href="https://www.pinterest.com/xosnos_/" target="_blank">
