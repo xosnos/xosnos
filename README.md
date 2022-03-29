@@ -20,7 +20,7 @@ const me = {
 		"Improve my coding interview skills",
 		"Contribute more to open-source",
 		"Create awesome websites",
-		"Land at least 2 internship before I graduate",
+		"Land at least 2 internships before I graduate",
 	],
 };
 ```
