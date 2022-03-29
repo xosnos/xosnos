@@ -37,6 +37,7 @@ const me = {
 - [x] EECS 493: User Interface Development
 - [ ] EECS 388: Computer Security
 - [ ] EECS 441: Mobile App Development for Entrepreneurs
+- [ ] EECS 495: Software Development for Accessibility
 - [ ] EECS 497: Human-Centered Software Design and Development
 
 ## 🐥 Skills
