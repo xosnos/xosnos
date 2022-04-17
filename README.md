@@ -30,15 +30,16 @@ const me = {
 - [x] EECS 281: Data Structures and Algorithms
 - [x] EECS 370: Computer Organization
 - [x] EECS 376: Foundations of Computer Science
+- [x] EECS 441: Mobile App Development for Entrepreneurs
 - [x] EECS 481: Software Engineering
 - [x] EECS 482: Operating Systems
 - [x] EECS 485: Web Systems
 - [x] EECS 496: Major Design Experience-Professionalism
+- [x] EECS 497: Human-Centered Software Design and Development
 - [x] EECS 493: User Interface Development
 - [ ] EECS 388: Computer Security
-- [ ] EECS 441: Mobile App Development for Entrepreneurs
 - [ ] EECS 495: Software Development for Accessibility
-- [ ] EECS 497: Human-Centered Software Design and Development
+
 
 ## 🐥 Skills
 <p>
