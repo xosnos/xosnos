@@ -8,8 +8,7 @@
 const me = {
 	👨🏻 : "Steven Nguyen",
 	💬 : ["he", "him", "his"],
-	👨🏻‍💻 : "Software Engineer Intern",
-	🏢 : "Workday",
+	👨🏻‍💻 : "Software Engineer",
 	education: {
 		📜 : "Computer Science in Engineering",
 		🏫 : "University of Michigan (Ann Arbor)",
@@ -25,7 +24,6 @@ const me = {
 		"Create awesome applications",
 		"Contribute more to open-source",
 		"Improve my coding interview skills",
-		"Land 2 internships before I graduate",
 	],
 };
 ```
@@ -44,7 +42,7 @@ const me = {
 - [x] EECS 496: Major Design Experience-Professionalism
 - [x] EECS 497: Human-Centered Software Design and Development
 - [x] EECS 493: User Interface Development
-- [ ] EECS 495: Software Development for Accessibility
+- [ ] EECS 499: Advanced Directed Study
 
 ## 🐥 Skills
 
