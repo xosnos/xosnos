@@ -9,22 +9,11 @@ const me = {
 	👨🏻 : "Steven Nguyen",
 	💬 : ["he", "him", "his"],
 	👨🏻‍💻 : "Software Engineer",
-	education: {
-		📜 : "Computer Science in Engineering",
-		🏫 : "University of Michigan (Ann Arbor)",
-		🎓 : false,
-	},
-	interests: [
-		"📱 Mobile",
-		"🕸️ Web",
-		"🤝 Civic Technology",
-		"🦻 Software Accessibility"
-	],
-	goals: [
-		"Create awesome applications",
-		"Contribute more to open-source",
-		"Improve my coding interview skills",
-	],
+	📜 : "Computer Science in Engineering",
+	🏫 : "University of Michigan (Ann Arbor)",
+	🎓 : "December 2022",
+	interests: ["📱 Mobile", "🕸️ Web", "🤝 Civic Tech", "🦻 Accessibility"],
+	goals: ["Create awesome applications", "Contribute more to open-source"]
 };
 ```
 
@@ -94,19 +83,19 @@ const me = {
 	<a href="https://www.linkedin.com/in/xosnos/" target="_blank">
 		<img src="icons/linkedin.svg" alt="LinkedIn" width="30"/>
 	</a>
-	<a href="https://www.codecademy.com/profiles/xosnos" target="_blank">
+	<!-- <a href="https://www.codecademy.com/profiles/xosnos" target="_blank">
 		<img src="icons/codecademy.svg" alt="Codecademy" width="30"/>
-	</a>
-	<a href="https://www.hackerrank.com/xosnos" target="_blank">
+	</a> -->
+	<!-- <a href="https://www.hackerrank.com/xosnos" target="_blank">
 		<img src="icons/hackerrank.svg" alt="HackerRank" width="30"/>
 	</a>
 	<a href="https://leetcode.com/xosnos/" target="_blank">
 		<img src="icons/leetcode.jpg" alt="LeetCode" width="30"/>
-	</a>
-	<a href="https://twitter.com/xosnos" target="_blank">
+	</a> -->
+	<!-- <a href="https://twitter.com/xosnos" target="_blank">
 		<img src="icons/twitter.svg" alt="Twitter" width="30"/>
-	</a>
-	<a href="https://www.instagram.com/xosnos/" target="_blank">
+	</a> -->
+	<!-- <a href="https://www.instagram.com/xosnos/" target="_blank">
 		<img src="icons/instagram.svg" alt="Instagram" width="30"/>
 	</a>
 	<a href="https://www.twitch.tv/xosnos" target="_blank">
@@ -114,7 +103,7 @@ const me = {
 	</a>
 	<a href="https://open.spotify.com/user/12528730" target="_blank">
 		<img src="icons/spotify.svg" alt="Spotify" width="30"/>
-	</a>
+	</a> -->
 	<!-- <a href="https://www.pinterest.com/xosnos_/" target="_blank">
 		<img src="icons/pinterest.svg" alt="Pinterest" width="30"/>
 	</a> -->
