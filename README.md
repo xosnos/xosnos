@@ -4,17 +4,15 @@
 
 ## 👦🏻 About Me
 
-```javaScript
-const me = {
-	👨🏻 : "Steven Nguyen",
-	💬 : ["he", "him", "his"],
-	👨🏻‍💻 : "Software Engineer",
-	📜 : "Computer Science in Engineering",
-	🏫 : "University of Michigan (Ann Arbor)",
-	🎓 : "December 2022",
-	interests: ["📱 Mobile", "🕸️ Web", "🤝 Civic Tech", "🦻 Accessibility"],
-	goals: ["Create awesome applications", "Contribute more to open-source"]
-};
+```javascript
+const xosnos = {
+  name: "Steven Nguyen",
+  pronouns: ["he", "him", "his"],
+  career: "Software Engineering",
+  degree: "B.S.E. Computer Science",
+  school: "University of Michigan",
+  gradDate: "December 2022",
+}
 ```
 
 🔭 I’m currently working on my capstone project in order to graduate.
@@ -23,7 +21,11 @@ const me = {
 
 🤝 I’m looking for help with project management and public speaking.
 
+♿️ I'm interested in civic technology and software accessibility.
+
 🌱 I’m currently learning full-stack development.
+
+📫 How to reach me: [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/xosnos)
 
 💬 Ask me about technical/behavioral interviews and self-development.
 
@@ -191,33 +193,13 @@ const me = {
 ![GitHub Readme Stats Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=xosnos&theme=react&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
 
 <!-- ## 🔗 Links
-
-<div align="center">
-	<a href="https://www.linkedin.com/in/xosnos/" target="_blank">
-		<img src="icons/linkedin.svg" alt="LinkedIn" width="30"/>
-	</a>
-	<a href="https://www.codecademy.com/profiles/xosnos" target="_blank">
-		<img src="icons/codecademy.svg" alt="Codecademy" width="30"/>
-	</a>
-	<a href="https://www.hackerrank.com/xosnos" target="_blank">
-		<img src="icons/hackerrank.svg" alt="HackerRank" width="30"/>
-	</a>
-	<a href="https://leetcode.com/xosnos/" target="_blank">
-		<img src="icons/leetcode.jpg" alt="LeetCode" width="30"/>
-	</a>
-	<a href="https://twitter.com/xosnos" target="_blank">
-		<img src="icons/twitter.svg" alt="Twitter" width="30"/>
-	</a>
-	<a href="https://www.instagram.com/xosnos/" target="_blank">
-		<img src="icons/instagram.svg" alt="Instagram" width="30"/>
-	</a>
-	<a href="https://www.twitch.tv/xosnos" target="_blank">
-		<img src="icons/twitch.svg" alt="Twitch" width="30"/>
-	</a>
-	<a href="https://open.spotify.com/user/12528730" target="_blank">
-		<img src="icons/spotify.svg" alt="Spotify" width="30"/>
-	</a>
-	<a href="https://www.pinterest.com/xosnos_/" target="_blank">
-		<img src="icons/pinterest.svg" alt="Pinterest" width="30"/>
-	</a>
-</div> -->
+https://www.linkedin.com/in/xosnos/
+https://www.codecademy.com/profiles/xosnos
+https://www.hackerrank.com/xosnos
+https://leetcode.com/xosnos/
+https://twitter.com/xosnos
+https://www.instagram.com/xosnos/
+https://www.twitch.tv/xosnos
+https://open.spotify.com/user/12528730
+https://www.pinterest.com/xosnos_/
+-->
