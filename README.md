@@ -11,21 +11,24 @@ const xosnos = {
   career: "Software Engineering",
   degree: "B.S.E. Computer Science",
   school: "University of Michigan",
-  gradDate: "December 2022",
+  graduated: false,
+  class: 2022,
 }
 ```
 
-🔭 I’m currently working on my capstone project in order to graduate.
+🔭 I’m finishing my capstone project to graduate end of this year.
 
 👯 I’m looking to collaborate on open-source and Web3 projects.
 
-🤝 I’m looking for help with project management and public speaking.
+🤝 I’m seeking help with project management and public speaking.
 
 ♿️ I'm interested in civic technology and software accessibility.
 
 🌱 I’m currently learning full-stack development.
 
-📫 How to reach me: [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/xosnos)
+<!-- ✍🏻 I write about my experiences and projects on [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@xosnos) -->
+
+📫 You can reach out to me on [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/xosnos)
 
 💬 Ask me about technical/behavioral interviews and self-development.
 
@@ -193,7 +196,6 @@ const xosnos = {
 ![GitHub Readme Stats Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=xosnos&theme=react&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
 
 <!-- ## 🔗 Links
-https://www.linkedin.com/in/xosnos/
 https://www.codecademy.com/profiles/xosnos
 https://www.hackerrank.com/xosnos
 https://leetcode.com/xosnos/
@@ -202,4 +204,10 @@ https://www.instagram.com/xosnos/
 https://www.twitch.tv/xosnos
 https://open.spotify.com/user/12528730
 https://www.pinterest.com/xosnos_/
+-->
+
+<!--
+Credits
+https://rahuldkjain.github.io/gh-profile-readme-generator/
+https://gprm.itsvg.in/
 -->
