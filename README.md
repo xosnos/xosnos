@@ -5,7 +5,7 @@
 ## 👦🏻 About Me
 
 ```javascript
-const xosnos = {
+let xosnos = {
   name: "Steven Nguyen",
   pronouns: ["he", "him", "his"],
   career: "Software Engineering",
