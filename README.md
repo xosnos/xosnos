@@ -26,7 +26,7 @@ let xosnos = {
 
 🌱 I’m currently learning full-stack development.
 
-<!-- ✍🏻 I write about my experiences and projects on [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@xosnos) -->
+✍🏻 I write about my experiences and projects on [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@xosnos)
 
 📫 You can reach out to me on [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/xosnos)
 
