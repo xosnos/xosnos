@@ -10,13 +10,11 @@ let xosnos = {
   pronouns: ["he", "him", "his"],
   career: "Software Engineering",
   degree: "B.S.E. Computer Science",
-  school: "University of Michigan",
-  graduated: false,
-  class: 2022,
+  school: "University of Michigan"
 }
 ```
 
-🔭 I’m finishing my capstone project to graduate end of this year.
+🔭 I’m finishing my capstone project.
 
 👯 I’m looking to collaborate on open-source and Web3 projects.
 
