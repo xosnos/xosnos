@@ -5,48 +5,39 @@
 ## 👦🏻 About Me
 
 ```javascript
-let xosnos = {
+const xosnos = {
   name: "Steven Nguyen",
   pronouns: ["he", "him", "his"],
-  career: "Software Engineering",
-  degree: "B.S.E. Computer Science",
-  school: "University of Michigan"
 }
 ```
 
-🌱 I’m currently learning full-stack development.
+🌱 Currently learning **prompt engineering** and **back-end development**.
 
-🔭 I’m working on side projects I've put aside for so long.
+🔭 *Slowly* developing side projects and content creation.
 
-👯 I’m looking to collaborate on open-source projects and Web3 dapps.
+👯 Looking to collaborate on **open-source** projects and **Web3** dapps.
 
-🤝 I’m seeking help with project management and public speaking.
+🤝 Seeking help with **project management** and **public speaking**.
 
-♿️ I'm interested in civic technology and software accessibility.
+♿️ I'm interested in **civic technology** and **software accessibility**.
 
 ✍🏻 I write about my experiences and projects on [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@xosnos)
 
 📫 You can reach out to me on [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/xosnos)
 
-💬 Ask me about technical/behavioral interviews and self-development.
+💬 Ask me about **technical/behavioral interviews** and **self-development**.
 
-⚡ Fun fact: Nightwing is my all-time favorite superhero 💙.
+⚡ Fun fact: A huge part of my successes came from luck and support, so you'll find me doing a lot to give back to the community.
+<!-- ⚡ Fun fact: Nightwing is my all-time favorite superhero 💙. -->
 
-## 📚 Coursework
+## 📚 Domain Knowledge
 
-- EECS 201: Computer Science Pragmatics
-- EECS 281: Data Structures and Algorithms
-- EECS 370: Computer Organization
-- EECS 376: Foundations of Computer Science
-- EECS 388: Computer Security
-- EECS 441: Mobile App Development for Entrepreneurs
-- EECS 481: Software Engineering
-- EECS 482: Operating Systems
-- EECS 485: Web Systems
-- EECS 496: Major Design Experience-Professionalism
-- EECS 497: Human-Centered Software Design and Development
-- EECS 493: User Interface Development
-- EECS 499: Advanced Directed Study
+- Software Engineering
+- Front-end Development (Web & Mobile)
+- UI/UX Design
+- Distributed Systems
+- Cybersecurity
+- Data Structures & Algorithms
 
 ## 🐥 Skills
 
