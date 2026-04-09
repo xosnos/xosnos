@@ -131,8 +131,6 @@ const xosnos = () => {
 ## 📊 Stats
 
 ![GitHub Readme Stats](https://github-readme-stats.vercel.app/api?username=xosnos&theme=react&hide_border=false&include_all_commits=true&count_private=true)
-![GitHub Readme Streak Stats](https://github-readme-streak-stats.herokuapp.com/?user=xosnos&theme=react&hide_border=false)
-![GitHub Readme Stats Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=xosnos&theme=react&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
 
 <!-- ## 🔗 Links
 https://www.codecademy.com/profiles/xosnos
