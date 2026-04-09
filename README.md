@@ -128,10 +128,6 @@ const xosnos = () => {
 ![Confluence](https://img.shields.io/badge/confluence-%23172BF4.svg?style=for-the-badge&logo=confluence&logoColor=white)
 ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 
-## 📊 Stats
-
-![GitHub Readme Stats](https://github-readme-stats.vercel.app/api?username=xosnos&theme=react&hide_border=false&include_all_commits=true&count_private=true)
-
 <!-- ## 🔗 Links
 https://www.codecademy.com/profiles/xosnos
 https://www.hackerrank.com/xosnos
