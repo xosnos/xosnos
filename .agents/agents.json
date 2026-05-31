@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 3,
+  "instructions": {
+    "path": "AGENTS.md"
+  },
+  "integrations": {
+    "enabled": [
+      "claude",
+      "codex",
+      "gemini",
+      "copilot_vscode",
+      "cursor",
+      "antigravity"
+    ],
+    "options": {
+      "cursorAutoApprove": true,
+      "antigravityGlobalSync": false
+    }
+  },
+  "syncMode": "source-only",
+  "mcp": {
+    "servers": {
+      "filesystem": {
+        "label": "Filesystem",
+        "description": "Read and write files in the current project",
+        "transport": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "${PROJECT_ROOT}"
+        ],
+        "targets": [
+          "codex",
+          "claude",
+          "gemini",
+          "copilot_vscode",
+          "cursor",
+          "antigravity"
+        ],
+        "enabled": true
+      }
+    }
+  },
+  "workspace": {
+    "vscode": {
+      "hideGenerated": true,
+      "hiddenPaths": [
+        "**/.codex",
+        "**/.claude",
+        "**/.gemini",
+        "**/.cursor",
+        "**/.antigravity",
+        "**/.agents/generated"
+      ]
+    }
+  },
+  "lastSync": "2026-02-24T02:17:25.818Z"
+}
