@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FileDown, Mail, User, Loader2, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -16,14 +16,28 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-    if (!open) {
-      setEmail('');
-      setName('');
-      setError(null);
-      setSuccess(false);
-    }
-  }, [open]);
+  const resetForm = () => {
+    setEmail('');
+    setName('');
+    setLoading(false);
+    setError(null);
+    setSuccess(false);
+  };
+
+  // Reset state whenever the dialog transitions to closed, including external
+  // closes driven by the parent flipping `open` (e.g. while a submit is still
+  // in flight). Done during render via a previous-value guard rather than an
+  // effect to avoid a cascading re-render. See https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes
+  const [prevOpen, setPrevOpen] = useState(open);
+  if (open !== prevOpen) {
+    setPrevOpen(open);
+    if (!open) resetForm();
+  }
+
+  const handleClose = () => {
+    resetForm();
+    onClose();
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,7 +73,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 backdrop-blur-sm"
-          onClick={onClose}
+          onClick={handleClose}
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -77,7 +91,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
             </span>
           </div>
           <button
-            onClick={onClose}
+            onClick={handleClose}
             className="text-muted-foreground hover:text-foreground transition-colors"
             aria-label="Close"
           >

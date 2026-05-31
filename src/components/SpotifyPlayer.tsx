@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ExternalLink, Music, Pause, Play, Volume2 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -18,6 +18,17 @@ interface NowPlayingTrack {
   provider: Provider;
 }
 
+async function loadNowPlaying(): Promise<NowPlayingTrack> {
+  const response = await fetch('/api/music/now-playing');
+
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    throw new Error(body?.error || 'Failed to fetch now playing');
+  }
+
+  return response.json();
+}
+
 export default function SpotifyPlayer() {
   const [track, setTrack] = useState<NowPlayingTrack | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -26,8 +37,42 @@ export default function SpotifyPlayer() {
   const [progress, setProgress] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  const fetchNowPlaying = useCallback(() => {
+    setLoading(true);
+    setError(null);
+
+    loadNowPlaying()
+      .then((data) => setTrack(data))
+      .catch((err) => {
+        setError(err instanceof Error ? err.message : 'Failed to load track');
+        setTrack(null);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
   useEffect(() => {
-    fetchNowPlaying();
+    let cancelled = false;
+
+    loadNowPlaying()
+      .then((data) => {
+        if (!cancelled) {
+          setTrack(data);
+          setError(null);
+        }
+      })
+      .catch((err) => {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : 'Failed to load track');
+          setTrack(null);
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
@@ -53,27 +98,6 @@ export default function SpotifyPlayer() {
       audio.removeEventListener('ended', handleEnded);
     };
   }, [track]);
-
-  const fetchNowPlaying = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const response = await fetch('/api/music/now-playing');
-
-      if (!response.ok) {
-        const body = await response.json().catch(() => ({}));
-        throw new Error(body?.error || 'Failed to fetch now playing');
-      }
-
-      const data = await response.json();
-      setTrack(data);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load track');
-      setTrack(null);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const togglePlayback = async () => {
     const audio = audioRef.current;

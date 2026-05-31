@@ -100,16 +100,6 @@ const Footer = () => {
         </div>
       </div>
       </ScrollReveal>
-
-      <div className="fixed bottom-8 right-8 lg:hidden z-40">
-        <a
-          href="#page-top"
-          className="w-14 h-14 rounded-full bg-background/80 backdrop-blur-md border border-border flex items-center justify-center shadow-2xl text-accent hover:scale-110 active:scale-95 transition-all"
-          aria-label="Scroll to top"
-        >
-          <ArrowUp className="w-6 h-6" />
-        </a>
-      </div>
     </footer>
   );
 };

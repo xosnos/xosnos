@@ -29,7 +29,7 @@ async function logToSheet(email: string, name: string | undefined, ip: string) {
   });
 }
 
-async function getResumeFromDrive(): Promise<Buffer> {
+async function getResumeFromDrive(): Promise<ArrayBuffer> {
   const auth = getAuth();
   const drive = google.drive({ version: 'v3', auth });
 
@@ -38,7 +38,8 @@ async function getResumeFromDrive(): Promise<Buffer> {
     { responseType: 'arraybuffer' },
   );
 
-  return Buffer.from(res.data as ArrayBuffer);
+  const buf = Buffer.from(res.data as ArrayBuffer);
+  return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
 }
 
 export async function GET(request: NextRequest) {
@@ -54,12 +55,12 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const [, pdfBuffer] = await Promise.all([
+    const [, pdfBody] = await Promise.all([
       logToSheet(payload.email, payload.name, payload.ip),
       getResumeFromDrive(),
     ]);
 
-    return new NextResponse(pdfBuffer, {
+    return new NextResponse(pdfBody, {
       status: 200,
       headers: {
         'Content-Type': 'application/pdf',

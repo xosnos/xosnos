@@ -3,6 +3,7 @@ import { Montserrat, Lato } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
+import FloatingActions from "@/components/FloatingActions";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -65,6 +66,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <FloatingActions />
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>
