@@ -13,8 +13,9 @@ const MAX_TURN_LENGTH = 2000;
 const MAX_TOTAL_HISTORY_CHARS = 20_000;
 
 const ALLOWED_ORIGINS = new Set([
+  'https://xosnos.com',
   'https://www.xosnos.com',
-  'http://localhost:3000',
+  ...(process.env.NODE_ENV !== 'production' ? ['http://localhost:3000'] : []),
 ]);
 
 const limiter = rateLimit({
@@ -46,12 +47,12 @@ const getClientIp = (request: NextRequest): string => {
 };
 
 export async function POST(request: NextRequest) {
-  // Reject cross-origin requests in production. Same-origin fetches from the
-  // widget either omit Origin or send our own host. Allow missing Origin so
-  // server-side / curl-based testing in dev still works.
+  // Reject cross-origin requests in production. Browsers always send Origin on
+  // the widget's POST fetch, so a missing or unlisted Origin is rejected to
+  // protect against runaway spend. localhost stays allowed only in development.
   if (process.env.NODE_ENV === 'production') {
     const origin = request.headers.get('origin');
-    if (origin && !ALLOWED_ORIGINS.has(origin)) {
+    if (!origin || !ALLOWED_ORIGINS.has(origin)) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
   }
@@ -74,6 +75,7 @@ export async function POST(request: NextRequest) {
   }
 
   const { history, message } = body;
+  const parsedHistory = history === undefined ? [] : history;
 
   if (typeof message !== 'string' || message.trim().length === 0) {
     return NextResponse.json({ error: 'Message is required' }, { status: 400 });
@@ -84,16 +86,16 @@ export async function POST(request: NextRequest) {
       { status: 400 },
     );
   }
-  if (!Array.isArray(history) || !history.every(isValidTurn)) {
+  if (!Array.isArray(parsedHistory) || !parsedHistory.every(isValidTurn)) {
     return NextResponse.json({ error: 'Invalid history' }, { status: 400 });
   }
-  if (history.length > MAX_HISTORY_TURNS) {
+  if (parsedHistory.length > MAX_HISTORY_TURNS) {
     return NextResponse.json(
       { error: `History must be at most ${MAX_HISTORY_TURNS} turns` },
       { status: 400 },
     );
   }
-  const totalHistoryChars = (history as ChatTurn[]).reduce(
+  const totalHistoryChars = (parsedHistory as ChatTurn[]).reduce(
     (n, t) => n + t.text.length,
     0,
   );
@@ -115,7 +117,7 @@ export async function POST(request: NextRequest) {
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
       try {
-        for await (const chunk of streamChat(history as ChatTurn[], message)) {
+        for await (const chunk of streamChat(parsedHistory as ChatTurn[], message)) {
           controller.enqueue(encoder.encode(chunk));
         }
       } catch (err) {

@@ -19,9 +19,20 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
   const resetForm = () => {
     setEmail('');
     setName('');
+    setLoading(false);
     setError(null);
     setSuccess(false);
   };
+
+  // Reset state whenever the dialog transitions to closed, including external
+  // closes driven by the parent flipping `open` (e.g. while a submit is still
+  // in flight). Done during render via a previous-value guard rather than an
+  // effect to avoid a cascading re-render. See https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes
+  const [prevOpen, setPrevOpen] = useState(open);
+  if (open !== prevOpen) {
+    setPrevOpen(open);
+    if (!open) resetForm();
+  }
 
   const handleClose = () => {
     resetForm();

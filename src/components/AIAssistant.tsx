@@ -176,6 +176,14 @@ const AIAssistant = ({ onOpenChange }: AIAssistantProps) => {
     });
   };
 
+  const closeAssistant = () => {
+    // Abort any in-flight stream so closing the panel doesn't leave hidden work
+    // (and token spend) running in the background.
+    abortRef.current?.abort();
+    setIsThinking(false);
+    setIsOpen(false);
+  };
+
   const handleSend = () => sendMessage(inputValue);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -219,7 +227,7 @@ const AIAssistant = ({ onOpenChange }: AIAssistantProps) => {
               </div>
               <button
                 type="button"
-                onClick={() => setIsOpen(false)}
+                onClick={closeAssistant}
                 aria-label={aiAssistantContent.closeLabel}
                 className="text-muted-foreground hover:text-foreground transition-colors p-1 rounded-md hover:bg-muted"
               >
@@ -336,7 +344,7 @@ const AIAssistant = ({ onOpenChange }: AIAssistantProps) => {
 
       <button
         type="button"
-        onClick={() => setIsOpen((v) => !v)}
+        onClick={() => (isOpen ? closeAssistant() : setIsOpen(true))}
         aria-label={isOpen ? aiAssistantContent.closeLabel : aiAssistantContent.toggleLabel}
         aria-expanded={isOpen}
         className="bg-accent text-accent-foreground w-14 h-14 flex items-center justify-center rounded-full shadow-xl shadow-accent/30 hover:scale-105 hover:brightness-110 transition-all duration-300"
