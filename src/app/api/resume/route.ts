@@ -32,7 +32,10 @@ export async function POST(request: NextRequest) {
     const { email, name } = body as { email?: string; name?: string };
 
     if (!email || typeof email !== 'string' || !EMAIL_REGEX.test(email.trim())) {
-      return NextResponse.json({ error: 'A valid email address is required' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'A valid email address is required' },
+        { status: 400 },
+      );
     }
 
     const token = createToken(email.trim(), name?.trim(), ip);
@@ -45,7 +48,7 @@ export async function POST(request: NextRequest) {
     await resend.emails.send({
       from: 'Steven Nguyen <steven@xosnos.com>',
       to: email.trim(),
-      subject: 'Your Download Link for Steven Nguyen\'s Resume',
+      subject: "Your Download Link for Steven Nguyen's Resume",
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 16px;">
           <h2 style="margin: 0 0 16px; font-size: 20px; color: #111;">Thanks for your interest${name?.trim() ? `, ${escapeHtml(name.trim())}` : ''}!</h2>

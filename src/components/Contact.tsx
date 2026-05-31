@@ -4,13 +4,18 @@ import { contactContent } from '@/data/contact';
 
 const Contact = () => {
   return (
-    <section id="contact" className="bg-background py-24 px-6 md:px-12 relative overflow-hidden">
+    <section
+      id="contact"
+      className="bg-background py-24 px-6 md:px-12 relative overflow-hidden"
+    >
       <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-accent/10 rounded-full blur-[160px] pointer-events-none animate-pulse" />
-      <div className="absolute bottom-0 left-0 w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none animate-pulse" style={{ animationDelay: '2s' }} />
+      <div
+        className="absolute bottom-0 left-0 w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none animate-pulse"
+        style={{ animationDelay: '2s' }}
+      />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-12">
-
           <ScrollReveal>
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-montserrat font-bold uppercase tracking-widest">
@@ -18,7 +23,8 @@ const Contact = () => {
                 {contactContent.sectionLabel}
               </div>
               <h2 className="text-5xl md:text-7xl font-montserrat font-extrabold tracking-tighter text-foreground">
-                {contactContent.sectionTitle} <span className="text-accent">{contactContent.sectionTitleAccent}</span>
+                {contactContent.sectionTitle}{' '}
+                <span className="text-accent">{contactContent.sectionTitleAccent}</span>
               </h2>
               <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
                 {contactContent.subtitle}
@@ -39,7 +45,8 @@ const Contact = () => {
               </a>
 
               <p className="text-sm font-montserrat font-bold uppercase tracking-[0.2em] text-muted-foreground/60">
-                Response time: <span className="text-foreground">{contactContent.responseTime}</span>
+                Response time:{' '}
+                <span className="text-foreground">{contactContent.responseTime}</span>
               </p>
             </div>
           </ScrollReveal>

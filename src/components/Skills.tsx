@@ -32,12 +32,14 @@ const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" className="bg-background py-24 px-6 md:px-12 relative overflow-hidden">
+    <section
+      id="skills"
+      className="bg-background py-24 px-6 md:px-12 relative overflow-hidden"
+    >
       {/* Background Subtle Gradient */}
       <div className="absolute top-[20%] right-0 w-[40%] h-[40%] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        
         {/* Section Header */}
         <ScrollReveal>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
@@ -51,8 +53,9 @@ const Skills = () => {
               </h2>
             </div>
             <div className="flex flex-col gap-4">
-               <p className="text-muted-foreground font-light text-lg max-w-md leading-relaxed">
-                Continuously evolving and mastering a diverse set of technologies to build efficient, scalable solutions.
+              <p className="text-muted-foreground font-light text-lg max-w-md leading-relaxed">
+                Continuously evolving and mastering a diverse set of technologies to build
+                efficient, scalable solutions.
               </p>
               <a
                 href="https://github.com/xosnos/xosnos/blob/main/README.md"
@@ -70,68 +73,68 @@ const Skills = () => {
         {/* Skills Content */}
         {isLoading ? (
           <div className="text-center py-20 bg-card rounded-3xl border border-border shadow-sm">
-             <div className="animate-pulse flex flex-col items-center gap-4">
-                <Cpu className="w-12 h-12 text-muted-foreground opacity-30" />
-                <p className="text-muted-foreground italic">Establishing secure connection to GitHub...</p>
-             </div>
+            <div className="animate-pulse flex flex-col items-center gap-4">
+              <Cpu className="w-12 h-12 text-muted-foreground opacity-30" />
+              <p className="text-muted-foreground italic">
+                Establishing secure connection to GitHub...
+              </p>
+            </div>
           </div>
         ) : fetchError ? (
           <div className="text-center py-20 bg-card rounded-3xl border border-border shadow-sm">
-             <div className="flex flex-col items-center gap-4">
-                <Cpu className="w-12 h-12 text-muted-foreground opacity-30" />
-                <p className="text-muted-foreground italic">{fetchError}</p>
-             </div>
+            <div className="flex flex-col items-center gap-4">
+              <Cpu className="w-12 h-12 text-muted-foreground opacity-30" />
+              <p className="text-muted-foreground italic">{fetchError}</p>
+            </div>
           </div>
         ) : skillCategories.length === 0 ? (
           <div className="text-center py-20 bg-card rounded-3xl border border-border shadow-sm">
-             <div className="flex flex-col items-center gap-4">
-                <Cpu className="w-12 h-12 text-muted-foreground opacity-30" />
-                <p className="text-muted-foreground italic">No skills found.</p>
-             </div>
+            <div className="flex flex-col items-center gap-4">
+              <Cpu className="w-12 h-12 text-muted-foreground opacity-30" />
+              <p className="text-muted-foreground italic">No skills found.</p>
+            </div>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skillCategories.map((category, index) => (
               <ScrollReveal key={index} variant="scaleIn">
-              <div 
-                className="group p-8 rounded-3xl bg-card border border-border shadow-sm hover:shadow-2xl hover:border-accent/20 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3">
-                     <div className="p-2 rounded-xl bg-accent/10 border border-accent/20">
+                <div className="group p-8 rounded-3xl bg-card border border-border shadow-sm hover:shadow-2xl hover:border-accent/20 hover:-translate-y-1 transition-all duration-300">
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-xl bg-accent/10 border border-accent/20">
                         <Box className="w-5 h-5 text-accent" />
-                     </div>
-                     <h3 className="text-xl font-montserrat font-bold text-foreground">
-                        {category.title}
-                     </h3>
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {category.badges.map((badge, badgeIndex) => (
-                      <div 
-                        key={badgeIndex}
-                        className="relative group/badge transition-all duration-300 hover:scale-105"
-                      >
-                         <div className="absolute inset-0 bg-accent/20 blur-md opacity-0 group-hover/badge:opacity-100 transition-opacity rounded-full" />
-                         <Image
-                          src={badge.src}
-                          alt={badge.alt}
-                          width={140}
-                          height={30}
-                          className="h-8 w-auto relative z-10 rounded shadow-sm opacity-80 group-hover/badge:opacity-100 transition-all duration-300"
-                          unoptimized
-                          loading="lazy"
-                        />
                       </div>
-                    ))}
+                      <h3 className="text-xl font-montserrat font-bold text-foreground">
+                        {category.title}
+                      </h3>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {category.badges.map((badge, badgeIndex) => (
+                        <div
+                          key={badgeIndex}
+                          className="relative group/badge transition-all duration-300 hover:scale-105"
+                        >
+                          <div className="absolute inset-0 bg-accent/20 blur-md opacity-0 group-hover/badge:opacity-100 transition-opacity rounded-full" />
+                          <Image
+                            src={badge.src}
+                            alt={badge.alt}
+                            width={140}
+                            height={30}
+                            style={{ width: 'auto' }}
+                            className="h-8 relative z-10 rounded shadow-sm opacity-80 group-hover/badge:opacity-100 transition-all duration-300"
+                            unoptimized
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
               </ScrollReveal>
             ))}
           </div>
         )}
-
       </div>
     </section>
   );

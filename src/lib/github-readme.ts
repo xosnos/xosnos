@@ -12,11 +12,12 @@ export interface SkillCategory {
  * Fetches the README from GitHub and parses skill badges
  */
 export async function fetchSkillsFromReadme(): Promise<SkillCategory[]> {
-  const README_URL = 'https://raw.githubusercontent.com/xosnos/xosnos/refs/heads/main/README.md';
+  const README_URL =
+    'https://raw.githubusercontent.com/xosnos/xosnos/refs/heads/main/README.md';
 
   try {
     const response = await fetch(README_URL, {
-      next: { revalidate: 3600 } // Revalidate every hour
+      next: { revalidate: 3600 }, // Revalidate every hour
     });
 
     if (!response.ok) {
@@ -63,7 +64,8 @@ function parseSkillsFromMarkdown(markdown: string): SkillCategory[] {
     // Check if this is a skill category we want to include
     let categoryTitle: string | undefined;
     for (const { pattern, title } of categoryMap) {
-      const regex = typeof pattern === 'string' ? new RegExp(`^${pattern}$`, 'i') : pattern;
+      const regex =
+        typeof pattern === 'string' ? new RegExp(`^${pattern}$`, 'i') : pattern;
       if (regex.test(headerLine)) {
         categoryTitle = title;
         break;
@@ -121,7 +123,7 @@ function parseSkillsFromMarkdown(markdown: string): SkillCategory[] {
   ];
 
   for (const title of order) {
-    const category = categories.find(c => c.title === title);
+    const category = categories.find((c) => c.title === title);
     if (category) {
       orderedCategories.push(category);
     }
@@ -129,11 +131,10 @@ function parseSkillsFromMarkdown(markdown: string): SkillCategory[] {
 
   // Add any remaining categories not in the order list
   for (const category of categories) {
-    if (!orderedCategories.find(c => c.title === category.title)) {
+    if (!orderedCategories.find((c) => c.title === category.title)) {
       orderedCategories.push(category);
     }
   }
 
   return orderedCategories;
 }
-

@@ -23,8 +23,7 @@ export async function GET(request: NextRequest) {
     console.error('Error fetching skills:', error);
     return NextResponse.json(
       { error: 'Failed to fetch skills from GitHub README' },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
-

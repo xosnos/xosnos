@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
   const client_id = process.env.SPOTIFY_CLIENT_ID;
 
   const scope = 'user-top-read';
-  
+
   if (!client_id) {
     return NextResponse.json({ error: 'Missing Spotify client ID' }, { status: 500 });
   }
@@ -35,12 +35,12 @@ export async function GET(request: NextRequest) {
   authUrl.searchParams.append('state', state);
 
   const response = NextResponse.redirect(authUrl.toString());
-  
+
   response.cookies.set('spotify_auth_state', state, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    maxAge: 3600 // 1 hour
+    maxAge: 3600, // 1 hour
   });
 
   return response;

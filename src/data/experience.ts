@@ -36,7 +36,8 @@ const experiences: ExperienceItem[] = [
     location: 'Pleasanton, CA, United States',
     startDate: '2024-5',
     endDate: '2025-3',
-    description: 'Platform engineering with CI/CD, multi-region delivery, and service rollout safety.',
+    description:
+      'Platform engineering with CI/CD, multi-region delivery, and service rollout safety.',
     highlights: [
       'Architected scalable CI/CD pipelines utilizing Jenkins, Docker, and Kubernetes, enhancing deployment efficiency.',
       'Enabled automated rollouts of microservices across multiple regional data centers, streamlining operations.',
@@ -53,7 +54,8 @@ const experiences: ExperienceItem[] = [
     location: 'Pleasanton, CA, United States',
     startDate: '2023-2',
     endDate: '2024-4',
-    description: 'Security and reliability engineering across backend services and dependency stack.',
+    description:
+      'Security and reliability engineering across backend services and dependency stack.',
     highlights: [
       'Proactively identified and patched over 15 critical security vulnerabilities (CVEs) in third-party libraries.',
       'Designed observability and evaluation dashboards using Grafana, Prometheus, and SQL for streamlined vulnerability management.',
@@ -150,7 +152,8 @@ const experiences: ExperienceItem[] = [
     type: 'volunteer',
     startDate: '2022-5',
     endDate: '2024-8',
-    description: 'Mentoring students in algorithmic problem-solving and interview preparation.',
+    description:
+      'Mentoring students in algorithmic problem-solving and interview preparation.',
     highlights: [
       'Mentored over 20 students in technical interview preparation, emphasizing algorithmic problem-solving.',
       'Provided constructive feedback to enhance students\u2019 coding skills and communication abilities.',
@@ -164,10 +167,5 @@ const experiences: ExperienceItem[] = [
 export function listPublishedExperiences(): ExperienceItem[] {
   return experiences
     .filter((exp) => exp.published !== false)
-    .sort(
-      (a, b) =>
-        new Date(b.startDate).getTime() -
-        new Date(a.startDate).getTime(),
-    );
+    .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
 }
-

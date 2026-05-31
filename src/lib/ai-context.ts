@@ -6,9 +6,7 @@ import { listPublishedProjects } from '@/data/projects';
 import { educationItems } from '@/data/education';
 
 const formatBio = () =>
-  aboutContent.bio
-    .map((p) => p.text.replace(/\*\*/g, ''))
-    .join(' ');
+  aboutContent.bio.map((p) => p.text.replace(/\*\*/g, '')).join(' ');
 
 const formatExperiences = () =>
   listPublishedExperiences()
@@ -30,7 +28,10 @@ const formatProjects = () =>
   listPublishedProjects()
     .map((p) => {
       const tags = p.tags?.length ? ` [${p.tags.join(', ')}]` : '';
-      const links = [p.demoUrl ? `demo: ${p.demoUrl}` : null, p.repoUrl ? `repo: ${p.repoUrl}` : null]
+      const links = [
+        p.demoUrl ? `demo: ${p.demoUrl}` : null,
+        p.repoUrl ? `repo: ${p.repoUrl}` : null,
+      ]
         .filter(Boolean)
         .join(' | ');
       return `- ${p.title}${tags}: ${p.description}${links ? `\n  ${links}` : ''}`;
@@ -41,7 +42,9 @@ const formatEducation = () =>
   educationItems
     .map((edu) => {
       const courses = edu.courses?.length ? `\n  Courses: ${edu.courses.join('; ')}` : '';
-      const activities = edu.activities?.length ? `\n  Activities: ${edu.activities.join('; ')}` : '';
+      const activities = edu.activities?.length
+        ? `\n  Activities: ${edu.activities.join('; ')}`
+        : '';
       const awards = edu.awards?.length ? `\n  Awards: ${edu.awards.join('; ')}` : '';
       return `- ${edu.name}${courses}${activities}${awards}`;
     })

@@ -42,7 +42,11 @@ const isValidTurn = (value: unknown): value is ChatTurn => {
 // hardest for a client to spoof. Fall back to x-real-ip and finally a constant.
 const getClientIp = (request: NextRequest): string => {
   const xff = request.headers.get('x-forwarded-for') ?? '';
-  const last = xff.split(',').map((s) => s.trim()).filter(Boolean).pop();
+  const last = xff
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .pop();
   return last || request.headers.get('x-real-ip') || '127.0.0.1';
 };
 
@@ -100,10 +104,7 @@ export async function POST(request: NextRequest) {
     0,
   );
   if (totalHistoryChars > MAX_TOTAL_HISTORY_CHARS) {
-    return NextResponse.json(
-      { error: 'History payload too large' },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: 'History payload too large' }, { status: 400 });
   }
 
   if (!isAIConfigured()) {

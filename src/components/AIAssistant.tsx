@@ -345,7 +345,9 @@ const AIAssistant = ({ onOpenChange }: AIAssistantProps) => {
       <button
         type="button"
         onClick={() => (isOpen ? closeAssistant() : setIsOpen(true))}
-        aria-label={isOpen ? aiAssistantContent.closeLabel : aiAssistantContent.toggleLabel}
+        aria-label={
+          isOpen ? aiAssistantContent.closeLabel : aiAssistantContent.toggleLabel
+        }
         aria-expanded={isOpen}
         className="bg-accent text-accent-foreground w-14 h-14 flex items-center justify-center rounded-full shadow-xl shadow-accent/30 hover:scale-105 hover:brightness-110 transition-all duration-300"
       >

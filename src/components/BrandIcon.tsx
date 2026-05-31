@@ -10,7 +10,13 @@ type BrandIconProps = {
   title?: string;
 } & Omit<SVGProps<SVGSVGElement>, 'viewBox'>;
 
-const BrandIcon = ({ icon, title = icon.title, width, height, ...rest }: BrandIconProps) => (
+const BrandIcon = ({
+  icon,
+  title = icon.title,
+  width,
+  height,
+  ...rest
+}: BrandIconProps) => (
   <svg
     width={width ?? '1em'}
     height={height ?? '1em'}
@@ -29,4 +35,3 @@ const BrandIcon = ({ icon, title = icon.title, width, height, ...rest }: BrandIc
 );
 
 export default BrandIcon;
-

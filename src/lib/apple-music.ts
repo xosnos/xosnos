@@ -71,6 +71,3 @@ export async function getAppleNowPlaying(params: {
     provider: 'apple',
   };
 }
-
-
-

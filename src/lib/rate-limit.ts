@@ -21,21 +21,23 @@ export default function rateLimit(options?: Options) {
         const windowStart = now - config.interval;
 
         const requestTimestamps = tokenCache.get(token) || [];
-        const requestsInWindow = requestTimestamps.filter((timestamp) => timestamp > windowStart);
-        
+        const requestsInWindow = requestTimestamps.filter(
+          (timestamp) => timestamp > windowStart,
+        );
+
         if (requestsInWindow.length >= limit) {
           return reject(); // Rate limit exceeded
         }
 
         requestsInWindow.push(now);
         tokenCache.set(token, requestsInWindow);
-        
+
         // Cleanup old entries if cache grows too large
         if (tokenCache.size > config.uniqueTokenPerInterval) {
-             const firstKey = tokenCache.keys().next().value;
-             if (firstKey) tokenCache.delete(firstKey);
+          const firstKey = tokenCache.keys().next().value;
+          if (firstKey) tokenCache.delete(firstKey);
         }
-        
+
         resolve();
       }),
   };

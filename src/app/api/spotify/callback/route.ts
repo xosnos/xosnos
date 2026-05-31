@@ -6,14 +6,14 @@ export async function GET(request: NextRequest) {
   const code = searchParams.get('code');
   const error = searchParams.get('error');
   const state = searchParams.get('state');
-  
+
   // Get the state cookie to verify against the state query param (SBP-002)
   const storedState = request.cookies.get('spotify_auth_state')?.value;
 
   if (error) {
     return NextResponse.json(
       { error: `Spotify authorization error: ${error}` },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -21,20 +21,20 @@ export async function GET(request: NextRequest) {
   if (!state || !storedState || state !== storedState) {
     return NextResponse.json(
       { error: 'State mismatch or missing state parameter' },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
   if (!code) {
     return NextResponse.json(
       { error: 'No authorization code provided' },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
   try {
     const tokenData = await exchangeCodeForTokens(code);
-    
+
     // SBP-001: Do not return raw tokens in JSON response.
     // Instead, log them server-side for the developer to retrieve during setup.
     if (process.env.NODE_ENV === 'development') {
@@ -60,12 +60,11 @@ export async function GET(request: NextRequest) {
     });
 
     return response;
-
   } catch (error) {
     console.error('Spotify callback error:', error);
     return NextResponse.json(
       { error: 'Internal server error during token exchange' },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

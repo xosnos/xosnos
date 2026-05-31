@@ -4,14 +4,23 @@ const mockSkills = [
   {
     title: '⌨️ Languages',
     badges: [
-      { src: 'https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript', alt: 'JavaScript' },
-      { src: 'https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript', alt: 'TypeScript' },
+      {
+        src: 'https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript',
+        alt: 'JavaScript',
+      },
+      {
+        src: 'https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript',
+        alt: 'TypeScript',
+      },
     ],
   },
   {
     title: '🖥️ Frontend',
     badges: [
-      { src: 'https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react', alt: 'React' },
+      {
+        src: 'https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react',
+        alt: 'React',
+      },
     ],
   },
 ];

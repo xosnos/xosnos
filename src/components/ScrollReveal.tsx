@@ -3,7 +3,15 @@
 import { motion } from 'motion/react';
 import type { ReactNode } from 'react';
 import type { Variants } from 'motion/react';
-import { fadeInUp, fadeIn, scaleIn, slideInLeft, slideInRight, staggerContainer, viewportOnce } from '@/lib/animations';
+import {
+  fadeInUp,
+  fadeIn,
+  scaleIn,
+  slideInLeft,
+  slideInRight,
+  staggerContainer,
+  viewportOnce,
+} from '@/lib/animations';
 
 const variantMap = {
   fadeInUp,
@@ -24,7 +32,13 @@ interface ScrollRevealProps {
   delay?: number;
 }
 
-export function ScrollReveal({ children, variant = 'fadeInUp', custom, className, delay }: ScrollRevealProps) {
+export function ScrollReveal({
+  children,
+  variant = 'fadeInUp',
+  custom,
+  className,
+  delay,
+}: ScrollRevealProps) {
   const variants = custom ?? variantMap[variant];
   const transition = delay ? { delay } : undefined;
 
@@ -42,7 +56,13 @@ export function ScrollReveal({ children, variant = 'fadeInUp', custom, className
   );
 }
 
-export function ScrollRevealItem({ children, className }: { children: ReactNode; className?: string }) {
+export function ScrollRevealItem({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
     <motion.div
       variants={fadeInUp}

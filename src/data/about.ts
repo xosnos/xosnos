@@ -11,11 +11,11 @@ export const aboutContent = {
       highlights: ['University of Michigan'],
     },
     {
-      text: "Beyond technical execution, I thrive as a **leader and program manager** within my non-profit commitments. I believe in cross-functional collaboration and the power of mentorship to build sustainable, high-impact communities.",
+      text: 'Beyond technical execution, I thrive as a **leader and program manager** within my non-profit commitments. I believe in cross-functional collaboration and the power of mentorship to build sustainable, high-impact communities.',
       highlights: ['leader and program manager'],
     },
     {
-      text: "Currently based in the **San Francisco Bay Area**, I spend my free time exploring new restaurants, searching for the perfect cup of matcha, and making sure to \"touch grass\" through various outdoor activities.",
+      text: 'Currently based in the **San Francisco Bay Area**, I spend my free time exploring new restaurants, searching for the perfect cup of matcha, and making sure to "touch grass" through various outdoor activities.',
       highlights: ['San Francisco Bay Area'],
     },
   ],

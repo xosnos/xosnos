@@ -3,7 +3,13 @@
 import { motion } from 'motion/react';
 import type { ReactNode } from 'react';
 
-export default function PageTransition({ children, className }: { children: ReactNode; className?: string }) {
+export default function PageTransition({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0 }}

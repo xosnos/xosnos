@@ -129,8 +129,8 @@ export default function SpotifyPlayer() {
         <div className="flex items-center space-x-3">
           <div className="h-10 w-10 bg-muted rounded-full animate-spin border-t-2 border-accent"></div>
           <div className="space-y-2 flex-1">
-             <div className="h-3 bg-muted rounded w-1/3"></div>
-             <div className="h-4 bg-muted rounded w-3/4"></div>
+            <div className="h-3 bg-muted rounded w-1/3"></div>
+            <div className="h-4 bg-muted rounded w-3/4"></div>
           </div>
         </div>
       </div>
@@ -142,8 +142,8 @@ export default function SpotifyPlayer() {
       <div className="bg-card/50 backdrop-blur-md rounded-3xl p-6 max-w-md mx-auto border border-border/50">
         <div className="flex items-center justify-between text-muted-foreground">
           <div className="flex items-center space-x-3">
-             <Music className="h-5 w-5 text-accent" />
-             <span className="text-sm font-medium">Offline</span>
+            <Music className="h-5 w-5 text-accent" />
+            <span className="text-sm font-medium">Offline</span>
           </div>
           <button
             onClick={fetchNowPlaying}
@@ -190,13 +190,22 @@ export default function SpotifyPlayer() {
               priority={false}
             />
             {isPlaying && (
-               <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
-                  <div className="flex gap-1 items-end h-6">
-                     <div className="w-1 bg-white animate-bounce" style={{ animationDuration: '0.6s' }} />
-                     <div className="w-1 bg-white animate-bounce" style={{ animationDuration: '0.8s' }} />
-                     <div className="w-1 bg-white animate-bounce" style={{ animationDuration: '0.7s' }} />
-                  </div>
-               </div>
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
+                <div className="flex gap-1 items-end h-6">
+                  <div
+                    className="w-1 bg-white animate-bounce"
+                    style={{ animationDuration: '0.6s' }}
+                  />
+                  <div
+                    className="w-1 bg-white animate-bounce"
+                    style={{ animationDuration: '0.8s' }}
+                  />
+                  <div
+                    className="w-1 bg-white animate-bounce"
+                    style={{ animationDuration: '0.7s' }}
+                  />
+                </div>
+              </div>
             )}
           </div>
         )}
@@ -205,7 +214,9 @@ export default function SpotifyPlayer() {
           <h3 className="font-montserrat font-bold text-foreground text-lg truncate group-hover:text-accent transition-colors leading-tight">
             {track.name}
           </h3>
-          <p className="text-sm text-muted-foreground truncate font-medium">{track.artist}</p>
+          <p className="text-sm text-muted-foreground truncate font-medium">
+            {track.artist}
+          </p>
           {track.album && (
             <p className="text-[10px] font-montserrat font-bold uppercase tracking-widest text-muted-foreground/50 truncate mt-1">
               {track.album}
@@ -219,7 +230,11 @@ export default function SpotifyPlayer() {
             className="shrink-0 bg-accent hover:scale-110 active:scale-95 text-accent-foreground rounded-full p-4 transition-all shadow-lg shadow-accent/20"
             aria-label={isPlaying ? 'Pause' : 'Play preview'}
           >
-            {isPlaying ? <Pause className="h-5 w-5 fill-current" /> : <Play className="h-5 w-5 ml-0.5 fill-current" />}
+            {isPlaying ? (
+              <Pause className="h-5 w-5 fill-current" />
+            ) : (
+              <Play className="h-5 w-5 ml-0.5 fill-current" />
+            )}
           </button>
         )}
       </div>

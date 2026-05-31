@@ -8,7 +8,10 @@ import { heroContent } from '@/data/hero';
 
 const Hero = () => {
   return (
-    <header id="page-top" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+    <header
+      id="page-top"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
+    >
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <motion.div
           className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-accent/10 rounded-full blur-[80px] md:blur-[120px] will-change-transform"
@@ -84,7 +87,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.35, ease: 'easeOut' }}
           >
-            Crafting <span className="text-foreground font-semibold">robust</span> and <span className="text-foreground font-semibold">accessible</span> digital experiences through code and design.
+            Crafting <span className="text-foreground font-semibold">robust</span> and{' '}
+            <span className="text-foreground font-semibold">accessible</span> digital
+            experiences through code and design.
           </motion.p>
 
           <motion.div
