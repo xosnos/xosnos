@@ -30,16 +30,6 @@
       },
     },
   },
-  "overrides": {
-    "@typescript-eslint/eslint-plugin": "^8.56.1",
-    "@typescript-eslint/parser": "^8.56.1",
-    "@typescript-eslint/scope-manager": "^8.56.1",
-    "@typescript-eslint/types": "^8.56.1",
-    "@typescript-eslint/typescript-estree": "^8.56.1",
-    "@typescript-eslint/utils": "^8.56.1",
-    "@typescript-eslint/visitor-keys": "^8.56.1",
-    "typescript-eslint": "^8.56.1",
-  },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
 
