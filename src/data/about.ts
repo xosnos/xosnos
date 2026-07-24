@@ -20,7 +20,7 @@ export const aboutContent = {
     },
   ],
   topLanguages: 'Python \u2022 TypeScript \u2022 Java',
-  location: 'San Jose, CA',
+  location: 'San Francisco Bay Area',
   funFact: 'Matcha Enthusiast',
   image: '/assets/img/about-me-picture.jpeg',
 };

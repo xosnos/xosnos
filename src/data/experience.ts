@@ -22,7 +22,7 @@ const experiences: ExperienceItem[] = [
     organization: 'Terraces',
     role: 'Co-Founder',
     type: 'work',
-    location: 'San Jose, CA',
+    location: 'San Francisco Bay Area',
     startDate: '2025-4',
     description: 'Building an AI-native career agent from 0 → 1.',
     highlights: [],

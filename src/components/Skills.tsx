@@ -119,10 +119,10 @@ const Skills = () => {
                           <Image
                             src={badge.src}
                             alt={badge.alt}
-                            width={140}
-                            height={30}
-                            style={{ width: 'auto' }}
-                            className="h-8 relative z-10 rounded shadow-sm opacity-80 group-hover/badge:opacity-100 transition-all duration-300"
+                            width={200}
+                            height={28}
+                            style={{ height: '2rem', width: 'auto' }}
+                            className="relative z-10 rounded shadow-sm opacity-80 group-hover/badge:opacity-100 transition-all duration-300"
                             unoptimized
                             loading="lazy"
                           />

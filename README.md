@@ -15,7 +15,7 @@ const xosnos = () => {
   return {
     name: "Steven Nguyen",
     pronouns: ["he", "him", "his"],
-    location: "San Jose, California, USA",
+    location: "San Francisco Bay Area",
   }
 }
 ```
