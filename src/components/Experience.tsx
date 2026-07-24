@@ -1,6 +1,6 @@
-import { CalendarRange, MapPin, Building2, ChevronRight } from 'lucide-react';
-import { listPublishedExperiences } from '@/data/experience';
+import { Building2, CalendarRange, ChevronRight, MapPin } from 'lucide-react';
 import { ScrollReveal, ScrollRevealItem } from '@/components/ScrollReveal';
+import { listPublishedExperiences } from '@/data/experience';
 
 const Experience = () => {
   const items = listPublishedExperiences();

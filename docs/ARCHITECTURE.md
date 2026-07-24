@@ -46,4 +46,4 @@ All routes live under [`src/app/api/`](../src/app/api/).
 | `skills` | Fetches and parses skill badges from a GitHub README |
 | `resume`, `resume/download` | Token-gated resume access backed by Google Drive/Sheets |
 
-See [configuration.md](configuration.md) for the environment variables each route needs.
+See [`.env.example`](../.env.example) for the environment variables each route needs.

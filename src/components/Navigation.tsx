@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Menu, X, FileDown } from 'lucide-react';
+import { FileDown, Menu, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'motion/react';
-import { navItems } from '@/data/navigation';
-import { ThemeToggle } from '@/components/theme-toggle';
+import { useEffect, useState } from 'react';
 import ResumeGate from '@/components/ResumeGate';
+import { ThemeToggle } from '@/components/theme-toggle';
+import { navItems } from '@/data/navigation';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

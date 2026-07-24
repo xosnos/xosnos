@@ -1,6 +1,6 @@
-import { MapPin, ArrowUp, Github, Linkedin, Twitter, Globe } from 'lucide-react';
-import { footerContent } from '@/data/footer';
+import { ArrowUp, Github, Globe, Linkedin, MapPin, Twitter } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { footerContent } from '@/data/footer';
 
 const iconMap = {
   github: <Github className="w-5 h-5" />,

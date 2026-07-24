@@ -36,9 +36,9 @@ bun run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Add the variables for the features you want to enable to `.env.local` — see
-[Configuration](documentation/configuration.md). Every feature degrades gracefully when
-its keys are absent.
+Copy `.env.example` to `.env.local` and add the variables for the features you want to
+enable. Inline comments in `.env.example` document each variable. Every feature degrades
+gracefully when its keys are absent.
 
 ### Build for production
 
@@ -50,7 +50,8 @@ bun start
 ### Validate
 
 ```bash
-bun run lint
+bun run lint      # check formatting, lint rules, and import order (read-only)
+bun run format    # apply formatting, safe fixes, and import sorting
 bun run typecheck
 bun run test:e2e
 ```
@@ -58,7 +59,7 @@ bun run test:e2e
 ## Documentation
 
 - [Architecture](documentation/architecture.md) — App Router layout, directories, API routes
-- [Configuration](documentation/configuration.md) — environment variables per feature
+- [`.env.example`](../.env.example) — environment variables and inline docs per feature
 - [Customization](documentation/customization.md) — projects, experience, skills, colors
 - [Design System](documentation/design-system.md) — colors, typography, breakpoints, performance
 

@@ -1,8 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
 import { ExternalLink, Music, Pause, Play, Volume2 } from 'lucide-react';
 import Image from 'next/image';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 type Provider = 'apple' | 'spotify';
 

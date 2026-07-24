@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import { Montserrat, Lato } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { ThemeProvider } from '@/components/theme-provider';
+import type { Metadata } from 'next';
+import { Lato, Montserrat } from 'next/font/google';
 import FloatingActions from '@/components/FloatingActions';
+import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
 
 const montserrat = Montserrat({

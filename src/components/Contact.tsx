@@ -1,4 +1,4 @@
-import { Send, Mail, ArrowRight } from 'lucide-react';
+import { ArrowRight, Mail, Send } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { contactContent } from '@/data/contact';
 

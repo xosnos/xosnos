@@ -1,6 +1,6 @@
-import { NextResponse, NextRequest } from 'next/server';
-import { getAccessToken, getTopTrack } from '../../../../lib/spotify';
+import { NextRequest, NextResponse } from 'next/server';
 import rateLimit from '@/lib/rate-limit';
+import { getAccessToken, getTopTrack } from '../../../../lib/spotify';
 
 const limiter = rateLimit({
   interval: 60 * 1000, // 60 seconds

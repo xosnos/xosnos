@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { fetchSkillsFromReadme } from '@/lib/github-readme';
 import rateLimit from '@/lib/rate-limit';
 

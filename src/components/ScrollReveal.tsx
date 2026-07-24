@@ -1,11 +1,11 @@
 'use client';
 
+import type { Variants } from 'motion/react';
 import { motion } from 'motion/react';
 import type { ReactNode } from 'react';
-import type { Variants } from 'motion/react';
 import {
-  fadeInUp,
   fadeIn,
+  fadeInUp,
   scaleIn,
   slideInLeft,
   slideInRight,

@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Box, Cpu, ExternalLink, Terminal } from 'lucide-react';
 import Image from 'next/image';
-import { ExternalLink, Box, Terminal, Cpu } from 'lucide-react';
-import { type SkillCategory } from '@/lib/github-readme';
+import { useEffect, useState } from 'react';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { type SkillCategory } from '@/lib/github-readme';
 
 const Skills = () => {
   const [skillCategories, setSkillCategories] = useState<SkillCategory[]>([]);

@@ -1,7 +1,7 @@
+import { Code2, Coffee, MapPin, User } from 'lucide-react';
 import Image from 'next/image';
-import { User, MapPin, Coffee, Code2 } from 'lucide-react';
-import { aboutContent } from '@/data/about';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { aboutContent } from '@/data/about';
 
 const About = () => {
   return (

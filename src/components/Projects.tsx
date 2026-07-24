@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { Code, ExternalLink, Github, Monitor, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import Image from 'next/image';
-import { Code, X, ExternalLink, Github, Monitor } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { fadeInUp, staggerContainer, viewportOnce } from '@/lib/animations';
+import { useState } from 'react';
 import { listPublishedProjects, type ProjectItem } from '@/data/projects';
+import { fadeInUp, staggerContainer, viewportOnce } from '@/lib/animations';
 
 const projectItems = listPublishedProjects();
 

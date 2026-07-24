@@ -1,9 +1,8 @@
 'use client';
 
-import Image from 'next/image';
-import { Sparkles, Rocket, ArrowDown } from 'lucide-react';
+import { ArrowDown, Rocket, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
-import SpotifyPlayer from '@/components/SpotifyPlayer';
+import Image from 'next/image';
 import { heroContent } from '@/data/hero';
 
 const Hero = () => {
@@ -98,8 +97,6 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.5, ease: 'easeOut' }}
           >
-            <SpotifyPlayer />
-
             <a
               href={heroContent.ctaHref}
               className="inline-flex items-center gap-2 text-sm font-montserrat font-bold uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors group"

@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { Award, BookOpen, ChevronRight, GraduationCap, Users, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import Image from 'next/image';
-import { GraduationCap, X, ChevronRight, Award, BookOpen, Users } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState } from 'react';
+import { type EducationItem, listEducationItems } from '@/data/education';
 import { fadeInUp, staggerContainer, viewportOnce } from '@/lib/animations';
-import { listEducationItems, type EducationItem } from '@/data/education';
 
 const items = listEducationItems();
 

@@ -1,9 +1,9 @@
-import { heroContent } from '@/data/hero';
 import { aboutContent } from '@/data/about';
 import { contactContent } from '@/data/contact';
-import { listPublishedExperiences } from '@/data/experience';
-import { listPublishedProjects } from '@/data/projects';
 import { educationItems } from '@/data/education';
+import { listPublishedExperiences } from '@/data/experience';
+import { heroContent } from '@/data/hero';
+import { listPublishedProjects } from '@/data/projects';
 
 const formatBio = () =>
   aboutContent.bio.map((p) => p.text.replace(/\*\*/g, '')).join(' ');

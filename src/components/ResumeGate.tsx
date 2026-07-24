@@ -1,8 +1,8 @@
 'use client';
 
+import { FileDown, Loader2, Mail, User, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useState } from 'react';
-import { FileDown, Mail, User, Loader2, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
 
 interface ResumeGateProps {
   open: boolean;

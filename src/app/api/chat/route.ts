@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { type ChatTurn, isAIConfigured, streamChat } from '@/lib/gemini';
 import rateLimit from '@/lib/rate-limit';
-import { isAIConfigured, streamChat, type ChatTurn } from '@/lib/gemini';
 
 // Use Node.js runtime (not Edge) so we share the same in-memory rate limiter
 // shape as other routes (e.g. /api/skills) and keep @google/genai compatibility.

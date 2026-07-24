@@ -1,7 +1,7 @@
-import { NextResponse, NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { createToken } from '@/lib/resume-token';
 import rateLimit from '@/lib/rate-limit';
+import { createToken } from '@/lib/resume-token';
 
 const limiter = rateLimit({
   interval: 60 * 1000,

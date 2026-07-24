@@ -1,7 +1,7 @@
-import { NextResponse, NextRequest } from 'next/server';
-import { SPOTIFY_AUTH_URL, REDIRECT_URI } from '../../../../lib/spotify';
 import crypto from 'crypto';
+import { NextRequest, NextResponse } from 'next/server';
 import rateLimit from '@/lib/rate-limit';
+import { REDIRECT_URI, SPOTIFY_AUTH_URL } from '../../../../lib/spotify';
 
 const limiter = rateLimit({
   interval: 60 * 1000,
