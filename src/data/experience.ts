@@ -26,7 +26,7 @@ const experiences: ExperienceItem[] = [
     startDate: '2025-4',
     description: 'Building an AI-native career agent from 0 → 1.',
     highlights: [],
-    published: false,
+    published: true,
   },
   {
     id: 'workday-sde-2',
@@ -112,7 +112,7 @@ const experiences: ExperienceItem[] = [
       'Established a centralized GitHub organization to improve code management and ownership processes.',
     ],
     link: 'https://www.uvsamidwest.org',
-    published: false,
+    published: true,
   },
   {
     id: 'uvsa-midwest-cochair',
@@ -160,7 +160,7 @@ const experiences: ExperienceItem[] = [
       'Fostered a supportive learning environment to help students achieve optimized solutions.',
     ],
     link: 'https://www.codepath.org',
-    published: false,
+    published: true,
   },
 ];
 

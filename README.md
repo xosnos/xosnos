@@ -1,6 +1,12 @@
-# 👋🏻 Hello ~~World~~ Universe
+# Steven Nguyen
 
-[Steven](https://www.xosnos.com) here! I'm a passionate software engineer and tech enthusiast with a keen interest in sustainable technology. I love exploring new tools and building innovative solutions that make a difference.
+**Full-stack engineer, 0→1 builder, and accessibility advocate.**
+
+Previously **SDE II at Workday** (2022–2025), shipping CI/CD infrastructure and security patches across multi-region platforms. Now co-founding **[Terraces](https://www.terraces.ai/)**, an AI-native career agent — because the best way to understand a problem is to build the solution.
+
+> 👨🏻‍💻 Check out my portfolio: [xosnos.com](https://www.xosnos.com) — with an AI assistant built right in.
+
+---
 
 ## 👦🏻 About Me
 
@@ -14,23 +20,32 @@ const xosnos = () => {
 }
 ```
 
-🌱 Currently learning **Prompt Engineering** and **Back-end Engineering**.
+🚀 **Co-founding Terraces** — building an AI-native career agent from 0 → 1.
 
-🔭 Developing projects focused on **AI-Native applications** and **sustainable tech**.
+🔭 **Previously at Workday** — SDE II, architecting CI/CD pipelines, patching CVEs, and shipping multi-region microservice rollouts.
 
-👯 Looking to collaborate on **Agentic AI** initiatives.
+🌱 **Passionate about** AI-Native applications, accessible design, and sustainable tech.
 
-🤝 Seeking to connect with experts in **building startups** and **organizational management**.
+👯 **Open to** founding engineer, senior full-stack, and platform engineering roles.
 
-♿️ Passionate about **AI Accessibility** and **Inclusive Technology**.
+🤝 **Let's connect** on [LinkedIn](https://linkedin.com/in/xosnos).
 
-✍🏻 I write about my experiences and projects on [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@xosnos)
+♿️ **Committed to** AI Accessibility and Inclusive Technology.
 
-📫 You can reach out to me on [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/xosnos)
+✍🏻 **I write about** my experiences on [Medium](https://medium.com/@xosnos).
 
-💬 Ask me about **technical/behavioral interviews** and **self-development**.
+---
 
-<!-- ⚡ Fun fact: Nightwing is my all-time favorite superhero 💙. -->
+## 🚀 What I'm Building
+
+| Project | Stack | What it does |
+|---|---|---|
+| **[Terraces](https://www.terraces.ai/)** | Next.js, Supabase, AI | AI-native career agent: capture roles, tailor materials, score like an ATS, sync portfolio & analytics. |
+| **[UVSA-Midwest App](https://app.uvsamidwest.org)** | React Native, Expo, Firebase | Cross-platform app for 31 universities — event registration and live coordination. |
+| **[Almond Travel](https://almond-travel.xosnos.com/)** | React, API Integration | Bundles flights, hotels, and attractions for U.S. tourists and immigrants. |
+| **[jammming](https://jammming.xosnos.com/)** | React, Spotify API | Instant playlist builder synced directly to Spotify. |
+
+---
 
 ## 📚 Domain Knowledge
 

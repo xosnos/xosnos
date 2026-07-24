@@ -2,7 +2,7 @@ import { CalendarRange, MapPin, Building2, ChevronRight } from 'lucide-react';
 import { listPublishedExperiences } from '@/data/experience';
 import { ScrollReveal, ScrollRevealItem } from '@/components/ScrollReveal';
 
-const Experience = async () => {
+const Experience = () => {
   const items = listPublishedExperiences();
 
   const formatMonthYear = (dateStr?: string) =>
