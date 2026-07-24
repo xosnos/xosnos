@@ -32,7 +32,8 @@ export const metadata: Metadata = {
     siteName: 'Steven Nguyen',
     url: 'https://www.xosnos.com',
     title: 'Steven Nguyen | Software Engineer',
-    description: 'Full-stack Software Engineer & AI Enthusiast based in San Francisco Bay Area.',
+    description:
+      'Full-stack Software Engineer & AI Enthusiast based in San Francisco Bay Area.',
   },
   icons: {
     apple: '/assets/img/icon/apple-touch-icon.png',

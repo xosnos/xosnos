@@ -18,12 +18,12 @@ This repo is the single source of truth for **Steven Nguyen (xosnos)** personal 
 
 ## Content sources
 
-Most site copy lives in typed data files under `src/data/`. Skills badges sync from the GitHub README via `/api/skills`. When editing content that appears on both surfaces (bio, projects, skills), update the canonical source and keep both in sync.
+Most site copy lives in typed data files under `src/data/`. Skills badges are defined in `src/data/skills.ts` and synced to the GitHub README via `bun run sync:readme-skills`. When editing content that appears on both surfaces (bio, projects, skills), update the canonical source and keep both in sync.
 
 | Content | Canonical source |
 | --- | --- |
 | Projects, experience, education, about, hero, contact | `src/data/*.ts` |
-| Skills badges | Root [`README.md`](README.md) (see [`docs/CUSTOMIZE.md`](docs/CUSTOMIZE.md) for overrides) |
+| Skills badges | [`src/data/skills.ts`](src/data/skills.ts) (sync to root [`README.md`](README.md) with `bun run sync:readme-skills`) |
 | GitHub profile bio and projects table | Root [`README.md`](README.md) |
 
 ## Mission

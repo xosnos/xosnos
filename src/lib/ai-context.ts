@@ -4,6 +4,7 @@ import { educationItems } from '@/data/education';
 import { listPublishedExperiences } from '@/data/experience';
 import { heroContent } from '@/data/hero';
 import { listPublishedProjects } from '@/data/projects';
+import { domainKnowledge, listSkillCategories } from '@/data/skills';
 
 const formatBio = () =>
   aboutContent.bio.map((p) => p.text.replace(/\*\*/g, '')).join(' ');
@@ -50,6 +51,16 @@ const formatEducation = () =>
     })
     .join('\n');
 
+const formatDomainKnowledge = () => domainKnowledge.map((item) => `- ${item}`).join('\n');
+
+const formatSkills = () =>
+  listSkillCategories()
+    .map((category) => {
+      const names = category.badges.map((badge) => badge.alt).join(', ');
+      return `- ${category.title}: ${names}`;
+    })
+    .join('\n');
+
 export const buildSystemInstruction = (): string => {
   return `You are the AI assistant for Steven Nguyen's portfolio website (xosnos.com). Your role is to help visitors learn about Steven's professional background, projects, skills, and experiences.
 
@@ -67,8 +78,13 @@ SCOPE:
 ABOUT STEVEN:
 ${heroContent.name} — ${heroContent.role}. Based in ${aboutContent.location}.
 ${formatBio()}
-Top languages: ${aboutContent.topLanguages}.
 Fun fact: ${aboutContent.funFact}.
+
+DOMAIN KNOWLEDGE:
+${formatDomainKnowledge()}
+
+SKILLS (by category — do not invent skills beyond this list):
+${formatSkills()}
 
 EXPERIENCE:
 ${formatExperiences()}

@@ -49,12 +49,15 @@ const xosnos = () => {
 
 ## 📚 Domain Knowledge
 
+<!-- skills:domain-knowledge:begin -->
 - Full-Stack Web Development
 - Mobile App Development
 - DevOps & Infrastructure
 - Distributed Systems
 - Cybersecurity
+<!-- skills:domain-knowledge:end -->
 
+<!-- skills:badges:begin -->
 ### ⌨️ Languages
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -142,6 +145,7 @@ const xosnos = () => {
 ![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)
 ![Confluence](https://img.shields.io/badge/confluence-%23172BF4.svg?style=for-the-badge&logo=confluence&logoColor=white)
 ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
+<!-- skills:badges:end -->
 
 <!-- ## 🔗 Links
 https://www.codecademy.com/profiles/xosnos
