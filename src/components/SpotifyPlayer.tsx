@@ -125,12 +125,18 @@ export default function SpotifyPlayer() {
 
   if (loading) {
     return (
-      <div className="bg-card/50 backdrop-blur-md rounded-3xl p-6 max-w-md mx-auto border border-border/50 animate-pulse">
+      <div
+        className="bg-card/50 backdrop-blur-md rounded-3xl p-6 max-w-md mx-auto border border-border/50 animate-pulse motion-reduce:animate-none"
+        role="status"
+        aria-live="polite"
+        aria-busy="true"
+      >
+        <span className="sr-only">Loading now playing…</span>
         <div className="flex items-center space-x-3">
-          <div className="h-10 w-10 bg-muted rounded-full animate-spin border-t-2 border-accent"></div>
+          <div className="h-10 w-10 bg-muted rounded-full animate-spin motion-reduce:animate-none border-t-2 border-accent" />
           <div className="space-y-2 flex-1">
-            <div className="h-3 bg-muted rounded w-1/3"></div>
-            <div className="h-4 bg-muted rounded w-3/4"></div>
+            <div className="h-3 bg-muted rounded w-1/3" />
+            <div className="h-4 bg-muted rounded w-3/4" />
           </div>
         </div>
       </div>
@@ -142,12 +148,13 @@ export default function SpotifyPlayer() {
       <div className="bg-card/50 backdrop-blur-md rounded-3xl p-6 max-w-md mx-auto border border-border/50">
         <div className="flex items-center justify-between text-muted-foreground">
           <div className="flex items-center space-x-3">
-            <Music className="h-5 w-5 text-accent" />
+            <Music className="h-5 w-5 text-accent" aria-hidden="true" />
             <span className="text-sm font-medium">Offline</span>
           </div>
           <button
+            type="button"
             onClick={fetchNowPlaying}
-            className="text-xs font-montserrat font-bold uppercase tracking-widest hover:text-accent transition-colors"
+            className="text-xs font-montserrat font-bold uppercase tracking-widest hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md px-1"
           >
             Retry
           </button>
@@ -157,10 +164,13 @@ export default function SpotifyPlayer() {
   }
 
   return (
-    <div className="group bg-card/40 backdrop-blur-xl rounded-3xl p-6 max-w-md mx-auto border border-border/50 shadow-2xl transition-all duration-500 hover:border-accent/30 hover:bg-card/60">
+    <div className="group bg-card/40 backdrop-blur-xl rounded-3xl p-6 max-w-md mx-auto border border-border/50 shadow-2xl transition-[border-color,background-color] duration-500 hover:border-accent/30 hover:bg-card/60">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
-          <Volume2 className="h-4 w-4 text-accent animate-pulse" />
+          <Volume2
+            className="h-4 w-4 text-accent animate-pulse motion-reduce:animate-none"
+            aria-hidden="true"
+          />
           <span className="text-[10px] font-montserrat font-extrabold text-muted-foreground uppercase tracking-[0.2em]">
             Listening on <span className="text-accent">{providerLabel}</span>
           </span>
@@ -170,10 +180,10 @@ export default function SpotifyPlayer() {
             href={track.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-accent transition-colors"
+            className="text-muted-foreground hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md"
             aria-label="Open in music app"
           >
-            <ExternalLink className="h-4 w-4" />
+            <ExternalLink className="h-4 w-4" aria-hidden="true" />
           </a>
         )}
       </div>
@@ -190,18 +200,21 @@ export default function SpotifyPlayer() {
               priority={false}
             />
             {isPlaying && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
+              <div
+                className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-[2px]"
+                aria-hidden="true"
+              >
                 <div className="flex gap-1 items-end h-6">
                   <div
-                    className="w-1 bg-white animate-bounce"
+                    className="w-1 bg-white animate-bounce motion-reduce:animate-none"
                     style={{ animationDuration: '0.6s' }}
                   />
                   <div
-                    className="w-1 bg-white animate-bounce"
+                    className="w-1 bg-white animate-bounce motion-reduce:animate-none"
                     style={{ animationDuration: '0.8s' }}
                   />
                   <div
-                    className="w-1 bg-white animate-bounce"
+                    className="w-1 bg-white animate-bounce motion-reduce:animate-none"
                     style={{ animationDuration: '0.7s' }}
                   />
                 </div>
@@ -226,14 +239,15 @@ export default function SpotifyPlayer() {
 
         {track.previewUrl && (
           <button
+            type="button"
             onClick={togglePlayback}
-            className="shrink-0 bg-accent hover:scale-110 active:scale-95 text-accent-foreground rounded-full p-4 transition-all shadow-lg shadow-accent/20"
+            className="shrink-0 bg-accent hover:scale-110 active:scale-95 text-accent-foreground rounded-full p-4 transition-[transform] shadow-lg shadow-accent/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             aria-label={isPlaying ? 'Pause' : 'Play preview'}
           >
             {isPlaying ? (
-              <Pause className="h-5 w-5 fill-current" />
+              <Pause className="h-5 w-5 fill-current" aria-hidden="true" />
             ) : (
-              <Play className="h-5 w-5 ml-0.5 fill-current" />
+              <Play className="h-5 w-5 ml-0.5 fill-current" aria-hidden="true" />
             )}
           </button>
         )}
@@ -241,9 +255,16 @@ export default function SpotifyPlayer() {
 
       {track.previewUrl && (
         <div className="mt-6 relative">
-          <div className="bg-muted rounded-full h-1 overflow-hidden">
+          <div
+            className="bg-muted rounded-full h-1 overflow-hidden"
+            role="progressbar"
+            aria-valuenow={Math.round(progress)}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Preview progress"
+          >
             <div
-              className="bg-accent h-1 rounded-full transition-all duration-300 shadow-[0_0_8px_rgba(56,189,248,0.5)]"
+              className="bg-accent h-1 rounded-full transition-[width] duration-300 shadow-[0_0_8px_rgba(56,189,248,0.5)]"
               style={{ width: `${progress}%` }}
             />
           </div>

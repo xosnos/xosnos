@@ -63,10 +63,22 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <meta
+          name="theme-color"
+          content="#ffffff"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
         <link rel="preconnect" href="https://i.scdn.co" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://img.shields.io" crossOrigin="anonymous" />
       </head>
       <body className={`${montserrat.variable} ${lato.variable} font-lato antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-montserrat focus:font-bold focus:text-accent-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        >
+          Skip to content
+        </a>
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="system"

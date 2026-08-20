@@ -17,10 +17,10 @@ const About = () => {
             <div className="space-y-10">
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-montserrat font-bold uppercase tracking-widest">
-                  <User className="w-4 h-4" />
+                  <User className="w-4 h-4" aria-hidden="true" />
                   {aboutContent.sectionLabel}
                 </div>
-                <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold tracking-tighter text-foreground">
+                <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold tracking-tighter text-foreground text-balance">
                   {aboutContent.sectionTitle}
                 </h2>
                 <div className="w-12 h-1 bg-accent rounded-full" />
@@ -42,7 +42,7 @@ const About = () => {
                   </p>
                 ))}
                 <p className="pt-4 flex items-center gap-3">
-                  <Code2 className="w-6 h-6 text-accent" />
+                  <Code2 className="w-6 h-6 text-accent" aria-hidden="true" />
                   <span className="text-foreground font-montserrat font-bold uppercase tracking-widest text-sm italic">
                     {aboutContent.topLanguages}
                   </span>
@@ -61,7 +61,7 @@ const About = () => {
                     alt="Steven Nguyen"
                     width={600}
                     height={600}
-                    className="w-full h-auto object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                    className="w-full h-auto object-cover grayscale-[0.2] group-hover:grayscale-0 transition-[filter,transform] duration-700 hover:scale-105"
                     loading="lazy"
                   />
                 </div>
@@ -69,13 +69,13 @@ const About = () => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-6 rounded-2xl bg-card border border-border shadow-sm flex flex-col gap-2 items-center text-center">
-                  <MapPin className="w-5 h-5 text-accent" />
+                  <MapPin className="w-5 h-5 text-accent" aria-hidden="true" />
                   <span className="text-xs font-montserrat font-bold uppercase tracking-widest text-foreground">
                     {aboutContent.location}
                   </span>
                 </div>
                 <div className="p-6 rounded-2xl bg-card border border-border shadow-sm flex flex-col gap-2 items-center text-center">
-                  <Coffee className="w-5 h-5 text-accent" />
+                  <Coffee className="w-5 h-5 text-accent" aria-hidden="true" />
                   <span className="text-xs font-montserrat font-bold uppercase tracking-widest text-foreground">
                     {aboutContent.funFact}
                   </span>

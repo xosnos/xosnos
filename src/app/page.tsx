@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <PageTransition className="min-h-screen">
       <Navigation />
-      <main className="pt-16 lg:pt-0">
+      <main id="main-content" className="pt-16 lg:pt-0">
         <Hero />
         <Projects />
         <Experience />

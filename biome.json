@@ -13,6 +13,7 @@
       "!!**/build",
       "!!**/dist",
       "!!**/node_modules",
+      "!!**/*.svg",
       "!!src/app/globals.css"
     ]
   },
