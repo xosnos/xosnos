@@ -21,12 +21,24 @@ const projectItems: ProjectItem[] = [
     published: true,
   },
   {
+    id: 'architype',
+    title: 'Architype',
+    image: '/assets/img/projects/architype.svg',
+    description:
+      'A collaborative system design workspace for building architecture diagrams, using AI agents to create or revise designs, and generating downloadable technical specs.',
+    tags: ['TypeScript', 'Next.js', 'React Flow', 'Supabase', 'OpenRouter'],
+    demoUrl: 'https://architype.xosnos.com',
+    repoUrl: 'https://github.com/xosnos/architype',
+    published: true,
+  },
+  {
     id: 'unavsa-mail-merge',
     title: 'UNAVSA Mail Merge',
     image: '/assets/img/projects/unavsa-mail-merge.svg',
     description:
       'A Google Workspace add-on for personalized email campaigns and engagement analytics, built with CardService, Google Apps Script, Gmail, and Google Sheets.',
     tags: ['JavaScript', 'Google Apps Script', 'Gmail API', 'Google Sheets'],
+    repoUrl: 'https://github.com/xosnos/mail-merge',
     published: true,
   },
   {
