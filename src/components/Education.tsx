@@ -73,6 +73,9 @@ const Education = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
                   <div className="absolute bottom-8 left-8 right-8 space-y-2">
+                    <div className="inline-flex rounded-full bg-accent/10 px-3 py-1 text-xs font-montserrat font-bold uppercase tracking-widest text-accent backdrop-blur-sm">
+                      {item.level}
+                    </div>
                     <h3 className="text-2xl md:text-3xl font-montserrat font-extrabold text-foreground text-balance">
                       {item.shortName}
                     </h3>
@@ -133,6 +136,12 @@ const Education = () => {
                       >
                         {selectedItem.name}
                       </h2>
+                      {selectedItem.degree && (
+                        <div className="space-y-1 text-muted-foreground">
+                          <p className="font-medium">{selectedItem.degree}</p>
+                          {selectedItem.status && <p>{selectedItem.status}</p>}
+                        </div>
+                      )}
                     </div>
 
                     <div className="space-y-10">

@@ -15,9 +15,18 @@ const projectItems: ProjectItem[] = [
     title: 'Terraces',
     image: '/assets/img/projects/terraces.png',
     description:
-      'Terraces is your AI-Native career agent. Capture roles, tailor your materials with local-first AI, score them like an ATS, and keep your portfolio & analytics in sync—without leaving one workspace.',
-    tags: ['Next.js', 'Supabase', 'AI', 'Tailwind'],
+      'An AI-native career progression platform that scans resumes, suggests role-specific edits, aligns portfolio projects, and generates interview-prep plans.',
+    tags: ['TypeScript', 'TanStack Start', 'Python', 'FastAPI', 'PostgreSQL', 'AI'],
     demoUrl: 'https://www.terraces.ai/',
+    published: true,
+  },
+  {
+    id: 'unavsa-mail-merge',
+    title: 'UNAVSA Mail Merge',
+    image: '/assets/img/projects/unavsa-mail-merge.svg',
+    description:
+      'A Google Workspace add-on for personalized email campaigns and engagement analytics, built with CardService, Google Apps Script, Gmail, and Google Sheets.',
+    tags: ['JavaScript', 'Google Apps Script', 'Gmail API', 'Google Sheets'],
     published: true,
   },
   {

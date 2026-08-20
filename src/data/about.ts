@@ -3,11 +3,11 @@ export const aboutContent = {
   sectionTitle: 'Behind the Code',
   bio: [
     {
-      text: "I'm a passionate **Software Engineer** with over two years of professional experience, primarily at **Workday**. My expertise spans the full stack, mobile development, and the integration of Generative AI.",
+      text: "I'm a passionate **Software Engineer** with professional experience at **Workday** and as a technology leader for a 501(c)(3) non-profit. My expertise spans security tooling, CI/CD, full-stack and mobile development, and Generative AI.",
       highlights: ['Software Engineer', 'Workday'],
     },
     {
-      text: 'A **University of Michigan** alumnus with a B.S.E. in Computer Science, I excel at building scalable CI/CD pipelines and developing multi-platform applications that prioritize accessibility and performance.',
+      text: 'A **University of Michigan** alumnus with a B.S.E. in Computer Science, I build reliable software with React, TypeScript, Python, Java, Docker, Kubernetes, and cloud platforms.',
       highlights: ['University of Michigan'],
     },
     {
