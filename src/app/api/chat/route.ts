@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { type ChatTurn, isAIConfigured, streamChat } from '@/lib/gemini';
 import rateLimit from '@/lib/rate-limit';
+import { getClientIp, rejectDisallowedOrigin } from '@/lib/request-guard';
 
 // Use Node.js runtime (not Edge) for @google/genai compatibility.
 export const runtime = 'nodejs';
@@ -10,12 +11,6 @@ const MAX_MESSAGE_LENGTH = 1000;
 const MAX_HISTORY_TURNS = 20;
 const MAX_TURN_LENGTH = 2000;
 const MAX_TOTAL_HISTORY_CHARS = 20_000;
-
-const ALLOWED_ORIGINS = new Set([
-  'https://xosnos.com',
-  'https://www.xosnos.com',
-  ...(process.env.NODE_ENV !== 'production' ? ['http://localhost:3000'] : []),
-]);
 
 const limiter = rateLimit({
   interval: 60 * 1000,
@@ -37,28 +32,9 @@ const isValidTurn = (value: unknown): value is ChatTurn => {
   );
 };
 
-// Vercel appends the client IP to X-Forwarded-For, so the *last* value is the
-// hardest for a client to spoof. Fall back to x-real-ip and finally a constant.
-const getClientIp = (request: NextRequest): string => {
-  const xff = request.headers.get('x-forwarded-for') ?? '';
-  const last = xff
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean)
-    .pop();
-  return last || request.headers.get('x-real-ip') || '127.0.0.1';
-};
-
 export async function POST(request: NextRequest) {
-  // Reject cross-origin requests in production. Browsers always send Origin on
-  // the widget's POST fetch, so a missing or unlisted Origin is rejected to
-  // protect against runaway spend. localhost stays allowed only in development.
-  if (process.env.NODE_ENV === 'production') {
-    const origin = request.headers.get('origin');
-    if (!origin || !ALLOWED_ORIGINS.has(origin)) {
-      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
-    }
-  }
+  const originError = rejectDisallowedOrigin(request);
+  if (originError) return originError;
 
   // Per-IP rate limit (10/min) plus a coarse per-instance global cap (120/min)
   // to bound runaway spend if the IP token gets bypassed.

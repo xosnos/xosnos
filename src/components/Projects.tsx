@@ -3,9 +3,9 @@
 import { Code, ExternalLink, Github, Monitor, X } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import Image from 'next/image';
-import { useCallback, useId, useState } from 'react';
+import { useCallback, useId, useRef, useState } from 'react';
 import { listPublishedProjects, type ProjectItem } from '@/data/projects';
-import { useEscapeKey } from '@/hooks/useEscapeKey';
+import { useDialog } from '@/hooks/useDialog';
 import { fadeInUp, staggerContainer, viewportOnce } from '@/lib/animations';
 
 const projectItems = listPublishedProjects();
@@ -14,9 +14,10 @@ const Projects = () => {
   const [selectedItem, setSelectedItem] = useState<ProjectItem | null>(null);
   const reduceMotion = useReducedMotion();
   const titleId = useId();
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const closeModal = useCallback(() => setSelectedItem(null), []);
-  useEscapeKey(selectedItem !== null, closeModal);
+  useDialog(selectedItem !== null, closeModal, dialogRef);
 
   return (
     <section
@@ -114,9 +115,11 @@ const Projects = () => {
             onClick={closeModal}
           >
             <motion.div
+              ref={dialogRef}
               role="dialog"
               aria-modal="true"
               aria-labelledby={titleId}
+              tabIndex={-1}
               initial={reduceMotion ? false : { opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={reduceMotion ? undefined : { opacity: 0, scale: 0.95, y: 20 }}

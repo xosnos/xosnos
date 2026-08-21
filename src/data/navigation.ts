@@ -4,10 +4,9 @@ export interface NavItem {
 }
 
 export const navItems: NavItem[] = [
-  { section: 'projects', label: 'Projects' },
   { section: 'experience', label: 'Experience' },
-  { section: 'skills', label: 'Skills' },
-  { section: 'education', label: 'Education' },
+  { section: 'projects', label: 'Projects' },
   { section: 'about', label: 'About' },
+  { section: 'education', label: 'Education' },
   { section: 'contact', label: 'Contact' },
 ];

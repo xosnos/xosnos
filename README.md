@@ -40,7 +40,7 @@ const xosnos = () => {
 
 | Project | Stack | What it does |
 |---|---|---|
-| **[Terraces](https://www.terraces.ai/)** | Next.js, Supabase, AI | AI-native career agent: capture roles, tailor materials, score like an ATS, sync portfolio & analytics. |
+| **[Terraces](https://www.terraces.ai/)** | TanStack Start, Supabase, AI | AI-native career agent: capture roles, tailor materials, score like an ATS, sync portfolio & analytics. |
 | **[Architype](https://architype.xosnos.com)** | Next.js, React Flow, Supabase | Collaborative architecture canvas with AI design agents and downloadable technical specs. |
 | **[UVSA-Midwest App](https://app.uvsamidwest.org)** | React Native, Expo, Firebase | Cross-platform app for 31 universities — event registration and live coordination. |
 | **[Almond Travel](https://almond-travel.xosnos.com/)** | React, API Integration | Bundles flights, hotels, and attractions for U.S. tourists and immigrants. |

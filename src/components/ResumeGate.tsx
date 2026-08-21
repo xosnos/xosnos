@@ -3,7 +3,7 @@
 import { FileDown, Loader2, Mail, User, X } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
-import { useEscapeKey } from '@/hooks/useEscapeKey';
+import { useDialog } from '@/hooks/useDialog';
 
 interface ResumeGateProps {
   open: boolean;
@@ -23,6 +23,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
   const titleId = useId();
   const emailRef = useRef<HTMLInputElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const resetForm = () => {
     setEmail('');
@@ -47,7 +48,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
     onClose();
   }, [onClose]);
 
-  useEscapeKey(open, handleClose);
+  useDialog(open, handleClose, dialogRef);
 
   useEffect(() => {
     if (!open || success) return;
@@ -103,9 +104,11 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
           onClick={handleClose}
         >
           <motion.div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
+            tabIndex={-1}
             initial={reduceMotion ? false : { opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={reduceMotion ? undefined : { opacity: 0, scale: 0.95, y: 20 }}

@@ -4,7 +4,7 @@ import { educationItems } from '@/data/education';
 import { listPublishedExperiences } from '@/data/experience';
 import { heroContent } from '@/data/hero';
 import { listPublishedProjects } from '@/data/projects';
-import { domainKnowledge, listSkillCategories } from '@/data/skills';
+import { domainKnowledge, featuredSkills, listSkillCategories } from '@/data/skills';
 
 const formatBio = () =>
   aboutContent.bio.map((p) => p.text.replace(/\*\*/g, '')).join(' ');
@@ -76,9 +76,12 @@ SCOPE:
 - Never invent jobs, dates, employers, awards, or technologies that aren't listed below.
 
 ABOUT STEVEN:
-${heroContent.name} — ${heroContent.role}. Based in ${aboutContent.location}.
+${heroContent.name} — ${heroContent.role}. ${heroContent.focusLine}. Based in ${aboutContent.location}.
 ${formatBio()}
 Fun fact: ${aboutContent.funFact}.
+
+PRIMARY TOOLS:
+${featuredSkills.join(', ')}
 
 DOMAIN KNOWLEDGE:
 ${formatDomainKnowledge()}

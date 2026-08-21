@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import rateLimit from '@/lib/rate-limit';
+import { getClientIp, rejectDisallowedOrigin } from '@/lib/request-guard';
 import { createToken } from '@/lib/resume-token';
 
 const limiter = rateLimit({
@@ -9,6 +10,7 @@ const limiter = rateLimit({
 });
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_NAME_LENGTH = 120;
 
 function escapeHtml(str: string): string {
   return str
@@ -20,16 +22,26 @@ function escapeHtml(str: string): string {
 }
 
 export async function POST(request: NextRequest) {
-  const ip = request.headers.get('x-forwarded-for') ?? '127.0.0.1';
+  const originError = rejectDisallowedOrigin(request);
+  if (originError) return originError;
+
+  const ip = getClientIp(request);
   try {
+    await limiter.check(60, 'global');
     await limiter.check(5, ip);
   } catch {
     return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
   }
 
   try {
-    const body = await request.json();
-    const { email, name } = body as { email?: string; name?: string };
+    let body: { email?: unknown; name?: unknown };
+    try {
+      body = (await request.json()) as { email?: unknown; name?: unknown };
+    } catch {
+      return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+    }
+
+    const { email, name } = body;
 
     if (!email || typeof email !== 'string' || !EMAIL_REGEX.test(email.trim())) {
       return NextResponse.json(
@@ -38,7 +50,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const token = createToken(email.trim(), name?.trim(), ip);
+    if (
+      name !== undefined &&
+      (typeof name !== 'string' || name.trim().length > MAX_NAME_LENGTH)
+    ) {
+      return NextResponse.json({ error: 'Name is too long' }, { status: 400 });
+    }
+
+    const trimmedName =
+      typeof name === 'string' && name.trim().length > 0 ? name.trim() : undefined;
+    const token = createToken(email.trim(), trimmedName, ip);
     const baseUrl = request.headers.get('x-forwarded-proto')
       ? `${request.headers.get('x-forwarded-proto')}://${request.headers.get('host')}`
       : new URL(request.url).origin;
@@ -51,7 +72,7 @@ export async function POST(request: NextRequest) {
       subject: "Your Download Link for Steven Nguyen's Resume",
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 16px;">
-          <h2 style="margin: 0 0 16px; font-size: 20px; color: #111;">Thanks for your interest${name?.trim() ? `, ${escapeHtml(name.trim())}` : ''}!</h2>
+          <h2 style="margin: 0 0 16px; font-size: 20px; color: #111;">Thanks for your interest${trimmedName ? `, ${escapeHtml(trimmedName)}` : ''}!</h2>
           <p style="margin: 0 0 24px; color: #444; line-height: 1.6;">
             Click the button below to download my resume. This link expires in 24 hours.
           </p>

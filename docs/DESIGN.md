@@ -230,9 +230,11 @@ The site uses Tailwind CSS 4's default mobile-first minimum-width breakpoints. C
 
 ## Motion
 
-Motion provides page fades, one-time viewport reveals, staggered cards, and modal transitions. Viewport reveals start when 15% of an element enters the viewport. Most direct interactions finish within `300 ms`; hero background shapes and the title gradient repeat indefinitely.
+Motion is reserved for interactive islands: project and education card reveals, modal enter/exit, the mobile nav, and the AI assistant panel. Static sections render without JavaScript animation.
 
-The current implementation has no global `prefers-reduced-motion` override and does not use Motion's `useReducedMotion` hook. Treat this as an accessibility gap when adding or changing animation.
+Viewport reveals start when 15% of an element enters the viewport. Most direct interactions finish within `300 ms`. Hero atmosphere uses static CSS blurs instead of repeating scale animations.
+
+Components that animate call Motion's `useReducedMotion` hook and skip enter/exit motion when `prefers-reduced-motion: reduce` is set. CSS animations include `motion-reduce:animate-none` where they still exist. Treat new motion as an accessibility change: every repeating or entrance animation needs a reduced-motion path.
 
 ## Performance
 

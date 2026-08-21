@@ -24,16 +24,32 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: 'Steven Nguyen | Software Engineer',
+  metadataBase: new URL('https://www.xosnos.com'),
+  title: 'Steven Nguyen | Software Engineer II',
   description:
-    'Portfolio of Steven Nguyen, a software engineer specializing in full-stack web and mobile development. Exploring the intersection of code, design, and AI.',
+    'Portfolio of Steven Nguyen, Software Engineer II and co-founder of Terraces. Previously SDE II at Workday. Full-stack web, mobile, and AI-native systems.',
   openGraph: {
     type: 'website',
     siteName: 'Steven Nguyen',
     url: 'https://www.xosnos.com',
-    title: 'Steven Nguyen | Software Engineer',
+    title: 'Steven Nguyen | Software Engineer II',
     description:
-      'Full-stack Software Engineer & AI Enthusiast based in San Francisco Bay Area.',
+      'Software Engineer II and co-founder of Terraces. Previously SDE II at Workday. Based in the San Francisco Bay Area.',
+    images: [
+      {
+        url: '/assets/img/profile.jpg',
+        width: 1200,
+        height: 1200,
+        alt: 'Steven Nguyen',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Steven Nguyen | Software Engineer II',
+    description:
+      'Software Engineer II and co-founder of Terraces. Previously SDE II at Workday.',
+    images: ['/assets/img/profile.jpg'],
   },
   icons: {
     apple: '/assets/img/icon/apple-touch-icon.png',
@@ -70,7 +86,6 @@ export default function RootLayout({
         />
         <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
         <link rel="preconnect" href="https://i.scdn.co" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://img.shields.io" crossOrigin="anonymous" />
       </head>
       <body className={`${montserrat.variable} ${lato.variable} font-lato antialiased`}>
         <a

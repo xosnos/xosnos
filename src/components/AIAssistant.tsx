@@ -4,7 +4,7 @@ import { MessageCircle, Send, Sparkles, X } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { aiAssistantContent } from '@/data/ai-assistant';
-import { useEscapeKey } from '@/hooks/useEscapeKey';
+import { useDialog } from '@/hooks/useDialog';
 
 interface ChatMessage {
   role: 'user' | 'model';
@@ -41,6 +41,7 @@ const AIAssistant = ({ onOpenChange }: AIAssistantProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const closeAssistant = useCallback(() => {
     // Abort any in-flight stream so closing the panel doesn't leave hidden work
@@ -50,7 +51,7 @@ const AIAssistant = ({ onOpenChange }: AIAssistantProps) => {
     setIsOpen(false);
   }, []);
 
-  useEscapeKey(isOpen, closeAssistant);
+  useDialog(isOpen, closeAssistant, dialogRef);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -211,9 +212,11 @@ const AIAssistant = ({ onOpenChange }: AIAssistantProps) => {
         {isOpen && (
           <motion.div
             key="ai-panel"
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
+            tabIndex={-1}
             initial={reduceMotion ? false : { opacity: 0, y: 16, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={reduceMotion ? undefined : { opacity: 0, y: 12, scale: 0.98 }}

@@ -16,7 +16,7 @@ const projectItems: ProjectItem[] = [
     image: '/assets/img/projects/terraces.png',
     description:
       'An AI-native career progression platform that scans resumes, suggests role-specific edits, aligns portfolio projects, and generates interview-prep plans.',
-    tags: ['TypeScript', 'TanStack Start', 'Python', 'FastAPI', 'PostgreSQL', 'AI'],
+    tags: ['TypeScript', 'TanStack Start', 'Supabase', 'AI'],
     demoUrl: 'https://www.terraces.ai/',
     published: true,
   },

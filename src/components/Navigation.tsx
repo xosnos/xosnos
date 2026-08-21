@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import ResumeGate from '@/components/ResumeGate';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { navItems } from '@/data/navigation';
+import { RESUME_GATE_EVENT } from '@/lib/resume-gate-events';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,6 +17,12 @@ const Navigation = () => {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
+
+  useEffect(() => {
+    const onOpenResume = () => setIsResumeOpen(true);
+    window.addEventListener(RESUME_GATE_EVENT, onOpenResume);
+    return () => window.removeEventListener(RESUME_GATE_EVENT, onOpenResume);
+  }, []);
 
   // Derive display values when not on home to avoid setState in effect
   const displayScrolled = isHome ? isScrolled : true;

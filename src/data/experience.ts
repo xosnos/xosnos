@@ -1,3 +1,5 @@
+import { yearMonthSortValue } from '@/lib/dates';
+
 export type ExperienceType = 'work' | 'volunteer' | 'project';
 
 export interface ExperienceItem {
@@ -23,19 +25,25 @@ const experiences: ExperienceItem[] = [
     role: 'Co-Founder',
     type: 'work',
     location: 'San Francisco Bay Area',
-    startDate: '2025-4',
+    startDate: '2025-04',
     description: 'Building an AI-native career agent from 0 → 1.',
-    highlights: [],
+    highlights: [
+      'Shipped a 0-to-1 AI-native career agent that captures roles, tailors application materials, scores like an ATS, and generates interview-prep plans.',
+      'Built a TypeScript monorepo spanning web (TanStack Start), product API, browser extension, and Expo mobile on shared Supabase auth.',
+      'Designed passwordless authentication with cookie sessions on web and independent refresh-token lineages for extension and mobile clients.',
+      'Stood up local, preview, and production environment tiers with Terraform-managed Supabase Auth so the team can move from 0 → 1 without freezing the stack.',
+    ],
+    link: 'https://www.terraces.ai/',
     published: true,
   },
   {
     id: 'workday-sde-2',
     organization: 'Workday',
-    role: 'Software Engineer',
+    role: 'Software Development Engineer II',
     type: 'work',
     location: 'Pleasanton, CA, United States',
-    startDate: '2023-2',
-    endDate: '2025-3',
+    startDate: '2023-02',
+    endDate: '2025-03',
     description:
       'Security tooling, backend reliability, and multi-region delivery across AWS environments.',
     highlights: [
@@ -54,8 +62,8 @@ const experiences: ExperienceItem[] = [
     role: 'Software Engineer Intern',
     type: 'work',
     location: 'Pleasanton, CA, United States (Hybrid)',
-    startDate: '2022-5',
-    endDate: '2022-8',
+    startDate: '2022-05',
+    endDate: '2022-08',
     description: 'Internal tooling and performance improvements for platform validation.',
     highlights: [
       'Rebuilt a legacy Bash validator as a Python CLI, standardizing configuration checks across 20+ bare-metal servers.',
@@ -70,7 +78,7 @@ const experiences: ExperienceItem[] = [
     organization: 'UVSA-Midwest',
     role: 'Chairperson',
     type: 'volunteer',
-    startDate: '2025-4',
+    startDate: '2025-04',
     description: 'Leading a 501(c)(3) non-profit serving 31 universities.',
     highlights: [
       'Led the Board of Directors for a 501(c)(3) non-profit, driving strategic initiatives and productive decision-making.',
@@ -87,7 +95,7 @@ const experiences: ExperienceItem[] = [
     type: 'volunteer',
     location: 'Remote',
     startDate: '2022-10',
-    endDate: '2026-5',
+    endDate: '2026-05',
     description:
       'Led technology for a 501(c)(3) non-profit serving 1,500+ members across 31 universities.',
     highlights: [
@@ -105,8 +113,8 @@ const experiences: ExperienceItem[] = [
     organization: 'UVSA-Midwest',
     role: 'Technology Co-Chair',
     type: 'volunteer',
-    startDate: '2023-2',
-    endDate: '2024-4',
+    startDate: '2023-02',
+    endDate: '2024-04',
     description: 'Shipped a 0 → 1 cross-platform mobile application.',
     highlights: [
       'Shipped a 0 → 1 cross-platform React Native application, improving event registrations for over 1,500 constituents.',
@@ -121,8 +129,8 @@ const experiences: ExperienceItem[] = [
     organization: 'UNAVSA',
     role: 'Registration Director',
     type: 'volunteer',
-    startDate: '2024-9',
-    endDate: '2025-8',
+    startDate: '2024-09',
+    endDate: '2025-08',
     description: 'End-to-end conference registration operations and platform migration.',
     highlights: [
       'Managed end-to-end conference registration operations, ensuring efficient workflows and achieving full capacity.',
@@ -136,8 +144,8 @@ const experiences: ExperienceItem[] = [
     organization: 'CodePath',
     role: 'Technical Interview Prep Mentor',
     type: 'volunteer',
-    startDate: '2022-5',
-    endDate: '2024-8',
+    startDate: '2022-05',
+    endDate: '2024-08',
     description:
       'Mentoring students in algorithmic problem-solving and interview preparation.',
     highlights: [
@@ -153,5 +161,5 @@ const experiences: ExperienceItem[] = [
 export function listPublishedExperiences(): ExperienceItem[] {
   return experiences
     .filter((exp) => exp.published !== false)
-    .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
+    .sort((a, b) => yearMonthSortValue(b.startDate) - yearMonthSortValue(a.startDate));
 }

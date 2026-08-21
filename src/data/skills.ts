@@ -18,6 +18,22 @@ export const domainKnowledge = [
   'Cybersecurity',
 ] as const;
 
+/** Curated tools shown on the site. The full badge list stays on the GitHub README. */
+export const featuredSkills = [
+  'TypeScript',
+  'Python',
+  'Java',
+  'React',
+  'Next.js',
+  'React Native',
+  'Node.js',
+  'Supabase',
+  'PostgreSQL',
+  'Docker',
+  'Kubernetes',
+  'AWS',
+] as const;
+
 export const skillCategories: SkillCategory[] = [
   {
     title: '⌨️ Languages',
@@ -312,4 +328,8 @@ export const skillCategories: SkillCategory[] = [
 
 export function listSkillCategories(): SkillCategory[] {
   return skillCategories;
+}
+
+export function listFeaturedSkills(): readonly string[] {
+  return featuredSkills;
 }

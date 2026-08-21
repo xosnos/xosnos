@@ -17,9 +17,9 @@ Start with the module that owns the content you want to change:
 | `hero.ts` | Name, role, call to action, and profile image |
 | `navigation.ts` | Section navigation labels and targets |
 | `projects.ts` | Project descriptions, links, images, and tags |
-| `skills.ts` | Domain knowledge and skill badges |
+| `skills.ts` | Domain knowledge, featured site tools, and GitHub README badges |
 
-`heroContent.tagline` is retained in the data file but is not rendered. Edit the paragraph in [`src/components/Hero.tsx`](../src/components/Hero.tsx) to change the current hero tagline.
+`heroContent.tagline` is rendered in the hero. `primaryCtaHref` and `secondaryCtaLabel` control the two hero actions (contact and resume gate).
 
 ## Add a project
 
@@ -31,7 +31,7 @@ Add an entry to `experiences` in [`src/data/experience.ts`](../src/data/experien
 
 ## Update skills
 
-Edit [`src/data/skills.ts`](../src/data/skills.ts), then synchronize the GitHub profile README:
+Edit [`src/data/skills.ts`](../src/data/skills.ts). `featuredSkills` is the short list shown on the website. `skillCategories` is the long badge list synced to the GitHub profile README:
 
 ```bash
 bun run sync:readme-skills

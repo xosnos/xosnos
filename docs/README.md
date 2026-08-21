@@ -9,7 +9,7 @@ The website combines typed portfolio content with optional server integrations:
 - **AI assistant**: floating Google Gemini chat that streams answers about Steven's experience, projects, and skills through `/api/chat`
 - **Projects and education**: cards with interactive detail modals
 - **Experience**: work and volunteer history with publication filtering
-- **Skills**: badge grid sourced from [`src/data/skills.ts`](../src/data/skills.ts) and synced to the GitHub profile README
+- **Skills**: curated 12-tool strip plus domain chips on the site; the full badge list is sourced from [`src/data/skills.ts`](../src/data/skills.ts) and synced to the GitHub profile README
 - **Resume gate**: expiring, token-based download links sent through Resend, with the PDF stored in Google Drive and access logged to Google Sheets
 - **Contact link**: opens the visitor's email client through a `mailto:` URL
 - **Motion and theming**: page, section, and modal animations with a system-aware light and dark theme
