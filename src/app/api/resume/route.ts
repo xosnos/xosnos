@@ -27,7 +27,6 @@ export async function POST(request: NextRequest) {
 
   const ip = getClientIp(request);
   try {
-    await limiter.check(60, 'global');
     await limiter.check(5, ip);
   } catch {
     return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
@@ -55,6 +54,14 @@ export async function POST(request: NextRequest) {
       (typeof name !== 'string' || name.trim().length > MAX_NAME_LENGTH)
     ) {
       return NextResponse.json({ error: 'Name is too long' }, { status: 400 });
+    }
+
+    // Charge the shared send budget only after the request is valid so
+    // invalid traffic cannot exhaust resume delivery for other visitors.
+    try {
+      await limiter.check(60, 'global');
+    } catch {
+      return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
     }
 
     const trimmedName =
