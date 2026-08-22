@@ -44,6 +44,7 @@ test('Escape closes only the topmost stacked dialog', async ({ page }) => {
   await page.keyboard.press('Escape');
   await expect(project).toHaveCount(0);
   await expect(assistant).toBeVisible();
+  await expect(assistant).toBeFocused();
 
   await page.keyboard.press('Escape');
   await expect(assistant).toHaveCount(0);

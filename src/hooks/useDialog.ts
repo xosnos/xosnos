@@ -148,7 +148,12 @@ export function useDialog(
       cancelAnimationFrame(raf);
       popDialog(id);
       unlockBodyScroll();
-      previousFocus?.focus({ preventScroll: true });
+      const remaining = dialogStack.at(-1)?.containerRef.current;
+      if (remaining) {
+        remaining.focus({ preventScroll: true });
+      } else {
+        previousFocus?.focus({ preventScroll: true });
+      }
     };
   }, [active, containerRef]);
 }
