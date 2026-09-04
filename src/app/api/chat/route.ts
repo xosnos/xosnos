@@ -3,7 +3,8 @@ import { type ChatTurn, isAIConfigured, streamChat } from '@/lib/gemini';
 import rateLimit from '@/lib/rate-limit';
 import { getClientIp, rejectDisallowedOrigin } from '@/lib/request-guard';
 
-// Use Node.js runtime (not Edge) for @google/genai compatibility.
+// Use Node.js runtime (not Edge) for the in-memory rate limiter and
+// @google/genai compatibility.
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 

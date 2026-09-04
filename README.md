@@ -1,12 +1,4 @@
-# Steven Nguyen
-
-**Full-stack engineer, 0→1 builder, and accessibility advocate.**
-
-Previously **SDE II at Workday** (2022–2025), shipping CI/CD infrastructure and security patches across multi-region platforms. Now co-founding **[Terraces](https://www.terraces.ai/)**, an AI-native career agent — because the best way to understand a problem is to build the solution.
-
-> 👨🏻‍💻 Check out my portfolio: [xosnos.com](https://www.xosnos.com) — with an AI assistant built right in.
-
----
+# 👋🏻 Hello ~~World~~ Universe! I'm [Steven Nguyen](https://www.xosnos.com)
 
 ## 👦🏻 About Me
 
@@ -20,29 +12,25 @@ const xosnos = () => {
 }
 ```
 
-🚀 **Co-founding Terraces** — building an AI-native career agent from 0 → 1.
+🚀 **Building [Terraces](https://www.terraces.ai/)** — an AI-native career progression platform.
 
-🔭 **Previously at Workday** — SDE II, architecting CI/CD pipelines, patching CVEs, and shipping multi-region microservice rollouts.
+🔭 **Previously a Software Engineer at Workday** — developed full-stack security tooling and optimizing CI/CD pipelines, patched CVEs, and shipped multi-region microservice rollouts.
 
 🌱 **Passionate about** AI-Native applications, accessible design, and sustainable tech.
 
-👯 **Open to** founding engineer, senior full-stack, and platform engineering roles.
+♿️ **Committed to** AI Accessibility and Inclusive Technology.
+
+👯 **Open to** Forward Deployed Engineer and Full-Stack Software Engineer roles.
 
 🤝 **Let's connect** on [LinkedIn](https://linkedin.com/in/xosnos).
 
-♿️ **Committed to** AI Accessibility and Inclusive Technology.
-
-✍🏻 **I write about** my experiences on [Medium](https://medium.com/@xosnos).
-
----
-
-## 🚀 What I'm Building
+## 🚀 Highlighted Projects
 
 | Project | Stack | What it does |
-|---|---|---|
+| --- | --- | --- |
 | **[Terraces](https://www.terraces.ai/)** | TanStack Start, Supabase, AI | AI-native career agent: capture roles, tailor materials, score like an ATS, sync portfolio & analytics. |
 | **[Architype](https://architype.xosnos.com)** | Next.js, React Flow, Supabase | Collaborative architecture canvas with AI design agents and downloadable technical specs. |
-| **[UVSA-Midwest App](https://app.uvsamidwest.org)** | React Native, Expo, Firebase | Cross-platform app for 31 universities — event registration and live coordination. |
+| **[UVSA-Midwest App](https://app.uvsamidwest.org)** | React Native, Expo, Firebase | Cross-platform app for serving 31 universities; event registration and live coordination. |
 | **[Almond Travel](https://almond-travel.xosnos.com/)** | React, API Integration | Bundles flights, hotels, and attractions for U.S. tourists and immigrants. |
 | **[jammming](https://jammming.xosnos.com/)** | React, Spotify API | Instant playlist builder synced directly to Spotify. |
 
@@ -51,11 +39,11 @@ const xosnos = () => {
 ## 📚 Domain Knowledge
 
 <!-- skills:domain-knowledge:begin -->
-- Full-Stack Web Development
-- Mobile App Development
+- Full-Stack Web & Mobile Development
 - DevOps & Infrastructure
 - Distributed Systems
-- Cybersecurity
+- Cybersecurity & Information Security
+- Agentic Engineering
 <!-- skills:domain-knowledge:end -->
 
 <!-- skills:badges:begin -->
@@ -152,15 +140,6 @@ const xosnos = () => {
 https://www.codecademy.com/profiles/xosnos
 https://www.hackerrank.com/xosnos
 https://leetcode.com/xosnos/
-https://twitter.com/xosnos
-https://www.instagram.com/xosnos/
+https://x.com/xosnos
 https://www.twitch.tv/xosnos
-https://open.spotify.com/user/12528730
-https://www.pinterest.com/xosnos_/ -->
-
-<!--
-Credits
-https://rahuldkjain.github.io/gh-profile-readme-generator/
-https://gprm.itsvg.in/
-https://ileriayo.github.io/markdown-badges/
 -->

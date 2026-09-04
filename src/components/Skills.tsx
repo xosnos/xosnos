@@ -3,7 +3,6 @@ import { domainKnowledge, listFeaturedSkills } from '@/data/skills';
 
 const Skills = () => {
   const featuredSkills = listFeaturedSkills();
-
   return (
     <section
       id="skills"

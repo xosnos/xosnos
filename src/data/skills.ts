@@ -11,14 +11,14 @@ export interface SkillCategory {
 const badge = (alt: string, src: string): SkillBadge => ({ alt, src });
 
 export const domainKnowledge = [
-  'Full-Stack Web Development',
-  'Mobile App Development',
+  'Full-Stack Web & Mobile Development',
   'DevOps & Infrastructure',
   'Distributed Systems',
-  'Cybersecurity',
+  'Cybersecurity & Information Security',
+  'Agentic Engineering',
 ] as const;
 
-/** Curated tools shown on the site. The full badge list stays on the GitHub README. */
+/** Curated tools used in summaries and AI context. */
 export const featuredSkills = [
   'TypeScript',
   'Python',

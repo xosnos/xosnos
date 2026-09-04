@@ -1,9 +1,11 @@
 'use client';
 
-import { Code, ExternalLink, Github, Monitor, X } from 'lucide-react';
+import { Code, ExternalLink, Monitor, X } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import Image from 'next/image';
 import { useCallback, useId, useRef, useState } from 'react';
+import BrandIcon from '@/components/BrandIcon';
+import { brandIcons } from '@/components/brandIcons';
 import { listPublishedProjects, type ProjectItem } from '@/data/projects';
 import { useDialog } from '@/hooks/useDialog';
 import { fadeInUp, staggerContainer, viewportOnce } from '@/lib/animations';
@@ -188,7 +190,11 @@ const Projects = () => {
                           className="px-8 py-4 rounded-full font-montserrat font-bold uppercase text-sm tracking-widest bg-muted text-foreground hover:bg-border transition-[background-color] flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                         >
                           Source Code
-                          <Github className="w-4 h-4" aria-hidden="true" />
+                          <BrandIcon
+                            icon={brandIcons.github}
+                            title=""
+                            className="w-4 h-4"
+                          />
                         </a>
                       )}
                     </div>

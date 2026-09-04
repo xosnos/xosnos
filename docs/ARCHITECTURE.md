@@ -27,7 +27,7 @@ The source tree separates routes, presentation, content, and shared application 
 | `src/app/` | App Router entry points, layout, and API routes |
 | `src/components/` | UI section and widget components |
 | `src/data/` | Typed content separated from presentation |
-| `src/lib/` | Apple Music, Spotify, Gemini, rate limiting, resume tokens, and shared utilities |
+| `src/lib/` | Shared utilities for Apple Music, Spotify, Gemini, rate limiting, and resume tokens |
 | `src/hooks/` | Reusable React hooks |
 | `public/` | Images, icons, and the web manifest |
 | `e2e/` | Playwright end-to-end tests |
