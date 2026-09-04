@@ -39,7 +39,7 @@ const xosnos = () => {
 ## 🚀 What I'm Building
 
 | Project | Stack | What it does |
-|---|---|---|
+| --- | --- | --- |
 | **[Terraces](https://www.terraces.ai/)** | TanStack Start, Supabase, AI | AI-native career agent: capture roles, tailor materials, score like an ATS, sync portfolio & analytics. |
 | **[Architype](https://architype.xosnos.com)** | Next.js, React Flow, Supabase | Collaborative architecture canvas with AI design agents and downloadable technical specs. |
 | **[UVSA-Midwest App](https://app.uvsamidwest.org)** | React Native, Expo, Firebase | Cross-platform app for 31 universities — event registration and live coordination. |
@@ -51,11 +51,11 @@ const xosnos = () => {
 ## 📚 Domain Knowledge
 
 <!-- skills:domain-knowledge:begin -->
-- Full-Stack Web Development
-- Mobile App Development
+- Full-Stack Web & Mobile Development
 - DevOps & Infrastructure
 - Distributed Systems
-- Cybersecurity
+- Cybersecurity & Information Security
+- Agentic Engineering
 <!-- skills:domain-knowledge:end -->
 
 <!-- skills:badges:begin -->
