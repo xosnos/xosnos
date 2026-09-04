@@ -66,7 +66,7 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHome, isScrolled, activeSection, pathname]);
 
-  const navClasses = `fixed w-full top-0 z-50 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 ${
+  const navClasses = `fixed w-full top-0 z-50 transition-all duration-300 ${
     displayScrolled
       ? 'bg-background/80 backdrop-blur-md shadow-sm border-b border-border'
       : 'bg-transparent'
@@ -94,7 +94,7 @@ const Navigation = () => {
                     <Link
                       key={item.section}
                       href={href}
-                      className={`font-montserrat font-bold uppercase text-sm tracking-wider py-2 px-4 rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                      className={`font-montserrat font-bold uppercase text-sm tracking-wider py-2 px-4 rounded-md transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                         isActive
                           ? 'text-accent'
                           : 'text-muted-foreground hover:text-foreground'
@@ -107,7 +107,7 @@ const Navigation = () => {
                 <button
                   type="button"
                   onClick={() => setIsResumeOpen(true)}
-                  className="inline-flex items-center gap-1.5 font-montserrat font-bold uppercase text-sm tracking-wider py-2 px-4 rounded-md transition-colors duration-200 text-accent hover:text-accent/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="inline-flex items-center gap-1.5 font-montserrat font-bold uppercase text-sm tracking-wider py-2 px-4 rounded-md transition-all duration-200 text-accent hover:text-accent/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <FileDown className="w-4 h-4" aria-hidden="true" />
                   Resume

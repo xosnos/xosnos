@@ -34,12 +34,12 @@ export function ThemeToggle() {
     >
       {isDark ? (
         <Moon
-          className="h-[1.2rem] w-[1.2rem] transition-[opacity,transform]"
+          className="h-[1.2rem] w-[1.2rem] transition-all duration-300"
           aria-hidden="true"
         />
       ) : (
         <Sun
-          className="h-[1.2rem] w-[1.2rem] transition-[opacity,transform]"
+          className="h-[1.2rem] w-[1.2rem] transition-all duration-300"
           aria-hidden="true"
         />
       )}

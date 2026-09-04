@@ -46,7 +46,7 @@ const Footer = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-muted border border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent hover:scale-110 hover:-translate-y-1 transition-[transform,background-color,color,border-color] duration-300 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="p-3 rounded-full bg-muted border border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent hover:scale-110 hover:-translate-y-1 transition-all duration-300 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   aria-label={link.label}
                 >
                   {iconMap[link.icon]}
@@ -102,7 +102,7 @@ const Footer = () => {
           >
             Back to top
             <ArrowUp
-              className="w-4 h-4 group-hover:-translate-y-1 transition-transform"
+              className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300"
               aria-hidden="true"
             />
           </a>

@@ -29,13 +29,13 @@ const Contact = () => {
           <div className="flex flex-col items-center gap-8">
             <a
               href={`mailto:${contactContent.email}`}
-              className="group relative inline-flex items-center gap-4 px-10 py-6 rounded-full bg-accent text-accent-foreground font-montserrat font-extrabold text-lg uppercase tracking-widest shadow-2xl shadow-accent/40 hover:scale-105 hover:brightness-110 transition-[transform,filter] duration-300 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="group relative inline-flex items-center gap-4 px-10 py-6 rounded-full bg-accent text-accent-foreground font-montserrat font-extrabold text-lg uppercase tracking-widest shadow-2xl shadow-accent/40 hover:scale-105 hover:brightness-110 transition-all duration-300 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               <Mail className="w-6 h-6" aria-hidden="true" />
               <span>{contactContent.ctaLabel}</span>
               <ArrowRight
-                className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
                 aria-hidden="true"
               />
             </a>

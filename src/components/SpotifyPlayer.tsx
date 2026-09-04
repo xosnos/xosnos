@@ -164,7 +164,7 @@ export default function SpotifyPlayer() {
   }
 
   return (
-    <div className="group bg-card/40 backdrop-blur-xl rounded-3xl p-6 max-w-md mx-auto border border-border/50 shadow-2xl transition-[border-color,background-color] duration-500 hover:border-accent/30 hover:bg-card/60">
+    <div className="group bg-card/40 backdrop-blur-xl rounded-3xl p-6 max-w-md mx-auto border border-border/50 shadow-2xl transition-all duration-500 hover:border-accent/30 hover:bg-card/60">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <Volume2
@@ -241,7 +241,7 @@ export default function SpotifyPlayer() {
           <button
             type="button"
             onClick={togglePlayback}
-            className="shrink-0 bg-accent hover:scale-110 active:scale-95 text-accent-foreground rounded-full p-4 transition-[transform] shadow-lg shadow-accent/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="shrink-0 bg-accent hover:scale-110 active:scale-95 text-accent-foreground rounded-full p-4 transition-all duration-300 shadow-lg shadow-accent/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             aria-label={isPlaying ? 'Pause' : 'Play preview'}
           >
             {isPlaying ? (
@@ -264,7 +264,7 @@ export default function SpotifyPlayer() {
             aria-label="Preview progress"
           >
             <div
-              className="bg-accent h-1 rounded-full transition-[width] duration-300 shadow-[0_0_8px_rgba(56,189,248,0.5)]"
+              className="bg-accent h-1 rounded-full transition-all duration-300 shadow-[0_0_8px_rgba(56,189,248,0.5)]"
               style={{ width: `${progress}%` }}
             />
           </div>

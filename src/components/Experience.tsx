@@ -35,7 +35,7 @@ const Experience = () => {
             {items.map((item) => (
               <div
                 key={item.id}
-                className="group bg-background rounded-3xl border border-border/50 p-8 md:p-10 shadow-sm transition-[box-shadow,border-color,transform] duration-300 hover:shadow-2xl hover:border-accent/20 hover:-translate-y-1"
+                className="group bg-background rounded-3xl border border-border/50 p-8 md:p-10 shadow-sm transition-all duration-300 hover:shadow-2xl hover:border-accent/20 hover:-translate-y-1"
               >
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
                   <div className="space-y-2 min-w-0">
@@ -97,14 +97,17 @@ const Experience = () => {
                     <div className="pt-4 border-t border-border/50">
                       <a
                         href={item.link}
-                        className="inline-flex items-center gap-2 text-xs font-montserrat font-bold uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md"
+                        className="group/link inline-flex items-center gap-2 text-xs font-montserrat font-bold uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         {item.organization === 'Terraces'
                           ? 'Product site'
                           : 'Company Website'}
-                        <ChevronRight className="w-3 h-3" aria-hidden="true" />
+                        <ChevronRight
+                          className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform duration-300"
+                          aria-hidden="true"
+                        />
                       </a>
                     </div>
                   )}

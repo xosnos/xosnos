@@ -11,7 +11,7 @@ interface ResumeGateProps {
 }
 
 const inputFocusClass =
-  'w-full pl-10 pr-4 py-3 rounded-full bg-background border border-border text-foreground text-sm font-montserrat placeholder:text-muted-foreground/50 outline-none transition-[border-color,box-shadow] focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/20';
+  'w-full pl-10 pr-4 py-3 rounded-full bg-background border border-border text-foreground text-sm font-montserrat placeholder:text-muted-foreground/50 outline-none transition-all duration-200 focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/20';
 
 export default function ResumeGate({ open, onClose }: ResumeGateProps) {
   const [email, setEmail] = useState('');
@@ -215,7 +215,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-accent text-accent-foreground font-montserrat font-extrabold text-sm uppercase tracking-widest shadow-lg shadow-accent/20 hover:scale-105 hover:brightness-110 transition-[transform,filter,opacity] duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-accent text-accent-foreground font-montserrat font-extrabold text-sm uppercase tracking-widest shadow-lg shadow-accent/20 hover:scale-105 hover:brightness-110 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   {loading ? (
                     <>

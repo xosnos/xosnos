@@ -65,7 +65,7 @@ const Projects = () => {
                 className="group cursor-pointer space-y-4 w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-2xl"
                 onClick={() => setSelectedItem(item)}
               >
-                <div className="relative overflow-hidden rounded-2xl border border-border/50 shadow-sm transition-[box-shadow,border-color,transform] duration-500 group-hover:shadow-2xl group-hover:border-accent/30 group-hover:-translate-y-2">
+                <div className="relative overflow-hidden rounded-2xl border border-border/50 shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:border-accent/30 group-hover:-translate-y-2">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -176,7 +176,7 @@ const Projects = () => {
                           href={selectedItem.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-8 py-4 rounded-full font-montserrat font-bold uppercase text-sm tracking-widest bg-accent text-accent-foreground hover:brightness-110 shadow-lg shadow-accent/20 transition-[filter] flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                          className="px-8 py-4 rounded-full font-montserrat font-bold uppercase text-sm tracking-widest bg-accent text-accent-foreground hover:brightness-110 shadow-lg shadow-accent/20 transition-all duration-300 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                         >
                           Launch App
                           <ExternalLink className="w-4 h-4" aria-hidden="true" />
@@ -187,7 +187,7 @@ const Projects = () => {
                           href={selectedItem.repoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-8 py-4 rounded-full font-montserrat font-bold uppercase text-sm tracking-widest bg-muted text-foreground hover:bg-border transition-[background-color] flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                          className="px-8 py-4 rounded-full font-montserrat font-bold uppercase text-sm tracking-widest bg-muted text-foreground hover:bg-border transition-all duration-300 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                         >
                           Source Code
                           <BrandIcon

@@ -29,7 +29,7 @@ const Skills = () => {
             >
               Full list on GitHub
               <ExternalLink
-                className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300"
                 aria-hidden="true"
               />
             </a>
@@ -40,7 +40,7 @@ const Skills = () => {
               {featuredSkills.map((skill) => (
                 <li
                   key={skill}
-                  className="px-3 py-1.5 rounded-full bg-card border border-border text-sm font-montserrat font-semibold text-foreground"
+                  className="px-3 py-1.5 rounded-full bg-card border border-border text-sm font-montserrat font-semibold text-foreground hover:scale-105 hover:border-accent/30 transition-all duration-300 cursor-default"
                 >
                   {skill}
                 </li>
@@ -50,7 +50,7 @@ const Skills = () => {
               {domainKnowledge.map((domain) => (
                 <li
                   key={domain}
-                  className="px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-xs font-montserrat font-bold uppercase tracking-widest text-accent"
+                  className="px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-xs font-montserrat font-bold uppercase tracking-widest text-accent hover:scale-105 hover:bg-accent/20 transition-all duration-300 cursor-default"
                 >
                   {domain}
                 </li>

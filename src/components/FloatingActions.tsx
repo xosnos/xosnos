@@ -25,7 +25,7 @@ const FloatingActions = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.85 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="lg:hidden w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border flex items-center justify-center shadow-2xl text-accent hover:scale-110 active:scale-95 transition-[transform] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="lg:hidden w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border flex items-center justify-center shadow-2xl text-accent hover:scale-110 active:scale-95 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             aria-label="Scroll to top"
           >
             <ArrowUp className="w-5 h-5" aria-hidden="true" />

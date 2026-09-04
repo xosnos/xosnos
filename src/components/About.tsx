@@ -47,7 +47,7 @@ const About = () => {
                   alt="Steven Nguyen"
                   width={600}
                   height={600}
-                  className="w-full h-auto object-cover grayscale-[0.2] group-hover:grayscale-0 transition-[filter,transform] duration-700 hover:scale-105"
+                  className="w-full h-auto object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
                   loading="lazy"
                 />
               </div>

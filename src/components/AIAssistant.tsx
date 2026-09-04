@@ -315,7 +315,7 @@ const AIAssistant = ({ onOpenChange }: AIAssistantProps) => {
                         key={prompt}
                         type="button"
                         onClick={() => sendMessage(prompt)}
-                        className="text-xs px-3 py-1.5 rounded-full border border-border bg-card hover:bg-muted hover:border-accent/40 text-foreground transition-[background-color,border-color] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        className="text-xs px-3 py-1.5 rounded-full border border-border bg-card hover:bg-muted hover:border-accent/40 text-foreground transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       >
                         {prompt}
                       </button>
@@ -351,14 +351,14 @@ const AIAssistant = ({ onOpenChange }: AIAssistantProps) => {
                   onKeyDown={handleKeyDown}
                   placeholder={aiAssistantContent.placeholder}
                   maxLength={1000}
-                  className="flex-1 min-w-0 bg-background border border-border focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/20 rounded-full px-4 py-2.5 text-sm outline-none transition-[border-color,box-shadow] placeholder:text-muted-foreground text-foreground"
+                  className="flex-1 min-w-0 bg-background border border-border focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/20 rounded-full px-4 py-2.5 text-sm outline-none transition-all duration-200 placeholder:text-muted-foreground text-foreground"
                 />
                 <button
                   type="button"
                   onClick={handleSend}
                   disabled={!inputValue.trim() || isThinking}
                   aria-label="Send message"
-                  className="bg-accent text-accent-foreground w-10 h-10 flex items-center justify-center rounded-full transition-[filter,opacity] hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="bg-accent text-accent-foreground w-10 h-10 flex items-center justify-center rounded-full transition-all duration-200 hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <Send className="w-4 h-4" aria-hidden="true" />
                 </button>
@@ -379,7 +379,7 @@ const AIAssistant = ({ onOpenChange }: AIAssistantProps) => {
         }
         aria-expanded={isOpen}
         aria-haspopup="dialog"
-        className="bg-accent text-accent-foreground w-14 h-14 flex items-center justify-center rounded-full shadow-xl shadow-accent/30 hover:scale-105 hover:brightness-110 transition-[transform,filter] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        className="bg-accent text-accent-foreground w-14 h-14 flex items-center justify-center rounded-full shadow-xl shadow-accent/30 hover:scale-105 hover:brightness-110 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       >
         {isOpen ? (
           <X className="w-6 h-6" aria-hidden="true" />

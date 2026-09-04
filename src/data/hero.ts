@@ -1,6 +1,6 @@
 export const heroContent = {
   name: 'Steven Nguyen',
-  role: 'Software Engineer II',
+  role: 'Software Engineer',
   focusLine: 'Co-founding Terraces · previously Workday',
   tagline:
     'I ship **end-to-end** — from infrastructure to interface — and obsess over the people who use what I build.',

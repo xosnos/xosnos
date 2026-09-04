@@ -39,7 +39,7 @@ const experiences: ExperienceItem[] = [
   {
     id: 'workday-sde-2',
     organization: 'Workday',
-    role: 'Software Development Engineer II',
+    role: 'Software Engineer II',
     type: 'work',
     location: 'Pleasanton, CA, United States',
     startDate: '2023-02',

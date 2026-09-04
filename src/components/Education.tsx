@@ -60,7 +60,7 @@ const Education = () => {
             <motion.div key={item.id} variants={fadeInUp}>
               <button
                 type="button"
-                className="group relative cursor-pointer space-y-4 overflow-hidden rounded-3xl border border-border bg-card p-1 shadow-sm transition-[box-shadow,border-color,transform] duration-300 hover:shadow-2xl hover:border-accent/30 hover:-translate-y-1 w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="group relative cursor-pointer space-y-4 overflow-hidden rounded-3xl border border-border bg-card p-1 shadow-sm transition-all duration-300 hover:shadow-2xl hover:border-accent/30 hover:-translate-y-1 w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 onClick={() => setSelectedItem(item)}
               >
                 <div className="relative h-[300px] overflow-hidden rounded-2xl">
@@ -80,7 +80,7 @@ const Education = () => {
                     <h3 className="text-2xl md:text-3xl font-montserrat font-extrabold text-foreground text-balance">
                       {item.shortName}
                     </h3>
-                    <div className="flex items-center gap-2 text-accent text-xs font-montserrat font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-[opacity,transform] transform group-hover:translate-x-0 -translate-x-2.5">
+                    <div className="flex items-center gap-2 text-accent text-xs font-montserrat font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0 -translate-x-2.5">
                       View Details <ChevronRight className="w-4 h-4" aria-hidden="true" />
                     </div>
                   </div>
