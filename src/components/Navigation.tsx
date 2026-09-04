@@ -1,13 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Menu, X, FileDown } from 'lucide-react';
+import { FileDown, Menu, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'motion/react';
-import { navItems } from '@/data/navigation';
-import { ThemeToggle } from '@/components/theme-toggle';
+import { useEffect, useState } from 'react';
 import ResumeGate from '@/components/ResumeGate';
+import { ThemeToggle } from '@/components/theme-toggle';
+import { navItems } from '@/data/navigation';
+import { RESUME_GATE_EVENT } from '@/lib/resume-gate-events';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,6 +17,12 @@ const Navigation = () => {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
+
+  useEffect(() => {
+    const onOpenResume = () => setIsResumeOpen(true);
+    window.addEventListener(RESUME_GATE_EVENT, onOpenResume);
+    return () => window.removeEventListener(RESUME_GATE_EVENT, onOpenResume);
+  }, []);
 
   // Derive display values when not on home to avoid setState in effect
   const displayScrolled = isHome ? isScrolled : true;
@@ -59,7 +66,7 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHome, isScrolled, activeSection, pathname]);
 
-  const navClasses = `fixed w-full top-0 z-50 transition-all duration-300 ${
+  const navClasses = `fixed w-full top-0 z-50 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 ${
     displayScrolled
       ? 'bg-background/80 backdrop-blur-md shadow-sm border-b border-border'
       : 'bg-transparent'
@@ -67,15 +74,15 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={navClasses}>
+      <nav className={navClasses} aria-label="Primary">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <Link
               href="/"
-              className="text-foreground font-montserrat font-bold text-xl uppercase tracking-wider transition-colors hover:text-accent"
+              className="text-foreground font-montserrat font-bold text-xl uppercase tracking-wider transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md"
               onClick={() => isMenuOpen && setIsMenuOpen(false)}
             >
-              @xosnos
+              <span translate="no">@xosnos</span>
             </Link>
 
             <div className="flex items-center space-x-4">
@@ -87,7 +94,7 @@ const Navigation = () => {
                     <Link
                       key={item.section}
                       href={href}
-                      className={`font-montserrat font-bold uppercase text-sm tracking-wider py-2 px-4 rounded-md transition-all duration-200 ${
+                      className={`font-montserrat font-bold uppercase text-sm tracking-wider py-2 px-4 rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                         isActive
                           ? 'text-accent'
                           : 'text-muted-foreground hover:text-foreground'
@@ -98,10 +105,11 @@ const Navigation = () => {
                   );
                 })}
                 <button
+                  type="button"
                   onClick={() => setIsResumeOpen(true)}
-                  className="inline-flex items-center gap-1.5 font-montserrat font-bold uppercase text-sm tracking-wider py-2 px-4 rounded-md transition-all duration-200 text-accent hover:text-accent/80"
+                  className="inline-flex items-center gap-1.5 font-montserrat font-bold uppercase text-sm tracking-wider py-2 px-4 rounded-md transition-colors duration-200 text-accent hover:text-accent/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <FileDown className="w-4 h-4" />
+                  <FileDown className="w-4 h-4" aria-hidden="true" />
                   Resume
                 </button>
               </div>
@@ -109,11 +117,18 @@ const Navigation = () => {
               <ThemeToggle />
 
               <button
-                className="lg:hidden p-2 rounded-md text-foreground hover:bg-muted transition-colors"
+                type="button"
+                className="lg:hidden p-2 rounded-md text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle navigation"
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-nav"
               >
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                {isMenuOpen ? (
+                  <X size={24} aria-hidden="true" />
+                ) : (
+                  <Menu size={24} aria-hidden="true" />
+                )}
               </button>
             </div>
           </div>
@@ -121,6 +136,7 @@ const Navigation = () => {
           <AnimatePresence>
             {isMenuOpen && (
               <motion.div
+                id="mobile-nav"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
@@ -140,7 +156,7 @@ const Navigation = () => {
                       >
                         <Link
                           href={href}
-                          className={`block font-montserrat font-bold uppercase text-sm tracking-wider py-3 px-4 rounded-md transition-colors ${
+                          className={`block font-montserrat font-bold uppercase text-sm tracking-wider py-3 px-4 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                             isActive
                               ? 'text-accent bg-accent/10'
                               : 'text-foreground hover:bg-muted'
@@ -158,13 +174,14 @@ const Navigation = () => {
                     transition={{ delay: 0.05 * navItems.length, duration: 0.2 }}
                   >
                     <button
+                      type="button"
                       onClick={() => {
                         setIsResumeOpen(true);
                         setIsMenuOpen(false);
                       }}
-                      className="flex items-center gap-2 font-montserrat font-bold uppercase text-sm tracking-wider py-3 px-4 rounded-md transition-colors text-accent hover:bg-accent/10"
+                      className="flex items-center gap-2 font-montserrat font-bold uppercase text-sm tracking-wider py-3 px-4 rounded-md transition-colors text-accent hover:bg-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
-                      <FileDown className="w-4 h-4" />
+                      <FileDown className="w-4 h-4" aria-hidden="true" />
                       Resume
                     </button>
                   </motion.div>

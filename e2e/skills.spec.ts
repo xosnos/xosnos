@@ -1,47 +1,19 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
-const mockSkills = [
-  {
-    title: '⌨️ Languages',
-    badges: [
-      {
-        src: 'https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript',
-        alt: 'JavaScript',
-      },
-      {
-        src: 'https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript',
-        alt: 'TypeScript',
-      },
-    ],
-  },
-  {
-    title: '🖥️ Frontend',
-    badges: [
-      {
-        src: 'https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react',
-        alt: 'React',
-      },
-    ],
-  },
-];
-
-test('GitHub README skills load and display badges', async ({ page }) => {
-  await page.route('**/api/skills', async (route) => {
-    await route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      body: JSON.stringify(mockSkills),
-    });
-  });
-
-  const responsePromise = page.waitForResponse('**/api/skills');
+test('skills strip shows curated tools instead of a badge wall', async ({ page }) => {
   await page.goto('/');
-  await page.locator('#skills').scrollIntoViewIfNeeded();
-  await responsePromise;
+  const skills = page.locator('#skills');
+  await skills.scrollIntoViewIfNeeded();
 
-  await expect(page.getByText('⌨️ Languages')).toBeVisible();
-  await expect(page.getByText('🖥️ Frontend')).toBeVisible();
+  await expect(skills.getByRole('heading', { name: 'Tools I ship with' })).toBeVisible();
+  await expect(
+    skills.getByRole('listitem').filter({ hasText: 'TypeScript' }),
+  ).toBeVisible();
+  await expect(
+    skills.getByRole('listitem').filter({ hasText: 'Supabase' }),
+  ).toBeVisible();
+  await expect(skills.getByText('Full-Stack Web Development')).toBeVisible();
 
-  const badgeImages = page.locator('#skills img[alt="JavaScript"]');
-  await expect(badgeImages.first()).toBeVisible();
+  await expect(skills.getByText('⌨️ Languages')).not.toBeVisible();
+  await expect(skills.locator('img[alt="Python"]')).toHaveCount(0);
 });

@@ -1,49 +1,53 @@
 # Architecture
 
-The app uses the **Next.js App Router** with a single-page layout.
+The website uses the Next.js App Router for a single-page portfolio and server-side API routes. This reference identifies the main ownership boundaries and request handlers.
 
 ## Page composition
 
-Section components (`Hero`, `Projects`, `Experience`, `Skills`, `Education`, `About`,
-`Contact`) are composed in [`src/app/page.tsx`](../src/app/page.tsx) and wrapped in a
-`PageTransition` fade-in. Scroll-reveal animations are applied per-section via reusable
-`ScrollReveal` and `ScrollRevealItem` wrappers backed by shared animation variants in
-[`src/lib/animations.ts`](../src/lib/animations.ts).
+[`src/app/page.tsx`](../src/app/page.tsx) composes the section components. Project and education grids still use Motion for one-time viewport reveals. Static sections (Hero, Experience, Skills, About, Contact, Footer) render on the server without a page-level motion wrapper.
 
 The homepage renders sections in this order:
 
-1. Hero (Name / Now Playing)
-2. Projects
-3. Experience
-4. Skills
-5. Education
-6. About
+1. Hero
+2. Experience
+3. Skills (curated strip)
+4. Projects
+5. About
+6. Education
 7. Contact
 
+`Navigation` appears before the main content, and `Footer` appears after it. [`src/app/layout.tsx`](../src/app/layout.tsx) adds the theme provider, AI assistant, mobile scroll-to-top action, Vercel Analytics, and Speed Insights around every page. Interactive overlays (project and education modals, resume gate, and the AI assistant) use a shared dialog hook for Escape handling, focus trapping, and body scroll lock.
+
 ## Directories
+
+The source tree separates routes, presentation, content, and shared application logic:
 
 | Path | Responsibility |
 | --- | --- |
 | `src/app/` | App Router entry points, layout, and API routes |
 | `src/components/` | UI section and widget components |
 | `src/data/` | Typed content separated from presentation |
-| `src/lib/` | Shared utilities (Apple Music, Spotify, GitHub README parsing, rate limiting, resume tokens, Gemini) |
+| `src/lib/` | Apple Music, Spotify, Gemini, rate limiting, resume tokens, and shared utilities |
 | `src/hooks/` | Reusable React hooks |
+| `public/` | Images, icons, and the web manifest |
+| `e2e/` | Playwright end-to-end tests |
+| `scripts/` | Repository maintenance scripts, including README skill synchronization |
 
-Content is separated from presentation via typed data files in `src/data/`, so updating
-copy rarely means touching component code.
+Typed files in `src/data/` own most visible copy. Components still own some presentation copy, so confirm the consuming component before assuming every exported field is rendered.
 
 ## API routes
 
-All routes live under [`src/app/api/`](../src/app/api/).
+All request handlers live under [`src/app/api/`](../src/app/api/):
 
 | Route | Purpose |
 | --- | --- |
-| `chat` | Streams AI Assistant answers via Google Gemini |
-| `music/now-playing` | Now Playing — Apple Music primary with Spotify fallback |
-| `spotify/auth`, `spotify/callback` | Spotify OAuth flow for refresh-token setup |
-| `spotify/top-track` | Spotify top-track lookup |
-| `skills` | Fetches and parses skill badges from a GitHub README |
-| `resume`, `resume/download` | Token-gated resume access backed by Google Drive/Sheets |
+| `chat` | Validates, rate-limits, and streams Google Gemini answers |
+| `music/now-playing` | Returns an Apple Music recently played track or a Spotify short-term top track; no mounted component currently calls it |
+| `spotify/auth`, `spotify/callback` | Local Spotify OAuth setup at `127.0.0.1:3000`; returns 404 in production |
+| `spotify/top-track` | Returns the configured Spotify account's short-term top track |
+| `resume` | Validates a request and emails a 24-hour signed download link through Resend |
+| `resume/download` | Verifies the token, logs access to Google Sheets, and downloads the PDF from Google Drive |
 
-See [configuration.md](configuration.md) for the environment variables each route needs.
+For Spotify setup, register `http://127.0.0.1:3000/api/spotify/callback`, visit `/api/spotify/auth` in development, and copy the logged refresh token to `SPOTIFY_REFRESH_TOKEN`. The callback cookie is not used by the music routes.
+
+See [`.env.example`](../.env.example) for every route's environment variables.

@@ -56,8 +56,12 @@ Project-specific agent skills live in [`.agents/skills/`](.agents/skills/). Read
 
 ## Rules
 
-- Use bun for all package management and scripts.
-- After every set of changes, run `bun run lint` and `bun run typecheck` to validate the changes.
+- Use **bun** for all package management and scripts.
+- After every set of changes, validate in this order:
+  1. `bun run format` — apply Biome formatting and safe fixes
+  2. `bun run lint` — verify formatting, lint rules, and import order (read-only)
+  3. `bun run typecheck` — TypeScript check
+  4. `bun run test:e2e` — Playwright end-to-end tests
 
 <!-- BEGIN:nextjs-agent-rules -->
 

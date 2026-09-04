@@ -1,7 +1,7 @@
 export const footerContent = {
   brand: 'xosnos',
   locations: [
-    { label: 'San Jose, California', type: 'primary' as const },
+    { label: 'San Francisco Bay Area, California', type: 'primary' as const },
     { label: 'Grand Rapids, Michigan', type: 'secondary' as const },
   ],
   socialLinks: [
