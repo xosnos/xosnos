@@ -23,6 +23,8 @@ const nextConfig: NextConfig = {
   experimental: {
     // Optimize package imports for smaller bundles
     optimizePackageImports: ['lucide-react'],
+    // TypeScript 7 only exposes the supported compiler through its CLI.
+    useTypeScriptCli: true,
   },
   async headers() {
     return [

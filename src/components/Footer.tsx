@@ -1,11 +1,13 @@
-import { MapPin, ArrowUp, Github, Linkedin, Twitter, Globe } from 'lucide-react';
+import { MapPin, ArrowUp, Globe } from 'lucide-react';
+import BrandIcon from '@/components/BrandIcon';
 import { footerContent } from '@/data/footer';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { brandIcons } from '@/components/brandIcons';
 
 const iconMap = {
-  github: <Github className="w-5 h-5" />,
-  linkedin: <Linkedin className="w-5 h-5" />,
-  x: <Twitter className="w-5 h-5" />,
+  github: <BrandIcon icon={brandIcons.github} title="" className="w-5 h-5" />,
+  linkedin: <BrandIcon icon={brandIcons.linkedin} title="" className="w-5 h-5" />,
+  x: <BrandIcon icon={brandIcons.x} title="" className="w-5 h-5" />,
 } as const;
 
 const Footer = () => {

@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Code, X, ExternalLink, Github, Monitor } from 'lucide-react';
+import { Code, X, ExternalLink, Monitor } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import BrandIcon from '@/components/BrandIcon';
+import { brandIcons } from '@/components/brandIcons';
 import { fadeInUp, staggerContainer, viewportOnce } from '@/lib/animations';
 import { listPublishedProjects, type ProjectItem } from '@/data/projects';
 
@@ -169,7 +171,11 @@ const Projects = () => {
                           className="px-8 py-4 rounded-full font-montserrat font-bold uppercase text-sm tracking-widest bg-muted text-foreground hover:bg-border transition-all flex items-center justify-center gap-2"
                         >
                           Source Code
-                          <Github className="w-4 h-4" />
+                          <BrandIcon
+                            icon={brandIcons.github}
+                            title=""
+                            className="w-4 h-4"
+                          />
                         </a>
                       )}
                     </div>
