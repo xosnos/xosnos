@@ -10,7 +10,7 @@ Tailwind CSS 4.
 - **Now Playing** — Apple Music primary with Spotify fallback (`/api/music/now-playing`)
 - **Projects & Education** — interactive modals for deep dives
 - **Experience** — work and volunteer history with published/unpublished filtering
-- **Skills** — synced from GitHub README badges
+- **Skills** — badge categories defined in `src/data/skills.ts`
 - **Resume Gate** — token-based access for resume downloads
 - **Contact Form** — email via Resend
 - **Animations** — scroll-reveal, page transitions, and modal animations via Motion

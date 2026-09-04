@@ -27,7 +27,7 @@ The homepage renders sections in this order:
 | `src/app/` | App Router entry points, layout, and API routes |
 | `src/components/` | UI section and widget components |
 | `src/data/` | Typed content separated from presentation |
-| `src/lib/` | Shared utilities (Apple Music, Spotify, GitHub README parsing, rate limiting, resume tokens, Gemini) |
+| `src/lib/` | Shared utilities (Apple Music, Spotify, rate limiting, resume tokens, Gemini) |
 | `src/hooks/` | Reusable React hooks |
 
 Content is separated from presentation via typed data files in `src/data/`, so updating
@@ -43,7 +43,6 @@ All routes live under [`src/app/api/`](../src/app/api/).
 | `music/now-playing` | Now Playing — Apple Music primary with Spotify fallback |
 | `spotify/auth`, `spotify/callback` | Spotify OAuth flow for refresh-token setup |
 | `spotify/top-track` | Spotify top-track lookup |
-| `skills` | Fetches and parses skill badges from a GitHub README |
 | `resume`, `resume/download` | Token-gated resume access backed by Google Drive/Sheets |
 
 See [configuration.md](configuration.md) for the environment variables each route needs.
