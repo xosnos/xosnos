@@ -30,6 +30,9 @@ jobs:
       - name: Run lint
         run: bun run lint
 
+      - name: Verify README skills sync
+        run: bun run check:readme-skills
+
   typecheck:
     runs-on: ubuntu-latest
     steps:
