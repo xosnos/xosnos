@@ -15,8 +15,10 @@ Add an entry to [`src/data/experience.ts`](../src/data/experience.ts) and set
 
 ## Update skills
 
-Skills are synced from GitHub README badges. To override or add entries manually, edit
-[`src/components/Skills.tsx`](../src/components/Skills.tsx).
+Update badge categories and featured skills in
+[`src/data/skills.ts`](../src/data/skills.ts). The site reads this data directly.
+Run `bun run sync:readme-skills` when badge changes should also appear in the root
+[`README.md`](../README.md).
 
 ## Change the section order
 
