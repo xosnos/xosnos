@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# No database, tunnel, or user authentication needs repair on wake.
+# Dependencies belong in setup; Amp supervises the declared development service.
+echo '[resume] Ready; no per-wake setup required.'

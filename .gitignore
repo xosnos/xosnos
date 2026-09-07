@@ -33,6 +33,7 @@ next-env.d.ts
 /playwright/.cache/
 /blob-report/
 
+.amp/portals/
 .agents/local.json
 .agents/generated/
 .codex/

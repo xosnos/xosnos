@@ -55,6 +55,27 @@ bun run typecheck
 bun run test:e2e
 ```
 
+### Amp orbs
+
+Executable [`.agents/setup`](../.agents/setup) uses the orb's preinstalled Bun and
+Node.js, installs dependencies from `bun.lock`, and caches Playwright's Chromium
+browsers and system dependencies. Amp can reuse the prepared project snapshot;
+when setup runs again, installed packages and browser downloads are reused.
+[`.agents/resume`](../.agents/resume) does not install anything on wake.
+
+Start the supervised development server and obtain its authenticated preview URL:
+
+```bash
+amp orb services ensure
+```
+
+The service is declared in [`.amp/services.yaml`](../.amp/services.yaml) on port
+3000, matching the Playwright tests. Setup never starts a server. No database or
+environment file is needed for basic development or the tests. Configure optional
+integration credentials through Amp runtime secrets or an untracked `.env.local`;
+setup never writes credentials or overwrites that file. Generated portal links
+are ignored by Git.
+
 ## Documentation
 
 - [Architecture](documentation/architecture.md) — App Router layout, directories, API routes
