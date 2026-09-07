@@ -235,7 +235,7 @@ const experiences: ExperienceItem[] = [
     endDate: '2022-05',
     description: 'Web development and STEM coding curriculum for middle school students.',
     highlights: [
-      'Deployed HackBlue\'s website using HTML, CSS, JavaScript, and GitHub pages to enhance online presence.',
+      "Deployed HackBlue's website using HTML, CSS, JavaScript, and GitHub pages to enhance online presence.",
       'Developed engaging weekly lesson plans for over 50 middle school students to introduce coding concepts.',
       'Enhanced learning experiences through interactive coding activities and projects, fostering student engagement.',
     ],

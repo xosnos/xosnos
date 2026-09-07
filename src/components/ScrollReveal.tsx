@@ -77,4 +77,3 @@ export function ScrollRevealItem({
     </motion.div>
   );
 }
-
