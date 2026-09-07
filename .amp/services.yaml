@@ -1,0 +1,8 @@
+services:
+  web:
+    command: bun run dev --hostname 0.0.0.0 --port "$PORT"
+    port: 3000
+    health: /
+    portal:
+      title: Portfolio
+      description: Development preview. Optional integrations need runtime credentials.
