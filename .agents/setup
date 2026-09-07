@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.."
+export DEBIAN_FRONTEND=noninteractive
+TIMEFORMAT='[setup] step completed in %3R seconds'
+
+# Amp's Debian base supplies Node and Bun. This repo has no toolchain version pin.
+echo '[setup] Checking toolchain'
+bun --version
+node --version
+node -e 'const [major, minor] = process.versions.node.split(".").map(Number); if (major < 20 || (major === 20 && minor < 9)) throw new Error("Next.js requires Node.js 20.9+");'
+
+echo '[setup] Installing locked dependencies (reuses restored node_modules)'
+time bun install --frozen-lockfile
+
+echo '[setup] Checking Chromium system dependencies'
+# The locked Playwright CLI reports missing packages with a non-zero exit code.
+# Avoid apt updates and installs altogether when a snapshot already has them.
+time {
+  if ! bunx --no-install playwright install-deps --dry-run chromium; then
+    bunx --no-install playwright install-deps chromium
+  fi
+}
+
+echo '[setup] Installing Chromium (reuses Playwright browser cache)'
+time bunx --no-install playwright install chromium
+
+# Integrations are optional. Do not persist runtime secrets into a shared snapshot
+# or overwrite an existing .env.local; the app works without an environment file.
+echo '[setup] Ready. Start the dev server with: amp orb services ensure'
