@@ -7,11 +7,25 @@ test('project modal traps focus, locks scroll, and closes on Escape', async ({
   await page.locator('#projects').scrollIntoViewIfNeeded();
 
   const firstProject = page.locator('#projects button').first();
+  await expect(firstProject).toContainText(
+    'An AI-native career progression platform that scans resumes',
+  );
+  await expect(firstProject).toContainText('TanStack Start');
+  await expect(firstProject).toContainText('PostgreSQL');
+  await expect(firstProject).toContainText('AI SDK');
+  await expect(firstProject).not.toContainText('Firecrawl');
   await firstProject.click();
 
   const dialog = page.getByRole('dialog', { name: /Terraces|Project/ });
   await expect(dialog).toBeVisible();
   await expect(dialog).toBeFocused();
+  await expect(dialog).toContainText(
+    'Terraces is a 0-to-1 career agent that captures target roles',
+  );
+  await expect(dialog).toContainText('TypeScript');
+  await expect(dialog).toContainText('Cloudflare');
+  await expect(dialog).toContainText('Firecrawl');
+  await expect(dialog).toContainText('Biome');
 
   const overflow = await page.evaluate(() => document.body.style.overflow);
   expect(overflow).toBe('hidden');

@@ -16,14 +16,14 @@ Start with the module that owns the content you want to change:
 | `footer.ts` | Footer links, locations, technology labels, and availability |
 | `hero.ts` | Name, role, call to action, and profile image |
 | `navigation.ts` | Section navigation labels and targets |
-| `projects.ts` | Project descriptions, links, images, and tags |
+| `projects.ts` | Project subtitles, descriptions, links, images, cover tags, and overview tags |
 | `skills.ts` | Domain knowledge, featured site tools, and GitHub README badges |
 
 `heroContent.tagline` is rendered in the hero. `primaryCtaHref` and `secondaryCtaLabel` control the two hero actions (contact and resume gate).
 
 ## Add a project
 
-Add an entry to `projectItems` in [`src/data/projects.ts`](../src/data/projects.ts). Every project requires `id`, `title`, `image`, and `description`. Set `published: true` to render it; omitted or false values remain hidden.
+Add an entry to `projectItems` in [`src/data/projects.ts`](../src/data/projects.ts). Every project requires `id`, `title`, `image`, `subtitle`, `description`, `coverTags`, and `tags`. `subtitle` and `coverTags` appear on the closed project card. `description` and the combined `coverTags` + `tags` list appear in the project details dialog. Set `published: true` to render it; omitted or false values remain hidden.
 
 ## Add experience
 

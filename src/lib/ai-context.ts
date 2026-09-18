@@ -3,7 +3,7 @@ import { contactContent } from '@/data/contact';
 import { educationItems } from '@/data/education';
 import { listPublishedExperiences } from '@/data/experience';
 import { heroContent } from '@/data/hero';
-import { listPublishedProjects } from '@/data/projects';
+import { listOverviewTags, listPublishedProjects } from '@/data/projects';
 import { domainKnowledge, featuredSkills, listSkillCategories } from '@/data/skills';
 
 const formatBio = () =>
@@ -28,14 +28,15 @@ const formatExperiences = () =>
 const formatProjects = () =>
   listPublishedProjects()
     .map((p) => {
-      const tags = p.tags?.length ? ` [${p.tags.join(', ')}]` : '';
+      const overviewTags = listOverviewTags(p);
+      const tags = overviewTags.length ? ` [${overviewTags.join(', ')}]` : '';
       const links = [
         p.demoUrl ? `demo: ${p.demoUrl}` : null,
         p.repoUrl ? `repo: ${p.repoUrl}` : null,
       ]
         .filter(Boolean)
         .join(' | ');
-      return `- ${p.title}${tags}: ${p.description}${links ? `\n  ${links}` : ''}`;
+      return `- ${p.title}${tags}: ${p.subtitle}\n  ${p.description}${links ? `\n  ${links}` : ''}`;
     })
     .join('\n');
 
