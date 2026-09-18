@@ -1,5 +1,6 @@
 export const heroContent = {
   name: 'Steven Nguyen',
+  greeting: "Hello Universe, I'm ...",
   roles: [
     'Software Engineer',
     'AI-Native Founder',

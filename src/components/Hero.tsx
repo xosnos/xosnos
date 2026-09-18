@@ -1,10 +1,11 @@
-import { MapPin, Sparkles } from 'lucide-react';
-import Image from 'next/image';
-import HeroActions from '@/components/HeroActions';
-import { RichText } from '@/components/RichText';
-import { RotatingRoleTitle } from '@/components/RotatingRoleTitle';
-import { aboutContent } from '@/data/about';
-import { heroContent } from '@/data/hero';
+import { MapPin, Rocket } from "lucide-react";
+import Image from "next/image";
+import HeroActions from "@/components/HeroActions";
+import { HeroGreeting } from "@/components/HeroGreeting";
+import { RichText } from "@/components/RichText";
+import { RotatingRoleTitle } from "@/components/RotatingRoleTitle";
+import { aboutContent } from "@/data/about";
+import { heroContent } from "@/data/hero";
 
 const Hero = () => {
   return (
@@ -32,23 +33,31 @@ const Hero = () => {
               />
             </div>
             <div className="absolute -bottom-2 -right-2 bg-background border border-border p-2 rounded-xl shadow-lg">
-              <Sparkles className="w-5 h-5 text-accent" aria-hidden="true" />
+              <Rocket className="w-5 h-5 text-accent" aria-hidden="true" />
             </div>
           </div>
 
-          <div className="space-y-4 mb-8 pb-2 md:pb-3">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-montserrat font-extrabold tracking-tighter leading-[1.15] title-banner-effect text-balance">
-              <span translate="no">{heroContent.name}</span>
-            </h1>
-            <div className="inline-flex items-center justify-center gap-3 text-muted-foreground font-montserrat font-semibold tracking-[0.2em] uppercase text-sm md:text-base pt-0.5">
-              <span className="h-px w-8 bg-border shrink-0" />
-              <RotatingRoleTitle />
-              <span className="h-px w-8 bg-border shrink-0" />
+          <div className="mb-8 flex w-full flex-col items-center gap-4 pb-2 md:pb-3">
+            <div className="flex w-fit max-w-full flex-col items-start gap-3 text-left">
+              <div className="flex flex-col items-start gap-0.5">
+                <HeroGreeting />
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-montserrat font-extrabold tracking-tighter leading-[1.15] title-banner-effect">
+                  <span translate="no">{heroContent.name}</span>
+                </h1>
+              </div>
+              <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                <div className="min-w-0">
+                  <RotatingRoleTitle />
+                </div>
+                <p className="flex shrink-0 items-center gap-1.5 text-sm md:text-base font-montserrat font-medium tracking-wide text-muted-foreground">
+                  <MapPin
+                    className="h-4 w-4 shrink-0 text-accent"
+                    aria-hidden="true"
+                  />
+                  {aboutContent.location}
+                </p>
+              </div>
             </div>
-            <p className="flex w-full items-center justify-center gap-1.5 text-sm md:text-base font-montserrat font-medium tracking-wide text-muted-foreground">
-              <MapPin className="w-4 h-4 text-accent shrink-0" aria-hidden="true" />
-              {aboutContent.location}
-            </p>
           </div>
 
           <RichText
