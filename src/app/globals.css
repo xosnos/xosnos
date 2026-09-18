@@ -6,6 +6,7 @@
   looks the same as it did with Tailwind CSS v3.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -57,6 +58,9 @@
   --ring: #70cbff;
 
   --radius: 0.75rem;
+
+  /* Fixed nav height — keep anchor scroll offsets in sync with Navigation h-16 */
+  --nav-height: 4rem;
 }
 
 [data-theme="dark"] {
@@ -153,9 +157,10 @@
     text-wrap: balance;
   }
 
-  /* Fixed nav (h-16) — keep in-page anchors / focus targets visible */
-  [id] {
-    scroll-margin-top: 5rem;
+  /* Fixed nav — keep in-page anchors / focus targets flush below the header */
+  section[id],
+  header#page-top {
+    scroll-margin-top: var(--nav-height);
   }
 
   @media (prefers-reduced-motion: reduce) {
