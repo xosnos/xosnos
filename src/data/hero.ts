@@ -1,13 +1,16 @@
 export const heroContent = {
   name: 'Steven Nguyen',
-  role: 'Software Engineer',
-  focusLine: 'Co-founding Terraces · previously Workday',
+  roles: [
+    'Software Engineer',
+    'AI-Native Founder',
+    'Non-Profit Technology Director',
+    'Full-Stack Developer',
+  ],
   tagline:
-    'I ship **end-to-end** — from infrastructure to interface — and obsess over the people who use what I build.',
+    'I ship **end-to-end** from **infrastructure** to **interface** and obsess over the people who use my tech!',
   primaryCtaLabel: 'Get in touch',
-  primaryCtaHref: '#contact',
   secondaryCtaLabel: 'View resume',
-  exploreLabel: 'See experience',
-  exploreHref: '#experience',
+  exploreLabel: "See what I've been building",
+  exploreHref: '#projects',
   profileImage: '/assets/img/profile.jpg',
 };

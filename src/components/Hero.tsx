@@ -1,7 +1,9 @@
-import { Rocket, Sparkles } from 'lucide-react';
+import { MapPin, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import HeroActions from '@/components/HeroActions';
 import { RichText } from '@/components/RichText';
+import { RotatingRoleTitle } from '@/components/RotatingRoleTitle';
+import { aboutContent } from '@/data/about';
 import { heroContent } from '@/data/hero';
 
 const Hero = () => {
@@ -38,16 +40,14 @@ const Hero = () => {
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-montserrat font-extrabold tracking-tighter leading-[1.15] title-banner-effect text-balance">
               <span translate="no">{heroContent.name}</span>
             </h1>
-            <div className="flex items-center justify-center gap-3 text-muted-foreground font-montserrat font-semibold tracking-[0.2em] uppercase text-sm md:text-base pt-0.5">
-              <span className="h-px w-8 bg-border" />
-              <span className="flex items-center gap-2">
-                {heroContent.role}{' '}
-                <Rocket className="w-4 h-4 text-accent" aria-hidden="true" />
-              </span>
-              <span className="h-px w-8 bg-border" />
+            <div className="inline-flex items-center justify-center gap-3 text-muted-foreground font-montserrat font-semibold tracking-[0.2em] uppercase text-sm md:text-base pt-0.5">
+              <span className="h-px w-8 bg-border shrink-0" />
+              <RotatingRoleTitle />
+              <span className="h-px w-8 bg-border shrink-0" />
             </div>
-            <p className="text-sm md:text-base font-montserrat font-semibold tracking-wide text-foreground/80">
-              {heroContent.focusLine}
+            <p className="flex w-full items-center justify-center gap-1.5 text-sm md:text-base font-montserrat font-medium tracking-wide text-muted-foreground">
+              <MapPin className="w-4 h-4 text-accent shrink-0" aria-hidden="true" />
+              {aboutContent.location}
             </p>
           </div>
 

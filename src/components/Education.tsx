@@ -73,16 +73,17 @@ const Education = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-                  <div className="absolute bottom-8 left-8 right-8 space-y-2">
-                    <div className="inline-flex rounded-full bg-accent/10 px-3 py-1 text-xs font-montserrat font-bold uppercase tracking-widest text-accent backdrop-blur-sm">
+                  <div className="absolute top-6 right-6 z-10 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/90 px-3 py-1.5 text-xs font-montserrat font-bold uppercase tracking-widest text-foreground shadow-sm backdrop-blur-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    View Details
+                    <ChevronRight className="w-4 h-4 text-accent" aria-hidden="true" />
+                  </div>
+                  <div className="absolute bottom-5 left-8 right-8 z-10 space-y-2">
+                    <div className="inline-flex rounded-full border border-border/60 bg-background/90 px-3 py-1 text-xs font-montserrat font-bold uppercase tracking-widest text-foreground shadow-sm backdrop-blur-md">
                       {item.level}
                     </div>
                     <h3 className="text-2xl md:text-3xl font-montserrat font-extrabold text-foreground text-balance">
                       {item.shortName}
                     </h3>
-                    <div className="flex items-center gap-2 text-accent text-xs font-montserrat font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0 -translate-x-2.5">
-                      View Details <ChevronRight className="w-4 h-4" aria-hidden="true" />
-                    </div>
                   </div>
                 </div>
               </button>
@@ -115,7 +116,7 @@ const Education = () => {
               className="bg-background rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto overscroll-contain shadow-2xl border border-border relative"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="sticky top-0 z-20 flex justify-end p-6 bg-background/80 backdrop-blur-md">
+              <div className="flex justify-end p-6">
                 <button
                   type="button"
                   onClick={closeModal}
@@ -195,12 +196,9 @@ const Education = () => {
                             <Award className="w-5 h-5 text-accent" aria-hidden="true" />
                             Awards
                           </h3>
-                          <div className="grid grid-cols-1 gap-3 text-muted-foreground">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-muted-foreground">
                             {selectedItem.awards.map((award, index) => (
-                              <div
-                                key={index}
-                                className="flex gap-2 text-sm leading-relaxed"
-                              >
+                              <div key={index} className="flex gap-2 text-sm">
                                 <span className="text-accent" aria-hidden="true">
                                   &#8226;
                                 </span>
@@ -214,13 +212,13 @@ const Education = () => {
                   </div>
 
                   <div className="md:w-2/5 w-full">
-                    <div className="rounded-2xl overflow-hidden border border-border shadow-2xl p-8 bg-card flex justify-center sticky top-24">
+                    <div className="rounded-2xl overflow-hidden border border-border shadow-2xl sticky top-24">
                       <Image
                         src={selectedItem.image}
                         alt={selectedItem.name}
-                        width={300}
-                        height={300}
-                        className="w-full h-auto object-contain max-w-[240px]"
+                        width={600}
+                        height={400}
+                        className="w-full h-auto object-cover"
                       />
                     </div>
                   </div>

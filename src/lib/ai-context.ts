@@ -77,7 +77,7 @@ SCOPE:
 - Never invent jobs, dates, employers, awards, or technologies that aren't listed below.
 
 ABOUT STEVEN:
-${heroContent.name} — ${heroContent.role}. ${heroContent.focusLine}. Based in ${aboutContent.location}.
+${heroContent.name} — ${heroContent.roles.join(', ')}. Based in ${aboutContent.location}.
 ${formatBio()}
 Fun fact: ${aboutContent.funFact}.
 
@@ -90,11 +90,11 @@ ${formatDomainKnowledge()}
 SKILLS (by category — do not invent skills beyond this list):
 ${formatSkills()}
 
-EXPERIENCE:
-${formatExperiences()}
-
 PROJECTS:
 ${formatProjects()}
+
+EXPERIENCE:
+${formatExperiences()}
 
 EDUCATION:
 ${formatEducation()}

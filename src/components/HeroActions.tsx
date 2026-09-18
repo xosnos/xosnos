@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowDown, FileDown, Mail } from 'lucide-react';
+import { contactContent } from '@/data/contact';
 import { heroContent } from '@/data/hero';
 import { openResumeGate } from '@/lib/resume-gate-events';
 
@@ -12,16 +13,21 @@ const secondaryClass =
 
 export default function HeroActions() {
   return (
-    <div className="w-full max-w-lg space-y-8">
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-        <a href={heroContent.primaryCtaHref} className={primaryClass}>
-          <Mail className="w-4 h-4" aria-hidden="true" />
-          {heroContent.primaryCtaLabel}
-        </a>
-        <button type="button" onClick={openResumeGate} className={secondaryClass}>
-          <FileDown className="w-4 h-4" aria-hidden="true" />
-          {heroContent.secondaryCtaLabel}
-        </button>
+    <div className="w-full max-w-2xl space-y-8">
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a href={`mailto:${contactContent.email}`} className={primaryClass}>
+            <Mail className="w-4 h-4" aria-hidden="true" />
+            {heroContent.primaryCtaLabel}
+          </a>
+          <button type="button" onClick={openResumeGate} className={secondaryClass}>
+            <FileDown className="w-4 h-4" aria-hidden="true" />
+            {heroContent.secondaryCtaLabel}
+          </button>
+        </div>
+        <p className="text-base text-muted-foreground font-light italic max-w-xl leading-relaxed text-pretty">
+          {contactContent.invitation}
+        </p>
       </div>
       <a
         href={heroContent.exploreHref}

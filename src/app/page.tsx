@@ -1,5 +1,4 @@
 import About from '@/components/About';
-import Contact from '@/components/Contact';
 import Education from '@/components/Education';
 import Experience from '@/components/Experience';
 import Footer from '@/components/Footer';
@@ -14,12 +13,11 @@ export default function Home() {
       <Navigation />
       <main id="main-content" className="pt-16 lg:pt-0">
         <Hero />
+        <Projects />
         <Experience />
         <Skills />
-        <Projects />
-        <About />
         <Education />
-        <Contact />
+        <About />
       </main>
       <Footer />
     </div>

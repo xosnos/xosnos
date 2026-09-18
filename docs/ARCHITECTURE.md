@@ -4,17 +4,16 @@ The website uses the Next.js App Router for a single-page portfolio and server-s
 
 ## Page composition
 
-[`src/app/page.tsx`](../src/app/page.tsx) composes the section components. Project and education grids still use Motion for one-time viewport reveals. Static sections (Hero, Experience, Skills, About, Contact, Footer) render on the server without a page-level motion wrapper.
+[`src/app/page.tsx`](../src/app/page.tsx) composes the section components. Project and education grids still use Motion for one-time viewport reveals. Static sections (Hero, Experience, Skills, About, Footer) render on the server without a page-level motion wrapper.
 
 The homepage renders sections in this order:
 
 1. Hero
-2. Experience
-3. Skills (curated strip)
-4. Projects
-5. About
-6. Education
-7. Contact
+2. Projects
+3. Experience
+4. Skills (primary stack, domains, and full badge list)
+5. Education
+6. About
 
 `Navigation` appears before the main content, and `Footer` appears after it. [`src/app/layout.tsx`](../src/app/layout.tsx) adds the theme provider, AI assistant, mobile scroll-to-top action, Vercel Analytics, and Speed Insights around every page. Interactive overlays (project and education modals, resume gate, and the AI assistant) use a shared dialog hook for Escape handling, focus trapping, and body scroll lock.
 

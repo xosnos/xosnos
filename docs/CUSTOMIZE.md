@@ -10,7 +10,7 @@ Start with the module that owns the content you want to change:
 | --- | --- |
 | `about.ts` | Biography, location, profile details, and image |
 | `ai-assistant.ts` | Assistant labels, starter prompts, and errors |
-| `contact.ts` | Contact heading, email address, call to action, and response time |
+| `contact.ts` | Email address, hero invitation line, and typical response time |
 | `education.ts` | Schools, courses, activities, awards, and images |
 | `experience.ts` | Work, volunteer, and project history |
 | `footer.ts` | Footer links, locations, technology labels, and availability |
@@ -19,7 +19,7 @@ Start with the module that owns the content you want to change:
 | `projects.ts` | Project subtitles, descriptions, links, images, cover tags, and overview tags |
 | `skills.ts` | Domain knowledge, featured site tools, and GitHub README badges |
 
-`heroContent.tagline` is rendered in the hero. `primaryCtaHref` and `secondaryCtaLabel` control the two hero actions (contact and resume gate).
+`heroContent.tagline` is rendered in the hero. `primaryCtaLabel` and `secondaryCtaLabel` control the two hero actions (mailto contact and resume gate). The mailto target comes from `contactContent.email`.
 
 ## Add a project
 
@@ -31,7 +31,7 @@ Add an entry to `experiences` in [`src/data/experience.ts`](../src/data/experien
 
 ## Update skills
 
-Edit [`src/data/skills.ts`](../src/data/skills.ts). `featuredSkills` is the short list shown on the website. `skillCategories` is the long badge list synced to the GitHub profile README:
+Edit [`src/data/skills.ts`](../src/data/skills.ts). `featuredSkills` is the short primary-stack list at the top of the skills section. `skillCategories` is the full badge list rendered below that strip and synced to the GitHub profile README:
 
 ```bash
 bun run sync:readme-skills
@@ -46,6 +46,7 @@ bun run check:readme-skills
 ## Change the section order
 
 The homepage section sequence is defined in [`src/app/page.tsx`](../src/app/page.tsx).
+Keep [`src/data/navigation.ts`](../src/data/navigation.ts) in the same order.
 See [page composition](ARCHITECTURE.md#page-composition) for the current order.
 
 ## Change colors
