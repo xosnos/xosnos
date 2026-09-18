@@ -1,6 +1,6 @@
 'use client';
 
-import { FileDown, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -104,14 +104,6 @@ const Navigation = () => {
                     </Link>
                   );
                 })}
-                <button
-                  type="button"
-                  onClick={() => setIsResumeOpen(true)}
-                  className="inline-flex items-center gap-1.5 font-montserrat font-bold uppercase text-sm tracking-wider py-2 px-4 rounded-md transition-all duration-200 text-accent hover:text-accent/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  <FileDown className="w-4 h-4" aria-hidden="true" />
-                  Resume
-                </button>
               </div>
 
               <ThemeToggle />
@@ -168,23 +160,6 @@ const Navigation = () => {
                       </motion.div>
                     );
                   })}
-                  <motion.div
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.05 * navItems.length, duration: 0.2 }}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setIsResumeOpen(true);
-                        setIsMenuOpen(false);
-                      }}
-                      className="flex items-center gap-2 font-montserrat font-bold uppercase text-sm tracking-wider py-3 px-4 rounded-md transition-colors text-accent hover:bg-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      <FileDown className="w-4 h-4" aria-hidden="true" />
-                      Resume
-                    </button>
-                  </motion.div>
                 </div>
               </motion.div>
             )}
