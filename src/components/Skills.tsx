@@ -1,9 +1,5 @@
-import { Cpu } from "lucide-react";
-import {
-  domainKnowledge,
-  listFeaturedSkills,
-  listSkillCategories,
-} from "@/data/skills";
+import { Cpu } from 'lucide-react';
+import { domainKnowledge, listFeaturedSkills, listSkillCategories } from '@/data/skills';
 
 const featuredSkills = listFeaturedSkills();
 const skillCategories = listSkillCategories();
