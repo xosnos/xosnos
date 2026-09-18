@@ -8,7 +8,7 @@ The website combines typed portfolio content with optional server integrations:
 
 - **AI assistant**: floating Google Gemini chat that streams answers about Steven's experience, projects, and skills through `/api/chat`
 - **Projects and education**: cards with interactive detail modals
-- **Experience**: work and volunteer history with publication filtering
+- **Experience**: work, volunteer, and project history with publication filtering, sorted newest first
 - **Skills**: primary-stack chips and domain chips at the top of the section, plus the full badge list sourced from [`src/data/skills.ts`](../src/data/skills.ts) and synced to the GitHub profile README
 - **Resume gate**: expiring, token-based download links sent through Resend, with the PDF stored in Google Drive and access logged to Google Sheets
 - **Contact link**: opens the visitor's email client through a `mailto:` URL
@@ -52,6 +52,14 @@ bun run typecheck
 bun run test:e2e
 ```
 
+After you change [`src/data/skills.ts`](../src/data/skills.ts), run `bun run check:readme-skills` to confirm the GitHub profile README still matches, and `bun run sync:readme-skills` to update it.
+
+Playwright manages its own server: [`playwright.config.ts`](../playwright.config.ts) runs `bun run dev` on port 3000 and reuses a server that is already running outside CI. Tests run in Chromium only, with two retries and one worker in CI.
+
+### Continuous integration
+
+[`.github/workflows/pr-checks.yml`](../.github/workflows/pr-checks.yml) runs on every pull request and cancels a superseded run. Three jobs share the same Bun setup and `node_modules` cache: `lint` runs `bun run lint` and then `bun run check:readme-skills`, `typecheck` runs `bun run typecheck`, and `e2e` installs Chromium and runs `bun run test:e2e`.
+
 ### Amp orbs
 
 Executable [`.agents/setup`](../.agents/setup) uses the orb's preinstalled Bun and
@@ -77,10 +85,10 @@ are ignored by Git.
 
 Use these references when you change the website:
 
-- [Architecture](ARCHITECTURE.md): App Router composition, directories, and API routes
+- [Architecture](ARCHITECTURE.md): App Router composition, directories, API routes, and security
 - [Environment variable reference](../.env.example): configuration for optional integrations
-- [Customize portfolio content](CUSTOMIZE.md): projects, experience, skills, and theme tokens
-- [Design system](DESIGN.md): colors, typography, breakpoints, motion, and performance measures
+- [Customize portfolio content](CUSTOMIZE.md): projects, experience, education, skills, and theme tokens
+- [Design system](DESIGN.md): colors, typography, breakpoints, motion, accessibility, and performance measures
 
 ## License
 

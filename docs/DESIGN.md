@@ -230,11 +230,11 @@ The site uses Tailwind CSS 4's default mobile-first minimum-width breakpoints. C
 
 ## Motion
 
-Motion is reserved for interactive islands: project and education card reveals, modal enter/exit, the mobile nav, and the AI assistant panel. Static sections render without JavaScript animation.
+Motion is reserved for interactive islands: the hero role rotation, project, education, and experience card reveals, the project, education, and resume dialogs, the mobile nav, the AI assistant panel, and the mobile scroll-to-top action. `Skills`, `About`, and `Footer` are server components that ship no client JavaScript and render without animation.
 
-Viewport reveals start when 15% of an element enters the viewport. Most direct interactions finish within `300 ms`. Hero atmosphere uses static CSS blurs instead of repeating scale animations.
+Viewport reveals fire once, when 15% of an element enters the viewport. Most direct interactions finish within `300 ms`. Hero atmosphere uses static CSS blurs instead of repeating scale animations; the hero title is the only repeating effect, a 4-second `.title-banner-effect` gradient shift.
 
-Components that animate call Motion's `useReducedMotion` hook and skip enter/exit motion when `prefers-reduced-motion: reduce` is set. CSS animations include `motion-reduce:animate-none` where they still exist. Treat new motion as an accessibility change: every repeating or entrance animation needs a reduced-motion path.
+`Projects`, `Education`, `ResumeGate`, `AIAssistant`, `RotatingRoleTitle`, and `ScrollReveal` call Motion's `useReducedMotion` hook and skip enter/exit motion when `prefers-reduced-motion: reduce` is set. `Navigation` and `FloatingActions` animate without that hook and rely on the global reduced-motion rule in `globals.css`, which collapses every animation and transition duration, disables smooth scrolling, and replaces the hero title gradient with a solid text color. Repeating utility animations also carry `motion-reduce:animate-none`: every `animate-pulse` and `animate-bounce` does, as does the Spotify buffering spinner. The `Loader2` spinner in the resume form omits the utility and falls back to that global rule instead. Add the explicit utility to new repeating animations rather than depending on the fallback. Treat new motion as an accessibility change: every repeating or entrance animation needs a reduced-motion path.
 
 ## Performance
 
@@ -245,3 +245,19 @@ The repository does not enforce Lighthouse, paint-time, or bundle-size budgets. 
 - Preloaded fonts with `display: swap`
 - Optimized `lucide-react` package imports
 - Vercel Analytics and Speed Insights in the root layout
+
+### Images
+
+Project thumbnails, education artwork, and About imagery use `next/image` with explicit intrinsic dimensions. Hero artwork sets `priority`; every other image is `loading="lazy"`. Alternative text names the subject: `alt={heroContent.name}` for the hero portrait, `alt={item.title}` for projects, and `alt={item.name}` for education.
+
+Skill badges are the one exception. `SkillBadge` in `src/components/Skills.tsx` renders a plain `<img>` behind a Biome `noImgElement` ignore because Shield badges are variable-width remote SVGs: `next/image` emits both a width and a height, then the `h-8 w-auto` rule leaves the height alone and trips its aspect-ratio warning. The tag keeps `loading="lazy"` and `decoding="async"`, and the reason sits in a comment beside the ignore. Any further exception needs the same three things: an ignore, an adjacent comment naming the reason, and the lazy-loading attributes.
+
+## Accessibility
+
+The page is landmark-first. `src/app/layout.tsx` renders a visually hidden skip link that targets `#main-content` and becomes visible on focus, `src/app/page.tsx` renders `<main id="main-content">`, and the sections supply the rest: `<header>` in `Hero`, `<nav aria-label="Primary">` in `Navigation`, and `<footer>` in `Footer`. Preserve that structure when adding a section, and give any new navigation region its own `aria-label`.
+
+`useDialog` in `src/hooks/useDialog.ts` owns dialog behavior for the project, education, resume, and AI assistant dialogs. It keeps a module-level stack, so nesting works: Escape closes only the topmost dialog, Tab wraps between the first and last focusable elements and pulls focus back inside when it escapes, and the body scroll lock is reference-counted with scrollbar-width padding so nested dialogs neither unlock early nor shift the layout. On open the hook focuses the dialog container and focuses it again on the next animation frame; on close it returns focus to the remaining top dialog or to the element that opened it. All four dialogs set `role="dialog"`, `aria-modal="true"`, and an `aria-labelledby` that points at their title. Use the hook for a new dialog instead of reimplementing any of this.
+
+Focus visibility comes from utilities rather than the browser default. Interactive elements pair `focus-visible:outline-none` with `focus-visible:ring-2 focus-visible:ring-ring`, some add `focus-visible:ring-offset-2` with `focus-visible:ring-offset-background`, and the assistant and resume-email inputs use an accent-colored ring instead. Do not remove a ring without replacing it.
+
+Status changes are announced rather than shown silently. `aria-live="polite"` covers the rotating hero role, assistant messages, the Spotify now-playing state, and resume form status, and the resume form also moves focus to its error message when validation fails. Reduced-motion handling is described in the Motion section.
