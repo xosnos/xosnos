@@ -9,6 +9,17 @@ async function hasHorizontalOverflow(page: {
   });
 }
 
+function expectCentered(
+  box: { x: number; width: number } | null,
+  viewportWidth: number,
+  label: string,
+) {
+  expect(box, label).toBeTruthy();
+  if (!box) return;
+  const center = box.x + box.width / 2;
+  expect(Math.abs(center - viewportWidth / 2), label).toBeLessThan(16);
+}
+
 test('phone homepage keeps contact actions on the first screen', async ({ page }) => {
   await page.goto('/');
 
@@ -16,6 +27,37 @@ test('phone homepage keeps contact actions on the first screen', async ({ page }
   await expect(page.getByRole('link', { name: 'Get in touch' })).toBeInViewport();
   await expect(page.getByRole('button', { name: 'View resume' })).toBeInViewport();
   expect(await hasHorizontalOverflow(page)).toBe(false);
+});
+
+test('phone hero identity stays centered under the photo', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+
+  const viewport = page.viewportSize();
+  expect(viewport).toBeTruthy();
+  if (!viewport) return;
+
+  await expect(page.getByRole('heading', { name: 'Steven Nguyen' })).toBeVisible();
+
+  expectCentered(
+    await page.getByRole('img', { name: 'Steven Nguyen' }).boundingBox(),
+    viewport.width,
+    'photo',
+  );
+  expectCentered(
+    await page.getByRole('heading', { name: 'Steven Nguyen' }).boundingBox(),
+    viewport.width,
+    'name',
+  );
+  expectCentered(
+    await page.getByText("Hello Universe, I'm ...").boundingBox(),
+    viewport.width,
+    'greeting',
+  );
+
+  const longRole = page.getByText('Non-Profit Technology Director');
+  await expect(longRole).toBeVisible({ timeout: 12_000 });
+  expectCentered(await longRole.boundingBox(), viewport.width, 'long role');
 });
 
 test('phone navigation and assistant stay inside the viewport', async ({ page }) => {

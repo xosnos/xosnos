@@ -39,18 +39,18 @@ const Hero = () => {
           </div>
 
           <div className="mb-4 flex w-full flex-col items-center gap-2 pb-1 md:mb-8 md:gap-4 md:pb-3">
-            <div className="flex w-fit max-w-full flex-col items-start gap-2 text-left md:gap-3">
-              <div className="flex flex-col items-start gap-0.5">
+            <div className="flex w-full max-w-full flex-col items-center gap-2 text-center md:w-fit md:items-start md:gap-3 md:text-left">
+              <div className="flex flex-col items-center gap-0.5 md:items-start">
                 <HeroGreeting />
-                <h1 className="text-4xl font-montserrat font-extrabold tracking-tighter leading-[1.15] title-banner-effect sm:text-5xl md:text-7xl lg:text-8xl">
+                <h1 className="text-center text-4xl font-montserrat font-extrabold tracking-tighter leading-[1.15] title-banner-effect sm:text-5xl md:text-left md:text-7xl lg:text-8xl">
                   <span translate="no">{heroContent.name}</span>
                 </h1>
               </div>
-              <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+              <div className="flex w-full flex-col items-center gap-2 md:flex-row md:items-center md:justify-between md:gap-4">
                 <div className="min-w-0">
                   <RotatingRoleTitle />
                 </div>
-                <p className="flex shrink-0 items-center gap-1.5 text-sm md:text-base font-montserrat font-medium tracking-wide text-muted-foreground">
+                <p className="flex shrink-0 items-center justify-center gap-1.5 text-sm font-montserrat font-medium tracking-wide text-muted-foreground md:justify-start md:text-base">
                   <MapPin className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                   {aboutContent.location}
                 </p>
