@@ -15,7 +15,7 @@ export default function HeroActions() {
   return (
     <div className="w-full max-w-2xl space-y-4 md:space-y-8">
       <div className="flex w-full flex-col items-center gap-4">
-        <div className="mx-auto flex w-full max-w-sm flex-col items-stretch justify-center gap-3 sm:max-w-none sm:flex-row sm:items-center sm:gap-4">
+        <div className="mx-auto flex w-full max-w-sm flex-col items-stretch justify-center gap-3 sm:max-w-none sm:flex-row sm:items-center sm:gap-4 [@media(max-height:600px)]:mx-0 [@media(max-height:600px)]:w-[calc(100%-5.75rem)] [@media(max-height:600px)]:max-w-none [@media(max-height:600px)]:self-start">
           <a href={`mailto:${contactContent.email}`} className={primaryClass}>
             <Mail className="w-4 h-4" aria-hidden="true" />
             {heroContent.primaryCtaLabel}
