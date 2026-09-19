@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Navigation />
-      <main id="main-content" className="pt-16 lg:pt-0">
+      <main id="main-content" className="pt-[var(--nav-height)] lg:pt-0">
         <Hero />
         <Projects />
         <Experience />

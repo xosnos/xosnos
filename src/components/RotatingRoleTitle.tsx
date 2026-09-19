@@ -10,7 +10,7 @@ const PAUSE_AFTER_TYPE_MS = 2200;
 const REDUCED_MOTION_ROTATION_MS = 3200;
 
 const titleClassName =
-  'text-left font-mono text-sm md:text-base text-muted-foreground tracking-normal normal-case pt-0.5';
+  'text-left font-mono text-sm md:text-base text-muted-foreground tracking-normal normal-case pt-0.5 break-words';
 
 type TypingPhase = 'typing' | 'pausing' | 'deleting';
 
@@ -78,7 +78,7 @@ export function RotatingRoleTitle() {
 
   return (
     <p className={titleClassName}>
-      <span className="inline-flex items-center whitespace-nowrap" aria-hidden="true">
+      <span className="inline-flex max-w-full flex-wrap items-center" aria-hidden="true">
         <span className="text-accent/70">&quot;</span>
         {displayText}
         {isComplete ? <span className="text-accent/70">&quot;</span> : null}

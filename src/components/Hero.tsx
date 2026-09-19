@@ -11,16 +11,16 @@ const Hero = () => {
   return (
     <header
       id="page-top"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
+      className="relative flex min-h-[calc(100dvh-var(--nav-height))] items-center justify-center overflow-hidden bg-background pb-[var(--fab-offset)] lg:min-h-dvh lg:pb-0"
     >
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-accent/10 rounded-full blur-[80px] md:blur-[120px]" />
         <div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[80px] md:blur-[120px]" />
       </div>
 
-      <div className="container mx-auto px-6 py-20 relative z-10">
-        <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
-          <div className="mb-10 relative group">
+      <div className="container relative z-10 mx-auto px-6 py-10 md:py-20">
+        <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+          <div className="group relative mb-6 md:mb-10">
             <div className="absolute inset-0 bg-gradient-to-tr from-accent to-blue-600 rounded-full blur-md opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
             <div className="relative p-1 bg-gradient-to-tr from-accent to-blue-600 rounded-full">
               <Image
@@ -28,7 +28,8 @@ const Hero = () => {
                 alt={heroContent.name}
                 width={180}
                 height={180}
-                className="rounded-full border-4 border-background bg-background shadow-2xl relative z-10"
+                className="relative z-10 h-32 w-32 rounded-full border-4 border-background bg-background shadow-2xl sm:h-[180px] sm:w-[180px]"
+                sizes="(max-width: 640px) 128px, 180px"
                 priority
               />
             </div>
@@ -37,11 +38,11 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="mb-8 flex w-full flex-col items-center gap-4 pb-2 md:pb-3">
-            <div className="flex w-fit max-w-full flex-col items-start gap-3 text-left">
+          <div className="mb-5 flex w-full flex-col items-center gap-3 pb-2 md:mb-8 md:gap-4 md:pb-3">
+            <div className="flex w-fit max-w-full flex-col items-start gap-2 text-left md:gap-3">
               <div className="flex flex-col items-start gap-0.5">
                 <HeroGreeting />
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-montserrat font-extrabold tracking-tighter leading-[1.15] title-banner-effect">
+                <h1 className="text-4xl font-montserrat font-extrabold tracking-tighter leading-[1.15] title-banner-effect sm:text-5xl md:text-7xl lg:text-8xl">
                   <span translate="no">{heroContent.name}</span>
                 </h1>
               </div>
@@ -60,7 +61,7 @@ const Hero = () => {
           <RichText
             as="p"
             text={heroContent.tagline}
-            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-12 leading-relaxed text-pretty"
+            className="mb-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground md:mb-12 md:text-2xl"
           />
 
           <HeroActions />

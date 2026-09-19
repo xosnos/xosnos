@@ -60,7 +60,8 @@
   --radius: 0.75rem;
 
   /* Fixed nav height — keep anchor scroll offsets in sync with Navigation h-16 */
-  --nav-height: 4rem;
+  --nav-height: calc(4rem + env(safe-area-inset-top, 0px));
+  --fab-offset: calc(5.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 [data-theme="dark"] {
@@ -132,6 +133,7 @@
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
   }
 
   body {
@@ -140,6 +142,7 @@
     font-family: var(--font-lato);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
     transition:
       background-color 0.3s ease,
       color 0.3s ease;

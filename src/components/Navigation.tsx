@@ -29,6 +29,23 @@ const Navigation = () => {
   const displayActiveSection = isHome ? activeSection : '';
 
   useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
     if (!isHome) return;
 
     const handleScroll = () => {
@@ -66,9 +83,9 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHome, isScrolled, activeSection, pathname]);
 
-  const navClasses = `fixed w-full top-0 z-50 transition-all duration-300 ${
-    displayScrolled
-      ? 'bg-background/80 backdrop-blur-md shadow-sm border-b border-border'
+  const navClasses = `fixed w-full top-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-[background-color,box-shadow,border-color] duration-300 ${
+    displayScrolled || isMenuOpen
+      ? 'bg-background/95 backdrop-blur-md shadow-sm border-b border-border'
       : 'bg-transparent'
   }`;
 
@@ -110,7 +127,7 @@ const Navigation = () => {
 
               <button
                 type="button"
-                className="lg:hidden p-2 rounded-md text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="lg:hidden flex h-11 w-11 items-center justify-center rounded-md text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle navigation"
                 aria-expanded={isMenuOpen}

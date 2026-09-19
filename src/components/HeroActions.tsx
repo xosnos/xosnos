@@ -6,16 +6,16 @@ import { heroContent } from '@/data/hero';
 import { openResumeGate } from '@/lib/resume-gate-events';
 
 const primaryClass =
-  'inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-accent text-accent-foreground font-montserrat font-extrabold text-sm uppercase tracking-widest shadow-lg shadow-accent/20 hover:brightness-110 hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2';
+  'inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 rounded-full bg-accent text-accent-foreground font-montserrat font-extrabold text-sm uppercase tracking-widest shadow-lg shadow-accent/20 hover:brightness-110 hover:scale-105 transition-[background-color,filter,transform,box-shadow] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2';
 
 const secondaryClass =
-  'inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-muted text-foreground font-montserrat font-extrabold text-sm uppercase tracking-widest border border-border hover:border-accent/40 hover:bg-accent/10 hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2';
+  'inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 rounded-full bg-muted text-foreground font-montserrat font-extrabold text-sm uppercase tracking-widest border border-border hover:border-accent/40 hover:bg-accent/10 hover:scale-105 transition-[background-color,border-color,transform,filter] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2';
 
 export default function HeroActions() {
   return (
-    <div className="w-full max-w-2xl space-y-8">
-      <div className="flex flex-col items-center gap-4">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+    <div className="w-full max-w-2xl space-y-5 md:space-y-8">
+      <div className="flex w-full flex-col items-center gap-4">
+        <div className="flex w-full max-w-sm flex-col items-stretch justify-center gap-3 sm:max-w-none sm:flex-row sm:items-center sm:gap-4">
           <a href={`mailto:${contactContent.email}`} className={primaryClass}>
             <Mail className="w-4 h-4" aria-hidden="true" />
             {heroContent.primaryCtaLabel}

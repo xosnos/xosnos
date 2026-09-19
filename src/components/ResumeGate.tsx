@@ -11,7 +11,7 @@ interface ResumeGateProps {
 }
 
 const inputFocusClass =
-  'w-full pl-10 pr-4 py-3 rounded-full bg-background border border-border text-foreground text-sm font-montserrat placeholder:text-muted-foreground/50 outline-none transition-all duration-200 focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/20';
+  'w-full min-h-11 pl-10 pr-4 py-3 rounded-full bg-background border border-border text-foreground text-base sm:text-sm font-montserrat placeholder:text-muted-foreground/50 outline-none transition-[border-color,box-shadow] duration-200 focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/20';
 
 export default function ResumeGate({ open, onClose }: ResumeGateProps) {
   const [email, setEmail] = useState('');
@@ -115,7 +115,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
           animate={{ opacity: 1 }}
           exit={reduceMotion ? undefined : { opacity: 0 }}
           transition={{ duration: reduceMotion ? 0 : 0.2 }}
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 backdrop-blur-sm overscroll-contain"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-3 backdrop-blur-sm overscroll-contain"
           onClick={handleClose}
         >
           <motion.div
@@ -128,7 +128,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={reduceMotion ? undefined : { opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeOut' }}
-            className="w-full max-w-md mx-4 bg-card/95 backdrop-blur-md rounded-3xl p-6 border border-border/50 shadow-2xl space-y-4 overscroll-contain"
+            className="w-full max-w-md space-y-4 overscroll-contain rounded-3xl border border-border/50 bg-card/95 p-5 shadow-2xl backdrop-blur-md sm:p-6"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between">
@@ -136,7 +136,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
                 <FileDown className="w-4 h-4 text-accent" aria-hidden="true" />
                 <span
                   id={titleId}
-                  className="text-xs font-montserrat font-extrabold text-muted-foreground uppercase tracking-[0.2em]"
+                  className="text-xs font-montserrat font-extrabold uppercase tracking-widest text-muted-foreground sm:tracking-[0.2em]"
                 >
                   Download Resume
                 </span>
@@ -144,7 +144,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
               <button
                 type="button"
                 onClick={handleClose}
-                className="text-muted-foreground hover:text-foreground transition-colors rounded-md p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="flex h-11 w-11 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 aria-label="Close"
               >
                 <X className="w-4 h-4" aria-hidden="true" />
@@ -230,7 +230,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-accent text-accent-foreground font-montserrat font-extrabold text-sm uppercase tracking-widest shadow-lg shadow-accent/20 hover:scale-105 hover:brightness-110 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="inline-flex w-full min-h-11 items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-montserrat font-extrabold uppercase tracking-widest text-accent-foreground shadow-lg shadow-accent/20 transition-[transform,filter,opacity] duration-300 hover:scale-105 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   {loading ? (
                     <>
