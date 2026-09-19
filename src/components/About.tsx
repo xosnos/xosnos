@@ -1,4 +1,4 @@
-import { Code2, Coffee, MapPin, User } from 'lucide-react';
+import { Coffee, Music2, User } from 'lucide-react';
 import Image from 'next/image';
 import { RichText } from '@/components/RichText';
 import { aboutContent } from '@/data/about';
@@ -25,16 +25,10 @@ const About = () => {
               <div className="w-12 h-1 bg-accent rounded-full" />
             </div>
 
-            <div className="space-y-6 text-lg text-muted-foreground font-light leading-relaxed">
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               {aboutContent.bio.map((paragraph) => (
                 <RichText key={paragraph.text} as="p" text={paragraph.text} />
               ))}
-              <p className="pt-4 flex items-center gap-3">
-                <Code2 className="w-6 h-6 text-accent" aria-hidden="true" />
-                <span className="text-foreground font-montserrat font-bold uppercase tracking-widest text-sm italic">
-                  {aboutContent.topLanguages}
-                </span>
-              </p>
             </div>
           </div>
 
@@ -55,9 +49,9 @@ const About = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="p-6 rounded-2xl bg-card border border-border shadow-sm flex flex-col gap-2 items-center text-center">
-                <MapPin className="w-5 h-5 text-accent" aria-hidden="true" />
+                <Music2 className="w-5 h-5 text-accent" aria-hidden="true" />
                 <span className="text-xs font-montserrat font-bold uppercase tracking-widest text-foreground">
-                  {aboutContent.location}
+                  {aboutContent.favoriteGenre}
                 </span>
               </div>
               <div className="p-6 rounded-2xl bg-card border border-border shadow-sm flex flex-col gap-2 items-center text-center">

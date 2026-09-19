@@ -2,6 +2,13 @@ import { yearMonthSortValue } from '@/lib/dates';
 
 export type ExperienceType = 'work' | 'volunteer' | 'project';
 
+export const experienceContent = {
+  sectionLabel: 'Career',
+  sectionTitle: 'Experience',
+  sectionDescription:
+    "I've worked across corporate, non-profit, and startup environments, from enterprise platforms to community organizations to building a product from 0->1.",
+};
+
 export interface ExperienceItem {
   id: string;
   organization: string;
@@ -22,16 +29,16 @@ const experiences: ExperienceItem[] = [
   {
     id: 'terraces-cofounder',
     organization: 'Terraces',
-    role: 'Co-Founder',
+    role: 'Technical Co-Founder',
     type: 'work',
     location: 'San Francisco Bay Area',
     startDate: '2025-04',
-    description: 'Building an AI-native career agent from 0 → 1.',
+    description: 'Building an AI-native career growth agent from 0 → 1.',
     highlights: [
-      'Shipped a 0-to-1 AI-native career agent that captures roles, tailors application materials, scores like an ATS, and generates interview-prep plans.',
-      'Built a TypeScript monorepo spanning web (TanStack Start), product API, browser extension, and Expo mobile on shared Supabase auth.',
-      'Designed passwordless authentication with cookie sessions on web and independent refresh-token lineages for extension and mobile clients.',
-      'Stood up local, preview, and production environment tiers with Terraform-managed Supabase Auth so the team can move from 0 → 1 without freezing the stack.',
+      'Architected an AI-native career platform that captures roles, tailors application materials, scores like an ATS, and generates interview-prep plans.',
+      'Building a TypeScript monorepo spanning web (TanStack Start), browser extension, and Expo mobile clients with a shared backend',
+      'Designed workflows with Firecrawl and AI SDK to automate job description scraping, company research, and personalized application materials.',
+      'Stood up local, preview, and production environment tiers with Terraform-managed Supabase to streamline the development process.',
     ],
     link: 'https://www.terraces.ai/',
     published: true,
@@ -47,7 +54,7 @@ const experiences: ExperienceItem[] = [
     description:
       'Platform engineering with CI/CD, multi-region delivery, and service rollout safety.',
     highlights: [
-      'Architected scalable CI/CD pipelines using Jenkins and Kubernetes, significantly enhancing deployment efficiency.',
+      'Engineered scalable Jenkins CI/CD pipelines with Docker and Kubernetes, significantly enhancing deployment efficiency on AWS.',
       'Enabled automated rollouts of microservices across multiple regional data centers, streamlining operations.',
       'Collaborated with cross-functional teams to ensure seamless integration and deployment processes at Workday.',
     ],
@@ -68,7 +75,7 @@ const experiences: ExperienceItem[] = [
       'Proactively identified and patched over 15 critical security vulnerabilities (CVEs) in third-party libraries.',
       'Designed and implemented evaluation and analytics dashboards for streamlined vulnerability management.',
       'Strengthened backend infrastructure security, enhancing overall system resilience.',
-      'Contributed to Workday’s commitment to providing secure and reliable software solutions.',
+      "Contributed to Workday's commitment to providing secure and reliable software solutions.",
     ],
     link: 'https://www.workday.com',
     published: true,
@@ -239,6 +246,7 @@ const experiences: ExperienceItem[] = [
       'Developed engaging weekly lesson plans for over 50 middle school students to introduce coding concepts.',
       'Enhanced learning experiences through interactive coding activities and projects, fostering student engagement.',
     ],
+    link: 'https://hackblue.github.io/',
     published: true,
   },
 ];

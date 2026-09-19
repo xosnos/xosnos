@@ -1,6 +1,6 @@
 import { Building2, CalendarRange, ChevronRight, MapPin } from 'lucide-react';
 import { ScrollReveal, ScrollRevealItem } from '@/components/ScrollReveal';
-import { listPublishedExperiences } from '@/data/experience';
+import { experienceContent, listPublishedExperiences } from '@/data/experience';
 import { formatMonthYear } from '@/lib/dates';
 
 const Experience = () => {
@@ -15,15 +15,19 @@ const Experience = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <ScrollReveal>
-          <div className="text-center mb-16 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-montserrat font-bold uppercase tracking-widest">
-              <Building2 className="w-4 h-4" aria-hidden="true" />
-              Career
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-montserrat font-bold uppercase tracking-widest">
+                <Building2 className="w-4 h-4" aria-hidden="true" />
+                {experienceContent.sectionLabel}
+              </div>
+              <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold tracking-tighter text-foreground text-balance">
+                {experienceContent.sectionTitle}
+              </h2>
             </div>
-            <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold tracking-tighter text-foreground text-balance">
-              Experience
-            </h2>
-            <div className="w-12 h-1 bg-accent mx-auto rounded-full" />
+            <p className="text-muted-foreground text-lg max-w-md leading-relaxed text-pretty">
+              {experienceContent.sectionDescription}
+            </p>
           </div>
         </ScrollReveal>
 
@@ -70,19 +74,19 @@ const Experience = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-6 max-w-4xl">
+                  <div className="space-y-6">
                     {item.description && (
-                      <p className="text-muted-foreground text-lg leading-relaxed font-light text-pretty">
+                      <p className="text-muted-foreground text-lg leading-relaxed text-pretty">
                         {item.description}
                       </p>
                     )}
 
                     {item.highlights && item.highlights.length > 0 && (
-                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <ul className="flex flex-col gap-3">
                         {item.highlights.map((highlight) => (
                           <li
                             key={highlight}
-                            className="flex gap-3 text-foreground/80 text-sm leading-relaxed group-hover:text-foreground transition-colors"
+                            className="flex gap-3 text-foreground text-base leading-relaxed"
                           >
                             <span
                               className="shrink-0 w-1.5 h-1.5 rounded-full bg-accent mt-2"

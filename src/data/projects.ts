@@ -32,7 +32,7 @@ const projectItems: ProjectItem[] = [
   {
     id: 'architype',
     title: 'Architype',
-    image: '/assets/img/projects/architype.svg',
+    image: '/assets/img/projects/architype.png',
     subtitle:
       'A collaborative system design workspace for building architecture diagrams, using AI agents to create or revise designs, and generating downloadable technical specs.',
     description:
@@ -46,7 +46,7 @@ const projectItems: ProjectItem[] = [
   {
     id: 'unavsa-mail-merge',
     title: 'UNAVSA Mail Merge',
-    image: '/assets/img/projects/unavsa-mail-merge.svg',
+    image: '/assets/img/projects/unavsa-mail-merge.png',
     subtitle:
       'A Google Workspace add-on for personalized email campaigns and engagement analytics, built with CardService, Google Apps Script, Gmail, and Google Sheets.',
     description:

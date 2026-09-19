@@ -79,7 +79,7 @@ SCOPE:
 ABOUT STEVEN:
 ${heroContent.name} — ${heroContent.roles.join(', ')}. Based in ${aboutContent.location}.
 ${formatBio()}
-Fun fact: ${aboutContent.funFact}.
+Favorite drink: ${aboutContent.funFact}. Favorite music genres: ${aboutContent.favoriteGenre}.
 
 PRIMARY TOOLS:
 ${featuredSkills.join(', ')}

@@ -50,7 +50,7 @@ const Projects = () => {
               Selected Projects
             </h2>
           </div>
-          <p className="text-muted-foreground font-light text-lg max-w-md leading-relaxed text-pretty">
+          <p className="text-muted-foreground text-lg max-w-md leading-relaxed text-pretty">
             A showcase of applications, tools, and experiments I&apos;ve built to solve
             problems and explore new technologies.
           </p>
@@ -102,7 +102,7 @@ const Projects = () => {
                     </h3>
                   </div>
                 </div>
-                <p className="px-2 pb-2 text-muted-foreground font-light line-clamp-2 leading-relaxed">
+                <p className="px-2 pb-2 text-muted-foreground line-clamp-2 leading-relaxed">
                   {item.subtitle}
                 </p>
               </button>
@@ -164,7 +164,7 @@ const Projects = () => {
                       </h2>
                     </div>
 
-                    <p className="text-xl text-muted-foreground font-light leading-relaxed text-pretty">
+                    <p className="text-xl text-muted-foreground leading-relaxed text-pretty">
                       {selectedItem.description}
                     </p>
 

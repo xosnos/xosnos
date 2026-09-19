@@ -38,7 +38,7 @@ const Skills = () => {
             <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold tracking-tighter text-foreground text-balance">
               Tools I ship with
             </h2>
-            <p className="text-muted-foreground font-light text-lg leading-relaxed text-pretty">
+            <p className="text-muted-foreground text-lg leading-relaxed text-pretty">
               Primary languages, frameworks, and platforms then my full stack.
             </p>
           </div>

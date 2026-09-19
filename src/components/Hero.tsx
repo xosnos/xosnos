@@ -1,11 +1,11 @@
-import { MapPin, Rocket } from "lucide-react";
-import Image from "next/image";
-import HeroActions from "@/components/HeroActions";
-import { HeroGreeting } from "@/components/HeroGreeting";
-import { RichText } from "@/components/RichText";
-import { RotatingRoleTitle } from "@/components/RotatingRoleTitle";
-import { aboutContent } from "@/data/about";
-import { heroContent } from "@/data/hero";
+import { MapPin, Rocket } from 'lucide-react';
+import Image from 'next/image';
+import HeroActions from '@/components/HeroActions';
+import { HeroGreeting } from '@/components/HeroGreeting';
+import { RichText } from '@/components/RichText';
+import { RotatingRoleTitle } from '@/components/RotatingRoleTitle';
+import { aboutContent } from '@/data/about';
+import { heroContent } from '@/data/hero';
 
 const Hero = () => {
   return (
@@ -50,10 +50,7 @@ const Hero = () => {
                   <RotatingRoleTitle />
                 </div>
                 <p className="flex shrink-0 items-center gap-1.5 text-sm md:text-base font-montserrat font-medium tracking-wide text-muted-foreground">
-                  <MapPin
-                    className="h-4 w-4 shrink-0 text-accent"
-                    aria-hidden="true"
-                  />
+                  <MapPin className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                   {aboutContent.location}
                 </p>
               </div>
@@ -63,7 +60,7 @@ const Hero = () => {
           <RichText
             as="p"
             text={heroContent.tagline}
-            className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl mb-12 leading-relaxed text-pretty"
+            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-12 leading-relaxed text-pretty"
           />
 
           <HeroActions />

@@ -25,16 +25,16 @@ const lato = Lato({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.xosnos.com'),
-  title: 'Steven Nguyen | Software Engineer',
+  title: 'Steven Nguyen | Portfolio',
   description:
-    'Portfolio of Steven Nguyen, Software Engineer and co-founder of Terraces. Previously SDE II at Workday. Full-stack web, mobile, and AI-native systems.',
+    'Portfolio of Steven Nguyen, Software Engineer and co-founder of Terraces. Previously at Workday. Full-stack web, mobile, and AI-native systems.',
   openGraph: {
     type: 'website',
     siteName: 'Steven Nguyen',
     url: 'https://www.xosnos.com',
-    title: 'Steven Nguyen | Software Engineer',
+    title: 'Steven Nguyen | Portfolio',
     description:
-      'Software Engineer and co-founder of Terraces. Previously SDE II at Workday. Based in the San Francisco Bay Area.',
+      'Portfolio of Steven Nguyen, Software Engineer and co-founder of Terraces. Previously at Workday. Based in the San Francisco Bay Area.',
     images: [
       {
         url: '/assets/img/profile.jpg',
@@ -46,9 +46,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Steven Nguyen | Software Engineer',
-    description:
-      'Software Engineer and co-founder of Terraces. Previously SDE II at Workday.',
+    title: 'Steven Nguyen | Portfolio',
+    description: 'Software Engineer and co-founder of Terraces. Previously at Workday.',
     images: ['/assets/img/profile.jpg'],
   },
   icons: {

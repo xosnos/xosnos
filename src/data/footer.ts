@@ -1,9 +1,5 @@
 export const footerContent = {
   brand: 'xosnos',
-  locations: [
-    { label: 'San Francisco Bay Area, California', type: 'primary' as const },
-    { label: 'Grand Rapids, Michigan', type: 'secondary' as const },
-  ],
   socialLinks: [
     { href: 'https://github.com/xosnos/', label: 'GitHub', icon: 'github' as const },
     {
@@ -13,9 +9,13 @@ export const footerContent = {
     },
     { href: 'https://x.com/xosnos', label: 'X', icon: 'x' as const },
   ],
-  techStack: ['Next.js 16 & React 19', 'Tailwind CSS v4', 'Cursor & Vercel'],
-  availability: {
-    status: 'Ready for new projects',
-    message: "Let's create something extraordinary together.",
-  },
+  builtWithLabel: 'Built with',
+  techStack: [
+    'Next.js 16',
+    'React 19',
+    'Tailwind CSS v4',
+    'Framer Motion',
+    'Vercel',
+    'Cursor',
+  ],
 };

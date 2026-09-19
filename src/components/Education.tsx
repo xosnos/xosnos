@@ -43,7 +43,7 @@ const Education = () => {
               Academic Journey
             </h2>
           </div>
-          <p className="text-muted-foreground font-light text-lg max-w-md leading-relaxed text-pretty">
+          <p className="text-muted-foreground text-lg max-w-md leading-relaxed text-pretty">
             A background rooted in computer science and engineering, with a focus on
             human-centered design and software quality.
           </p>
@@ -112,7 +112,10 @@ const Education = () => {
               initial={reduceMotion ? false : { opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={reduceMotion ? undefined : { opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeOut' }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.25,
+                ease: 'easeOut',
+              }}
               className="bg-background rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto overscroll-contain shadow-2xl border border-border relative"
               onClick={(e) => e.stopPropagation()}
             >
@@ -158,9 +161,9 @@ const Education = () => {
                             />
                             Relevant Courses
                           </h3>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-muted-foreground">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-foreground">
                             {selectedItem.courses.map((course, index) => (
-                              <div key={index} className="flex gap-2 text-sm">
+                              <div key={index} className="flex gap-2 text-base">
                                 <span className="text-accent" aria-hidden="true">
                                   &#8226;
                                 </span>
@@ -177,9 +180,9 @@ const Education = () => {
                             <Users className="w-5 h-5 text-accent" aria-hidden="true" />
                             Activities
                           </h3>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-muted-foreground">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-foreground">
                             {selectedItem.activities.map((activity, index) => (
-                              <div key={index} className="flex gap-2 text-sm">
+                              <div key={index} className="flex gap-2 text-base">
                                 <span className="text-accent" aria-hidden="true">
                                   &#8226;
                                 </span>
@@ -196,9 +199,9 @@ const Education = () => {
                             <Award className="w-5 h-5 text-accent" aria-hidden="true" />
                             Awards
                           </h3>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-muted-foreground">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-foreground">
                             {selectedItem.awards.map((award, index) => (
-                              <div key={index} className="flex gap-2 text-sm">
+                              <div key={index} className="flex gap-2 text-base">
                                 <span className="text-accent" aria-hidden="true">
                                   &#8226;
                                 </span>

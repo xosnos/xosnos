@@ -25,7 +25,7 @@ export default function HeroActions() {
             {heroContent.secondaryCtaLabel}
           </button>
         </div>
-        <p className="text-base text-muted-foreground font-light italic max-w-xl leading-relaxed text-pretty">
+        <p className="text-base text-muted-foreground italic max-w-xl leading-relaxed text-pretty">
           {contactContent.invitation}
         </p>
       </div>
