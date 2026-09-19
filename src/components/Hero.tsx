@@ -18,9 +18,9 @@ const Hero = () => {
         <div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[80px] md:blur-[120px]" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 py-10 md:py-20">
+      <div className="container relative z-10 mx-auto px-6 py-6 md:py-20">
         <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
-          <div className="group relative mb-6 md:mb-10">
+          <div className="group relative mb-4 md:mb-10">
             <div className="absolute inset-0 bg-gradient-to-tr from-accent to-blue-600 rounded-full blur-md opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
             <div className="relative p-1 bg-gradient-to-tr from-accent to-blue-600 rounded-full">
               <Image
@@ -28,8 +28,8 @@ const Hero = () => {
                 alt={heroContent.name}
                 width={180}
                 height={180}
-                className="relative z-10 h-32 w-32 rounded-full border-4 border-background bg-background shadow-2xl sm:h-[180px] sm:w-[180px]"
-                sizes="(max-width: 640px) 128px, 180px"
+                className="relative z-10 h-28 w-28 rounded-full border-4 border-background bg-background shadow-2xl sm:h-32 sm:w-32 md:h-[180px] md:w-[180px]"
+                sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, 180px"
                 priority
               />
             </div>
@@ -38,7 +38,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="mb-5 flex w-full flex-col items-center gap-3 pb-2 md:mb-8 md:gap-4 md:pb-3">
+          <div className="mb-4 flex w-full flex-col items-center gap-2 pb-1 md:mb-8 md:gap-4 md:pb-3">
             <div className="flex w-fit max-w-full flex-col items-start gap-2 text-left md:gap-3">
               <div className="flex flex-col items-start gap-0.5">
                 <HeroGreeting />
@@ -61,7 +61,7 @@ const Hero = () => {
           <RichText
             as="p"
             text={heroContent.tagline}
-            className="mb-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground md:mb-12 md:text-2xl"
+            className="mb-5 max-w-2xl text-base leading-relaxed text-pretty text-muted-foreground md:mb-12 md:text-2xl"
           />
 
           <HeroActions />

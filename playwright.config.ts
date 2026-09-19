@@ -19,7 +19,7 @@ export default defineConfig({
     },
     {
       name: 'mobile-chrome',
-      use: { ...devices['iPhone 12'] },
+      use: { ...devices['iPhone 12'], browserName: 'chromium' },
       testMatch: /mobile\.spec\.ts/,
     },
   ],
