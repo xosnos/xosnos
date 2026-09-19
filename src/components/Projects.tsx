@@ -119,7 +119,7 @@ const Projects = () => {
             animate={{ opacity: 1 }}
             exit={reduceMotion ? undefined : { opacity: 0 }}
             transition={{ duration: reduceMotion ? 0 : 0.2 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center p-3 md:p-8 modal-overlay"
+            className="safe-area-overlay modal-overlay fixed inset-0 z-[60] flex items-center justify-center"
             onClick={closeModal}
           >
             <motion.div
@@ -135,7 +135,7 @@ const Projects = () => {
                 duration: reduceMotion ? 0 : 0.25,
                 ease: 'easeOut',
               }}
-              className="relative max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl overflow-y-auto overscroll-contain rounded-3xl border border-border bg-background shadow-2xl"
+              className="relative max-h-full w-full max-w-5xl overflow-y-auto overscroll-contain rounded-3xl border border-border bg-background shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="sticky top-0 z-20 flex justify-end bg-background/80 p-3 backdrop-blur-md md:p-6">

@@ -25,13 +25,13 @@ export default function HeroActions() {
             {heroContent.secondaryCtaLabel}
           </button>
         </div>
-        <p className="text-base text-muted-foreground italic max-w-xl leading-relaxed text-pretty">
+        <p className="text-base text-muted-foreground italic max-w-xl leading-relaxed text-pretty [@media(max-height:600px)]:hidden">
           {contactContent.invitation}
         </p>
       </div>
       <a
         href={heroContent.exploreHref}
-        className="inline-flex items-center gap-2 text-sm font-montserrat font-bold uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md"
+        className="inline-flex items-center gap-2 text-sm font-montserrat font-bold uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md [@media(max-height:600px)]:hidden"
       >
         {heroContent.exploreLabel}
         <ArrowDown

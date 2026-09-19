@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 
 async function hasHorizontalOverflow(page: {
   evaluate: (fn: () => boolean) => Promise<boolean>;
@@ -9,13 +9,41 @@ async function hasHorizontalOverflow(page: {
   });
 }
 
-async function getLayoutBox(locator: {
+async function getFullBox(locator: {
   evaluate: <T>(fn: (el: HTMLElement) => T) => Promise<T>;
 }) {
   return locator.evaluate((el) => {
     const rect = el.getBoundingClientRect();
-    return { x: rect.x, width: rect.width };
+    return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
   });
+}
+
+function boxesOverlap(
+  a: { x: number; y: number; width: number; height: number },
+  b: { x: number; y: number; width: number; height: number },
+) {
+  return !(
+    a.x + a.width <= b.x ||
+    b.x + b.width <= a.x ||
+    a.y + a.height <= b.y ||
+    b.y + b.height <= a.y
+  );
+}
+
+async function expectContactActionsClear(page: Page) {
+  const contact = page.getByRole('link', { name: 'Get in touch' });
+  const resume = page.getByRole('button', { name: 'View resume' });
+  const assistant = page.getByRole('button', { name: 'Open AI assistant' });
+
+  await expect(contact).toBeInViewport({ ratio: 1 });
+  await expect(resume).toBeInViewport({ ratio: 1 });
+
+  const contactBox = await getFullBox(contact);
+  const resumeBox = await getFullBox(resume);
+  const assistantBox = await getFullBox(assistant);
+
+  expect(boxesOverlap(contactBox, assistantBox), 'chat covers Get in touch').toBe(false);
+  expect(boxesOverlap(resumeBox, assistantBox), 'chat covers View resume').toBe(false);
 }
 
 function expectCentered(
@@ -31,8 +59,7 @@ test('phone homepage keeps contact actions on the first screen', async ({ page }
   await page.goto('/');
 
   await expect(page.getByRole('heading', { name: 'Steven Nguyen' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Get in touch' })).toBeInViewport();
-  await expect(page.getByRole('button', { name: 'View resume' })).toBeInViewport();
+  await expectContactActionsClear(page);
   expect(await hasHorizontalOverflow(page)).toBe(false);
 });
 
@@ -53,14 +80,14 @@ test('phone hero identity stays centered under the photo', async ({ page }) => {
   await expect(photo).toBeVisible();
   await expect(name).toBeVisible();
   await expect(greeting).toBeVisible();
-  await expect.poll(async () => (await getLayoutBox(photo)).width).toBeGreaterThan(50);
+  await expect.poll(async () => (await getFullBox(photo)).width).toBeGreaterThan(50);
 
-  expectCentered(await getLayoutBox(photo), viewport.width, 'photo');
-  expectCentered(await getLayoutBox(name), viewport.width, 'name');
-  expectCentered(await getLayoutBox(greeting), viewport.width, 'greeting');
+  expectCentered(await getFullBox(photo), viewport.width, 'photo');
+  expectCentered(await getFullBox(name), viewport.width, 'name');
+  expectCentered(await getFullBox(greeting), viewport.width, 'greeting');
 
   await expect(longRole).toBeVisible({ timeout: 12_000 });
-  expectCentered(await getLayoutBox(longRole), viewport.width, 'long role');
+  expectCentered(await getFullBox(longRole), viewport.width, 'long role');
 });
 
 test('phone navigation and assistant stay inside the viewport', async ({ page }) => {
@@ -118,4 +145,21 @@ test('phone project dialog is fully on-screen and readable', async ({ page }) =>
   }
 
   expect(await hasHorizontalOverflow(page)).toBe(false);
+});
+
+test.describe('short phone', () => {
+  test.use({
+    viewport: { width: 320, height: 568 },
+    deviceScaleFactor: 2,
+    isMobile: true,
+    hasTouch: true,
+  });
+
+  test('keeps contact actions on the first screen', async ({ page }) => {
+    await page.goto('/');
+
+    await expect(page.getByRole('heading', { name: 'Steven Nguyen' })).toBeVisible();
+    await expectContactActionsClear(page);
+    expect(await hasHorizontalOverflow(page)).toBe(false);
+  });
 });

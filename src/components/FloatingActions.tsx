@@ -15,7 +15,7 @@ const FloatingActions = () => {
   const showScrollFab = showScrollTop && !isChatOpen;
 
   return (
-    <div className="fixed inset-x-4 bottom-6 z-50 flex flex-col items-end gap-3 font-lato pb-[max(0px,env(safe-area-inset-bottom))] lg:inset-x-auto lg:right-6">
+    <div className="fixed bottom-6 left-[max(1rem,env(safe-area-inset-left,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] z-50 flex flex-col items-end gap-3 font-lato pb-[max(0px,env(safe-area-inset-bottom,0px))] lg:left-auto lg:right-6">
       <AnimatePresence>
         {showScrollFab && (
           <motion.a

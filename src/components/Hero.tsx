@@ -11,7 +11,7 @@ const Hero = () => {
   return (
     <header
       id="page-top"
-      className="relative flex min-h-[calc(100dvh-var(--nav-height))] items-center justify-center overflow-hidden bg-background pb-[var(--fab-offset)] lg:min-h-dvh lg:pb-0"
+      className="relative flex min-h-[calc(100dvh-var(--nav-height))] items-center justify-center overflow-hidden bg-background pb-[var(--fab-offset)] [@media(max-height:600px)]:items-start lg:min-h-dvh lg:pb-0"
     >
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-accent/10 rounded-full blur-[80px] md:blur-[120px]" />

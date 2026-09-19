@@ -115,7 +115,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
           animate={{ opacity: 1 }}
           exit={reduceMotion ? undefined : { opacity: 0 }}
           transition={{ duration: reduceMotion ? 0 : 0.2 }}
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-3 backdrop-blur-sm overscroll-contain"
+          className="safe-area-overlay fixed inset-0 z-[60] flex items-center justify-center bg-black/50 backdrop-blur-sm overscroll-contain"
           onClick={handleClose}
         >
           <motion.div
@@ -128,7 +128,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={reduceMotion ? undefined : { opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: reduceMotion ? 0 : 0.25, ease: 'easeOut' }}
-            className="w-full max-w-md space-y-4 overscroll-contain rounded-3xl border border-border/50 bg-card/95 p-5 shadow-2xl backdrop-blur-md sm:p-6"
+            className="max-h-full w-full max-w-md space-y-4 overflow-y-auto overscroll-contain rounded-3xl border border-border/50 bg-card/95 p-5 shadow-2xl backdrop-blur-md sm:p-6"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between">

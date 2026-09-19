@@ -306,6 +306,22 @@
   justify-content: center;
 }
 
+.safe-area-overlay {
+  padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+  padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+  padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+}
+
+@media (min-width: 768px) {
+  .safe-area-overlay {
+    padding-top: max(2rem, env(safe-area-inset-top, 0px));
+    padding-right: max(2rem, env(safe-area-inset-right, 0px));
+    padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px));
+    padding-left: max(2rem, env(safe-area-inset-left, 0px));
+  }
+}
+
 .modal-overlay {
   background-color: color-mix(in srgb, var(--background) 80%, transparent);
   backdrop-filter: blur(4px);
