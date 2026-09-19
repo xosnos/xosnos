@@ -24,8 +24,14 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
   const emailRef = useRef<HTMLInputElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const requestRef = useRef<AbortController | null>(null);
 
   const resetForm = () => {
+    // Abandon an in-flight submission so its result cannot repopulate the form
+    // after it has been cleared. abort() is idempotent, so calling this from
+    // the render-phase guard below stays safe under StrictMode double renders.
+    requestRef.current?.abort();
+    requestRef.current = null;
     setEmail('');
     setName('');
     setLoading(false);
@@ -64,8 +70,13 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
     if (error) errorRef.current?.focus();
   }, [error]);
 
+  useEffect(() => () => requestRef.current?.abort(), []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    requestRef.current?.abort();
+    const controller = new AbortController();
+    requestRef.current = controller;
     setError(null);
     setLoading(true);
 
@@ -74,6 +85,7 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim(), name: name.trim() || undefined }),
+        signal: controller.signal,
       });
 
       if (!response.ok) {
@@ -81,13 +93,16 @@ export default function ResumeGate({ open, onClose }: ResumeGateProps) {
         throw new Error(body?.error || 'Something went wrong. Please try again.');
       }
 
+      if (controller.signal.aborted) return;
       setSuccess(true);
     } catch (err) {
+      if (controller.signal.aborted) return;
       setError(
         err instanceof Error ? err.message : 'Something went wrong. Please try again.',
       );
     } finally {
-      setLoading(false);
+      if (requestRef.current === controller) requestRef.current = null;
+      if (!controller.signal.aborted) setLoading(false);
     }
   };
 
