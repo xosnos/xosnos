@@ -40,7 +40,9 @@ next-env.d.ts
 .gemini/
 .vscode/
 .claude/
-.cursor/
+.cursor/*
+!.cursor/environment.json
+!.cursor/install.sh
 .antigravity/
 .vscode/mcp.json
 .claude/skills
