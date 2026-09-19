@@ -11,32 +11,29 @@ export interface SkillCategory {
 const badge = (alt: string, src: string): SkillBadge => ({ alt, src });
 
 export const domainKnowledge = [
-  'Full-Stack Web & Mobile Development',
+  'Agentic Engineering',
+  'Full-Stack Development',
   'DevOps & Infrastructure',
   'Distributed Systems',
-  'Cybersecurity & Information Security',
-  'Agentic Engineering',
+  'Cybersecurity',
 ] as const;
 
-/** Curated tools used in summaries and AI context. */
+/** Curated tools shown at the top of the skills section and used in summaries. */
 export const featuredSkills = [
-  'TypeScript',
   'Python',
-  'Java',
+  'TypeScript/JavaScript',
   'React',
   'Next.js',
   'React Native',
-  'Node.js',
-  'Supabase',
+  'FastAPI',
   'PostgreSQL',
-  'Docker',
-  'Kubernetes',
-  'AWS',
+  'Vercel',
+  'GitHub Actions',
 ] as const;
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: '⌨️ Languages',
+    title: '⌨️ Coding Languages',
     badges: [
       badge(
         'Python',
@@ -51,16 +48,16 @@ export const skillCategories: SkillCategory[] = [
         'https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E',
       ),
       badge(
+        'HTML5',
+        'https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white',
+      ),
+      badge(
+        'CSS3',
+        'https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white',
+      ),
+      badge(
         'Java',
         'https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white',
-      ),
-      badge(
-        'Go',
-        'https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white',
-      ),
-      badge(
-        'Swift',
-        'https://img.shields.io/badge/swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white',
       ),
       badge(
         'C++',
@@ -71,24 +68,16 @@ export const skillCategories: SkillCategory[] = [
         'https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white',
       ),
       badge(
-        'HTML5',
-        'https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white',
+        'Go',
+        'https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white',
       ),
       badge(
-        'CSS3',
-        'https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white',
+        'Swift',
+        'https://img.shields.io/badge/swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white',
       ),
       badge(
         'Shell Script',
         'https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white',
-      ),
-      badge(
-        'Markdown',
-        'https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white',
-      ),
-      badge(
-        'LaTeX',
-        'https://img.shields.io/badge/latex-%23008080.svg?style=for-the-badge&logo=latex&logoColor=white',
       ),
     ],
   },
@@ -104,42 +93,67 @@ export const skillCategories: SkillCategory[] = [
         'https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB',
       ),
       badge(
-        'Next JS',
-        'https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white',
+        'Next.js',
+        'https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white',
+      ),
+      badge(
+        'Tanstack',
+        'https://img.shields.io/badge/Tanstack-000000?style=for-the-badge&logo=tanstack&logoColor=white',
+      ),
+      badge(
+        'Shadcn',
+        'https://img.shields.io/badge/Shadcn-000000?style=for-the-badge&logo=shadcnui&logoColor=white',
+      ),
+      badge(
+        'TailwindCSS',
+        'https://img.shields.io/badge/tailwindcss-%3338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white',
       ),
       badge(
         'Redux',
         'https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white',
       ),
       badge(
-        'jQuery',
+        'JQuery',
         'https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white',
-      ),
-      badge(
-        'Bootstrap',
-        'https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white',
-      ),
-      badge(
-        'React Router',
-        'https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white',
-      ),
-      badge(
-        'SASS',
-        'https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white',
-      ),
-      badge(
-        'Vue.js',
-        'https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D',
-      ),
-      badge(
-        'TailwindCSS',
-        'https://img.shields.io/badge/tailwindcss-%3338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white',
       ),
     ],
   },
   {
     title: '⚙️ Backend',
     badges: [
+      badge(
+        'FastAPI',
+        'https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi&logoColor=white',
+      ),
+      badge(
+        'Express.js',
+        'https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB',
+      ),
+      badge(
+        'Node.js',
+        'https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white',
+      ),
+      badge(
+        'Flask',
+        'https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white',
+      ),
+      badge(
+        'Django',
+        'https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white',
+      ),
+      badge(
+        'Spring Boot',
+        'https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white',
+      ),
+    ],
+  },
+  {
+    title: '💽 Databases',
+    badges: [
+      badge(
+        'Postgres',
+        'https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white',
+      ),
       badge(
         'Supabase',
         'https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white',
@@ -149,41 +163,16 @@ export const skillCategories: SkillCategory[] = [
         'https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase',
       ),
       badge(
-        'NodeJS',
-        'https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white',
-      ),
-      badge(
-        'Express.js',
-        'https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB',
-      ),
-      badge(
-        'Django',
-        'https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white',
-      ),
-      badge(
-        'Flask',
-        'https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white',
-      ),
-      badge(
-        'Spring',
-        'https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white',
-      ),
-    ],
-  },
-  {
-    title: '💽 Databases',
-    badges: [
-      badge(
-        'SQLite',
-        'https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white',
-      ),
-      badge(
-        'Postgres',
-        'https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white',
+        'Redis',
+        'https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white',
       ),
       badge(
         'MySQL',
         'https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white',
+      ),
+      badge(
+        'SQLite',
+        'https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white',
       ),
       badge(
         'MongoDB',
@@ -192,58 +181,41 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: '🤖 Hosting',
+    title: '☁️ Cloud Infrastructure',
     badges: [
       badge(
         'Vercel',
         'https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white',
       ),
       badge(
-        'Netlify',
-        'https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7',
-      ),
-      badge(
-        'DigitalOcean',
-        'https://img.shields.io/badge/DigitalOcean-%230167ff.svg?style=for-the-badge&logo=digitalOcean&logoColor=white',
-      ),
-      badge(
-        'Glitch',
-        'https://img.shields.io/badge/glitch-%233333FF.svg?style=for-the-badge&logo=glitch&logoColor=white',
+        'Railway',
+        'https://img.shields.io/badge/railway-%234285F4.svg?style=for-the-badge&logo=railway&logoColor=white',
       ),
       badge(
         'Cloudflare',
         'https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white',
       ),
-    ],
-  },
-  {
-    title: '🛠️ Tools',
-    badges: [
       badge(
-        'NPM',
-        'https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white',
+        'Netlify',
+        'https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7',
       ),
       badge(
-        'Yarn',
-        'https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white',
+        'Google Cloud',
+        'https://img.shields.io/badge/Google%20Cloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white',
       ),
       badge(
-        'Gradle',
-        'https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white',
-      ),
-      badge(
-        'Biome',
-        'https://img.shields.io/badge/Biome-60A5FA?style=for-the-badge&logo=biome&logoColor=white',
-      ),
-      badge(
-        'Postman',
-        'https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white',
+        'AWS',
+        'https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white',
       ),
     ],
   },
   {
-    title: '💻 DevOps, Cloud, & Infrastructure',
+    title: '💻 DevOps',
     badges: [
+      badge(
+        'GitHub Actions',
+        'https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white',
+      ),
       badge(
         'Docker',
         'https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white',
@@ -257,58 +229,119 @@ export const skillCategories: SkillCategory[] = [
         'https://img.shields.io/badge/jenkins-%232C5263.svg?style=for-the-badge&logo=jenkins&logoColor=white',
       ),
       badge(
-        'Google Cloud',
-        'https://img.shields.io/badge/Google%20Cloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white',
+        'Terraform',
+        'https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white',
       ),
       badge(
-        'AWS',
-        'https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white',
-      ),
-      badge(
-        'Nginx',
-        'https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white',
+        'Bamboo',
+        'https://img.shields.io/badge/Bamboo-0052CC?style=for-the-badge&logo=bamboo&logoColor=white',
       ),
     ],
   },
   {
-    title: '🎨 Design',
+    title: '🛠️ Tools',
     badges: [
       badge(
-        'Figma',
-        'https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white',
+        'Uv',
+        'https://img.shields.io/badge/uv-DE5FE9?style=for-the-badge&logo=uv&logoColor=white',
       ),
       badge(
-        'Canva',
-        'https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white',
+        'Bun',
+        'https://img.shields.io/badge/Bun-000000?style=for-the-badge&logo=bun&logoColor=white',
       ),
       badge(
-        'Adobe Audition',
-        'https://img.shields.io/badge/Adobe%20Audition-9999FF.svg?style=for-the-badge&logo=Adobe%20Audition&logoColor=white',
+        'pnpm',
+        'https://img.shields.io/badge/pnpm-%23FFD500.svg?style=for-the-badge&logo=pnpm&logoColor=black',
       ),
       badge(
-        'Adobe Premiere Pro',
-        'https://img.shields.io/badge/Adobe%20Premiere%20Pro-9999FF.svg?style=for-the-badge&logo=Adobe%20Premiere%20Pro&logoColor=white',
+        'Yarn',
+        'https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white',
       ),
       badge(
-        'Adobe Lightroom',
-        'https://img.shields.io/badge/Adobe%20Lightroom-31A8FF.svg?style=for-the-badge&logo=Adobe%20Lightroom&logoColor=white',
+        'Biome',
+        'https://img.shields.io/badge/Biome-60A5FA?style=for-the-badge&logo=biome&logoColor=white',
       ),
       badge(
-        'Adobe Photoshop',
-        'https://img.shields.io/badge/adobephotoshop-%2331A8FF.svg?style=for-the-badge&logo=adobephotoshop&logoColor=white',
+        'Ruff',
+        'https://img.shields.io/badge/Ruff-D7FF64?style=for-the-badge&logo=ruff&logoColor=black',
       ),
       badge(
-        'Adobe XD',
-        'https://img.shields.io/badge/Adobe%20XD-470137?style=for-the-badge&logo=Adobe%20XD&logoColor=#FF61F6',
+        'Ty',
+        'https://img.shields.io/badge/ty-DE5FE9?style=for-the-badge&logo=ty&logoColor=white',
+      ),
+      badge(
+        'Prettier',
+        'https://img.shields.io/badge/prettier-%23F7B93E.svg?style=for-the-badge&logo=prettier&logoColor=black',
+      ),
+      badge(
+        'Vite',
+        'https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white',
+      ),
+      badge(
+        'Vitest',
+        'https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white',
+      ),
+      badge(
+        'Pytest',
+        'https://img.shields.io/badge/Pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white',
       ),
     ],
   },
   {
-    title: '🛠️ Organization',
+    title: '🤖 AI / Editors',
     badges: [
+      badge(
+        'Cursor',
+        'https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white',
+      ),
+      badge(
+        'Claude',
+        'https://img.shields.io/badge/Claude-D97757?style=for-the-badge&logo=claude&logoColor=white',
+      ),
+      badge(
+        'Zed',
+        'https://img.shields.io/badge/Zed-000000?style=for-the-badge&logo=zedindustries&logoColor=white',
+      ),
+      badge(
+        'ChatGPT',
+        'https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white',
+      ),
+      badge(
+        'Gemini',
+        'https://img.shields.io/badge/Gemini-8E75B2?style=for-the-badge&logo=google-gemini&logoColor=white',
+      ),
+      badge(
+        'Ollama',
+        'https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white',
+      ),
+      badge(
+        'Xcode',
+        'https://img.shields.io/badge/Xcode-147EFB?style=for-the-badge&logo=xcode&logoColor=white',
+      ),
+      badge(
+        'Perplexity',
+        'https://img.shields.io/badge/Perplexity-1FB8CD?style=for-the-badge&logo=perplexity&logoColor=white',
+      ),
+      badge(
+        'Replit',
+        'https://img.shields.io/badge/Replit-F26207?style=for-the-badge&logo=replit&logoColor=white',
+      ),
+    ],
+  },
+  {
+    title: '📋 Organization',
+    badges: [
+      badge(
+        'Linear',
+        'https://img.shields.io/badge/Linear-5E6AD2?style=for-the-badge&logo=linear&logoColor=white',
+      ),
       badge(
         'Notion',
         'https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white',
+      ),
+      badge(
+        'Excalidraw',
+        'https://img.shields.io/badge/Excalidraw-6965DB?style=for-the-badge&logo=excalidraw&logoColor=white',
       ),
       badge(
         'Jira',
@@ -319,8 +352,8 @@ export const skillCategories: SkillCategory[] = [
         'https://img.shields.io/badge/confluence-%23172BF4.svg?style=for-the-badge&logo=confluence&logoColor=white',
       ),
       badge(
-        'Trello',
-        'https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white',
+        'Miro',
+        'https://img.shields.io/badge/Miro-050038?style=for-the-badge&logo=miro&logoColor=white',
       ),
     ],
   },

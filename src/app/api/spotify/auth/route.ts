@@ -1,7 +1,8 @@
-import { NextResponse, NextRequest } from 'next/server';
-import { SPOTIFY_AUTH_URL, REDIRECT_URI } from '../../../../lib/spotify';
 import crypto from 'crypto';
+import { NextRequest, NextResponse } from 'next/server';
 import rateLimit from '@/lib/rate-limit';
+import { getClientIp, rejectProductionSetupRoute } from '@/lib/request-guard';
+import { REDIRECT_URI, SPOTIFY_AUTH_URL } from '../../../../lib/spotify';
 
 const limiter = rateLimit({
   interval: 60 * 1000,
@@ -9,7 +10,10 @@ const limiter = rateLimit({
 });
 
 export async function GET(request: NextRequest) {
-  const ip = request.headers.get('x-forwarded-for') ?? '127.0.0.1';
+  const setupBlocked = rejectProductionSetupRoute();
+  if (setupBlocked) return setupBlocked;
+
+  const ip = getClientIp(request);
   try {
     await limiter.check(5, ip); // 5 requests per minute
   } catch {

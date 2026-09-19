@@ -5,14 +5,14 @@
   so we've added these compatibility styles to make sure everything still
   looks the same as it did with Tailwind CSS v3.
 */
-@base {
+@layer base {
 
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: theme(borderColor.DEFAULT);
+    border-color: var(--border, currentcolor);
   }
 }
 
@@ -28,6 +28,7 @@
    Color System — Light & Dark Mode
    ======================================================================== */
 :root {
+  color-scheme: light;
   --background: #ffffff;
   --foreground: #0f172a;
 
@@ -47,7 +48,7 @@
   --muted-foreground: #64748b;
 
   --accent: #70cbff;
-  --accent-foreground: #ffffff;
+  --accent-foreground: #0f172a;
 
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
@@ -57,9 +58,13 @@
   --ring: #70cbff;
 
   --radius: 0.75rem;
+
+  /* Fixed nav height — keep anchor scroll offsets in sync with Navigation h-16 */
+  --nav-height: 4rem;
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
   --background: #0f172a;
   --foreground: #f8fafc;
 
@@ -124,13 +129,21 @@
    Base Styles
    ======================================================================== */
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-lato);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+    touch-action: manipulation;
   }
 
   h1,
@@ -141,10 +154,42 @@
   h6 {
     font-family: var(--font-montserrat);
     font-weight: 700;
+    text-wrap: balance;
   }
 
-  html {
-    scroll-behavior: smooth;
+  /* Fixed nav — keep in-page anchors / focus targets flush below the header */
+  section[id],
+  header#page-top {
+    scroll-margin-top: var(--nav-height);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    body {
+      transition: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .title-banner-effect {
+      animation: none !important;
+      background: none;
+      background-clip: unset;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: var(--foreground);
+      filter: none;
+      color: var(--foreground);
+    }
   }
 }
 
@@ -153,7 +198,7 @@
    ======================================================================== */
 @layer utilities {
   .btn-animated {
-    @apply transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg;
+    @apply transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg;
   }
 
   .btn-social-animated {
@@ -261,4 +306,5 @@
 .modal-overlay {
   background-color: color-mix(in srgb, var(--background) 80%, transparent);
   backdrop-filter: blur(4px);
+  overscroll-behavior: contain;
 }

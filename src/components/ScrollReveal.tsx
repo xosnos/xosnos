@@ -1,11 +1,10 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { motion, useReducedMotion, type Variants } from 'motion/react';
 import type { ReactNode } from 'react';
-import type { Variants } from 'motion/react';
 import {
-  fadeInUp,
   fadeIn,
+  fadeInUp,
   scaleIn,
   slideInLeft,
   slideInRight,
@@ -39,13 +38,14 @@ export function ScrollReveal({
   className,
   delay,
 }: ScrollRevealProps) {
+  const reduceMotion = useReducedMotion();
   const variants = custom ?? variantMap[variant];
   const transition = delay ? { delay } : undefined;
 
   return (
     <motion.div
       variants={variants}
-      initial="hidden"
+      initial={reduceMotion ? false : 'hidden'}
       whileInView="visible"
       viewport={viewportOnce}
       transition={transition}
@@ -63,10 +63,12 @@ export function ScrollRevealItem({
   children: ReactNode;
   className?: string;
 }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
       variants={fadeInUp}
-      initial="hidden"
+      initial={reduceMotion ? false : 'hidden'}
       whileInView="visible"
       viewport={viewportOnce}
       className={className}

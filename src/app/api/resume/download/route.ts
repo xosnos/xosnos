@@ -1,5 +1,5 @@
-import { NextResponse, NextRequest } from 'next/server';
 import { google } from 'googleapis';
+import { NextRequest, NextResponse } from 'next/server';
 import { verifyToken } from '@/lib/resume-token';
 
 function getAuth() {

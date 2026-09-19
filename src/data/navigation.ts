@@ -9,5 +9,4 @@ export const navItems: NavItem[] = [
   { section: 'skills', label: 'Skills' },
   { section: 'education', label: 'Education' },
   { section: 'about', label: 'About' },
-  { section: 'contact', label: 'Contact' },
 ];

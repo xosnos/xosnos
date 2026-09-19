@@ -1,12 +1,22 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
-test('local skills data displays badges', async ({ page }) => {
+test('skills section shows primary stack, domains, and the full badge list', async ({
+  page,
+}) => {
   await page.goto('/');
-  await page.locator('#skills').scrollIntoViewIfNeeded();
+  const skills = page.locator('#skills');
+  await skills.scrollIntoViewIfNeeded();
 
-  await expect(page.getByText('⌨️ Languages')).toBeVisible();
-  await expect(page.getByText('🖥️ Frontend')).toBeVisible();
+  await expect(skills.getByRole('heading', { name: 'Tools I ship with' })).toBeVisible();
+  await expect(
+    skills.getByRole('listitem').filter({ hasText: 'TypeScript/JavaScript' }),
+  ).toBeVisible();
+  await expect(skills.getByRole('listitem').filter({ hasText: 'FastAPI' })).toBeVisible();
+  await expect(skills.getByText('Full-Stack Development')).toBeVisible();
 
-  const badgeImages = page.locator('#skills img[alt="Python"]');
-  await expect(badgeImages.first()).toBeVisible();
+  await expect(skills.getByRole('heading', { name: /Languages/ })).toBeVisible();
+  await expect(skills.getByRole('heading', { name: /Design/ })).toHaveCount(0);
+  await expect(skills.locator('img[alt="Python"]')).toBeVisible();
+  await expect(skills.locator('img[alt="Supabase"]')).toBeVisible();
+  await expect(skills.locator('img[alt="Figma"]')).toHaveCount(0);
 });

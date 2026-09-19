@@ -1,9 +1,17 @@
 export const heroContent = {
   name: 'Steven Nguyen',
-  role: 'Software Engineer & Builder',
+  greeting: "Hello Universe, I'm ...",
+  roles: [
+    'Software Engineer',
+    'AI-Native Founder',
+    'Non-Profit Technology Director',
+    'Full-Stack Developer',
+  ],
   tagline:
-    'I ship **end-to-end** — from infrastructure to interface — and obsess over the people who use what I build.',
-  ctaLabel: 'Explore My Work',
-  ctaHref: '#projects',
+    'I ship **end-to-end** from **infrastructure** to **interface** and obsess over the people who use my tech!',
+  primaryCtaLabel: 'Get in touch',
+  secondaryCtaLabel: 'View resume',
+  exploreLabel: "See what I've been building",
+  exploreHref: '#projects',
   profileImage: '/assets/img/profile.jpg',
 };

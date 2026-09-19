@@ -1,9 +1,10 @@
-import { heroContent } from '@/data/hero';
 import { aboutContent } from '@/data/about';
 import { contactContent } from '@/data/contact';
-import { listPublishedExperiences } from '@/data/experience';
-import { listPublishedProjects } from '@/data/projects';
 import { educationItems } from '@/data/education';
+import { listPublishedExperiences } from '@/data/experience';
+import { heroContent } from '@/data/hero';
+import { listOverviewTags, listPublishedProjects } from '@/data/projects';
+import { domainKnowledge, featuredSkills, listSkillCategories } from '@/data/skills';
 
 const formatBio = () =>
   aboutContent.bio.map((p) => p.text.replace(/\*\*/g, '')).join(' ');
@@ -27,14 +28,15 @@ const formatExperiences = () =>
 const formatProjects = () =>
   listPublishedProjects()
     .map((p) => {
-      const tags = p.tags?.length ? ` [${p.tags.join(', ')}]` : '';
+      const overviewTags = listOverviewTags(p);
+      const tags = overviewTags.length ? ` [${overviewTags.join(', ')}]` : '';
       const links = [
         p.demoUrl ? `demo: ${p.demoUrl}` : null,
         p.repoUrl ? `repo: ${p.repoUrl}` : null,
       ]
         .filter(Boolean)
         .join(' | ');
-      return `- ${p.title}${tags}: ${p.description}${links ? `\n  ${links}` : ''}`;
+      return `- ${p.title}${tags}: ${p.subtitle}\n  ${p.description}${links ? `\n  ${links}` : ''}`;
     })
     .join('\n');
 
@@ -47,6 +49,16 @@ const formatEducation = () =>
         : '';
       const awards = edu.awards?.length ? `\n  Awards: ${edu.awards.join('; ')}` : '';
       return `- ${edu.name}${courses}${activities}${awards}`;
+    })
+    .join('\n');
+
+const formatDomainKnowledge = () => domainKnowledge.map((item) => `- ${item}`).join('\n');
+
+const formatSkills = () =>
+  listSkillCategories()
+    .map((category) => {
+      const names = category.badges.map((badge) => badge.alt).join(', ');
+      return `- ${category.title}: ${names}`;
     })
     .join('\n');
 
@@ -65,16 +77,24 @@ SCOPE:
 - Never invent jobs, dates, employers, awards, or technologies that aren't listed below.
 
 ABOUT STEVEN:
-${heroContent.name} — ${heroContent.role}. Based in ${aboutContent.location}.
+${heroContent.name} — ${heroContent.roles.join(', ')}. Based in ${aboutContent.location}.
 ${formatBio()}
-Top languages: ${aboutContent.topLanguages}.
-Fun fact: ${aboutContent.funFact}.
+Favorite drink: ${aboutContent.funFact}. Favorite music genres: ${aboutContent.favoriteGenre}.
 
-EXPERIENCE:
-${formatExperiences()}
+PRIMARY TOOLS:
+${featuredSkills.join(', ')}
+
+DOMAIN KNOWLEDGE:
+${formatDomainKnowledge()}
+
+SKILLS (by category — do not invent skills beyond this list):
+${formatSkills()}
 
 PROJECTS:
 ${formatProjects()}
+
+EXPERIENCE:
+${formatExperiences()}
 
 EDUCATION:
 ${formatEducation()}

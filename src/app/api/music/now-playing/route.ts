@@ -1,7 +1,7 @@
-import { NextResponse, NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { getAppleNowPlaying } from '@/lib/apple-music';
-import { getAccessToken, getTopTrack } from '@/lib/spotify';
 import rateLimit from '@/lib/rate-limit';
+import { getAccessToken, getTopTrack } from '@/lib/spotify';
 
 const limiter = rateLimit({
   interval: 60 * 1000, // 60 seconds

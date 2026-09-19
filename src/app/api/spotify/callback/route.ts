@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { rejectProductionSetupRoute } from '@/lib/request-guard';
 import { exchangeCodeForTokens } from '../../../../lib/spotify';
 
 export async function GET(request: NextRequest) {
+  const setupBlocked = rejectProductionSetupRoute();
+  if (setupBlocked) return setupBlocked;
   const searchParams = request.nextUrl.searchParams;
   const code = searchParams.get('code');
   const error = searchParams.get('error');
