@@ -2,6 +2,8 @@
 
 This repository contains the Next.js portfolio deployed at [xosnos.com](https://www.xosnos.com). Use this guide to run, validate, and navigate the website codebase.
 
+The root [`README.md`](../README.md) is the public GitHub profile, not the website setup guide. Website content lives in [`src/data/`](../src/data/); see [customization](CUSTOMIZE.md) for keeping both surfaces consistent.
+
 ## Features
 
 The website combines typed portfolio content with optional server integrations:
@@ -28,13 +30,28 @@ Install Node.js 20.9 or newer and [Bun](https://bun.sh/) before you start.
 ```bash
 git clone https://github.com/xosnos/xosnos.git
 cd xosnos
-bun install
+bun install --frozen-lockfile
 bun run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Copy `.env.example` to `.env.local`, then configure the integrations you need. The AI assistant returns a not-configured response without Gemini credentials. The dormant music API returns an unavailable response without provider credentials. Resume email and download requests require the complete Resend, token, Google Drive, and Google Sheets configuration.
+No environment file is required to browse the portfolio or run the tests. To enable integrations, copy [`.env.example`](../.env.example) to `.env.local` and configure only the services you need. Never commit credentials.
+
+### Configure optional integrations
+
+Use the environment template for variable names and these requirements for service setup:
+
+| Integration | Requirements | Behavior without configuration |
+| --- | --- | --- |
+| AI assistant | `GEMINI_API_KEY` | The widget renders; valid chat requests return 503 |
+| Resume email | `RESEND_API_KEY`, `RESUME_TOKEN_SECRET`, and a verified Resend sender for `steven@xosnos.com` | Valid submissions cannot send a download link |
+| Resume download | The same token secret plus all four Google variables in `.env.example` | A signed link alone cannot deliver the PDF |
+| Music API | Both Apple Music tokens, or all three Spotify credentials | `/api/music/now-playing` returns 503; the player remains unmounted |
+
+For resume downloads, enable the Google Drive and Sheets APIs for the service account's project. Share the resume PDF with the service account as a viewer and the logging spreadsheet as an editor. Create a sheet tab named `Downloads`; the route appends email, name, timestamp, and the original request IP to columns A–D. Both the Drive fetch and Sheets append must succeed before the route returns the PDF.
+
+Keep `RESUME_TOKEN_SECRET` stable across instances. Changing it invalidates existing download links. For local Spotify authorization, follow the [OAuth setup instructions](ARCHITECTURE.md#api-routes).
 
 ### Build for production
 
@@ -43,7 +60,17 @@ bun run build
 bun run start
 ```
 
+Production-mode chat and resume POST requests accept only the two public site origins. Local production builds and preview domains return 403 for these requests unless you update the [origin allowlist](../src/lib/request-guard.ts). Development mode skips this check.
+
 ### Validate
+
+Install Playwright's Chromium browser before the first test run, and again after a Playwright upgrade:
+
+```bash
+bunx --no-install playwright install chromium
+```
+
+On Linux, add `--with-deps` to install required system libraries. Then run the repository checks in order:
 
 ```bash
 bun run format
@@ -56,9 +83,11 @@ After you change [`src/data/skills.ts`](../src/data/skills.ts), run `bun run che
 
 Playwright manages its own server: [`playwright.config.ts`](../playwright.config.ts) runs `bun run dev` on port 3000 and reuses a server that is already running outside CI. Tests run in Chromium only, with two retries and one worker in CI.
 
+The suite covers homepage content, navigation, skills, dialog behavior, invalid API requests, and a mocked resume submission. It does not verify live Gemini, Resend, Google, or music-provider calls, or production-only origin checks.
+
 ### Continuous integration
 
-[`.github/workflows/pr-checks.yml`](../.github/workflows/pr-checks.yml) runs on every pull request and cancels a superseded run. Three jobs share the same Bun setup and `node_modules` cache: `lint` runs `bun run lint` and then `bun run check:readme-skills`, `typecheck` runs `bun run typecheck`, and `e2e` installs Chromium and runs `bun run test:e2e`.
+[`.github/workflows/pr-checks.yml`](../.github/workflows/pr-checks.yml) runs when a pull request opens, receives commits, or reopens, and cancels a superseded run. Three jobs use the same Bun setup and `node_modules` cache: `lint` runs `bun run lint` and then `bun run check:readme-skills`, `typecheck` runs `bun run typecheck`, and `e2e` installs Chromium and runs `bun run test:e2e`. The workflow does not run a production build.
 
 ### Amp orbs
 

@@ -21,6 +21,12 @@ Start with the module that owns the content you want to change:
 
 `heroContent.tagline` is rendered in the hero. `roles` feeds the rotating role title, which advances every 3 seconds. `primaryCtaLabel` and `secondaryCtaLabel` control the two hero actions (mailto contact and resume gate), and the mailto target comes from `contactContent.email`. `exploreLabel` and `exploreHref` control the third action, which scrolls to `#projects`.
 
+## Keep the website and GitHub profile consistent
+
+Update the relevant `src/data/` module first. For biography or highlighted-project changes, also edit the matching copy in the root [`README.md`](../README.md). Only domain knowledge and skill badges have an automated sync; the profile biography and projects table are maintained manually.
+
+The AI assistant uses these same data modules through [`src/lib/ai-context.ts`](../src/lib/ai-context.ts). Published projects and experience update its context without a separate content sync. Education context reads the full `educationItems` array, unlike the website's filtered list. Publication flags control presentation, not confidentiality: do not store private career information in this public repository.
+
 ## Add a project
 
 Add an entry to `projectItems` in [`src/data/projects.ts`](../src/data/projects.ts). Every project requires `id`, `title`, `image`, `subtitle`, `description`, `coverTags`, and `tags`. `subtitle` and `coverTags` appear on the closed project card. `description` and the combined `coverTags` + `tags` list appear in the project details dialog. Set `published: true` to render it; omitted or false values remain hidden.

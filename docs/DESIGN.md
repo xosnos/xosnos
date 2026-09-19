@@ -232,7 +232,7 @@ The site uses Tailwind CSS 4's default mobile-first minimum-width breakpoints. C
 
 Motion is reserved for interactive islands: the hero role rotation, project, education, and experience card reveals, the project, education, and resume dialogs, the mobile nav, the AI assistant panel, and the mobile scroll-to-top action. `Skills`, `About`, and `Footer` are server components that ship no client JavaScript and render without animation.
 
-Viewport reveals fire once, when 15% of an element enters the viewport. Most direct interactions finish within `300 ms`. Hero atmosphere uses static CSS blurs instead of repeating scale animations; the hero title is the only repeating effect, a 4-second `.title-banner-effect` gradient shift.
+Viewport reveals fire once, when 15% of an element enters the viewport. Most direct interactions finish within `300 ms`. Hero atmosphere uses static CSS blurs instead of repeating scale animations. Repeating effects include the hero title's 4-second `.title-banner-effect` gradient shift, the rotating role's pulsing cursor, and the assistant's status and loading indicators.
 
 `Projects`, `Education`, `ResumeGate`, `AIAssistant`, `RotatingRoleTitle`, and `ScrollReveal` call Motion's `useReducedMotion` hook and skip enter/exit motion when `prefers-reduced-motion: reduce` is set. `Navigation` and `FloatingActions` animate without that hook and rely on the global reduced-motion rule in `globals.css`, which collapses every animation and transition duration, disables smooth scrolling, and replaces the hero title gradient with a solid text color. Repeating utility animations also carry `motion-reduce:animate-none`: every `animate-pulse` and `animate-bounce` does, as does the Spotify buffering spinner. The `Loader2` spinner in the resume form omits the utility and falls back to that global rule instead. Add the explicit utility to new repeating animations rather than depending on the fallback. Treat new motion as an accessibility change: every repeating or entrance animation needs a reduced-motion path.
 
@@ -248,7 +248,7 @@ The repository does not enforce Lighthouse, paint-time, or bundle-size budgets. 
 
 ### Images
 
-Project thumbnails, education artwork, and About imagery use `next/image` with explicit intrinsic dimensions. Hero artwork sets `priority`; every other image is `loading="lazy"`. Alternative text names the subject: `alt={heroContent.name}` for the hero portrait, `alt={item.title}` for projects, and `alt={item.name}` for education.
+Project thumbnails and About imagery use `next/image` with explicit intrinsic dimensions. Education card artwork uses `fill` inside a positioned, fixed-height container with responsive `sizes`. Hero artwork sets `priority`; every other image is `loading="lazy"`. Alternative text names the subject: `alt={heroContent.name}` for the hero portrait, `alt={item.title}` for projects, and `alt={item.name}` for education.
 
 Skill badges are the one exception. `SkillBadge` in `src/components/Skills.tsx` renders a plain `<img>` behind a Biome `noImgElement` ignore because Shield badges are variable-width remote SVGs: `next/image` emits both a width and a height, then the `h-8 w-auto` rule leaves the height alone and trips its aspect-ratio warning. The tag keeps `loading="lazy"` and `decoding="async"`, and the reason sits in a comment beside the ignore. Any further exception needs the same three things: an ignore, an adjacent comment naming the reason, and the lazy-loading attributes.
 

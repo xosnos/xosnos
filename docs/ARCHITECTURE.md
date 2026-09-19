@@ -38,23 +38,31 @@ Typed files in `src/data/` own most visible copy. Components still own some pres
 
 All request handlers live under [`src/app/api/`](../src/app/api/):
 
-| Route | Purpose |
-| --- | --- |
-| `chat` | Validates, rate-limits, and streams Google Gemini answers |
-| `music/now-playing` | Returns an Apple Music recently played track or a Spotify short-term top track; no mounted component currently calls it |
-| `spotify/auth`, `spotify/callback` | Local Spotify OAuth setup at `127.0.0.1:3000`; returns 404 in production |
-| `spotify/top-track` | Returns the configured Spotify account's short-term top track |
-| `resume` | Validates a request and emails a 24-hour signed download link through Resend |
-| `resume/download` | Verifies the token, logs access to Google Sheets, and downloads the PDF from Google Drive |
+| Route | Method | Purpose |
+| --- | --- | --- |
+| `chat` | POST | Validates, rate-limits, and streams Google Gemini answers as plain text |
+| `music/now-playing` | GET | Returns an Apple Music recently played track or a Spotify short-term top track; no mounted component currently calls it |
+| `spotify/auth`, `spotify/callback` | GET | Local Spotify OAuth setup at `127.0.0.1:3000`; returns 404 in production |
+| `spotify/top-track` | GET | Returns the configured Spotify account's short-term top track |
+| `resume` | POST | Validates a request and emails a 24-hour signed download link through Resend |
+| `resume/download` | GET | Verifies the token, logs access to Google Sheets, and downloads the PDF from Google Drive |
 
-For Spotify setup, register `http://127.0.0.1:3000/api/spotify/callback`, visit `/api/spotify/auth` in development, and copy the logged refresh token to `SPOTIFY_REFRESH_TOKEN`. The callback cookie is not used by the music routes.
+For Spotify setup, register `http://127.0.0.1:3000/api/spotify/callback`, then visit `http://127.0.0.1:3000/api/spotify/auth` in development. Use `127.0.0.1`, not `localhost`, so the callback receives the OAuth state cookie. Copy the refresh token from the development server log to `SPOTIFY_REFRESH_TOKEN`; the music routes do not use the callback's refresh-token cookie.
 
 See [`.env.example`](../.env.example) for every route's environment variables.
+
+## AI context and request limits
+
+[`src/lib/ai-context.ts`](../src/lib/ai-context.ts) builds the assistant's system instruction from portfolio data. Projects and experience use their published-item helpers; education reads `educationItems` directly. [`src/lib/gemini.ts`](../src/lib/gemini.ts) owns the model selection and streaming call. There is no separate knowledge store to update.
+
+The chat request body contains a required `message` and optional `history`. Messages allow 1,000 characters; history allows 20 turns, 2,000 characters per turn, and 20,000 characters total. Each turn has a `user` or `model` role and a `text` field. The resume request body requires an email and accepts an optional name of up to 120 trimmed characters.
 
 ## Security
 
 - [`next.config.ts`](../next.config.ts) sets `Content-Security-Policy`, `Strict-Transport-Security`, `X-Frame-Options`, `X-Content-Type-Options`, `X-XSS-Protection`, `Referrer-Policy`, and `Permissions-Policy` headers on every response.
-- API routes enforce rate limits and verify secrets before streaming or emailing. In production, [`src/lib/request-guard.ts`](../src/lib/request-guard.ts) returns 403 when a mutating request has a missing or disallowed `Origin`.
-- Resume download links use HMAC-signed tokens that expire after 24 hours instead of a public file URL.
+- In production, chat and resume POST handlers use [`src/lib/request-guard.ts`](../src/lib/request-guard.ts) to allow only `https://xosnos.com` and `https://www.xosnos.com`. Missing origins and preview domains return 403. Development mode skips the origin check.
+- [`src/lib/rate-limit.ts`](../src/lib/rate-limit.ts) stores limits in memory per route instance, not across the deployment. Chat allows 10 requests per IP per minute and a 120-request instance budget. Resume email allows 5 requests per IP per minute and a 60-request instance budget for valid submissions. Music and Spotify top-track routes each allow 20 requests per forwarded-IP value per minute; Spotify auth allows 5 per IP per minute. The callback and resume download handlers have no rate limiter.
+- Resume download links use HMAC-signed tokens that expire after 24 hours instead of a public file URL. Tokens are reusable until expiry, not single-use or IP-bound. Their payload contains the requester's email, optional name, and original IP; signing does not encrypt that data. Treat download URLs as private credentials.
+- Resume downloads fetch the PDF and append a Sheets log in parallel. Failure of either operation prevents PDF delivery; a log row can exist even when the Drive fetch fails.
 - Spotify OAuth setup routes return 404 in production.
 - Environment variables are read only on the server.
