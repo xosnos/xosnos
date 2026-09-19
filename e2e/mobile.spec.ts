@@ -9,13 +9,20 @@ async function hasHorizontalOverflow(page: {
   });
 }
 
+async function getLayoutBox(locator: {
+  evaluate: <T>(fn: (el: HTMLElement) => T) => Promise<T>;
+}) {
+  return locator.evaluate((el) => {
+    const rect = el.getBoundingClientRect();
+    return { x: rect.x, width: rect.width };
+  });
+}
+
 function expectCentered(
-  box: { x: number; width: number } | null,
+  box: { x: number; width: number },
   viewportWidth: number,
   label: string,
 ) {
-  expect(box, label).toBeTruthy();
-  if (!box) return;
   const center = box.x + box.width / 2;
   expect(Math.abs(center - viewportWidth / 2), label).toBeLessThan(16);
 }
@@ -37,27 +44,23 @@ test('phone hero identity stays centered under the photo', async ({ page }) => {
   expect(viewport).toBeTruthy();
   if (!viewport) return;
 
-  await expect(page.getByRole('heading', { name: 'Steven Nguyen' })).toBeVisible();
+  const hero = page.locator('#page-top');
+  const photo = hero.getByRole('img', { name: 'Steven Nguyen' });
+  const name = hero.getByRole('heading', { name: 'Steven Nguyen' });
+  const greeting = hero.getByText("Hello Universe, I'm ...");
+  const longRole = hero.getByText('Non-Profit Technology Director');
 
-  expectCentered(
-    await page.getByRole('img', { name: 'Steven Nguyen' }).boundingBox(),
-    viewport.width,
-    'photo',
-  );
-  expectCentered(
-    await page.getByRole('heading', { name: 'Steven Nguyen' }).boundingBox(),
-    viewport.width,
-    'name',
-  );
-  expectCentered(
-    await page.getByText("Hello Universe, I'm ...").boundingBox(),
-    viewport.width,
-    'greeting',
-  );
+  await expect(photo).toBeVisible();
+  await expect(name).toBeVisible();
+  await expect(greeting).toBeVisible();
+  await expect.poll(async () => (await getLayoutBox(photo)).width).toBeGreaterThan(50);
 
-  const longRole = page.getByText('Non-Profit Technology Director');
+  expectCentered(await getLayoutBox(photo), viewport.width, 'photo');
+  expectCentered(await getLayoutBox(name), viewport.width, 'name');
+  expectCentered(await getLayoutBox(greeting), viewport.width, 'greeting');
+
   await expect(longRole).toBeVisible({ timeout: 12_000 });
-  expectCentered(await longRole.boundingBox(), viewport.width, 'long role');
+  expectCentered(await getLayoutBox(longRole), viewport.width, 'long role');
 });
 
 test('phone navigation and assistant stay inside the viewport', async ({ page }) => {
