@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Lato, Montserrat } from 'next/font/google';
 import FloatingActions from '@/components/FloatingActions';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -70,6 +70,17 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  interactiveWidget: 'resizes-content',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -78,12 +89,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <meta
-          name="theme-color"
-          content="#ffffff"
-          media="(prefers-color-scheme: light)"
-        />
-        <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
         <link rel="preconnect" href="https://i.scdn.co" crossOrigin="anonymous" />
       </head>
       <body className={`${montserrat.variable} ${lato.variable} font-lato antialiased`}>

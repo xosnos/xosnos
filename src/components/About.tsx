@@ -47,16 +47,16 @@ const About = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-6 rounded-2xl bg-card border border-border shadow-sm flex flex-col gap-2 items-center text-center">
+            <div className="grid grid-cols-1 gap-4 min-[400px]:grid-cols-2">
+              <div className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-5 text-center shadow-sm">
                 <Music2 className="w-5 h-5 text-accent" aria-hidden="true" />
-                <span className="text-xs font-montserrat font-bold uppercase tracking-widest text-foreground">
+                <span className="text-xs font-montserrat font-bold uppercase tracking-wide text-pretty text-foreground">
                   {aboutContent.favoriteGenre}
                 </span>
               </div>
-              <div className="p-6 rounded-2xl bg-card border border-border shadow-sm flex flex-col gap-2 items-center text-center">
+              <div className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-5 text-center shadow-sm">
                 <Coffee className="w-5 h-5 text-accent" aria-hidden="true" />
-                <span className="text-xs font-montserrat font-bold uppercase tracking-widest text-foreground">
+                <span className="text-xs font-montserrat font-bold uppercase tracking-wide text-pretty text-foreground">
                   {aboutContent.funFact}
                 </span>
               </div>

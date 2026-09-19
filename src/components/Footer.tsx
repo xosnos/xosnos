@@ -13,7 +13,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-background py-16 px-6 md:px-12 relative overflow-hidden border-t border-border/50">
+    <footer className="relative overflow-hidden border-t border-border/50 bg-background px-6 pb-[var(--fab-offset)] pt-16 md:px-12 lg:pb-16">
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center gap-10">
         <nav aria-label="Social" className="flex flex-wrap justify-center gap-4">
           {footerContent.socialLinks.map((link) => (
@@ -49,7 +49,7 @@ const Footer = () => {
         </div>
 
         <div className="w-full pt-8 border-t border-border/30 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-xs font-montserrat font-bold uppercase tracking-widest text-muted-foreground/50">
+          <p className="text-center text-xs font-montserrat font-bold uppercase tracking-widest text-muted-foreground/50 md:text-left">
             Copyright &copy; {currentYear}{' '}
             <span className="text-foreground/60" translate="no">
               Steven Nguyen ({footerContent.brand})

@@ -73,11 +73,11 @@ const Education = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-                  <div className="absolute top-6 right-6 z-10 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/90 px-3 py-1.5 text-xs font-montserrat font-bold uppercase tracking-widest text-foreground shadow-sm backdrop-blur-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="absolute top-6 right-6 z-10 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/90 px-3 py-1.5 text-xs font-montserrat font-bold uppercase tracking-widest text-foreground shadow-sm backdrop-blur-md opacity-100 md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100">
                     View Details
                     <ChevronRight className="w-4 h-4 text-accent" aria-hidden="true" />
                   </div>
-                  <div className="absolute bottom-5 left-8 right-8 z-10 space-y-2">
+                  <div className="absolute bottom-5 left-4 right-4 z-10 space-y-2 sm:left-8 sm:right-8">
                     <div className="inline-flex rounded-full border border-border/60 bg-background/90 px-3 py-1 text-xs font-montserrat font-bold uppercase tracking-widest text-foreground shadow-sm backdrop-blur-md">
                       {item.level}
                     </div>
@@ -100,7 +100,7 @@ const Education = () => {
             animate={{ opacity: 1 }}
             exit={reduceMotion ? undefined : { opacity: 0 }}
             transition={{ duration: reduceMotion ? 0 : 0.2 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-8 modal-overlay"
+            className="safe-area-overlay modal-overlay fixed inset-0 z-[60] flex items-center justify-center"
             onClick={closeModal}
           >
             <motion.div
@@ -116,10 +116,10 @@ const Education = () => {
                 duration: reduceMotion ? 0 : 0.25,
                 ease: 'easeOut',
               }}
-              className="bg-background rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto overscroll-contain shadow-2xl border border-border relative"
+              className="relative max-h-full w-full max-w-5xl overflow-y-auto overscroll-contain rounded-3xl border border-border bg-background shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex justify-end p-6">
+              <div className="flex justify-end p-3 md:p-6">
                 <button
                   type="button"
                   onClick={closeModal}
@@ -130,8 +130,8 @@ const Education = () => {
                 </button>
               </div>
 
-              <div className="px-8 pb-12 md:px-16 md:pb-20">
-                <div className="flex flex-col md:flex-row gap-12 items-start">
+              <div className="px-5 pb-10 md:px-16 md:pb-20">
+                <div className="flex flex-col items-start gap-8 md:flex-row md:gap-12">
                   <div className="md:w-3/5 space-y-12 min-w-0">
                     <div className="space-y-4">
                       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-montserrat font-bold uppercase tracking-widest">
@@ -139,7 +139,7 @@ const Education = () => {
                       </div>
                       <h2
                         id={titleId}
-                        className="text-4xl md:text-5xl font-montserrat font-extrabold tracking-tighter text-foreground text-balance"
+                        className="text-3xl font-montserrat font-extrabold tracking-tighter text-balance text-foreground md:text-5xl"
                       >
                         {selectedItem.name}
                       </h2>

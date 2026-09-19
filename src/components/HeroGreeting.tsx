@@ -23,7 +23,7 @@ export function HeroGreeting() {
   }, [reduceMotion]);
 
   return (
-    <p className="flex items-center gap-1.5 text-sm md:text-base font-montserrat font-medium text-muted-foreground">
+    <p className="flex items-center justify-center gap-1.5 text-sm font-montserrat font-medium text-muted-foreground md:justify-start md:text-base">
       {reduceMotion ? (
         <Hand className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
       ) : (

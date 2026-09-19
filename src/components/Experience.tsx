@@ -41,10 +41,10 @@ const Experience = () => {
           <div className="space-y-8">
             {items.map((item) => (
               <ScrollRevealItem key={item.id}>
-                <div className="group bg-background rounded-3xl border border-border/50 p-8 md:p-10 shadow-sm transition-all duration-300 hover:shadow-2xl hover:border-accent/20 hover:-translate-y-1">
+                <div className="group bg-background rounded-3xl border border-border/50 p-5 shadow-sm transition-[box-shadow,border-color,transform] duration-300 hover:shadow-2xl hover:border-accent/20 hover:-translate-y-1 md:p-10">
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
                     <div className="space-y-2 min-w-0">
-                      <div className="flex items-center gap-2 text-accent font-montserrat font-bold uppercase text-xs tracking-widest">
+                      <div className="flex flex-wrap items-center gap-2 text-accent font-montserrat font-bold uppercase text-xs tracking-widest">
                         <span className="px-2 py-0.5 rounded bg-accent/10 border border-accent/20">
                           {item.organization}
                         </span>

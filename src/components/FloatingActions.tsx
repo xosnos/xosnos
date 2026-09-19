@@ -15,7 +15,7 @@ const FloatingActions = () => {
   const showScrollFab = showScrollTop && !isChatOpen;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 font-lato pb-[max(0px,env(safe-area-inset-bottom))]">
+    <div className="fixed bottom-6 left-[max(1rem,env(safe-area-inset-left,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] z-50 flex flex-col items-end gap-3 font-lato pb-[max(0px,env(safe-area-inset-bottom,0px))] lg:left-auto lg:right-6">
       <AnimatePresence>
         {showScrollFab && (
           <motion.a
@@ -25,7 +25,7 @@ const FloatingActions = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.85 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="lg:hidden w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-border flex items-center justify-center shadow-2xl text-accent hover:scale-110 active:scale-95 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="lg:hidden flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background/80 text-accent shadow-2xl backdrop-blur-md transition-[transform,opacity] duration-300 hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             aria-label="Scroll to top"
           >
             <ArrowUp className="w-5 h-5" aria-hidden="true" />
