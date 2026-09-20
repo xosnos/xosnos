@@ -77,7 +77,7 @@ const Projects = () => {
                     width={600}
                     height={400}
                     className="w-full h-[220px] sm:h-[280px] md:h-[340px] object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
+                    loading="eager"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
                   <div className="absolute top-6 right-6 z-10 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/90 px-3 py-1.5 text-xs font-montserrat font-bold uppercase tracking-widest text-foreground shadow-sm backdrop-blur-md opacity-100 md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100">
