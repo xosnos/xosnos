@@ -4,19 +4,16 @@ import { type RefObject, useEffect, useRef } from 'react';
 
 let scrollLockCount = 0;
 let previousOverflow = '';
-let previousPaddingRight = '';
 
 function lockBodyScroll() {
   if (typeof document === 'undefined') return;
 
   if (scrollLockCount === 0) {
     previousOverflow = document.body.style.overflow;
-    previousPaddingRight = document.body.style.paddingRight;
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    // Overflow lock only — scrollbar space is reserved via `scrollbar-gutter: stable`
+    // on `html`, so padding-right compensation is unnecessary and causes a layout shift
+    // against fixed chrome (nav, FAB).
     document.body.style.overflow = 'hidden';
-    if (scrollbarWidth > 0) {
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
-    }
   }
 
   scrollLockCount += 1;
@@ -28,7 +25,6 @@ function unlockBodyScroll() {
   scrollLockCount = Math.max(0, scrollLockCount - 1);
   if (scrollLockCount === 0) {
     document.body.style.overflow = previousOverflow;
-    document.body.style.paddingRight = previousPaddingRight;
   }
 }
 

@@ -24,13 +24,13 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="bg-background py-24 px-6 md:px-12 relative overflow-hidden border-y border-border/50"
+      className="bg-background py-14 px-4 md:py-24 md:px-12 relative overflow-hidden border-y border-border/50"
     >
       <div className="absolute top-[20%] right-0 w-[40%] h-[40%] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10 space-y-16">
-        <div className="space-y-8">
-          <div className="space-y-4 max-w-2xl">
+      <div className="max-w-7xl mx-auto relative z-10 space-y-10 md:space-y-16">
+        <div className="space-y-5 md:space-y-8">
+          <div className="max-w-2xl space-y-3 md:space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-montserrat font-bold uppercase tracking-widest">
               <Cpu className="w-4 h-4" aria-hidden="true" />
               Stack
@@ -65,13 +65,13 @@ const Skills = () => {
           </ul>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
           {skillCategories.map((category) => (
             <div
               key={category.title}
-              className="group rounded-3xl border border-border bg-card p-5 shadow-sm transition-[box-shadow,border-color,transform] duration-300 hover:-translate-y-1 hover:border-accent/20 hover:shadow-2xl md:p-8"
+              className="group rounded-2xl border border-border bg-card p-4 shadow-sm transition-[box-shadow,border-color,transform] duration-300 hover:-translate-y-1 hover:border-accent/20 hover:shadow-2xl md:rounded-3xl md:p-8"
             >
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 <h3 className="text-xl font-montserrat font-bold text-foreground">
                   {category.title}
                 </h3>

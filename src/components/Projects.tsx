@@ -29,7 +29,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="bg-background py-24 px-6 md:px-12 relative overflow-hidden"
+      className="bg-background py-14 px-4 md:py-24 md:px-12 relative overflow-hidden"
     >
       <div className="absolute top-[20%] right-0 w-[40%] h-[40%] bg-accent/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none" />
 
@@ -39,9 +39,9 @@ const Projects = () => {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-16 md:gap-6"
         >
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-montserrat font-bold uppercase tracking-widest">
               <Code className="w-4 h-4" aria-hidden="true" />
               Portfolio
@@ -61,13 +61,13 @@ const Projects = () => {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 lg:gap-12"
         >
           {projectItems.map((item) => (
             <motion.div key={item.id} variants={fadeInUp}>
               <button
                 type="button"
-                className="group relative cursor-pointer space-y-4 overflow-hidden rounded-3xl border border-border bg-card p-1 shadow-sm transition-all duration-300 hover:shadow-2xl hover:border-accent/30 hover:-translate-y-1 w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="group relative cursor-pointer space-y-3 overflow-hidden rounded-2xl border border-border bg-card p-1 shadow-sm transition-all duration-300 hover:shadow-2xl hover:border-accent/30 hover:-translate-y-1 w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:space-y-4 md:rounded-3xl"
                 onClick={() => setSelectedItem(item)}
               >
                 <div className="relative overflow-hidden rounded-2xl">
@@ -76,7 +76,7 @@ const Projects = () => {
                     alt={item.title}
                     width={600}
                     height={400}
-                    className="w-full h-[280px] md:h-[340px] object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-[220px] sm:h-[280px] md:h-[340px] object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
