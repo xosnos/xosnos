@@ -1,4 +1,12 @@
 ---
+meta:
+  contentType: Reference
+contentPlan:
+  overview: Visual tokens, component patterns, accessibility, and performance
+  goal: Maintain a consistent and accessible portfolio interface
+  audience: Contributors changing the portfolio interface
+  sections: Colors, typography, layout, components, motion, and accessibility
+  openQuestions: []
 version: alpha
 name: xosnos.com
 description: Design system for Steven Nguyen's portfolio and career presence.
@@ -118,11 +126,11 @@ components:
     size: 3rem
 ---
 
-# xosnos.com design system
+# Maintain the xosnos.com design system
 
 This reference defines the visual intent and implemented tokens for [xosnos.com](https://www.xosnos.com). Use it to keep portfolio updates recognizable, readable, and consistent across light and dark themes.
 
-## Overview
+## Design goals and audience
 
 xosnos.com presents Steven Nguyen's career as a polished technical portfolio. Recruiters, collaborators, and visitors should understand his role, specialties, and project impact without searching through the interface.
 
@@ -130,7 +138,7 @@ The site should feel confident, energetic, and precise. Spacious editorial secti
 
 ## Colors
 
-The palette combines high-contrast slate neutrals with one sky-blue brand color. [`src/app/globals.css`](../src/app/globals.css) defines the normative runtime values and maps them to Tailwind CSS utilities.
+The palette combines high-contrast slate neutrals with one sky-blue brand color. [`src/app/globals.css`](../src/app/globals.css) defines the runtime values and maps them to Tailwind Cascading Style Sheets (CSS) utilities.
 
 | Role | Light theme | Dark theme | Usage |
 | --- | --- | --- | --- |
@@ -164,7 +172,7 @@ The site uses a fluid, mobile-first layout that becomes a centered fixed-max-wid
 - Keep long-form copy narrower than its surrounding section.
 - Stack content on small screens before introducing columns at `md` or `lg`.
 
-## Elevation & Depth
+## Elevation and depth
 
 Borders, tonal surfaces, and soft shadows establish hierarchy. Cards start with a subtle border and shadow, then increase border contrast or shadow depth on hover without shifting surrounding layout.
 
@@ -203,7 +211,9 @@ Reserve filled primary buttons for the main action in a section. Keep inline lin
 
 Place dialogs above a darkened, blurred overlay. Keep labels or meaningful placeholders available, use rounded inputs with clear borders, and show errors next to the affected field.
 
-## Do's and Don'ts
+## Design requirements
+
+Follow these requirements when you change the interface:
 
 - Do keep role, experience, and project impact readable without interaction.
 - Do preserve semantic light and dark theme tokens.
@@ -230,11 +240,17 @@ The site uses Tailwind CSS 4's default mobile-first minimum-width breakpoints. C
 
 ## Motion
 
-Motion is reserved for interactive islands: the hero role rotation, project, education, and experience card reveals, the project, education, and resume dialogs, the mobile nav, the AI assistant panel, and the mobile scroll-to-top action. `Skills`, `About`, and `Footer` are server components that ship no client JavaScript and render without animation.
+Apply motion only to interactive islands: the hero role rotation, card reveals, dialogs, mobile navigation, artificial intelligence (AI) assistant, and mobile scroll-to-top action. `Skills`, `About`, and `Footer` are server components that ship no client JavaScript.
 
 Viewport reveals fire once, when 15% of an element enters the viewport. Most direct interactions finish within `300 ms`. Hero atmosphere uses static CSS blurs instead of repeating scale animations. Repeating effects include the hero title's 4-second `.title-banner-effect` gradient shift, the rotating role's pulsing cursor, and the assistant's status and loading indicators.
 
-`Projects`, `Education`, `ResumeGate`, `AIAssistant`, `RotatingRoleTitle`, and `ScrollReveal` call Motion's `useReducedMotion` hook and skip enter/exit motion when `prefers-reduced-motion: reduce` is set. `Navigation` and `FloatingActions` animate without that hook and rely on the global reduced-motion rule in `globals.css`, which collapses every animation and transition duration, disables smooth scrolling, and replaces the hero title gradient with a solid text color. Repeating utility animations also carry `motion-reduce:animate-none`: every `animate-pulse` and `animate-bounce` does, as does the Spotify buffering spinner. The `Loader2` spinner in the resume form omits the utility and falls back to that global rule instead. Add the explicit utility to new repeating animations rather than depending on the fallback. Treat new motion as an accessibility change: every repeating or entrance animation needs a reduced-motion path.
+`Projects`, `Education`, `ResumeGate`, `AIAssistant`, `RotatingRoleTitle`, and `ScrollReveal` call Motion’s `useReducedMotion` hook. They skip enter and exit motion when `prefers-reduced-motion: reduce` is set.
+
+`Navigation` and `FloatingActions` rely on the global reduced-motion rule in `globals.css`. The rule shortens animations and transitions, disables smooth scrolling, and replaces the hero title gradient with a solid color.
+
+Every `animate-pulse` and `animate-bounce` utility includes `motion-reduce:animate-none`. The Spotify buffering spinner uses the same utility. The `Loader2` resume spinner relies on the global rule instead.
+
+Add the explicit utility to new repeating animations. Treat new motion as an accessibility change. Every repeating or entrance animation needs a reduced-motion path.
 
 ## Performance
 
@@ -256,8 +272,12 @@ Skill badges are the one exception. `SkillBadge` in `src/components/Skills.tsx` 
 
 The page is landmark-first. `src/app/layout.tsx` renders a visually hidden skip link that targets `#main-content` and becomes visible on focus, `src/app/page.tsx` renders `<main id="main-content">`, and the sections supply the rest: `<header>` in `Hero`, `<nav aria-label="Primary">` in `Navigation`, and `<footer>` in `Footer`. Preserve that structure when adding a section, and give any new navigation region its own `aria-label`.
 
-`useDialog` in `src/hooks/useDialog.ts` owns dialog behavior for the project, education, resume, and AI assistant dialogs. It keeps a module-level stack, so nesting works: Escape closes only the topmost dialog, Tab wraps between the first and last focusable elements and pulls focus back inside when it escapes, and the body scroll lock is reference-counted so nested dialogs neither unlock early nor fight each other. Layout shift is avoided with `scrollbar-gutter: stable` on `html` rather than injecting `padding-right` on lock (which drifts fixed chrome). On open the hook focuses the dialog container and focuses it again on the next animation frame; on close it returns focus to the remaining top dialog or to the element that opened it. All four dialogs set `role="dialog"`, `aria-modal="true"`, and an `aria-labelledby` that points at their title. Use the hook for a new dialog instead of reimplementing any of this.
+`useDialog` in `src/hooks/useDialog.ts` controls the project, education, resume, and AI assistant dialogs. Its module-level stack supports nested dialogs. Escape closes only the topmost dialog, and Tab keeps focus inside it. A reference count prevents nested dialogs from unlocking body scroll early.
+
+The `scrollbar-gutter: stable` rule on `html` prevents layout shifts during scroll lock. On open, the hook focuses the dialog immediately and on the next animation frame. On close, it returns focus to the remaining dialog or the trigger.
+
+All four dialogs set `role="dialog"`, `aria-modal="true"`, and an `aria-labelledby` that identifies the title. Use the hook for new dialogs instead of reimplementing this behavior.
 
 Focus visibility comes from utilities rather than the browser default. Interactive elements pair `focus-visible:outline-none` with `focus-visible:ring-2 focus-visible:ring-ring`, some add `focus-visible:ring-offset-2` with `focus-visible:ring-offset-background`, and the assistant and resume-email inputs use an accent-colored ring instead. Do not remove a ring without replacing it.
 
-Status changes are announced rather than shown silently. `aria-live="polite"` covers the rotating hero role, assistant messages, the Spotify now-playing state, and resume form status, and the resume form also moves focus to its error message when validation fails. Reduced-motion handling is described in the Motion section.
+Live regions announce status changes. `aria-live="polite"` covers the rotating hero role, assistant messages, Spotify state, and resume form status. The resume form moves focus to its error message when validation fails. The Motion section describes reduced-motion handling.

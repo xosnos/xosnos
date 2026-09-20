@@ -1,4 +1,15 @@
-# Steven Nguyen's portfolio
+---
+meta:
+  contentType: Landing
+contentPlan:
+  overview: Repository setup, validation, integrations, and navigation
+  goal: Run and validate the portfolio locally
+  audience: Contributors maintaining Steven Nguyen's portfolio
+  sections: Features, setup, integrations, validation, and related documentation
+  openQuestions: []
+---
+
+# Run and maintain Steven Nguyen’s portfolio
 
 This repository contains the Next.js portfolio deployed at [xosnos.com](https://www.xosnos.com). Use this guide to run, validate, and navigate the website codebase.
 
@@ -8,7 +19,7 @@ The root [`README.md`](../README.md) is the public GitHub profile, not the websi
 
 The website combines typed portfolio content with optional server integrations:
 
-- **AI assistant**: floating Google Gemini chat that streams answers about Steven's experience, projects, and skills through `/api/chat`
+- **Artificial intelligence (AI) assistant**: floating Google Gemini chat that streams answers about Steven's experience, projects, and skills through `/api/chat`
 - **Projects and education**: cards with interactive detail modals
 - **Experience**: work, volunteer, and project history with publication filtering, sorted newest first
 - **Skills**: primary-stack chips and domain chips at the top of the section, plus the full badge list sourced from [`src/data/skills.ts`](../src/data/skills.ts) and synced to the GitHub profile README
@@ -34,7 +45,7 @@ bun install --frozen-lockfile
 bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open the [local portfolio](http://localhost:3000).
 
 No environment file is required to browse the portfolio or run the tests. To enable integrations, copy [`.env.example`](../.env.example) to `.env.local` and configure only the services you need. Never commit credentials.
 
@@ -70,12 +81,29 @@ Install Playwright's Chromium browser before the first test run, and again after
 bunx --no-install playwright install chromium
 ```
 
-On Linux, add `--with-deps` to install required system libraries. Then run the repository checks in order:
+On Linux, add `--with-deps` to install required system libraries. Then run the repository checks in this order:
+
+1. Format the repository:
 
 ```bash
 bun run format
+```
+
+2. Check formatting, lint rules, and import order:
+
+```bash
 bun run lint
+```
+
+3. Check TypeScript:
+
+```bash
 bun run typecheck
+```
+
+4. Run the end-to-end tests:
+
+```bash
 bun run test:e2e
 ```
 
@@ -87,15 +115,13 @@ The suite covers homepage content, navigation, skills, dialog behavior, invalid 
 
 ### Continuous integration
 
-[`.github/workflows/pr-checks.yml`](../.github/workflows/pr-checks.yml) runs when a pull request opens, receives commits, or reopens, and cancels a superseded run. Three jobs use the same Bun setup and `node_modules` cache: `lint` runs `bun run lint` and then `bun run check:readme-skills`, `typecheck` runs `bun run typecheck`, and `e2e` installs Chromium and runs `bun run test:e2e`. The workflow does not run a production build.
+The [pull request checks](../.github/workflows/pr-checks.yml) run when a pull request opens, receives commits, or reopens. A new run cancels any superseded run.
+
+Three jobs share the Bun setup and `node_modules` cache. The `lint` job runs `bun run lint` and `bun run check:readme-skills`. The `typecheck` job runs `bun run typecheck`. The `e2e` job installs Chromium and runs `bun run test:e2e`. The workflow does not run a production build.
 
 ### Amp orbs
 
-Executable [`.agents/setup`](../.agents/setup) uses the orb's preinstalled Bun and
-Node.js, installs dependencies from `bun.lock`, and caches Playwright's Chromium
-browsers and system dependencies. Amp can reuse the prepared project snapshot;
-when setup runs again, installed packages and browser downloads are reused.
-[`.agents/resume`](../.agents/resume) does not install anything on wake.
+Executable [`.agents/setup`](../.agents/setup) uses the orb's preinstalled Bun and Node.js, installs dependencies from `bun.lock`, and caches Playwright's Chromium browsers and system dependencies. Amp can reuse the prepared project snapshot and cached downloads on later runs. [`.agents/resume`](../.agents/resume) does not install anything on wake.
 
 Start the supervised development server and obtain its authenticated preview URL:
 
@@ -103,14 +129,11 @@ Start the supervised development server and obtain its authenticated preview URL
 amp orb services ensure
 ```
 
-The service is declared in [`.amp/services.yaml`](../.amp/services.yaml) on port
-3000, matching the Playwright tests. Setup never starts a server. No database or
-environment file is needed for basic development or the tests. Configure optional
-integration credentials through Amp runtime secrets or an untracked `.env.local`;
-setup never writes credentials or overwrites that file. Generated portal links
-are ignored by Git.
+The service is declared in [`.amp/services.yaml`](../.amp/services.yaml) on port 3000, matching the Playwright tests. Setup never starts a server. Basic development and tests need no database or environment file.
 
-## Documentation
+Configure optional integration credentials through Amp runtime secrets or an untracked `.env.local`. Setup never writes credentials or overwrites that file. Git ignores generated portal links.
+
+## Find related portfolio documentation
 
 Use these references when you change the website:
 
@@ -123,7 +146,7 @@ Use these references when you change the website:
 
 MIT.
 
-## Contact
+## Contact Steven
 
 - **Email**: [steven@xosnos.com](mailto:steven@xosnos.com)
 - **GitHub**: [@xosnos](https://github.com/xosnos)
