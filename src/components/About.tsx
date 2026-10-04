@@ -7,14 +7,14 @@ const About = () => {
   return (
     <section
       id="about"
-      className="bg-background py-24 px-6 md:px-12 relative overflow-hidden"
+      className="bg-background py-14 px-4 md:py-24 md:px-12 relative overflow-hidden"
     >
       <div className="absolute top-[30%] left-0 w-[40%] h-[40%] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          <div className="space-y-10">
-            <div className="space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-start">
+          <div className="space-y-6 md:space-y-10">
+            <div className="space-y-3 md:space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-montserrat font-bold uppercase tracking-widest">
                 <User className="w-4 h-4" aria-hidden="true" />
                 {aboutContent.sectionLabel}
@@ -25,17 +25,17 @@ const About = () => {
               <div className="w-12 h-1 bg-accent rounded-full" />
             </div>
 
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed md:space-y-6">
               {aboutContent.bio.map((paragraph) => (
                 <RichText key={paragraph.text} as="p" text={paragraph.text} />
               ))}
             </div>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-5 md:space-y-8">
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent to-blue-600 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
-              <div className="relative rounded-3xl overflow-hidden border border-border/50 shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent to-blue-600 rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 md:rounded-3xl" />
+              <div className="relative overflow-hidden rounded-2xl border border-border/50 shadow-2xl md:rounded-3xl">
                 <Image
                   src={aboutContent.image}
                   alt="Steven Nguyen"

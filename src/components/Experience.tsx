@@ -9,14 +9,14 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="bg-card py-24 px-6 md:px-12 relative overflow-hidden"
+      className="bg-card py-14 px-4 md:py-24 md:px-12 relative overflow-hidden"
     >
       <div className="absolute bottom-[10%] left-0 w-[40%] h-[40%] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <ScrollReveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-            <div className="space-y-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-16 md:gap-6">
+            <div className="space-y-3 md:space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-montserrat font-bold uppercase tracking-widest">
                 <Building2 className="w-4 h-4" aria-hidden="true" />
                 {experienceContent.sectionLabel}
@@ -38,11 +38,11 @@ const Experience = () => {
             </p>
           </div>
         ) : (
-          <div className="space-y-8">
+          <div className="space-y-5 md:space-y-8">
             {items.map((item) => (
               <ScrollRevealItem key={item.id}>
-                <div className="group bg-background rounded-3xl border border-border/50 p-5 shadow-sm transition-[box-shadow,border-color,transform] duration-300 hover:shadow-2xl hover:border-accent/20 hover:-translate-y-1 md:p-10">
-                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
+                <div className="group bg-background rounded-2xl border border-border/50 p-4 shadow-sm transition-[box-shadow,border-color,transform] duration-300 hover:shadow-2xl hover:border-accent/20 hover:-translate-y-1 md:rounded-3xl md:p-10">
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6 md:mb-8 md:gap-6">
                     <div className="space-y-2 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 text-accent font-montserrat font-bold uppercase text-xs tracking-widest">
                         <span className="px-2 py-0.5 rounded bg-accent/10 border border-accent/20">
@@ -74,7 +74,7 @@ const Experience = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-6">
+                  <div className="space-y-4 md:space-y-6">
                     {item.description && (
                       <p className="text-muted-foreground text-lg leading-relaxed text-pretty">
                         {item.description}
@@ -82,7 +82,7 @@ const Experience = () => {
                     )}
 
                     {item.highlights && item.highlights.length > 0 && (
-                      <ul className="flex flex-col gap-3">
+                      <ul className="flex flex-col gap-2.5 md:gap-3">
                         {item.highlights.map((highlight) => (
                           <li
                             key={highlight}

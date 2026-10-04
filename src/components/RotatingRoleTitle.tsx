@@ -1,8 +1,8 @@
 'use client';
 
-import { useReducedMotion } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { heroContent } from '@/data/hero';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 const TYPE_MS = 55;
 const DELETE_MS = 35;
@@ -15,7 +15,7 @@ const titleClassName =
 type TypingPhase = 'typing' | 'pausing' | 'deleting';
 
 export function RotatingRoleTitle() {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [phase, setPhase] = useState<TypingPhase>('typing');

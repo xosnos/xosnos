@@ -1,15 +1,15 @@
 'use client';
 
 import { Hand } from 'lucide-react';
-import { useReducedMotion } from 'motion/react';
 import { useEffect, useRef } from 'react';
 import { HandIcon, type HandIconHandle } from '@/components/icons/hand';
 import { heroContent } from '@/data/hero';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 const WAVE_INTERVAL_MS = 5000;
 
 export function HeroGreeting() {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
   const handRef = useRef<HandIconHandle>(null);
 
   useEffect(() => {

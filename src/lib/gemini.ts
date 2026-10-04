@@ -2,9 +2,7 @@ import 'server-only';
 import { GoogleGenAI } from '@google/genai';
 import { buildSystemInstruction } from './ai-context';
 
-// Cheapest preview model as of 2026-04. If/when this is renamed or
-// deprecated, fall back to 'gemini-2.5-flash' (stable).
-export const MODEL_ID = 'gemini-3.1-flash-lite';
+export const MODEL_ID = 'gemini-3.5-flash-lite';
 
 export interface ChatTurn {
   role: 'user' | 'model';

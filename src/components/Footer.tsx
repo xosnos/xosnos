@@ -59,7 +59,7 @@ const Footer = () => {
 
           <a
             href="#page-top"
-            className="group inline-flex items-center gap-2 text-xs font-montserrat font-bold uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md"
+            className="group hidden items-center gap-2 text-xs font-montserrat font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md lg:inline-flex"
           >
             Back to top
             <ArrowUp

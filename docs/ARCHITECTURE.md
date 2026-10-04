@@ -1,10 +1,23 @@
-# Architecture
+---
+meta:
+  contentType: Reference
+contentPlan:
+  overview: Application boundaries, routes, limits, and security controls
+  goal: Explain how the portfolio application is organized
+  audience: Contributors changing portfolio code or integrations
+  sections: Page composition, directories, routes, request limits, and security
+  openQuestions: []
+---
 
-The website uses the Next.js App Router for a single-page portfolio and server-side API routes. This reference identifies the main ownership boundaries and request handlers.
+# Understand the portfolio architecture
+
+The website uses the Next.js App Router for a single-page portfolio and server-side application programming interface (API) routes. This reference identifies the main ownership boundaries and request handlers.
 
 ## Page composition
 
-[`src/app/page.tsx`](../src/app/page.tsx) composes the section components. There is no page-level motion wrapper, so each section owns its own animation. `Projects` and `Education` are client components that render their Motion reveals and modals directly. `Experience` and `Hero` are server components that delegate to client islands: `Experience` wraps its cards in `ScrollReveal` and `ScrollRevealItem`, and `Hero` renders `RotatingRoleTitle` and `HeroActions`. `Skills`, `About`, and `Footer` ship no client JavaScript.
+[`src/app/page.tsx`](../src/app/page.tsx) composes the section components. Each section owns its animation because the page has no motion wrapper.
+
+`Projects` and `Education` are client components that render Motion reveals and modals. `Experience` and `Hero` delegate interactive behavior to client islands. `Experience` wraps its cards in `ScrollReveal` and `ScrollRevealItem`. `Hero` renders `RotatingRoleTitle` and `HeroActions`. `Skills`, `About`, and `Footer` ship no client JavaScript.
 
 The homepage renders sections in this order:
 
@@ -32,7 +45,7 @@ The source tree separates routes, presentation, content, and shared application 
 | `e2e/` | Playwright end-to-end tests |
 | `scripts/` | Repository maintenance scripts, including README skill synchronization |
 
-Typed files in `src/data/` own most visible copy. Components still own some presentation copy, so confirm the consuming component before assuming every exported field is rendered.
+Typed files in `src/data/` own most visible copy. Components contain some presentation copy, so confirm which fields the component renders.
 
 ## API routes
 
@@ -59,10 +72,17 @@ The chat request body contains a required `message` and optional `history`. Mess
 
 ## Security
 
+The application combines response headers, origin checks, rate limits, and signed tokens to protect public routes.
+
 - [`next.config.ts`](../next.config.ts) sets `Content-Security-Policy`, `Strict-Transport-Security`, `X-Frame-Options`, `X-Content-Type-Options`, `X-XSS-Protection`, `Referrer-Policy`, and `Permissions-Policy` headers on every response.
 - In production, chat and resume POST handlers use [`src/lib/request-guard.ts`](../src/lib/request-guard.ts) to allow only `https://xosnos.com` and `https://www.xosnos.com`. Missing origins and preview domains return 403. Development mode skips the origin check.
-- [`src/lib/rate-limit.ts`](../src/lib/rate-limit.ts) stores limits in memory per route instance, not across the deployment. Chat allows 10 requests per IP per minute and a 120-request instance budget. Resume email allows 5 requests per IP per minute and a 60-request instance budget for valid submissions. Music and Spotify top-track routes each allow 20 requests per forwarded-IP value per minute; Spotify auth allows 5 per IP per minute. The callback and resume download handlers have no rate limiter.
+- [`src/lib/rate-limit.ts`](../src/lib/rate-limit.ts) stores limits in memory per route instance, not across the deployment.
+  - Chat allows 10 requests per IP per minute and 120 requests per instance.
+  - Resume email allows 5 requests per IP per minute and 60 valid submissions per instance.
+  - Music and Spotify top-track routes allow 20 requests per forwarded-IP value per minute.
+  - Spotify authorization allows 5 requests per IP per minute.
+  - Callback and resume download handlers have no rate limiter.
 - Resume download links use HMAC-signed tokens that expire after 24 hours instead of a public file URL. Tokens are reusable until expiry, not single-use or IP-bound. Their payload contains the requester's email, optional name, and original IP; signing does not encrypt that data. Treat download URLs as private credentials.
 - Resume downloads fetch the PDF and append a Sheets log in parallel. Failure of either operation prevents PDF delivery; a log row can exist even when the Drive fetch fails.
 - Spotify OAuth setup routes return 404 in production.
-- Environment variables are read only on the server.
+- Only server code reads environment variables.

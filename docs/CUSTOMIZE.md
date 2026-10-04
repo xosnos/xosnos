@@ -1,4 +1,15 @@
-# Customize portfolio content
+---
+meta:
+  contentType: How-to
+contentPlan:
+  overview: Canonical content files and publication rules
+  goal: Update portfolio content while keeping public surfaces consistent
+  audience: Contributors maintaining Steven Nguyen's portfolio content
+  sections: Content ownership, projects, experience, education, skills, and colors
+  openQuestions: []
+---
+
+# Update portfolio content
 
 Most visible content lives in typed modules under [`src/data/`](../src/data/). This guide identifies the canonical files and publication rules for common updates.
 
@@ -19,13 +30,15 @@ Start with the module that owns the content you want to change:
 | `projects.ts` | Project subtitles, descriptions, links, images, cover tags, and overview tags |
 | `skills.ts` | Domain knowledge, featured site tools, and GitHub README badges |
 
-`heroContent.tagline` is rendered in the hero. `roles` feeds the rotating role title, which advances every 3 seconds. `primaryCtaLabel` and `secondaryCtaLabel` control the two hero actions (mailto contact and resume gate), and the mailto target comes from `contactContent.email`. `exploreLabel` and `exploreHref` control the third action, which scrolls to `#projects`.
+The hero renders `heroContent.tagline`. The `roles` array feeds the rotating title, which advances every 3 seconds.
+
+`primaryCtaLabel` and `secondaryCtaLabel` control the contact and resume actions. The contact action uses `contactContent.email`. `exploreLabel` and `exploreHref` control the action that scrolls to `#projects`.
 
 ## Keep the website and GitHub profile consistent
 
-Update the relevant `src/data/` module first. For biography or highlighted-project changes, also edit the matching copy in the root [`README.md`](../README.md). Only domain knowledge and skill badges have an automated sync; the profile biography and projects table are maintained manually.
+Update the relevant `src/data/` module first. For biography or highlighted-project changes, also edit the matching copy in the root [`README.md`](../README.md). Only domain knowledge and skill badges have an automated sync. Maintain the profile biography and projects table manually.
 
-The AI assistant uses these same data modules through [`src/lib/ai-context.ts`](../src/lib/ai-context.ts). Published projects and experience update its context without a separate content sync. Education context reads the full `educationItems` array, unlike the website's filtered list. Publication flags control presentation, not confidentiality: do not store private career information in this public repository.
+The artificial intelligence (AI) assistant uses these data modules through [`src/lib/ai-context.ts`](../src/lib/ai-context.ts). Published projects and experience update its context without a separate content sync. Education context reads the full `educationItems` array, unlike the website's filtered list. Publication flags control presentation, not confidentiality: do not store private career information in this public repository.
 
 ## Add a project
 
@@ -55,9 +68,7 @@ bun run check:readme-skills
 
 ## Change the section order
 
-The homepage section sequence is defined in [`src/app/page.tsx`](../src/app/page.tsx).
-Keep [`src/data/navigation.ts`](../src/data/navigation.ts) in the same order.
-See [page composition](ARCHITECTURE.md#page-composition) for the current order.
+[`src/app/page.tsx`](../src/app/page.tsx) defines the homepage section sequence. Keep [`src/data/navigation.ts`](../src/data/navigation.ts) in the same order. See [page composition](ARCHITECTURE.md#page-composition) for the current order.
 
 ## Change colors
 
