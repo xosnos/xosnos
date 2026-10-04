@@ -51,8 +51,8 @@ const Projects = () => {
             </h2>
           </div>
           <p className="text-muted-foreground text-lg max-w-md leading-relaxed text-pretty">
-            A showcase of applications, tools, and experiments I&apos;ve built to solve
-            problems and explore new technologies.
+            Apps and tools I&apos;ve built over the years, from a simple Spotify playlist
+            builder to an AI career agent.
           </p>
         </motion.div>
 
@@ -76,10 +76,10 @@ const Projects = () => {
                     alt={item.title}
                     width={600}
                     height={400}
-                    className="w-full h-[220px] sm:h-[280px] md:h-[340px] object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-55 sm:h-70 md:h-85 object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
+                  <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-background/95 via-background/20 to-transparent" />
                   <div className="absolute top-6 right-6 z-10 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/90 px-3 py-1.5 text-xs font-montserrat font-bold uppercase tracking-widest text-foreground shadow-sm backdrop-blur-md opacity-100 md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100">
                     View Details
                     <ChevronRight className="w-4 h-4 text-accent" aria-hidden="true" />
@@ -119,7 +119,7 @@ const Projects = () => {
             animate={{ opacity: 1 }}
             exit={reduceMotion ? undefined : { opacity: 0 }}
             transition={{ duration: reduceMotion ? 0 : 0.2 }}
-            className="safe-area-overlay modal-overlay fixed inset-0 z-[60] flex items-center justify-center"
+            className="safe-area-overlay modal-overlay fixed inset-0 z-60 flex items-center justify-center"
             onClick={closeModal}
           >
             <motion.div
@@ -219,6 +219,7 @@ const Projects = () => {
                         width={600}
                         height={400}
                         className="w-full h-auto object-cover"
+                        loading="eager"
                       />
                     </div>
                   </div>

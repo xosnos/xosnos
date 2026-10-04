@@ -1,6 +1,6 @@
 export const contactContent = {
   email: 'steven@xosnos.com',
   invitation:
-    "I'm always open to discussing new opportunities, innovative projects, or sharing insights over iced matcha lattes.",
+    'Always down to talk about new opportunities or projects, ideally over iced matcha lattes.!',
   responseTime: 'Within 24 hours',
 };

@@ -34,7 +34,7 @@ const Experience = () => {
         {items.length === 0 ? (
           <div className="max-w-2xl mx-auto text-center bg-background rounded-3xl border border-border p-12 shadow-sm">
             <p className="text-muted-foreground text-lg italic">
-              The journey is just beginning.
+              No experience to show yet.
             </p>
           </div>
         ) : (

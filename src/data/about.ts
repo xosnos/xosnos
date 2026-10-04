@@ -3,23 +3,23 @@ export const aboutContent = {
   sectionTitle: 'Behind the Code',
   bio: [
     {
-      text: "I'm currently building **Terraces**, an AI-native career agent. Hearing from job seekers and working professionals, there is a lack of realiable tools for the general public who are navigating the job market. As a result, I'm building a vision of the future where agents help people navigate the job market and improve their careers.",
+      text: "I'm currently building **Terraces**, an AI-native career agent. Job seekers and working professionals told me the general public lacks reliable tools for navigating the job market. I'm building toward a future where agents help people navigate it and improve their careers.",
       highlights: ['Terraces'],
     },
     {
-      text: 'Previously a **Software Engineer at Workday**, I shipped full-stack and security tooling, CI/CD pipelines, and multi-region delivery across AWS. My experience there taught me the the enterprise software development process and the importance of building reliable software.',
+      text: 'Previously a **Software Engineer at Workday**, I shipped full-stack and security tooling, CI/CD pipelines, and multi-region delivery on AWS. It taught me how enterprise software gets built and why reliability matters.',
       highlights: ['SDE II at Workday'],
     },
     {
-      text: 'I have also lead technology for a 501(c)(3) non-profit organizations focused on empowering Vietnamese American communities. This allowed me to grow my leadership skills while building software that has a tangible impact on the community.',
+      text: "I've also led technology for 501(c)(3) non-profits that empower Vietnamese American communities. The work let me grow as a leader while building software with a real impact on the community.",
       highlights: ['Non-profit Technology'],
     },
     {
-      text: 'As a **University of Michigan** alum with a B.S.E. in Computer Science, I have a background in full-stack development, UX design, security, and cloud computing.',
+      text: "I'm a **University of Michigan** alum with a B.S.E. in Computer Science, and my background covers full-stack development, UX design, security, and cloud computing.",
       highlights: ['University of Michigan'],
     },
     {
-      text: 'I spend my free time exploring new restaurants, searching for the perfect cup of matcha, and making sure to "touch grass" through various outdoor activities.',
+      text: 'In my free time I try new restaurants, hunt for the perfect cup of matcha, and make sure to "touch grass" outdoors.',
       highlights: ['San Francisco Bay Area'],
     },
   ],

@@ -40,12 +40,12 @@ const Education = () => {
               Education
             </div>
             <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold tracking-tighter text-foreground text-balance">
-              Academic Journey
+              Where I studied
             </h2>
           </div>
           <p className="text-muted-foreground text-lg max-w-md leading-relaxed text-pretty">
-            A background rooted in computer science and engineering, with a focus on
-            human-centered design and software quality.
+            I studied computer science and engineering, with a focus on human-centered
+            design and software quality.
           </p>
         </motion.div>
 
@@ -63,7 +63,7 @@ const Education = () => {
                 className="group relative cursor-pointer space-y-3 overflow-hidden rounded-2xl border border-border bg-card p-1 shadow-sm transition-all duration-300 hover:shadow-2xl hover:border-accent/30 hover:-translate-y-1 w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:space-y-4 md:rounded-3xl"
                 onClick={() => setSelectedItem(item)}
               >
-                <div className="relative h-[220px] overflow-hidden rounded-2xl sm:h-[280px] md:h-[300px]">
+                <div className="relative h-55 overflow-hidden rounded-2xl sm:h-70 md:h-75">
                   <Image
                     src={item.image}
                     alt={item.name}
@@ -72,7 +72,7 @@ const Education = () => {
                     className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                  <div className="absolute inset-0 bg-linear-to-t from-background/95 via-background/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
                   <div className="absolute top-6 right-6 z-10 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/90 px-3 py-1.5 text-xs font-montserrat font-bold uppercase tracking-widest text-foreground shadow-sm backdrop-blur-md opacity-100 md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100">
                     View Details
                     <ChevronRight className="w-4 h-4 text-accent" aria-hidden="true" />
@@ -100,7 +100,7 @@ const Education = () => {
             animate={{ opacity: 1 }}
             exit={reduceMotion ? undefined : { opacity: 0 }}
             transition={{ duration: reduceMotion ? 0 : 0.2 }}
-            className="safe-area-overlay modal-overlay fixed inset-0 z-[60] flex items-center justify-center"
+            className="safe-area-overlay modal-overlay fixed inset-0 z-60 flex items-center justify-center"
             onClick={closeModal}
           >
             <motion.div

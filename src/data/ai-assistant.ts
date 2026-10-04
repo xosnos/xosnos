@@ -17,7 +17,7 @@ export const aiAssistantContent = {
     rateLimit:
       "You're sending messages too quickly. Please pause for a moment and try again.",
     notConfigured:
-      "The AI assistant isn't configured right now. Feel free to email Steven at steven@xosnos.com instead!",
+      "The AI assistant isn't set up right now. You can email Steven at steven@xosnos.com instead.",
     generic: 'Something went wrong reaching the assistant. Please try again in a moment.',
     aborted: '(stopped)',
   },

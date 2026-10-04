@@ -39,7 +39,7 @@ const Skills = () => {
               Tools I ship with
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed text-pretty">
-              Primary languages, frameworks, and platforms then my full stack.
+              My primary languages, frameworks, and platforms first, then the full stack.
             </p>
           </div>
 

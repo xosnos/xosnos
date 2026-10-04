@@ -6,7 +6,7 @@ export const experienceContent = {
   sectionLabel: 'Career',
   sectionTitle: 'Experience',
   sectionDescription:
-    "I've worked across corporate, non-profit, and startup environments, from enterprise platforms to community organizations to building a product from 0->1.",
+    "I've worked in corporate, non-profit, and startup settings, from enterprise platforms at Workday to community organizations to a product I'm building from scratch.",
 };
 
 export interface ExperienceItem {
@@ -33,12 +33,12 @@ const experiences: ExperienceItem[] = [
     type: 'work',
     location: 'San Francisco Bay Area',
     startDate: '2025-04',
-    description: 'Building an AI-native career growth agent from 0 → 1.',
+    description: 'Building an AI-native career growth agent from scratch.',
     highlights: [
-      'Architected an AI-native career platform that captures roles, tailors application materials, scores like an ATS, and generates interview-prep plans.',
-      'Building a TypeScript monorepo spanning web (TanStack Start), browser extension, and Expo mobile clients with a shared backend',
+      'Architected a career platform that captures roles, tailors application materials, scores them like an ATS, and generates interview-prep plans.',
+      'Building a TypeScript monorepo with a web app (TanStack Start), a browser extension, and an Expo mobile client on a shared backend.',
       'Designed workflows with Firecrawl and AI SDK to automate job description scraping, company research, and personalized application materials.',
-      'Stood up local, preview, and production environment tiers with Terraform-managed Supabase to streamline the development process.',
+      'Stood up local, preview, and production environments on Terraform-managed Supabase to streamline development.',
     ],
     link: 'https://www.terraces.ai/',
     published: true,
@@ -54,9 +54,9 @@ const experiences: ExperienceItem[] = [
     description:
       'Platform engineering with CI/CD, multi-region delivery, and service rollout safety.',
     highlights: [
-      'Engineered scalable Jenkins CI/CD pipelines with Docker and Kubernetes, significantly enhancing deployment efficiency on AWS.',
-      'Enabled automated rollouts of microservices across multiple regional data centers, streamlining operations.',
-      'Collaborated with cross-functional teams to ensure seamless integration and deployment processes at Workday.',
+      'Engineered scalable Jenkins CI/CD pipelines with Docker and Kubernetes on AWS, improving deployment efficiency.',
+      'Automated microservice rollouts across multiple regional data centers.',
+      'Worked with cross-functional teams on integration and deployment.',
     ],
     link: 'https://www.workday.com',
     published: true,
@@ -72,10 +72,9 @@ const experiences: ExperienceItem[] = [
     description:
       'Security and reliability engineering across backend services and dependency stack.',
     highlights: [
-      'Proactively identified and patched over 15 critical security vulnerabilities (CVEs) in third-party libraries.',
-      'Designed and implemented evaluation and analytics dashboards for streamlined vulnerability management.',
-      'Strengthened backend infrastructure security, enhancing overall system resilience.',
-      "Contributed to Workday's commitment to providing secure and reliable software solutions.",
+      'Identified and patched more than 15 critical security vulnerabilities (CVEs) in third-party libraries.',
+      'Designed and built evaluation and analytics dashboards for managing vulnerabilities.',
+      'Strengthened backend infrastructure security and system resilience.',
     ],
     link: 'https://www.workday.com',
     published: true,
@@ -90,9 +89,9 @@ const experiences: ExperienceItem[] = [
     endDate: '2023-01',
     description: 'Internal tooling and performance improvements for platform validation.',
     highlights: [
-      'Modernized an internal CLI validator tool by migrating from shell script to Python, enhancing maintainability.',
-      'Improved system performance through the implementation of caching processes, significantly reducing program runtime.',
-      'Conducted thorough testing on bare-metal servers with varying configurations to identify errors and mismatches.',
+      'Migrated an internal CLI validator tool from shell script to Python, which made it easier to maintain.',
+      'Added caching, which reduced program runtime.',
+      'Tested on bare-metal servers with varying configurations to find errors and mismatches.',
     ],
     link: 'https://www.workday.com',
     published: true,
@@ -108,8 +107,8 @@ const experiences: ExperienceItem[] = [
     description:
       'Cross-functional conference leadership, executive stakeholder alignment, and staff recruitment.',
     highlights: [
-      'Directed cross-functional coordination across 10 conference teams, ensuring timely project execution.',
-      'Facilitated all-staff calls and executive meetings to align stakeholders on deliverables and risks.',
+      'Coordinated work across 10 conference teams to keep projects on schedule.',
+      'Ran all-staff calls and executive meetings to align stakeholders on deliverables and risks.',
       'Oversaw the recruitment pipeline for conference staff, focusing on interview design and candidate selection.',
     ],
     published: false,
@@ -123,9 +122,9 @@ const experiences: ExperienceItem[] = [
     endDate: '2025-08',
     description: 'End-to-end conference registration operations and platform migration.',
     highlights: [
-      'Managed end-to-end conference registration operations, ensuring efficient workflows and achieving full capacity.',
-      'Led a successful platform migration initiative through collaboration with IT and thorough internal testing.',
-      'Coordinated with cross-functional teams to align project timelines and deliverables for seamless pre-conference execution.',
+      'Managed end-to-end conference registration, which reached full capacity.',
+      'Led a platform migration with IT, backed by internal testing.',
+      'Coordinated with cross-functional teams on timelines and deliverables ahead of the conference.',
     ],
     published: false,
   },
@@ -139,9 +138,9 @@ const experiences: ExperienceItem[] = [
     description:
       'Conference registration platform maintenance, attendee support, and on-site check-in.',
     highlights: [
-      'Maintained the registration platform for conference, ensuring smooth operations.',
-      'Developed email drafts and FAQs to assist attendees with registration queries.',
-      'Managed check-in processes for conference opening, workshops, and gala dinner.',
+      'Maintained the conference registration platform.',
+      'Wrote email drafts and FAQs to help attendees with registration questions.',
+      'Managed check-in for the conference opening, workshops, and gala dinner.',
     ],
     published: false,
   },
@@ -154,8 +153,8 @@ const experiences: ExperienceItem[] = [
     endDate: '2026-06',
     description: 'Leading a 501(c)(3) non-profit serving 31 universities.',
     highlights: [
-      'Led the Board of Directors for a 501(c)(3) non-profit, driving strategic initiatives and productive decision-making.',
-      'Translated high-level organizational goals into actionable roadmaps, ensuring effective implementation.',
+      'Led the Board of Directors of a 501(c)(3) non-profit and its strategic initiatives.',
+      'Translated high-level organizational goals into actionable roadmaps and oversaw their implementation.',
       'Managed compliance with federal, state, and local regulations, overseeing tax-exempt filings and corporate contracts.',
     ],
     link: 'https://www.uvsamidwest.org',
@@ -174,8 +173,8 @@ const experiences: ExperienceItem[] = [
     highlights: [
       'Provided strategic oversight on technology and accessibility initiatives as a Board member.',
       'Mentored three teams to align technical projects with organizational goals.',
-      'Supervised the development of a cross-platform application for streamlined event registrations.',
-      'Established a centralized GitHub organization to enhance code management processes.',
+      'Supervised the development of a cross-platform application for event registration.',
+      'Established a centralized GitHub organization for code management.',
     ],
     link: 'https://www.uvsamidwest.org',
     published: true,
@@ -187,11 +186,11 @@ const experiences: ExperienceItem[] = [
     type: 'volunteer',
     startDate: '2023-02',
     endDate: '2024-04',
-    description: 'Shipped a 0 → 1 cross-platform React Native mobile application.',
+    description: 'Shipped a 0-to-1 cross-platform React Native mobile application.',
     highlights: [
-      'Shipped a 0 → 1 cross-platform React Native application for the non-profit organization, improving event registrations for over 1500 constituents.',
-      'Enhanced user experience and engagement across 31 universities through streamlined processes.',
-      'Collaborated with diverse teams to ensure effective implementation and user satisfaction.',
+      'Shipped a 0-to-1 cross-platform React Native application for the non-profit, improving event registration for more than 1,500 constituents.',
+      'Improved user experience and engagement across 31 universities by streamlining processes.',
+      'Worked with different teams on implementation and user satisfaction.',
     ],
     link: 'https://www.uvsamidwest.org',
     published: false,
@@ -206,10 +205,10 @@ const experiences: ExperienceItem[] = [
     description:
       'Conference website development, UI component enhancements, and registration automation.',
     highlights: [
-      'Developed and maintained conference website pages in collaboration with various committees.',
-      'Served as a key liaison across teams to ensure timely updates for website content.',
-      'Enhanced information architecture and UI components to improve user experience.',
-      'Automated workshop registration processes, significantly reducing manual workload.',
+      'Developed and maintained conference website pages with various committees.',
+      'Acted as liaison between teams so website content was updated on time.',
+      'Improved the information architecture and UI components for a better user experience.',
+      'Automated workshop registration, cutting manual workload.',
     ],
     link: 'https://www.uvsamidwest.org',
     published: false,
@@ -225,9 +224,9 @@ const experiences: ExperienceItem[] = [
     description:
       'Mentoring students in algorithmic problem-solving and interview preparation.',
     highlights: [
-      'Mentored over 20 students in technical interview preparation, focusing on algorithmic problem-solving.',
-      'Provided constructive feedback to enhance coding skills and communication abilities.',
-      'Fostered a supportive learning environment, guiding students to achieve optimized solutions.',
+      'Mentored more than 20 students in technical interview preparation, focusing on algorithmic problem-solving.',
+      "Gave feedback to improve students' coding and communication skills.",
+      'Created a supportive environment and guided students toward optimized solutions.',
     ],
     link: 'https://www.codepath.org',
     published: true,
@@ -242,9 +241,9 @@ const experiences: ExperienceItem[] = [
     endDate: '2022-05',
     description: 'Web development and STEM coding curriculum for middle school students.',
     highlights: [
-      "Deployed HackBlue's website using HTML, CSS, JavaScript, and GitHub pages to enhance online presence.",
-      'Developed engaging weekly lesson plans for over 50 middle school students to introduce coding concepts.',
-      'Enhanced learning experiences through interactive coding activities and projects, fostering student engagement.',
+      "Deployed HackBlue's website with HTML, CSS, JavaScript, and GitHub Pages to build its online presence.",
+      'Wrote weekly lesson plans introducing coding concepts to more than 50 middle school students.',
+      'Added interactive coding activities and projects to keep students engaged.',
     ],
     link: 'https://hackblue.github.io/',
     published: true,

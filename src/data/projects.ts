@@ -23,7 +23,7 @@ const projectItems: ProjectItem[] = [
     subtitle:
       'An AI-native career progression platform that scans resumes, suggests role-specific edits, aligns portfolio projects, and generates interview-prep plans.',
     description:
-      'Terraces is a 0-to-1 career agent that captures target roles, tailors application materials, scores them like an ATS, and keeps portfolio work and interview-prep plans in sync. The product lives in a TypeScript monorepo spanning a TanStack Start web app, product API, browser extension, and Expo mobile client on shared Supabase auth.',
+      'Terraces is a 0-to-1 career agent that captures target roles, tailors application materials, scores them like an ATS, and keeps portfolio work and interview-prep plans in sync. The code is a TypeScript monorepo with a TanStack Start web app, a product API, a browser extension, and an Expo mobile client, all on shared Supabase auth.',
     coverTags: ['TanStack Start', 'PostgreSQL', 'AI SDK'],
     tags: ['TypeScript', 'Cloudflare', 'Firecrawl', 'Biome'],
     demoUrl: 'https://www.terraces.ai/',
@@ -34,9 +34,9 @@ const projectItems: ProjectItem[] = [
     title: 'Architype',
     image: '/assets/img/projects/architype.png',
     subtitle:
-      'A collaborative system design workspace for building architecture diagrams, using AI agents to create or revise designs, and generating downloadable technical specs.',
+      'A collaborative system design workspace where teams build architecture diagrams, use AI agents to create or revise designs, and download technical specs.',
     description:
-      'Architype is a shared canvas for system design. Teams sketch architecture diagrams together, then use AI agents to draft or revise those designs and export downloadable technical specs from the same workspace.',
+      'Architype is a shared canvas for system design. Teams sketch architecture diagrams together, then use AI agents to draft or revise them and export technical specs from the same workspace.',
     coverTags: ['Next.js', 'React Flow', 'Supabase'],
     tags: ['TypeScript', 'OpenRouter', 'Biome'],
     demoUrl: 'https://architype.xosnos.com',
@@ -61,9 +61,9 @@ const projectItems: ProjectItem[] = [
     title: 'UVSA-Midwest App',
     image: '/assets/img/projects/uvsamidwest.png',
     subtitle:
-      'Coordinates flagship events and keeps constituents up to date with personalized information year-round and conference-specific details during flagship events.',
+      'Coordinates flagship events, with personalized updates for constituents year-round and conference-specific details while an event is running.',
     description:
-      'The official UVSA-Midwest app serves 31 universities with event registration, live coordination, and personalized updates. It shipped 0 → 1 in React Native and Expo to streamline registrations for more than 1,500 constituents.',
+      'The official UVSA-Midwest app serves 31 universities with event registration, live coordination, and personalized updates. It shipped 0-to-1 in React Native and Expo and streamlined registration for more than 1,500 constituents.',
     coverTags: ['React Native', 'Expo', 'Firebase'],
     tags: [],
     demoUrl: 'https://app.uvsamidwest.org',
@@ -74,7 +74,7 @@ const projectItems: ProjectItem[] = [
     title: 'Almond Travel',
     image: '/assets/img/projects/almond-travel.png',
     subtitle:
-      'Bundles flights, hotels, and attractions into a seamless experience for tourists and immigrants traveling to America.',
+      'Bundles flights, hotels, and attractions for tourists and immigrants traveling to America.',
     description:
       'Almond Travel helps visitors plan a U.S. trip in one place. It combines flights, hotels, and attractions into a single itinerary so tourists and immigrants can move from research to booking without bouncing across sites.',
     coverTags: ['React', 'Next.js', 'Firebase'],

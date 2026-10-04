@@ -12,28 +12,28 @@ const xosnos = () => {
 }
 ```
 
-🚀 **Building [Terraces](https://www.terraces.ai/)** — an AI-native career progression platform.
+🚀 Building [Terraces](https://www.terraces.ai/), an AI-native career agent.
 
-🔭 **Previously a Software Engineer at Workday** — developed full-stack security tooling and optimizing CI/CD pipelines, patched CVEs, and shipped multi-region microservice rollouts.
+🔭 Previously a Software Engineer at Workday, where I built full-stack security tooling, optimized CI/CD pipelines, patched CVEs, and shipped multi-region microservice rollouts.
 
-🌱 **Passionate about** AI-Native applications, accessible design, and sustainable tech.
+🌱 I'm interested in AI-native applications and sustainable tech.
 
-♿️ **Committed to** AI Accessibility and Inclusive Technology.
+♿️ I'm committed to accessible design, AI accessibility, and inclusive technology.
 
-👯 **Open to** Forward Deployed Engineer and Full-Stack Software Engineer roles.
+👯 Open to Forward Deployed Engineer and full-stack software engineer roles.
 
-🤝 **Let's connect** on [LinkedIn](https://linkedin.com/in/xosnos).
+🤝 You can reach me via [LinkedIn](https://linkedin.com/in/xosnos) or [email](mailto:steven@xosnos.com).
 
 ## 🚀 Highlighted Projects
 
 | Project | Stack | What it does |
 | --- | --- | --- |
-| **[Terraces](https://www.terraces.ai/)** | TanStack Start, PostgreSQL, AI SDK | AI-native career agent: capture roles, tailor materials, score like an ATS, sync portfolio & analytics. |
-| **[Architype](https://architype.xosnos.com)** | Next.js, React Flow, Supabase | Collaborative architecture canvas with AI design agents and downloadable technical specs. |
-| **[UNAVSA Mail Merge](https://github.com/xosnos/mail-merge)** | Google Apps Script, Gmail API, Google Sheets | Google Workspace add-on that sends personalized Gmail campaigns from Sheets and tracks engagement. |
-| **[UVSA-Midwest App](https://app.uvsamidwest.org)** | React Native, Expo, Firebase | Cross-platform app for serving 31 universities; event registration and live coordination. |
-| **[Almond Travel](https://almond-travel.xosnos.com/)** | React, Next.js, Firebase | Bundles flights, hotels, and attractions for U.S. tourists and immigrants. |
-| **[jammming](https://jammming.xosnos.com/)** | React, Spotify API | Instant playlist builder synced directly to Spotify. |
+| [Terraces](https://www.terraces.ai/) | TanStack Start, PostgreSQL, AI SDK | Career agent that captures roles, tailors application materials, scores them like an ATS, and syncs portfolio and analytics. |
+| [Architype](https://architype.xosnos.com) | Next.js, React Flow, Supabase | Collaborative architecture canvas where AI agents create or revise designs and you can download technical specs. |
+| [UNAVSA Mail Merge](https://github.com/xosnos/mail-merge) | Google Apps Script, Gmail API, Google Sheets | Google Workspace add-on that sends personalized Gmail campaigns from Sheets and tracks engagement. |
+| [UVSA-Midwest App](https://app.uvsamidwest.org) | React Native, Expo, Firebase | Cross-platform app for 31 universities, with event registration and live coordination. |
+| [Almond Travel](https://almond-travel.xosnos.com/) | React, Next.js, Firebase | Bundles flights, hotels, and attractions for U.S. tourists and immigrants. |
+| [jammming](https://jammming.xosnos.com/) | React, Spotify API | Playlist builder that sends your playlist straight to Spotify. |
 
 ---
 
