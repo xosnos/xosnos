@@ -4,7 +4,7 @@ import { NextRequest } from 'next/server';
 import { GET as spotifyCallback } from '../src/app/api/spotify/callback/route';
 import { getAppleNowPlaying } from '../src/lib/apple-music';
 import { logger } from '../src/lib/logger';
-import { getAccessToken } from '../src/lib/spotify';
+import { exchangeCodeForTokens, getAccessToken } from '../src/lib/spotify';
 
 test.afterEach(() => mock.restoreAll());
 
@@ -103,7 +103,7 @@ test('logs upstream status without the Apple Music response body', async () => {
   });
 });
 
-test.describe('Spotify logging', () => {
+test.describe('Provider logging', () => {
   let originalEnv: NodeJS.ProcessEnv;
 
   test.beforeEach(() => {
@@ -127,6 +127,54 @@ test.describe('Spotify logging', () => {
       else process.env[key] = originalEnv[key];
     }
   });
+
+  for (const { operation, run, message } of [
+    {
+      operation: 'Spotify refresh',
+      run: getAccessToken,
+      message: 'Failed to refresh Spotify access token: 502',
+    },
+    {
+      operation: 'Spotify exchange',
+      run: () => exchangeCodeForTokens('secret-code'),
+      message: 'Failed to exchange code for tokens',
+    },
+    {
+      operation: 'Apple Music recent tracks',
+      run: () =>
+        getAppleNowPlaying({ developerToken: 'secret-dev', userToken: 'secret-user' }),
+      message: 'Apple Music API error: 502',
+    },
+  ]) {
+    for (const cleanup of ['succeeds', 'rejects', 'no body']) {
+      test(`${operation} preserves the provider error when cleanup ${cleanup}`, async () => {
+        const output = mock.method(console, 'error', () => {});
+        const cancel = mock.fn(async () => {
+          if (cleanup === 'rejects') throw new Error('secret-cleanup-error');
+        });
+        const body = new ReadableStream({
+          start(controller) {
+            controller.enqueue(new TextEncoder().encode('secret-response'));
+            // Leave the stream open so cleanup must explicitly cancel it.
+          },
+          cancel,
+        });
+        mock.method(
+          globalThis,
+          'fetch',
+          async () => new Response(cleanup === 'no body' ? null : body, { status: 502 }),
+        );
+
+        await expect(run()).rejects.toEqual(new Error(message));
+
+        expect(cancel.mock.callCount()).toBe(cleanup === 'no body' ? 0 : 1);
+        expect(output.mock.callCount()).toBe(1);
+        const [line] = output.mock.calls[0].arguments;
+        expect(line).not.toContain('secret-');
+        expect(JSON.parse(line)).toMatchObject({ level: 'error', status: 502 });
+      });
+    }
+  }
 
   test('refresh failures do not put provider response data in logs or thrown errors', async () => {
     const output = mock.method(console, 'error', () => {});

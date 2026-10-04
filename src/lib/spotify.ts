@@ -54,6 +54,8 @@ export async function getAccessToken(): Promise<string> {
       operation: 'refresh_token',
       status: response.status,
     });
+    // Release the unread body without letting cleanup mask the provider error.
+    await response.body?.cancel().catch(() => {});
     throw new Error(`Failed to refresh Spotify access token: ${response.status}`);
   }
 
@@ -106,6 +108,8 @@ export async function exchangeCodeForTokens(code: string) {
       operation: 'exchange_code',
       status: response.status,
     });
+    // Release the unread body without letting cleanup mask the provider error.
+    await response.body?.cancel().catch(() => {});
     throw new Error('Failed to exchange code for tokens');
   }
 

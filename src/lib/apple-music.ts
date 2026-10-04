@@ -53,6 +53,8 @@ export async function getAppleNowPlaying(params: {
       operation: 'recent_tracks',
       status: response.status,
     });
+    // Release the unread body without letting cleanup mask the provider error.
+    await response.body?.cancel().catch(() => {});
     throw new Error(`Apple Music API error: ${response.status}`);
   }
 
