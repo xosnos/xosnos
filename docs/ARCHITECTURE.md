@@ -60,7 +60,7 @@ All request handlers live under [`src/app/api/`](../src/app/api/):
 | `resume` | POST | Validates a request and emails a 24-hour signed download link through Resend |
 | `resume/download` | GET | Verifies the token, logs access to Google Sheets, and downloads the PDF from Google Drive |
 
-For Spotify setup, register `http://127.0.0.1:3000/api/spotify/callback`, then visit `http://127.0.0.1:3000/api/spotify/auth` in development. Use `127.0.0.1`, not `localhost`, so the callback receives the OAuth state cookie. Copy the refresh token from the development server log to `SPOTIFY_REFRESH_TOKEN`; the music routes do not use the callback's refresh-token cookie.
+For Spotify setup, register `http://127.0.0.1:3000/api/spotify/callback`, then visit `http://127.0.0.1:3000/api/spotify/auth` in development. Use `127.0.0.1`, not `localhost`, so the callback receives the OAuth state cookie. After authorization, open browser developer tools → Application/Storage → Cookies for `127.0.0.1` and copy the HttpOnly `spotify_refresh_token` cookie value to `SPOTIFY_REFRESH_TOKEN` in your untracked `.env.local`. The music routes do not use this cookie directly. Tokens are not printed to server logs.
 
 See [`.env.example`](../.env.example) for every route's environment variables.
 

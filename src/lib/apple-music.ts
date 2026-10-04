@@ -1,3 +1,5 @@
+import { logger } from '@/lib/logger';
+
 export type MusicProvider = 'apple' | 'spotify';
 
 export interface MusicTrack {
@@ -46,8 +48,13 @@ export async function getAppleNowPlaying(params: {
   }
 
   if (!response.ok) {
-    const errorBody = await response.json().catch(() => ({}));
-    console.error('Apple Music API error', response.status, errorBody);
+    logger.error('music.upstream_failed', {
+      provider: 'apple',
+      operation: 'recent_tracks',
+      status: response.status,
+    });
+    // Release the unread body without letting cleanup mask the provider error.
+    await response.body?.cancel().catch(() => {});
     throw new Error(`Apple Music API error: ${response.status}`);
   }
 

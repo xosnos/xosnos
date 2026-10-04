@@ -1,5 +1,6 @@
 import { google } from 'googleapis';
 import { NextRequest, NextResponse } from 'next/server';
+import { logger } from '@/lib/logger';
 import { verifyToken } from '@/lib/resume-token';
 
 function getAuth() {
@@ -68,7 +69,7 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error('Error serving resume:', error);
+    logger.error('resume.download_failed', { route: '/api/resume/download', error });
     return NextResponse.json({ error: 'Failed to process request' }, { status: 500 });
   }
 }

@@ -113,6 +113,22 @@ Playwright manages its own server: [`playwright.config.ts`](../playwright.config
 
 The suite covers homepage content, navigation, skills, dialog behavior, invalid API requests, and a mocked resume submission. It does not verify live Gemini, Resend, Google, or music-provider calls, or production-only origin checks.
 
+### Structured server logs
+
+API routes and music-provider helpers use [`src/lib/logger.ts`](../src/lib/logger.ts). Each call writes one JSON line with an ISO timestamp, `level`, a stable `event` name, and optional `route`, `provider`, `operation`, `status`, and `error` fields. Info records go to stdout; errors go to stderr, where the hosting platform can collect them.
+
+```ts
+logger.error('music.upstream_failed', {
+  provider: 'apple',
+  operation: 'recent_tracks',
+  status: 403,
+});
+```
+
+Use fixed event names and route paths, not URLs with query strings. Never pass tokens, request bodies, chat history, email addresses, or IP addresses. The logger omits extra context fields and serializes only an Error's name, message, and stack, excluding SDK attachments and causes. Messages and stacks are not redacted: keep sensitive data out of error text. Music-provider HTTP failures log status codes rather than raw response bodies.
+
+[`e2e/logging.spec.ts`](../e2e/logging.spec.ts) runs with the existing Playwright suite and checks JSON output, error serialization, excluded fields, and mocked provider/callback logging without live credentials. Run it alone with `bun run test:e2e e2e/logging.spec.ts`.
+
 ### Continuous integration
 
 The [pull request checks](../.github/workflows/pr-checks.yml) run when a pull request opens, receives commits, or reopens. A new run cancels any superseded run.
