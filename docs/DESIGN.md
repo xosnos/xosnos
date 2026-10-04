@@ -244,7 +244,7 @@ Apply motion only to interactive islands: the hero role rotation, card reveals, 
 
 Viewport reveals fire once, when 15% of an element enters the viewport. Most direct interactions finish within `300 ms`. Hero atmosphere uses static CSS blurs instead of repeating scale animations. Repeating effects include the hero title's 4-second `.title-banner-effect` gradient shift, the rotating role's pulsing cursor, and the assistant's status and loading indicators.
 
-`Projects`, `Education`, `ResumeGate`, `AIAssistant`, `RotatingRoleTitle`, and `ScrollReveal` call Motion’s `useReducedMotion` hook. They skip enter and exit motion when `prefers-reduced-motion: reduce` is set.
+`Projects`, `Education`, `ResumeGate`, and `AIAssistant` call Motion’s `useReducedMotion` hook. `HeroGreeting`, `RotatingRoleTitle`, and `ScrollReveal` use the custom `usePrefersReducedMotion` hook. It reads the preference after mount so the first browser render matches the server output. These components provide a reduced-motion path when `prefers-reduced-motion: reduce` is set.
 
 `Navigation` and `FloatingActions` rely on the global reduced-motion rule in `globals.css`. The rule shortens animations and transitions, disables smooth scrolling, and replaces the hero title gradient with a solid color.
 
