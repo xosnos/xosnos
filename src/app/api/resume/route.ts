@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { logger } from '@/lib/logger';
 import rateLimit from '@/lib/rate-limit';
 import { getClientIp, rejectDisallowedOrigin } from '@/lib/request-guard';
 import { createToken } from '@/lib/resume-token';
@@ -95,7 +96,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Error sending resume email:', error);
+    logger.error('resume.email_failed', { route: '/api/resume', error });
     return NextResponse.json({ error: 'Failed to process request' }, { status: 500 });
   }
 }

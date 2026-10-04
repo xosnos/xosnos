@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { type ChatTurn, isAIConfigured, streamChat } from '@/lib/gemini';
+import { logger } from '@/lib/logger';
 import rateLimit from '@/lib/rate-limit';
 import { getClientIp, rejectDisallowedOrigin } from '@/lib/request-guard';
 
@@ -98,7 +99,11 @@ export async function POST(request: NextRequest) {
           controller.enqueue(encoder.encode(chunk));
         }
       } catch (err) {
-        console.error('Gemini stream error:', err);
+        logger.error('chat.stream_failed', {
+          route: '/api/chat',
+          provider: 'gemini',
+          error: err,
+        });
         // If we haven't sent anything yet, this surfaces as a network error
         // on the client; if mid-stream, we close gracefully.
         controller.error(err);

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { logger } from '@/lib/logger';
 import rateLimit from '@/lib/rate-limit';
 import { getAccessToken, getTopTrack } from '../../../../lib/spotify';
 
@@ -34,7 +35,7 @@ export async function GET(request: NextRequest) {
       duration: topTrack.duration_ms,
     });
   } catch (error) {
-    console.error('Spotify API error:', error);
+    logger.error('spotify.top_track_failed', { route: '/api/spotify/top-track', error });
     return NextResponse.json({ error: 'Failed to fetch top track' }, { status: 500 });
   }
 }

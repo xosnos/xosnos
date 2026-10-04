@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAppleNowPlaying } from '@/lib/apple-music';
+import { logger } from '@/lib/logger';
 import rateLimit from '@/lib/rate-limit';
 import { getAccessToken, getTopTrack } from '@/lib/spotify';
 
@@ -70,7 +71,7 @@ export async function GET(request: NextRequest) {
       { status: 503 },
     );
   } catch (error) {
-    console.error('Music now-playing API error:', error);
+    logger.error('music.now_playing_failed', { route: '/api/music/now-playing', error });
     return NextResponse.json(
       {
         error: 'Unable to fetch now-playing',

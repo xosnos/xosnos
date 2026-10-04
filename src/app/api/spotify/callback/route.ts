@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { logger } from '@/lib/logger';
 import { rejectProductionSetupRoute } from '@/lib/request-guard';
 import { exchangeCodeForTokens } from '../../../../lib/spotify';
 
@@ -38,14 +39,8 @@ export async function GET(request: NextRequest) {
   try {
     const tokenData = await exchangeCodeForTokens(code);
 
-    // SBP-001: Do not return raw tokens in JSON response.
-    // Instead, log them server-side for the developer to retrieve during setup.
-    if (process.env.NODE_ENV === 'development') {
-      console.log('--- SPOTIFY AUTH SUCCESS ---');
-      console.log('Refresh Token:', tokenData.refresh_token);
-      console.log('Access Token:', tokenData.access_token);
-      console.log('----------------------------');
-    }
+    // Tokens remain in the HttpOnly cookie, never in logs or the JSON response.
+    logger.info('spotify.authorization_succeeded', { route: '/api/spotify/callback' });
 
     const response = NextResponse.json({
       message: 'Authorization successful! Tokens have been handled securely.',
@@ -64,7 +59,7 @@ export async function GET(request: NextRequest) {
 
     return response;
   } catch (error) {
-    console.error('Spotify callback error:', error);
+    logger.error('spotify.callback_failed', { route: '/api/spotify/callback', error });
     return NextResponse.json(
       { error: 'Internal server error during token exchange' },
       { status: 500 },

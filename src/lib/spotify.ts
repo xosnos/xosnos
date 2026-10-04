@@ -1,3 +1,5 @@
+import { logger } from '@/lib/logger';
+
 // Constants
 export const SPOTIFY_AUTH_URL = 'https://accounts.spotify.com/authorize';
 export const SPOTIFY_TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
@@ -47,11 +49,12 @@ export async function getAccessToken(): Promise<string> {
   });
 
   if (!response.ok) {
-    const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
-    console.error('Spotify token refresh error:', errorData);
-    throw new Error(
-      `Failed to refresh Spotify access token: ${errorData.error_description || errorData.error || response.statusText}`,
-    );
+    logger.error('spotify.token_refresh_failed', {
+      provider: 'spotify',
+      operation: 'refresh_token',
+      status: response.status,
+    });
+    throw new Error(`Failed to refresh Spotify access token: ${response.status}`);
   }
 
   const data = await response.json();
@@ -98,8 +101,11 @@ export async function exchangeCodeForTokens(code: string) {
   });
 
   if (!response.ok) {
-    const errorData = await response.json();
-    console.error('Spotify token exchange error:', errorData);
+    logger.error('spotify.token_exchange_failed', {
+      provider: 'spotify',
+      operation: 'exchange_code',
+      status: response.status,
+    });
     throw new Error('Failed to exchange code for tokens');
   }
 
