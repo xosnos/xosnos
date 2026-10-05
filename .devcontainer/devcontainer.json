@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
+  "name": "xosnos portfolio",
+  // Debian with Node.js 24, git, and a non-root `node` user. Next.js needs 20.9+, but
+  // Playwright cannot load e2e/logging.spec.ts (`node:test` mocks) on Node 22.
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:5-24-bookworm",
+  "features": {
+    // Bun runs every script in this repo (see AGENTS.md).
+    "ghcr.io/shyim/devcontainers-features/bun:0": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  // Keep node_modules in a Linux volume so native binaries (Biome, tsgo, Next SWC)
+  // never mix with a macOS/Windows host install and installs stay fast.
+  "mounts": [
+    "source=xosnos-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+  "containerEnv": {
+    "NEXT_TELEMETRY_DISABLED": "1"
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  // Port 3000 matches `bun run dev`, Playwright's baseURL, and .amp/services.yaml.
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js dev server",
+      "onAutoForward": "notify"
+    }
+  },
+  "remoteUser": "node",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "biomejs.biome",
+        "TypeScriptTeam.native-preview",
+        "oven.bun-vscode",
+        "bradlc.vscode-tailwindcss",
+        "ms-playwright.playwright"
+      ],
+      "settings": {
+        // TypeScript 7 is the native (tsgo) compiler and ships no tsserver.js.
+        "typescript.experimental.useTsgo": true,
+        "editor.defaultFormatter": "biomejs.biome",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.biome": "explicit",
+          "source.organizeImports.biome": "explicit"
+        },
+        "files.associations": {
+          "*.css": "tailwindcss"
+        }
+      }
+    }
+  }
+}
