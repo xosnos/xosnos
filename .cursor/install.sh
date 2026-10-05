@@ -6,8 +6,8 @@ set -euo pipefail
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-echo "[install] Node $(node --version)"
-node -e 'const want = require("fs").readFileSync(".nvmrc", "utf8").trim(); if (process.versions.node.split(".")[0] !== want) throw new Error(`Expected Node.js ${want} from .nvmrc, found ${process.version}`);'
+echo "[install] Ensuring the Node.js version pinned in .nvmrc"
+scripts/ensure-node.sh
 
 if ! command -v bun >/dev/null 2>&1; then
   echo "[install] Installing Bun"

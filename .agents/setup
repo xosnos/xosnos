@@ -5,11 +5,11 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.."
 export DEBIAN_FRONTEND=noninteractive
 TIMEFORMAT='[setup] step completed in %3R seconds'
 
-# Amp's Debian base supplies Node and Bun. .nvmrc pins the Node.js major version.
-echo '[setup] Checking toolchain'
+# Amp's Debian base supplies Bun and a newer Node.js than the 24.x that Vercel runs.
+# Amp itself is a standalone binary, so replacing /usr/local's Node.js is safe.
+echo '[setup] Checking toolchain (installs the .nvmrc Node.js major when it differs)'
 bun --version
-node --version
-node -e 'const want = require("fs").readFileSync(".nvmrc", "utf8").trim(); if (process.versions.node.split(".")[0] !== want) throw new Error(`Expected Node.js ${want} from .nvmrc, found ${process.version}`);'
+time scripts/ensure-node.sh
 
 echo '[setup] Installing locked dependencies (reuses restored node_modules)'
 time bun install --frozen-lockfile
