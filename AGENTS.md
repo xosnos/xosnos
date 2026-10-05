@@ -14,6 +14,7 @@ This repo is the single source of truth for **Steven Nguyen (xosnos)** personal 
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — App Router layout, directories, API routes.
 - [`docs/CUSTOMIZE.md`](docs/CUSTOMIZE.md) — Content edits (projects, experience, skills, colors).
 - [`docs/DESIGN.md`](docs/DESIGN.md) — Colors, typography, breakpoints, performance targets.
+- [`docs/PRODUCT.md`](docs/PRODUCT.md) — Durable product truth, audience, positioning, and principles.
 - [`.env.example`](.env.example) — Environment variables for optional website features.
 
 ## Content sources

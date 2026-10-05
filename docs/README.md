@@ -176,6 +176,7 @@ Use these references when you change the website:
 - [Environment variable reference](../.env.example): configuration for optional integrations
 - [Customize portfolio content](CUSTOMIZE.md): projects, experience, education, skills, and theme tokens
 - [Design system](DESIGN.md): colors, typography, breakpoints, motion, accessibility, and performance measures
+- [Product truth](PRODUCT.md): audience, positioning, capabilities, principles, and brand commitments
 
 ## License
 
