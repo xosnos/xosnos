@@ -157,6 +157,17 @@ The service is declared in [`.amp/services.yaml`](../.amp/services.yaml) on port
 
 Configure optional integration credentials through Amp runtime secrets or an untracked `.env.local`. Setup never writes credentials or overwrites that file. Git ignores generated portal links.
 
+### Dev container
+
+[`.devcontainer/devcontainer.json`](../.devcontainer/devcontainer.json) works with VS Code, Cursor, GitHub Codespaces, and the `devcontainer` CLI. The [Dockerfile](../.devcontainer/Dockerfile) starts from the Microsoft TypeScript/Node.js 24 image and adds Bun 1.4.2. On creation, [`post-create.sh`](../.devcontainer/post-create.sh) runs `bun install --frozen-lockfile` and installs Playwright Chromium with its system libraries, so every validation command runs without extra setup.
+
+`node_modules` lives in a named Docker volume so Linux binaries never mix with a host install. Port 3000 is forwarded for `bun run dev`. The editor gets the Biome (format on save), TypeScript native preview, Playwright, and Tailwind CSS extensions. The container never creates `.env.local`; add one yourself to enable the optional integrations.
+
+```bash
+devcontainer up --workspace-folder .
+devcontainer exec --workspace-folder . bun run test
+```
+
 ## Find related portfolio documentation
 
 Use these references when you change the website:

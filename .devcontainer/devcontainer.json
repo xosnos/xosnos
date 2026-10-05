@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
+  "name": "xosnos portfolio",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  // Keep node_modules in a Linux volume so native binaries (Biome, tsgo, Next SWC)
+  // never mix with a macOS/Windows host install and installs stay fast. The
+  // devcontainerId suffix gives each checkout its own volume.
+  "mounts": [
+    "source=xosnos-node_modules-${devcontainerId},target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+  "containerEnv": {
+    "NEXT_TELEMETRY_DISABLED": "1"
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  // Port 3000 matches `bun run dev`, Playwright's baseURL, and .amp/services.yaml.
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Portfolio",
+      "onAutoForward": "notify"
+    }
+  },
+  "remoteUser": "node",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "biomejs.biome",
+        "TypeScriptTeam.native-preview",
+        "ms-playwright.playwright",
+        "bradlc.vscode-tailwindcss"
+      ],
+      "settings": {
+        // TypeScript 7 is the native (tsgo) compiler and ships no tsserver.js.
+        "typescript.experimental.useTsgo": true,
+        "editor.defaultFormatter": "biomejs.biome",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.biome": "explicit",
+          "source.organizeImports.biome": "explicit"
+        }
+      }
+    }
+  }
+}
