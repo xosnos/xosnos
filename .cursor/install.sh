@@ -7,7 +7,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 echo "[install] Node $(node --version)"
-node -e 'const [maj, min] = process.versions.node.split(".").map(Number); if (maj < 20 || (maj === 20 && min < 9)) { throw new Error("Next.js requires Node.js 20.9+"); }'
+node -e 'const want = require("fs").readFileSync(".nvmrc", "utf8").trim(); if (process.versions.node.split(".")[0] !== want) throw new Error(`Expected Node.js ${want} from .nvmrc, found ${process.version}`);'
 
 if ! command -v bun >/dev/null 2>&1; then
   echo "[install] Installing Bun"

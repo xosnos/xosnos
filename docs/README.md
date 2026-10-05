@@ -36,7 +36,7 @@ Next.js 16, React 19, TypeScript, Tailwind CSS 4, Motion, Lucide React, next-the
 
 ## Getting started
 
-Install Node.js 20.9 or newer and [Bun](https://bun.sh/) before you start.
+Install Node.js 26 and [Bun](https://bun.sh/) before you start. [`.nvmrc`](../.nvmrc) pins the Node.js major version for local development, CI, the dev container, and Amp orbs; `nvm use` or `fnm use` picks it up. Vercel deployments use the project's Node.js setting because Vercel does not offer Node.js 26 yet.
 
 ```bash
 git clone https://github.com/xosnos/xosnos.git
@@ -141,7 +141,7 @@ Use fixed event names and route paths, not URLs with query strings. Never pass t
 
 The [pull request checks](../.github/workflows/pr-checks.yml) run when a pull request opens, receives commits, or reopens. A new run cancels any superseded run.
 
-Four jobs share the Bun setup and `node_modules` cache. The `lint` job runs `bun run lint` and `bun run check:readme-skills`. The `typecheck` job runs `bun run typecheck`. The `unit` job runs `bun run test`. The `e2e` job installs Chromium and runs `bun run test:e2e`. The workflow does not run a production build.
+Four jobs share the Node.js setup (version from `.nvmrc`), Bun setup, and `node_modules` cache. The `lint` job runs `bun run lint` and `bun run check:readme-skills`. The `typecheck` job runs `bun run typecheck`. The `unit` job runs `bun run test`. The `e2e` job installs Chromium and runs `bun run test:e2e`. The workflow does not run a production build.
 
 ### Amp orbs
 
@@ -159,7 +159,7 @@ Configure optional integration credentials through Amp runtime secrets or an unt
 
 ### Dev container
 
-[`.devcontainer/devcontainer.json`](../.devcontainer/devcontainer.json) works with VS Code, Cursor, GitHub Codespaces, and the `devcontainer` CLI. It uses the Microsoft TypeScript/Node.js 24 image and adds Bun and the GitHub CLI. The image uses Node.js 24 because Playwright cannot load `e2e/logging.spec.ts` on Node.js 22. On creation, [`post-create.sh`](../.devcontainer/post-create.sh) runs `bun install --frozen-lockfile` and installs Playwright Chromium with its system libraries, so every validation command runs without extra setup.
+[`.devcontainer/devcontainer.json`](../.devcontainer/devcontainer.json) works with VS Code, Cursor, GitHub Codespaces, and the `devcontainer` CLI. It uses the Microsoft TypeScript/Node.js 26 image and adds Bun and the GitHub CLI. On creation, [`post-create.sh`](../.devcontainer/post-create.sh) runs `bun install --frozen-lockfile` and installs Playwright Chromium with its system libraries, so every validation command runs without extra setup.
 
 `node_modules` lives in a named Docker volume so Linux binaries never mix with a host install. Port 3000 is forwarded for `bun run dev`. The editor gets the Biome (format on save), TypeScript native preview, Bun, Tailwind CSS, and Playwright extensions. The container never creates `.env.local`; add one yourself to enable the optional integrations.
 

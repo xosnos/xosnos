@@ -1,9 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
   "name": "xosnos portfolio",
-  // Debian with Node.js 24, git, and a non-root `node` user. Next.js needs 20.9+, but
-  // Playwright cannot load e2e/logging.spec.ts (`node:test` mocks) on Node 22.
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:5-24-bookworm",
+  // Debian with Node.js 26 (the version pinned in .nvmrc), git, and a non-root `node` user.
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:5-26-bookworm",
   "features": {
     // Bun runs every script in this repo (see AGENTS.md).
     "ghcr.io/shyim/devcontainers-features/bun:0": {},

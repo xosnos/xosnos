@@ -5,7 +5,7 @@
 set -euo pipefail
 
 echo "[devcontainer] Node $(node --version), Bun $(bun --version)"
-node -e 'const [major, minor] = process.versions.node.split(".").map(Number); if (major < 20 || (major === 20 && minor < 9)) throw new Error("Next.js requires Node.js 20.9+");'
+node -e 'const want = require("fs").readFileSync(".nvmrc", "utf8").trim(); if (process.versions.node.split(".")[0] !== want) throw new Error(`Expected Node.js ${want} from .nvmrc, found ${process.version}`);'
 
 # The node_modules volume is created root-owned on first mount.
 sudo chown "$(id -u):$(id -g)" node_modules
