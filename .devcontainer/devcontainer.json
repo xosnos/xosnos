@@ -10,9 +10,10 @@
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   // Keep node_modules in a Linux volume so native binaries (Biome, tsgo, Next SWC)
-  // never mix with a macOS/Windows host install and installs stay fast.
+  // never mix with a macOS/Windows host install and installs stay fast. The
+  // devcontainerId suffix gives each checkout its own volume across rebuilds.
   "mounts": [
-    "source=xosnos-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+    "source=xosnos-node_modules-${devcontainerId},target=${containerWorkspaceFolder}/node_modules,type=volume"
   ],
   "containerEnv": {
     "NEXT_TELEMETRY_DISABLED": "1"
