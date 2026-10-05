@@ -66,11 +66,12 @@ describe('resume tokens', () => {
   });
 
   test('requires a configured secret', () => {
+    const token = createToken('ada@example.com', 'Ada', '203.0.113.7');
     delete process.env.RESUME_TOKEN_SECRET;
 
     expect(() => createToken('ada@example.com', 'Ada', '203.0.113.7')).toThrow(
       'RESUME_TOKEN_SECRET is not configured',
     );
-    expect(verifyToken('data.signature')).toBeNull();
+    expect(verifyToken(token)).toBeNull();
   });
 });

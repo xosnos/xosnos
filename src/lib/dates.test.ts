@@ -22,8 +22,17 @@ describe('parseYearMonth', () => {
 
 describe('formatMonthYear', () => {
   test('formats without shifting the month across time zones', () => {
-    expect(formatMonthYear('2025-01')).toBe('Jan 2025');
-    expect(formatMonthYear('2023-12')).toBe('Dec 2023');
+    const originalTz = process.env.TZ;
+    try {
+      for (const tz of ['UTC', 'America/Los_Angeles', 'Pacific/Kiritimati']) {
+        process.env.TZ = tz;
+        expect(formatMonthYear('2025-01'), tz).toBe('Jan 2025');
+        expect(formatMonthYear('2023-12'), tz).toBe('Dec 2023');
+      }
+    } finally {
+      if (originalTz === undefined) delete process.env.TZ;
+      else process.env.TZ = originalTz;
+    }
   });
 
   test('returns an empty string for missing input', () => {
