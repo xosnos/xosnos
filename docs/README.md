@@ -101,13 +101,21 @@ bun run lint
 bun run typecheck
 ```
 
-4. Run the end-to-end tests:
+4. Run the unit tests:
+
+```bash
+bun run test
+```
+
+5. Run the end-to-end tests:
 
 ```bash
 bun run test:e2e
 ```
 
 After you change [`src/data/skills.ts`](../src/data/skills.ts), run `bun run check:readme-skills` to confirm the GitHub profile README still matches, and `bun run sync:readme-skills` to update it.
+
+Unit tests use Bun's built-in test runner. They live next to the code as `*.test.ts` files under `src/`, and [`bunfig.toml`](../bunfig.toml) limits `bun test` to that directory so it never picks up the Playwright specs in `e2e/`. They cover date parsing, rate limiting, resume token signing and expiry, origin and client-IP guards, and content integrity checks for `src/data/` (unique IDs, valid dates, sort order, and image files that exist in `public/`). They need no server, credentials, or environment file.
 
 Playwright manages its own server: [`playwright.config.ts`](../playwright.config.ts) runs `bun run dev` on port 3000 and reuses a server that is already running outside CI. Tests run in Chromium only, with two retries and one worker in CI.
 
@@ -133,7 +141,7 @@ Use fixed event names and route paths, not URLs with query strings. Never pass t
 
 The [pull request checks](../.github/workflows/pr-checks.yml) run when a pull request opens, receives commits, or reopens. A new run cancels any superseded run.
 
-Three jobs share the Bun setup and `node_modules` cache. The `lint` job runs `bun run lint` and `bun run check:readme-skills`. The `typecheck` job runs `bun run typecheck`. The `e2e` job installs Chromium and runs `bun run test:e2e`. The workflow does not run a production build.
+Four jobs share the Bun setup and `node_modules` cache. The `lint` job runs `bun run lint` and `bun run check:readme-skills`. The `typecheck` job runs `bun run typecheck`. The `unit` job runs `bun run test`. The `e2e` job installs Chromium and runs `bun run test:e2e`. The workflow does not run a production build.
 
 ### Amp orbs
 

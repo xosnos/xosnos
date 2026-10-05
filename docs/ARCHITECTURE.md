@@ -42,6 +42,7 @@ The source tree separates routes, presentation, content, and shared application 
 | `src/lib/` | Shared utilities for AI context assembly, animation variants, Apple Music, date sorting, Gemini, rate limiting, origin and client-IP guards, resume gate events, resume tokens, and Spotify |
 | `src/hooks/` | Reusable React hooks: `useDialog` and `useScrollThreshold` |
 | `public/` | Images, icons, and the web manifest |
+| `src/**/*.test.ts` | Bun unit tests, colocated with the code they cover |
 | `e2e/` | Playwright end-to-end tests |
 | `scripts/` | Repository maintenance scripts, including README skill synchronization |
 
