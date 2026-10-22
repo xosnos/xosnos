@@ -1,11 +1,12 @@
 'use client';
 
-import { ChevronRight, Code, ExternalLink, X } from 'lucide-react';
+import { Code, ExternalLink, X } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import Image from 'next/image';
 import { useCallback, useId, useRef, useState } from 'react';
 import BrandIcon from '@/components/BrandIcon';
 import { brandIcons } from '@/components/brandIcons';
+import { MediaCard } from '@/components/MediaCard';
 import {
   listOverviewTags,
   listPublishedProjects,
@@ -65,47 +66,14 @@ const Projects = () => {
         >
           {projectItems.map((item) => (
             <motion.div key={item.id} variants={fadeInUp}>
-              <button
-                type="button"
-                className="group relative cursor-pointer space-y-3 overflow-hidden rounded-2xl border border-border bg-card p-1 shadow-sm transition-all duration-300 hover:shadow-2xl hover:border-accent/30 hover:-translate-y-1 w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:space-y-4 md:rounded-3xl"
+              <MediaCard
+                image={item.image}
+                imageAlt={item.title}
+                title={item.title}
+                subtitle={item.subtitle}
+                tags={item.coverTags}
                 onClick={() => setSelectedItem(item)}
-              >
-                <div className="relative overflow-hidden rounded-2xl">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-55 sm:h-70 md:h-85 object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-background/95 via-background/20 to-transparent" />
-                  <div className="absolute top-6 right-6 z-10 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/90 px-3 py-1.5 text-xs font-montserrat font-bold uppercase tracking-widest text-foreground shadow-sm backdrop-blur-md opacity-100 md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100">
-                    View Details
-                    <ChevronRight className="w-4 h-4 text-accent" aria-hidden="true" />
-                  </div>
-                  <div className="absolute bottom-5 left-4 right-4 z-10 space-y-2 sm:left-8 sm:right-8">
-                    {item.coverTags.length > 0 ? (
-                      <div className="flex flex-wrap gap-2">
-                        {item.coverTags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="inline-flex rounded-full border border-border/60 bg-background/90 px-3 py-1 text-xs font-montserrat font-bold uppercase tracking-widest text-foreground shadow-sm backdrop-blur-md"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    ) : null}
-                    <h3 className="text-2xl md:text-3xl font-montserrat font-extrabold text-foreground text-balance group-hover:text-accent transition-colors">
-                      {item.title}
-                    </h3>
-                  </div>
-                </div>
-                <p className="px-2 pb-2 text-muted-foreground line-clamp-2 leading-relaxed">
-                  {item.subtitle}
-                </p>
-              </button>
+              />
             </motion.div>
           ))}
         </motion.div>

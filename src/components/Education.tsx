@@ -1,9 +1,10 @@
 'use client';
 
-import { Award, BookOpen, ChevronRight, GraduationCap, Users, X } from 'lucide-react';
+import { Award, BookOpen, GraduationCap, Users, X } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import Image from 'next/image';
 import { useCallback, useId, useRef, useState } from 'react';
+import { MediaCard } from '@/components/MediaCard';
 import { type EducationItem, listEducationItems } from '@/data/education';
 import { useDialog } from '@/hooks/useDialog';
 import { fadeInUp, staggerContainer, viewportOnce } from '@/lib/animations';
@@ -61,35 +62,14 @@ const Education = () => {
         >
           {items.map((item) => (
             <motion.div key={item.id} variants={fadeInUp}>
-              <button
-                type="button"
-                className="group relative cursor-pointer space-y-3 overflow-hidden rounded-2xl border border-border bg-card p-1 shadow-sm transition-all duration-300 hover:shadow-2xl hover:border-accent/30 hover:-translate-y-1 w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:space-y-4 md:rounded-3xl"
+              <MediaCard
+                image={item.image}
+                imageAlt={item.name}
+                title={item.shortName}
+                subtitle={item.degree ?? item.name}
+                tags={[item.level]}
                 onClick={() => setSelectedItem(item)}
-              >
-                <div className="relative h-55 overflow-hidden rounded-2xl sm:h-70 md:h-75">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    sizes="(max-width: 768px) calc(100vw - 32px), calc(50vw - 72px)"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-background/95 via-background/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-                  <div className="absolute top-6 right-6 z-10 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/90 px-3 py-1.5 text-xs font-montserrat font-bold uppercase tracking-widest text-foreground shadow-sm backdrop-blur-md opacity-100 md:opacity-0 md:transition-opacity md:duration-300 md:group-hover:opacity-100">
-                    View Details
-                    <ChevronRight className="w-4 h-4 text-accent" aria-hidden="true" />
-                  </div>
-                  <div className="absolute bottom-5 left-4 right-4 z-10 space-y-2 sm:left-8 sm:right-8">
-                    <div className="inline-flex rounded-full border border-border/60 bg-background/90 px-3 py-1 text-xs font-montserrat font-bold uppercase tracking-widest text-foreground shadow-sm backdrop-blur-md">
-                      {item.level}
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-montserrat font-extrabold text-foreground text-balance">
-                      {item.shortName}
-                    </h3>
-                  </div>
-                </div>
-              </button>
+              />
             </motion.div>
           ))}
         </motion.div>

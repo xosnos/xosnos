@@ -100,7 +100,9 @@ test('phone navigation and assistant stay inside the viewport', async ({ page })
   const nav = page.getByRole('navigation', { name: 'Primary' });
   await nav.getByRole('link', { name: 'Projects' }).click();
   await expect(page.locator('#projects')).toBeInViewport();
-  await expect(page.getByText('View Details').first()).toBeVisible();
+  await expect(
+    page.locator('#projects').getByRole('button', { name: /Terraces/ }),
+  ).toBeVisible();
 
   await page.getByRole('button', { name: 'Open AI assistant' }).click();
   const assistant = page.getByRole('dialog', { name: 'Ask Steven' });
