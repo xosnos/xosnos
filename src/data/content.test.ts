@@ -5,7 +5,7 @@ import { parseYearMonth, yearMonthSortValue } from '@/lib/dates';
 import { educationItems, listEducationItems } from './education';
 import { listPublishedExperiences } from './experience';
 import { listOverviewTags, listPublishedProjects, projectItems } from './projects';
-import { featuredSkills, listSkillCategories } from './skills';
+import { featuredSkills, listSkillCategories, localBadgeSrc } from './skills';
 
 const publicFileExists = (path: string) =>
   existsSync(join(process.cwd(), 'public', path.replace(/^\//, '')));
@@ -98,6 +98,12 @@ describe('skills', () => {
     }
     for (const badge of badges) {
       expect(badge.src, badge.alt).toStartWith('https://img.shields.io/');
+    }
+  });
+
+  test('every badge has a self-hosted copy in public/', () => {
+    for (const badge of badges) {
+      expect(publicFileExists(localBadgeSrc(badge.alt)), badge.alt).toBe(true);
     }
   });
 

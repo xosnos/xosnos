@@ -12,6 +12,7 @@
     "test": "bun test",
     "test:e2e": "playwright test",
     "sync:readme-skills": "bun scripts/sync-readme-skills.ts",
+    "sync:skill-badges": "bun scripts/sync-skill-badges.ts",
     "check:readme-skills": "bun scripts/sync-readme-skills.ts --check"
   },
   "dependencies": {

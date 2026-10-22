@@ -19,7 +19,7 @@ function renderBadges(): string {
       const badgeLines = category.badges
         .map((item) => `![${item.alt}](${item.src})`)
         .join('\n');
-      return `### ${category.title}\n\n${badgeLines}`;
+      return `### ${category.emoji} ${category.title}\n\n${badgeLines}`;
     })
     .join('\n\n');
 }

@@ -4,6 +4,7 @@ export interface SkillBadge {
 }
 
 export interface SkillCategory {
+  emoji: string;
   title: string;
   badges: SkillBadge[];
 }
@@ -33,7 +34,8 @@ export const featuredSkills = [
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: '⌨️ Coding Languages',
+    emoji: '⌨️',
+    title: 'Coding Languages',
     badges: [
       badge(
         'Python',
@@ -82,7 +84,8 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: '🖥️ Frontend',
+    emoji: '🖥️',
+    title: 'Frontend',
     badges: [
       badge(
         'React',
@@ -119,7 +122,8 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: '⚙️ Backend',
+    emoji: '⚙️',
+    title: 'Backend',
     badges: [
       badge(
         'FastAPI',
@@ -148,7 +152,8 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: '💽 Databases',
+    emoji: '💽',
+    title: 'Databases',
     badges: [
       badge(
         'Postgres',
@@ -181,7 +186,8 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: '☁️ Cloud Infrastructure',
+    emoji: '☁️',
+    title: 'Cloud Infrastructure',
     badges: [
       badge(
         'Vercel',
@@ -210,7 +216,8 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: '💻 DevOps',
+    emoji: '💻',
+    title: 'DevOps',
     badges: [
       badge(
         'GitHub Actions',
@@ -239,7 +246,8 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: '🛠️ Tools',
+    emoji: '🛠️',
+    title: 'Tools',
     badges: [
       badge(
         'Uv',
@@ -288,7 +296,8 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: '🤖 AI / Editors',
+    emoji: '🤖',
+    title: 'AI / Editors',
     badges: [
       badge(
         'Cursor',
@@ -329,7 +338,8 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: '📋 Organization',
+    emoji: '📋',
+    title: 'Organization',
     badges: [
       badge(
         'Linear',
@@ -358,6 +368,21 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
 ];
+
+/** File name for a badge's self-hosted copy, e.g. `C++` → `cplusplus`. */
+export function badgeSlug(alt: string): string {
+  return alt
+    .toLowerCase()
+    .replace(/\+/g, 'plus')
+    .replace(/#/g, 'sharp')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+/** The site serves badges from public/; the GitHub README keeps the shields.io URLs. */
+export function localBadgeSrc(alt: string): string {
+  return `/assets/img/badges/${badgeSlug(alt)}.svg`;
+}
 
 export function listSkillCategories(): SkillCategory[] {
   return skillCategories;

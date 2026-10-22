@@ -1,14 +1,19 @@
 import { Cpu } from 'lucide-react';
-import { domainKnowledge, listFeaturedSkills, listSkillCategories } from '@/data/skills';
+import {
+  domainKnowledge,
+  listFeaturedSkills,
+  listSkillCategories,
+  localBadgeSrc,
+} from '@/data/skills';
 
 const featuredSkills = listFeaturedSkills();
 const skillCategories = listSkillCategories();
 
 function SkillBadge({ src, alt }: { src: string; alt: string }) {
-  // Shield badges are variable-width remote SVGs. next/image sets both
+  // Shield badges are variable-width SVGs (self-hosted in public/). next/image sets both
   // attributes, then CSS height alone trips its aspect-ratio warning.
   return (
-    // biome-ignore lint/performance/noImgElement: variable-width remote SVGs
+    // biome-ignore lint/performance/noImgElement: variable-width SVG badges
     <img
       src={src}
       alt={alt}
@@ -73,7 +78,7 @@ const Skills = () => {
             >
               <div className="space-y-4 md:space-y-6">
                 <h3 className="text-xl font-montserrat font-bold text-foreground">
-                  {category.title}
+                  {category.emoji} {category.title}
                 </h3>
 
                 <ul className="flex flex-wrap gap-2 pt-2">
@@ -83,7 +88,7 @@ const Skills = () => {
                       className="relative group/badge transition-all duration-300 hover:scale-105"
                     >
                       <div className="absolute inset-0 bg-accent/20 blur-md opacity-0 group-hover/badge:opacity-100 transition-opacity rounded-full" />
-                      <SkillBadge src={badge.src} alt={badge.alt} />
+                      <SkillBadge src={localBadgeSrc(badge.alt)} alt={badge.alt} />
                     </li>
                   ))}
                 </ul>

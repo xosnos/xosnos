@@ -1,5 +1,9 @@
 import type { NextConfig } from 'next';
 
+// Dev-only allowance so impeccable live mode can load. Guarded by NODE_ENV.
+const __impeccableLiveDev =
+  process.env.NODE_ENV === 'development' ? ' http://localhost:8400' : '';
+
 const nextConfig: NextConfig = {
   images: {
     // Enable modern image formats for better compression
@@ -49,8 +53,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self';",
+            value: `default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'${__impeccableLiveDev}; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'${__impeccableLiveDev}; frame-src 'self'; object-src 'none'; base-uri 'self';`,
           },
           {
             key: 'Strict-Transport-Security',

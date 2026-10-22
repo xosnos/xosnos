@@ -46,3 +46,8 @@ next-env.d.ts
 .antigravity/
 .vscode/mcp.json
 .claude/skills
+
+# Impeccable live mode (keep only the shared project config)
+/.impeccable/live/*
+!/.impeccable/live/config.json
+/.impeccable/config.local.json
