@@ -7,7 +7,9 @@ test('skills section shows primary stack, domains, and the full badge list', asy
   const skills = page.locator('#skills');
   await skills.scrollIntoViewIfNeeded();
 
-  await expect(skills.getByRole('heading', { name: 'Tools I ship with' })).toBeVisible();
+  await expect(
+    skills.getByRole('heading', { name: 'Stack and tools I ship with' }),
+  ).toBeVisible();
   await expect(
     skills.getByRole('listitem').filter({ hasText: 'TypeScript/JavaScript' }),
   ).toBeVisible();

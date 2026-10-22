@@ -42,12 +42,12 @@ const Projects = () => {
           className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-16 md:gap-6"
         >
           <div className="space-y-3 md:space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-montserrat font-bold uppercase tracking-widest">
-              <Code className="w-4 h-4" aria-hidden="true" />
-              Portfolio
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent text-accent-foreground border border-accent text-xs font-montserrat font-extrabold uppercase tracking-widest shadow-[0_0_16px_-2px_rgba(112,203,255,0.45)]">
+              <Code className="w-4 h-4 text-accent-foreground" aria-hidden="true" />
+              Projects
             </div>
             <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold tracking-tighter text-foreground text-balance">
-              Selected Projects
+              Portfolio Highlights
             </h2>
           </div>
           <p className="text-muted-foreground text-lg max-w-md leading-relaxed text-pretty">

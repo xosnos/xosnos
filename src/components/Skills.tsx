@@ -35,15 +35,17 @@ const Skills = () => {
 
       <div className="max-w-7xl mx-auto relative z-10 space-y-10 md:space-y-16">
         <div className="space-y-5 md:space-y-8">
-          <div className="max-w-2xl space-y-3 md:space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-montserrat font-bold uppercase tracking-widest">
-              <Cpu className="w-4 h-4" aria-hidden="true" />
-              Stack
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
+            <div className="space-y-3 md:space-y-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent text-accent-foreground border border-accent text-xs font-montserrat font-extrabold uppercase tracking-widest shadow-[0_0_16px_-2px_rgba(112,203,255,0.45)]">
+                <Cpu className="w-4 h-4 text-accent-foreground" aria-hidden="true" />
+                Skills
+              </div>
+              <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold tracking-tighter text-foreground text-balance">
+                Stack and tools I ship with
+              </h2>
             </div>
-            <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold tracking-tighter text-foreground text-balance">
-              Tools I ship with
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed text-pretty">
+            <p className="text-muted-foreground text-lg max-w-md leading-relaxed text-pretty">
               My primary languages, frameworks, and platforms first, then the full stack.
             </p>
           </div>

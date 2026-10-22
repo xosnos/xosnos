@@ -15,8 +15,8 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-start">
           <div className="space-y-6 md:space-y-10">
             <div className="space-y-3 md:space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-montserrat font-bold uppercase tracking-widest">
-                <User className="w-4 h-4" aria-hidden="true" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent text-accent-foreground border border-accent text-xs font-montserrat font-extrabold uppercase tracking-widest shadow-[0_0_16px_-2px_rgba(112,203,255,0.45)]">
+                <User className="w-4 h-4 text-accent-foreground" aria-hidden="true" />
                 {aboutContent.sectionLabel}
               </div>
               <h2 className="text-4xl md:text-6xl font-montserrat font-extrabold tracking-tighter text-foreground text-balance">

@@ -1,5 +1,5 @@
 export const aboutContent = {
-  sectionLabel: 'Identity',
+  sectionLabel: 'About',
   sectionTitle: 'Behind the Code',
   bio: [
     {

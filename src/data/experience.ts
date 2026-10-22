@@ -3,8 +3,8 @@ import { yearMonthSortValue } from '@/lib/dates';
 export type ExperienceType = 'work' | 'volunteer' | 'project';
 
 export const experienceContent = {
-  sectionLabel: 'Career',
-  sectionTitle: 'Experience',
+  sectionLabel: 'Experience',
+  sectionTitle: 'Career and Activities',
   sectionDescription:
     "I've worked in corporate, non-profit, and startup settings, from enterprise platforms at Workday to community organizations to a product I'm building from scratch.",
 };
