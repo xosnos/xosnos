@@ -61,11 +61,19 @@
   const IMPECCABLE_COMMAND = (window.__IMPECCABLE_COMMAND_PREFIX__ || '/') + 'impeccable';
   const PICK_CURSOR_STYLE_ID = PREFIX + '-pick-cursor-style';
   const MANUAL_APPLY_STATE_TTL_MS = 15 * 60 * 1000;
-  const sessionState = window.__IMPECCABLE_LIVE_SESSION__?.createLiveBrowserSessionState({
-    prefix: PREFIX,
-    storage: localStorage,
-    idFactory: () => crypto.randomUUID().replace(/-/g, '').slice(0, 8),
-  });
+  // No idFactory: the session helper's default works on plain-HTTP origins,
+  // where the secure-context-only randomUUID does not exist (issue #1055).
+  let sessionState = null;
+  try {
+    sessionState = window.__IMPECCABLE_LIVE_SESSION__?.createLiveBrowserSessionState({
+      prefix: PREFIX,
+      storage: localStorage,
+    });
+  } catch (err) {
+    console.error('[impeccable] Live mode could not create its session state.', err);
+    window.__IMPECCABLE_LIVE_INIT__ = false; // let a later injection retry
+    return;
+  }
   if (!sessionState) {
     console.error('[impeccable] live-browser-session.js was not loaded. Live mode cannot start safely.');
     window.__IMPECCABLE_LIVE_INIT__ = false;
@@ -293,6 +301,7 @@
     liveUiRoot,
     uiAppend,
     uiAppendToPage,
+    copyTextViaSelection,
     topLayerHost,
     watchModalDialogs,
     cloneWithoutChrome,
@@ -300,6 +309,7 @@
     uiGetById,
     activeElementDeep,
     defangOutsideHandlers,
+    stopFocusOutIntoChrome,
   } = domHelpers;
 
   window.__IMPECCABLE_LIVE_CHROME_CORE__ = {
@@ -868,8 +878,15 @@
     setTimeout(() => input.focus(), 0);
   }
 
+  // The Enter that commits an IME candidate (Zhuyin, Pinyin, kana, Hangul) is
+  // not a submit. Safari fires that keydown after compositionend, so
+  // isComposing is already false there and keyCode 229 is the only signal.
+  function isImeKeydown(e) {
+    return e.isComposing || e.keyCode === 229;
+  }
+
   function onAnnotInputKey(e) {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !isImeKeydown(e)) {
       e.preventDefault(); e.stopPropagation();
       finalizeEditingPin();
     } else if (e.key === 'Escape') {
@@ -2463,7 +2480,7 @@
     input.addEventListener('focus', () => syncConfigureInputChrome());
     input.addEventListener('blur', () => syncConfigureInputChrome());
     input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') { e.stopPropagation(); e.preventDefault(); handleGo(); return; }
+      if (e.key === 'Enter' && !isImeKeydown(e)) { e.stopPropagation(); e.preventDefault(); handleGo(); return; }
       if (e.key === 'Escape') {
         e.stopPropagation();
         e.preventDefault();
@@ -2495,7 +2512,7 @@
     row.appendChild(buildConfigureTrailingCluster([action, count], voiceBtn, go));
     syncConfigureInputChrome();
 
-    if (!controlsLocked) setTimeout(() => input.focus(), 60);
+    if (!controlsLocked && !touchPrimary()) setTimeout(() => input.focus(), 60);
 
     return row;
   }
@@ -2549,7 +2566,7 @@
       try { input.focus({ preventScroll: true }); } catch { input.focus(); }
     });
     input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
+      if (e.key === 'Enter' && !isImeKeydown(e)) {
         e.stopPropagation(); e.preventDefault();
         if (isInsertCreateEnabled()) handleInsertCreate();
         return;
@@ -2599,7 +2616,7 @@
     row.appendChild(buildConfigureTrailingCluster([count], voiceBtn, create));
     syncInsertCreateButton(create, input);
     syncConfigureInputChrome();
-    if (!controlsLocked) setTimeout(() => input.focus(), 60);
+    if (!controlsLocked && !touchPrimary()) setTimeout(() => input.focus(), 60);
     return row;
   }
 
@@ -7112,6 +7129,10 @@
   //
 
   function startScrollTracking() {
+    // Idempotent: callers overlap (showBar starts tracking, then the agent
+    // pick path starts it again), and a second loop would never be cancelled
+    // because scrollRaf only remembers the latest one (#1002).
+    stopScrollTracking();
     function tick() {
       if (state === 'CONFIGURING' || state === 'GENERATING' || state === 'CYCLING') {
         if (isInsertGeneratingSession()) ensureInsertPlaceholder();
@@ -10571,6 +10592,11 @@ void main() {
     return true;
   }
 
+  // Programmatic focus raises the soft keyboard on touch devices (#1067).
+  function touchPrimary() {
+    return !!window.matchMedia?.('(pointer: coarse)').matches;
+  }
+
   function shouldSteerAutoFocus() {
     return shouldFocusSteerChat()
       && !steerFocusSuspended
@@ -10779,6 +10805,7 @@ void main() {
 
   function syncPageChatFocus(reason) {
     steerFocusLog('syncPageChatFocus', { reason });
+    if (touchPrimary()) return;
     if (state === 'CONFIGURING') focusConfigureInput(reason);
     else if (shouldSteerAutoFocus()) focusSteerChat(reason);
   }
@@ -10966,7 +10993,8 @@ void main() {
         file: opts?.file || '',
       });
     }
-    if (keepExpanded) focusPageChatInput('steer-error-restore');
+    if (keepExpanded && touchPrimary()) preparePageChatInputForTyping();
+    else if (keepExpanded) focusPageChatInput('steer-error-restore');
     else syncPageChatFocus('steer-unlock');
   }
 
@@ -11441,7 +11469,7 @@ void main() {
         }
         return;
       }
-      if (e.key === 'Enter') {
+      if (e.key === 'Enter' && !isImeKeydown(e)) {
         e.preventDefault();
         submitSteerMessage();
       }
@@ -12297,6 +12325,7 @@ void main() {
     document.removeEventListener('mousemove', handleMouseMove, true);
     document.removeEventListener('click', handleClick, true);
     document.removeEventListener('keydown', handleKeyDown, true);
+    document.removeEventListener('focusout', stopFocusOutIntoChrome, true);
     window.removeEventListener('message', onDetectMessage);
     // Remove detection overlays
     window.postMessage({ source: 'impeccable-command', action: 'remove' }, '*');
@@ -13453,12 +13482,24 @@ void main() {
       .replace(/'/g, '&#39;');
   }
 
+  // navigator.clipboard exists only in secure contexts, and writeText can
+  // reject even where it exists (no focus, permission). Fall back
+  // to the DOM helpers' selection copy (execCommand), which plain-HTTP origins
+  // still allow and which stays usable under an open modal dialog.
   function copyToClipboard(text) {
     if (!text) return;
+    const report = (ok) => showToast(ok ? 'Copied: ' + text : 'Could not copy: ' + text);
+    let pending = null;
     try {
-      navigator.clipboard.writeText(text);
-      showToast('Copied: ' + text);
-    } catch { /* ignore */ }
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        pending = navigator.clipboard.writeText(text);
+      }
+    } catch { pending = null; }
+    if (pending && typeof pending.then === 'function') {
+      pending.then(() => report(true), () => report(copyTextViaSelection(text)));
+      return;
+    }
+    report(copyTextViaSelection(text));
   }
 
   //
@@ -13482,6 +13523,7 @@ void main() {
     document.addEventListener('mousemove', handleMouseMove, true);
     document.addEventListener('click', handleClick, true);
     document.addEventListener('keydown', handleKeyDown, true);
+    document.addEventListener('focusout', stopFocusOutIntoChrome, true);
     connectSSE();
 
     // Check for an active session to resume (variant wrapper already in DOM after HMR)
