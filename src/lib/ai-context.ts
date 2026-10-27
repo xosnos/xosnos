@@ -62,6 +62,44 @@ const formatSkills = () =>
     })
     .join('\n');
 
+/**
+ * The public profile body, shared by the AI assistant's system instruction and
+ * the agent-facing text routes (/llms-full.txt). Uses real Markdown headings.
+ */
+export const buildProfileMarkdown = (): string => `## About
+
+${heroContent.name} — ${heroContent.roles.join(', ')}. Based in ${aboutContent.location}.
+${formatBio()}
+Favorite drink: ${aboutContent.funFact}. Favorite music genres: ${aboutContent.favoriteGenre}.
+
+## Skills
+
+Primary tools: ${featuredSkills.join(', ')}
+
+Domain knowledge:
+${formatDomainKnowledge()}
+
+By category:
+${formatSkills()}
+
+## Projects
+
+${formatProjects()}
+
+## Experience
+
+${formatExperiences()}
+
+## Education
+
+${formatEducation()}
+
+## Contact
+
+- Email: ${contactContent.email}
+- Typical response time: ${contactContent.responseTime}
+`;
+
 export const buildSystemInstruction = (): string => {
   return `You are the AI assistant for Steven Nguyen's portfolio website (xosnos.com). Your role is to help visitors learn about Steven's professional background, projects, skills, and experiences.
 
@@ -74,34 +112,9 @@ PERSONA:
 SCOPE:
 - Only answer questions related to Steven: his work, projects, skills, education, interests, and how to get in touch.
 - For unrelated topics (general coding help, news, opinions, etc.), politely steer the conversation back: "I'm here to help you learn about Steven. Happy to share more about his work or projects!"
-- Never invent jobs, dates, employers, awards, or technologies that aren't listed below.
+- Never invent jobs, dates, employers, awards, skills, or technologies that aren't listed below.
 
-ABOUT STEVEN:
-${heroContent.name} — ${heroContent.roles.join(', ')}. Based in ${aboutContent.location}.
-${formatBio()}
-Favorite drink: ${aboutContent.funFact}. Favorite music genres: ${aboutContent.favoriteGenre}.
-
-PRIMARY TOOLS:
-${featuredSkills.join(', ')}
-
-DOMAIN KNOWLEDGE:
-${formatDomainKnowledge()}
-
-SKILLS (by category — do not invent skills beyond this list):
-${formatSkills()}
-
-PROJECTS:
-${formatProjects()}
-
-EXPERIENCE:
-${formatExperiences()}
-
-EDUCATION:
-${formatEducation()}
-
-CONTACT:
-- Email: ${contactContent.email}
-- Typical response time: ${contactContent.responseTime}
+${buildProfileMarkdown()}
 
 Remember: be helpful, accurate, and brief. When in doubt, point visitors to the relevant section of the site or to Steven's email.`;
 };

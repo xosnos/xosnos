@@ -67,6 +67,14 @@ export const metadata: Metadata = {
       },
     ],
   },
+  alternates: {
+    types: {
+      'text/plain': [
+        { url: '/llms.txt', title: 'llms.txt index' },
+        { url: '/llms-full.txt', title: 'llms-full.txt' },
+      ],
+    },
+  },
   manifest: '/manifest.json',
 };
 
