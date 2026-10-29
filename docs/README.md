@@ -168,6 +168,15 @@ devcontainer up --workspace-folder .
 devcontainer exec --workspace-folder . bun run test
 ```
 
+## Connect via MCP
+
+The site serves a public, read-only [Model Context Protocol](https://modelcontextprotocol.io) server at `https://www.xosnos.com/api/mcp` (Streamable HTTP, no auth). It exposes `get_profile`, `list_projects`, `get_project`, `list_experience`, `get_skills`, `request_resume_info`, and a `profile://full` resource, all generated from `src/data/`. It never returns the resume PDF.
+
+```bash
+claude mcp add --transport http xosnos https://www.xosnos.com/api/mcp
+npx @modelcontextprotocol/inspector   # then connect to http://localhost:3000/api/mcp
+```
+
 ## Find related portfolio documentation
 
 Use these references when you change the website:
