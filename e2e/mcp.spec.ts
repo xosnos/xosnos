@@ -14,7 +14,9 @@ const parse = (body: string) => {
   return JSON.parse(data ?? body);
 };
 
-test('MCP initialize then tools/list over HTTP', async ({ request }) => {
+test('MCP initialize, list tools, call a tool, and read a resource over HTTP', async ({
+  request,
+}) => {
   const init = await request.post('/api/mcp', {
     headers,
     data: {
@@ -31,8 +33,9 @@ test('MCP initialize then tools/list over HTTP', async ({ request }) => {
   expect(init.status()).toBe(200);
   expect(parse(await init.text()).result.serverInfo.name).toBe('xosnos-portfolio');
 
+  const protocolHeaders = { ...headers, 'mcp-protocol-version': '2025-06-18' };
   const list = await request.post('/api/mcp', {
-    headers: { ...headers, 'mcp-protocol-version': '2025-06-18' },
+    headers: protocolHeaders,
     data: { jsonrpc: '2.0', id: 2, method: 'tools/list', params: {} },
   });
   expect(list.status()).toBe(200);
@@ -47,4 +50,42 @@ test('MCP initialize then tools/list over HTTP', async ({ request }) => {
       'request_resume_info',
     ]),
   );
+
+  const call = await request.post('/api/mcp', {
+    headers: protocolHeaders,
+    data: {
+      jsonrpc: '2.0',
+      id: 3,
+      method: 'tools/call',
+      params: { name: 'get_profile', arguments: {} },
+    },
+  });
+  expect(call.status()).toBe(200);
+  const profile = parse(await call.text()).result;
+  expect(profile.isError).not.toBe(true);
+  expect(profile.content[0].type).toBe('text');
+  expect(JSON.parse(profile.content[0].text)).toMatchObject({
+    name: 'Steven Nguyen',
+    contact: { email: 'steven@xosnos.com' },
+  });
+
+  const read = await request.post('/api/mcp', {
+    headers: protocolHeaders,
+    data: {
+      jsonrpc: '2.0',
+      id: 4,
+      method: 'resources/read',
+      params: { uri: 'profile://full' },
+    },
+  });
+  expect(read.status()).toBe(200);
+  const resource = parse(await read.text()).result;
+  expect(resource.contents).toEqual([
+    {
+      uri: 'profile://full',
+      mimeType: 'text/markdown',
+      text: expect.stringContaining('Steven Nguyen'),
+    },
+  ]);
+  expect(resource.contents[0].text).toContain('## Experience');
 });

@@ -172,9 +172,23 @@ devcontainer exec --workspace-folder . bun run test
 
 The site serves a public, read-only [Model Context Protocol](https://modelcontextprotocol.io) server at `https://www.xosnos.com/api/mcp` (Streamable HTTP, no auth). It exposes `get_profile`, `list_projects`, `get_project`, `list_experience`, `get_skills`, `request_resume_info`, and a `profile://full` resource, all generated from `src/data/`. It never returns the resume PDF.
 
+Clients send MCP requests using POST. The endpoint is stateless: GET and DELETE session operations return 405. Use direct HTTP with Claude Code versions that tolerate that response:
+
 ```bash
 claude mcp add --transport http xosnos https://www.xosnos.com/api/mcp
-npx @modelcontextprotocol/inspector   # then connect to http://localhost:3000/api/mcp
+```
+
+If your Claude Code version fails to connect after a GET returns 405, remove the direct configuration and use the [mcp-remote stdio bridge](https://github.com/geelen/mcp-remote#transport-strategies) with HTTP transport only (requires Bun):
+
+```bash
+claude mcp remove xosnos
+claude mcp add --transport stdio xosnos -- bunx --bun mcp-remote@0.15.2 https://www.xosnos.com/api/mcp --transport http-only
+```
+
+To inspect the local server:
+
+```bash
+bunx @modelcontextprotocol/inspector   # then connect to http://localhost:3000/api/mcp
 ```
 
 ## Find related portfolio documentation
