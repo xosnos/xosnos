@@ -54,6 +54,7 @@ All request handlers live under [`src/app/api/`](../src/app/api/):
 
 | Route | Method | Purpose |
 | --- | --- | --- |
+| `mcp` | POST | Public read-only MCP server (Streamable HTTP, stateless) exposing profile, project, experience, and skills tools plus a `profile://full` resource; clients send MCP requests using POST; GET and DELETE return 405 for stateless session operations; rate-limited to 30 requests/min per IP and exempt from the origin allowlist because MCP clients send no `Origin` |
 | `chat` | POST | Validates, rate-limits, and streams Google Gemini answers as plain text |
 | `music/now-playing` | GET | Returns an Apple Music recently played track or a Spotify short-term top track; no mounted component currently calls it |
 | `spotify/auth`, `spotify/callback` | GET | Local Spotify OAuth setup at `127.0.0.1:3000`; returns 404 in production |

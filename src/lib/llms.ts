@@ -38,6 +38,7 @@ export const buildLlmsTxt = (): string => {
 ## Profile
 
 - [Full profile (Markdown)](${SITE_URL}/llms-full.txt): Complete background — about, skills, projects, experience, education, and contact — as one Markdown document.
+- [MCP server](${SITE_URL}/api/mcp): Public read-only Model Context Protocol endpoint (Streamable HTTP) for profile, projects, experience, and skills.
 - [About](${SITE_URL}/#about): The story behind the work.
 - [Experience](${SITE_URL}/#experience): Roles across startups, enterprise, and non-profits.
 
