@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from 'next';
 import { Lato, Montserrat } from 'next/font/google';
 import FloatingActions from '@/components/FloatingActions';
 import { ThemeProvider } from '@/components/theme-provider';
+import { SITE_URL } from '@/lib/metadata';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -24,32 +25,10 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.xosnos.com'),
+  metadataBase: new URL(SITE_URL),
   title: 'Steven Nguyen | Portfolio',
   description:
     'Portfolio of Steven Nguyen, Software Engineer and co-founder of Terraces. Previously at Workday. Full-stack web, mobile, and AI-native systems.',
-  openGraph: {
-    type: 'website',
-    siteName: 'Steven Nguyen',
-    url: 'https://www.xosnos.com',
-    title: 'Steven Nguyen | Portfolio',
-    description:
-      'Portfolio of Steven Nguyen, Software Engineer and co-founder of Terraces. Previously at Workday. Based in the San Francisco Bay Area.',
-    images: [
-      {
-        url: '/assets/img/profile.jpg',
-        width: 1200,
-        height: 1200,
-        alt: 'Steven Nguyen',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Steven Nguyen | Portfolio',
-    description: 'Software Engineer and co-founder of Terraces. Previously at Workday.',
-    images: ['/assets/img/profile.jpg'],
-  },
   icons: {
     apple: '/assets/img/icon/apple-touch-icon.png',
     icon: [
@@ -66,14 +45,6 @@ export const metadata: Metadata = {
         type: 'image/png',
       },
     ],
-  },
-  alternates: {
-    types: {
-      'text/plain': [
-        { url: '/llms.txt', title: 'llms.txt index' },
-        { url: '/llms-full.txt', title: 'llms-full.txt' },
-      ],
-    },
   },
   manifest: '/manifest.json',
 };

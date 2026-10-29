@@ -70,6 +70,16 @@ bun run check:readme-skills
 
 [`src/app/page.tsx`](../src/app/page.tsx) defines the homepage section sequence. Keep [`src/data/navigation.ts`](../src/data/navigation.ts) in the same order. See [page composition](ARCHITECTURE.md#page-composition) for the current order.
 
+## Homepage search and sharing
+
+Homepage canonical, Open Graph, Twitter, and alternate text links live in [`src/app/page.tsx`](../src/app/page.tsx). Person JSON-LD reads the existing hero and footer data. Keep these homepage-specific values out of the root layout so future pages do not inherit the homepage canonical.
+
+The shared preview is [`public/assets/og/home.jpg`](../public/assets/og/home.jpg), a 1200×630 JPEG. It was composed with Painter from the existing `public/assets/img/profile.jpg` portrait and resized/compressed with Sharp (JPEG quality 88, mozjpeg). Its text is baked into the image; regenerate it when the name or positioning changes, and keep its metadata dimensions and alt text in sync.
+
+[`src/app/sitemap.ts`](../src/app/sitemap.ts) lists only the homepage. Add project and note URLs when those pages exist; do not add section anchors, API endpoints, or synthetic modification dates.
+
+[`src/app/robots.ts`](../src/app/robots.ts) allows ordinary search crawlers and the named AI search/user-requested agents, excludes `/api/` in both groups, and opts out of GPTBot, ClaudeBot, Google-Extended, and CCBot. This is an advisory crawler preference, not authentication or a guarantee against training use. The resume gate remains responsible for access control.
+
 ## Change colors
 
 Update semantic custom properties in the `:root` and `[data-theme="dark"]` blocks of [`src/app/globals.css`](../src/app/globals.css):

@@ -5,7 +5,7 @@ import { heroContent } from '@/data/hero';
 import { listPublishedProjects } from '@/data/projects';
 import { buildProfileMarkdown } from '@/lib/ai-context';
 
-const SITE_URL = 'https://www.xosnos.com';
+import { SITE_URL } from '@/lib/metadata';
 
 const summary = () => {
   const tagline = heroContent.tagline.replace(/\*\*/g, '');
