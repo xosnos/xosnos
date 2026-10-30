@@ -115,6 +115,8 @@ bun run test:e2e
 
 After you change [`src/data/skills.ts`](../src/data/skills.ts), run `bun run check:readme-skills` to confirm the GitHub profile README still matches, and `bun run sync:readme-skills` to update it.
 
+[`lefthook.yml`](../lefthook.yml) enforces these fast checks in parallel on every local commit: Biome formats and lints staged files (and re-stages fixes), `bun run check:readme-skills` verifies the README skills section, `bun run typecheck` checks types, and `bun run test` runs the unit test suite.
+
 Unit tests use Bun's built-in test runner. They live next to the code as `*.test.ts` files under `src/`, and [`bunfig.toml`](../bunfig.toml) limits `bun test` to that directory so it never picks up the Playwright specs in `e2e/`. They cover date parsing, rate limiting, resume token signing and expiry, origin and client-IP guards, and content integrity checks for `src/data/` (unique IDs, valid dates, sort order, and image files that exist in `public/`). They need no server, credentials, or environment file.
 
 Playwright manages its own server: [`playwright.config.ts`](../playwright.config.ts) runs `bun run dev` on port 3000 and reuses a server that is already running outside CI. Tests run in Chromium only, with two retries and one worker in CI.
