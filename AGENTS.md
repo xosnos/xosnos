@@ -1,69 +1,29 @@
 # AGENTS.md
 
-This repo is the single source of truth for **Steven Nguyen (xosnos)** personal brand and career presence. It powers two public surfaces and will grow to centralize all career, accomplishments, and branding work so updates stay consistent and fast to ship.
+Personal brand repo for Steven Nguyen (xosnos): a Next.js 16 App Router portfolio site (`src/`, deployed to xosnos.com) plus the GitHub profile README at root `README.md`. Content edits visible on both surfaces must stay in sync — canonical source is `src/data/*.ts` (typed data files); skills badges sync via `bun run sync:readme-skills`. See `docs/ARCHITECTURE.md` and `docs/CUSTOMIZE.md`.
 
-| Surface | What it is | Source |
-| --- | --- | --- |
-| **Portfolio website** | [xosnos.com](https://www.xosnos.com) — Next.js app with AI assistant, resume gate, and live integrations | `src/`, deployed from this repo |
-| **GitHub profile** | Special repo README shown on [github.com/xosnos](https://github.com/xosnos) | [`README.md`](README.md) at repo root |
+## Commands (use bun, not npm/yarn/pnpm)
 
-## Documentation map
+- `bun run dev` / `build` / `start` — Next.js dev server and production build
+- `bun run format` then `bun run lint` — Biome format + check (always run both, in that order)
+- `bun run typecheck` — `tsc --noEmit`
+- `bun run test` — Bun unit tests colocated as `src/**/*.test.ts`
+- Single unit test: `bun test src/lib/dates.test.ts` (or `bun test -t "pattern"`)
+- `bun run test:e2e` — Playwright; single spec: `bun run test:e2e e2e/smoke.spec.ts`
+- Pre-commit (lefthook) runs Biome, typecheck, `bun test`, and `check:readme-skills` on staged files
 
-- [`README.md`](README.md) — GitHub profile display (badges, bio, projects table). Not the website readme.
-- [`docs/README.md`](docs/README.md) — Portfolio website readme (setup, features, local dev).
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — App Router layout, directories, API routes.
-- [`docs/CUSTOMIZE.md`](docs/CUSTOMIZE.md) — Content edits (projects, experience, skills, colors).
-- [`docs/DESIGN.md`](docs/DESIGN.md) — Colors, typography, breakpoints, performance targets.
-- [`docs/PRODUCT.md`](docs/PRODUCT.md) — Durable product truth, audience, positioning, and principles.
-- [`.env.example`](.env.example) — Environment variables for optional website features.
+## Architecture
 
-## Content sources
+- `src/app/` — layout, single homepage (`page.tsx` composes Hero → Projects → Experience → Skills → Education → About), and API routes under `src/app/api/`: `chat` (Gemini streaming), `mcp` (read-only MCP server from `src/lib/mcp/tools.ts`), `resume`, `music/now-playing`, `spotify` OAuth (local-only)
+- `src/components/` — section components; interactive ones are client islands; overlays (modals, resume gate, AI assistant) use `src/hooks/useDialog.ts`
+- `src/lib/` — AI context assembly, rate limiting, request guards, tokens, Gemini, Spotify, Apple Music; `src/data/` — typed content; `e2e/` — Playwright specs; `scripts/` — README sync
 
-Most site copy lives in typed data files under `src/data/`. Skills badges are defined in `src/data/skills.ts` and synced to the GitHub README via `bun run sync:readme-skills`. When editing content that appears on both surfaces (bio, projects, skills), update the canonical source and keep both in sync.
+## Code style (Biome enforced; config in `biome.json`)
 
-| Content | Canonical source |
-| --- | --- |
-| Projects, experience, education, about, hero, contact | `src/data/*.ts` |
-| Skills badges | [`src/data/skills.ts`](src/data/skills.ts) (sync to root [`README.md`](README.md) with `bun run sync:readme-skills`) |
-| GitHub profile bio and projects table | Root [`README.md`](README.md) |
-
-## Mission
-
-Deliver correct, maintainable changes with minimal risk.
-
-## Scope
-
-- Respect repository architecture and conventions.
-- Keep edits focused; avoid unrelated refactors.
-- Never commit secrets.
-- Treat changes as brand-facing: this repo is how recruiters, collaborators, and visitors discover Steven's work.
-
-## Engineering Rules
-
-- Validate changes with relevant checks before final delivery.
-- Surface assumptions and edge cases explicitly.
-- Prefer reversible changes and deterministic outputs.
-
-## Skills
-
-Project-specific agent skills live in [`.agents/skills/`](.agents/skills/). Read the relevant `SKILL.md` before tasks involving Next.js patterns, Vercel deploy/optimize, view transitions, or UI review.
-
-## Workflow
-
-1. Plan briefly.
-2. Implement minimal viable change.
-3. Validate (lint/tests/build/smoke as needed).
-4. Report results and residual risks.
-
-## Rules
-
-- Use **bun** for all package management and scripts.
-- After every set of changes, validate in this order:
-  1. `bun run format` — apply Biome formatting and safe fixes
-  2. `bun run lint` — verify formatting, lint rules, and import order (read-only)
-  3. `bun run typecheck` — TypeScript check
-  4. `bun run test` — Bun unit tests (`src/**/*.test.ts`)
-  5. `bun run test:e2e` — Playwright end-to-end tests
+- 2-space indent, 90-char lines, LF endings, single quotes in JS/TS (double in JSX), semicolons, trailing commas
+- Organize imports automatically; format before committing — don't hand-format
+- Typed content in `src/data/` with exported `const` objects; colocate unit tests next to the code they cover
+- Never commit secrets; optional integrations are configured via env vars (see `.env.example`)
 
 <!-- BEGIN:nextjs-agent-rules -->
 
